@@ -211,10 +211,10 @@ class iPizza implements Protocol{
         $data         = $this->generateSignature($response);
 
         if(is_file($this->publicKey)){
-            $privateKey = openssl_get_publickey('file://'.$this->publicKey);
+            $publicKey = openssl_get_publickey('file://'.$this->publicKey);
         }
         else{
-            $privateKey = openssl_get_publickey($this->publicKey);
+            $publicKey = openssl_get_publickey($this->publicKey);
         }
 
         $this->result = openssl_verify($data, base64_decode($response['VK_MAC']), $publicKey);
