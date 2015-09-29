@@ -18,10 +18,10 @@ final class Services{
 
     // Authentication
     const AUTH_REQUEST_4012        = '4012';
-    const AUTH_RESPONSE_3013       = '4012';
+    const AUTH_RESPONSE_3013       = '3013';
 
     const AUTH_REQUEST_4011        = '4011';
-    const AUTH_RESPONSE_3012       = '4012';
+    const AUTH_RESPONSE_3012       = '3012';
 
     public static function getFields($serviceId){
 

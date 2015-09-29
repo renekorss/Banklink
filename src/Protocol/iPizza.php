@@ -109,8 +109,14 @@ class iPizza implements Protocol{
 
         $service = $response['VK_SERVICE'];
 
+        // Is payment response service?
         if(in_array($service, Services::getPaymentResponseServices())){
             return $this->handlePaymentResponse($response, $success);
+        }
+
+        // Is authentication response service?
+        if(in_array($service, Services::getAuthenticationResponseServices())){
+            return $this->handleAuthResponse($response, $success);
         }
 
         throw new \UnexpectedValueException(sprintf('Service %s is not supported.', $service));
@@ -144,6 +150,29 @@ class iPizza implements Protocol{
             $response->setTransactionId($responseData['VK_T_NO']);
             $response->setTransactionDate($responseData['VK_T_DATETIME']);
         }
+
+        return $response;
+    }
+
+    /**
+     * Get authentication response
+     *
+     * @param array Response data from bank
+     * @param boolean Signature validated?
+     *
+     * @return \RKD\Banklink\Response\AuthResponse
+     */
+
+    public function handleAuthResponse(array $responseData, $success){
+
+        if($success){
+            $status = AuthResponse::STATUS_SUCCESS;
+        }
+        else{
+            $status = AuthResponse::STATUS_ERROR;
+        }
+
+        $response = new AuthResponse($status, $responseData);
 
         return $response;
     }
