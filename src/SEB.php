@@ -15,6 +15,7 @@ class SEB extends Banklink{
 
     protected $responseUrl     = 'https://www.seb.ee/cgi-bin/unet3.sh/un3min.r';
     protected $testResponseUrl = 'http://localhost:8080/banklink/seb-common';
+    protected $requestEncoding = 'ISO-8859-1';
 
     /**
      * Force SEB class to use iPizza protocol
@@ -26,8 +27,8 @@ class SEB extends Banklink{
      * @return void
      */
 
-    public function __construct(iPizza $protocol, $debug = false, $requestUrl = null){
-        parent::__construct($protocol, $debug, $requestUrl);
+    public function __construct(iPizza $protocol, $debug = false, $responseUrl = null){
+        parent::__construct($protocol, $debug, $responseUrl);
     }
 
     /**
@@ -35,7 +36,7 @@ class SEB extends Banklink{
      */
 
     protected function getEncodingField(){
-        return 'VK_CHARSET';
+        return 'VK_ENCODING';
     }
 
     /**
@@ -45,7 +46,7 @@ class SEB extends Banklink{
      */
     protected function getAdditionalFields(){
         return array(
-            'VK_CHARSET' => $this->requestEncoding
+            'VK_ENCODING' => $this->requestEncoding
         );
     }
 }

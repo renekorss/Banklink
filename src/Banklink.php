@@ -30,7 +30,7 @@ abstract class Banklink{
      * @param string Response URL
      */
 
-    public function __construct(Protocol $protocol, $debug = false, $responseUrl = null){
+    public function __construct($protocol, $debug = false, $responseUrl = null){
 
         $this->protocol = $protocol;
 
@@ -39,9 +39,6 @@ abstract class Banklink{
         }
         else if($responseUrl){
             $this->responseUrl = $responseUrl;
-        }
-        else{
-            throw new \InvalidArgumentException('Response URL must be set.');
         }
     }
 
@@ -89,8 +86,8 @@ abstract class Banklink{
      */
 
     protected function getResponseEncoding(array $responseData){
-        if ($this->getEncodingField() && isset($encodingField = $responseData[$this->getEncodingField()])) {
-            return $responseData[$encodingField];
+        if ($this->getEncodingField() && isset($responseData[$this->getEncodingField()])) {
+            return $responseData[$this->getEncodingField()];
         }
 
         return $this->responseEncoding;
@@ -108,6 +105,15 @@ abstract class Banklink{
         }
 
         return $html;
+    }
+
+    /**
+     * Get response URL
+     *
+     * @return string
+     */
+    public function getResponseUrl(){
+        return $this->responseUrl;
     }
 
     /**

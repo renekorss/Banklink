@@ -13,8 +13,8 @@ use RKD\Banklink\Protocol\iPizza;
 
 class LHV extends Banklink{
 
-    protected $requestUrl     = 'https://www.lhv.ee/banklink';
-    protected $testRequestUrl = 'http://localhost:8080/banklink/lhv-common';
+    protected $responseUrl     = 'https://www.lhv.ee/banklink';
+    protected $testResponseUrl = 'http://localhost:8080/banklink/lhv-common';
 
     /**
      * Force LHV class to use iPizza protocol
@@ -26,8 +26,8 @@ class LHV extends Banklink{
      * @return void
      */
 
-    public function __construct(iPizza $protocol, $debug = false, $requestUrl = null){
-        parent::__construct($protocol, $debug, $requestUrl);
+    public function __construct(iPizza $protocol, $debug = false, $responseUrl = null){
+        parent::__construct($protocol, $debug, $responseUrl);
     }
 
     /**

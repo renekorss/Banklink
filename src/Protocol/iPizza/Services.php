@@ -37,7 +37,10 @@ final class Services{
                         'VK_ACC',
                         'VK_NAME',
                         'VK_REF',
-                        'VK_MSG'
+                        'VK_MSG',
+                        'VK_RETURN',
+                        'VK_CANCEL',
+                        'VK_DATETIME'
                     );
                 break;
             case self::PAYMENT_REQUEST_1012:
@@ -49,7 +52,10 @@ final class Services{
                         'VK_AMOUNT',
                         'VK_CURR',
                         'VK_REF',
-                        'VK_MSG'
+                        'VK_MSG',
+                        'VK_RETURN',
+                        'VK_CANCEL',
+                        'VK_DATETIME'
                     );
                 break;
             case self::PAYMENT_RESPONSE_SUCCESS:
