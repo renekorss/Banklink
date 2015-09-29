@@ -94,7 +94,7 @@ final class Services{
      * @return array Array of payments services ID-s
      */
 
-    public function getPaymentResponseServices(){
+    public static function getPaymentResponseServices(){
         return array(
             self::PAYMENT_RESPONSE_SUCCESS,
             self::PAYMENT_RESPONSE_FAILED
@@ -107,7 +107,7 @@ final class Services{
      * @return array Array of payments services ID-s
      */
 
-    public function getAuthenticationResponseServices(){
+    public static function getAuthenticationResponseServices(){
         return array(
             self::AUTH_RESPONSE_3012,
             self::AUTH_RESPONSE_3013
