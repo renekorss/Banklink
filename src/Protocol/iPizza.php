@@ -42,7 +42,7 @@ class iPizza implements Protocol{
      * @return void
      */
 
-    public function __construct($sellerId, $privateKey, $privateKeyPassword, $publicKey, $responseUrl, $sellerName = null, $sellerAccount = null, $useMbStrlen, $version = '008'){
+    public function __construct($sellerId, $privateKey, $privateKeyPassword, $publicKey, $responseUrl, $sellerName = null, $sellerAccount = null, $useMbStrlen = false, $version = '008'){
         $this->privateKey         = $privateKey;
         $this->privateKeyPassword = $privateKeyPassword;
         $this->publicKey          = $publicKey;
