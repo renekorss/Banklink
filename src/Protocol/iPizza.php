@@ -71,7 +71,8 @@ class iPizza implements Protocol{
 
     public function getPaymentRequestData($orderId, $sum, $message, $encoding = 'UTF-8', $language = 'EST', $currency = 'EUR', $timezone = 'Europe/Tallinn'){
 
-        $datetime = new \Datetime('now', new \DateTimeZone($timezone));
+        $time     = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
+        $datetime = new \Datetime($time, new \DateTimeZone($timezone));
 
         $data = array(
             'VK_SERVICE'  => $this->serviceId,
