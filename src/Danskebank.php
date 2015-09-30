@@ -13,8 +13,8 @@ use RKD\Banklink\Protocol\iPizza;
 
 class Danskebank extends Banklink{
 
-    protected $responseUrl     = 'https://www2.danskebank.ee/ibank/pizza/pizza';
-    protected $testResponseUrl = 'http://localhost:8080/banklink/sampo-common';
+    protected $requestUrl     = 'https://www2.danskebank.ee/ibank/pizza/pizza';
+    protected $testRequestUrl = 'http://localhost:8080/banklink/sampo-common';
 
     /**
      * Force Danskebank class to use iPizza protocol
@@ -26,8 +26,8 @@ class Danskebank extends Banklink{
      * @return void
      */
 
-    public function __construct(iPizza $protocol, $debug = false, $responseUrl = null){
-        parent::__construct($protocol, $debug, $responseUrl);
+    public function __construct(iPizza $protocol, $debug = false, $requestUrl = null){
+        parent::__construct($protocol, $debug, $requestUrl);
     }
 
     /**

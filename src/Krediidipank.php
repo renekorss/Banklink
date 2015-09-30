@@ -13,8 +13,8 @@ use RKD\Banklink\Protocol\iPizza;
 
 class Krediidipank extends Banklink{
 
-    protected $responseUrl       = 'https://i-pank.krediidipank.ee/teller/maksa';
-    protected $testResponseUrl   = 'http://localhost:8080/banklink/krediidipank-common';
+    protected $requestUrl       = 'https://i-pank.krediidipank.ee/teller/maksa';
+    protected $testRequestUrl   = 'http://localhost:8080/banklink/krediidipank-common';
 
     protected $responseEncoding = 'ISO-8859-13';
 
@@ -28,8 +28,8 @@ class Krediidipank extends Banklink{
      * @return void
      */
 
-    public function __construct(iPizza $protocol, $debug = false, $responseUrl = null){
-        parent::__construct($protocol, $debug, $responseUrl);
+    public function __construct(iPizza $protocol, $debug = false, $requestUrl = null){
+        parent::__construct($protocol, $debug, $requestUrl);
     }
 
     /**

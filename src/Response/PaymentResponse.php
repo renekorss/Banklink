@@ -19,7 +19,7 @@ class PaymentResponse extends Response{
     /**
      * Set order ID
      *
-     * @return string Order ID
+     * @param string Order ID
      */
 
     public function setOrderId($orderId){
@@ -39,7 +39,7 @@ class PaymentResponse extends Response{
     /**
      * Set sum
      *
-     * @return string Sum
+     * @param double Sum
      */
 
     public function setSum($sum){
@@ -49,7 +49,7 @@ class PaymentResponse extends Response{
     /**
      * Get sum
      *
-     * @return string Sum
+     * @return double Sum
      */
 
     public function getSum(){
@@ -59,7 +59,7 @@ class PaymentResponse extends Response{
     /**
      * Set currency
      *
-     * @return string Currency
+     * @param string Currency
      */
 
     public function setCurrency($currency){
@@ -79,17 +79,19 @@ class PaymentResponse extends Response{
     /**
      * Set sender
      *
-     * @return array Sender
+     * @param string Sender name
+     * @param string Sender account
      */
 
-    public function setSender($sender){
-        $this->sender = $sender;
+    public function setSender($senderName, $senderAccount){
+        $this->sender['name']    = $senderName;
+        $this->sender['account'] = $senderAccount;
     }
 
     /**
      * Get sender
      *
-     * @return array Sender
+     * @return array Sender array, containing name and account
      */
 
     public function getSender(){
@@ -99,7 +101,7 @@ class PaymentResponse extends Response{
     /**
      * Set transactionId
      *
-     * @return string Transaction ID
+     * @param string Transaction ID
      */
 
     public function setTransactionId($transactionId){
@@ -119,7 +121,7 @@ class PaymentResponse extends Response{
     /**
      * Set transactionDate
      *
-     * @return string Transaction ID
+     * @param string Transaction date
      */
 
     public function setTransactionDate($transactionDate){
@@ -129,7 +131,7 @@ class PaymentResponse extends Response{
     /**
      * Get transactionDate
      *
-     * @return string Transaction ID
+     * @return string Transaction date
      */
 
     public function getTransactionDate(){

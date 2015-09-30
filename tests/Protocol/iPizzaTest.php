@@ -1,6 +1,7 @@
 <?php
 namespace RKD\Banklink\iPizza;
 
+use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\iPizza;
 use RKD\Banklink\Response\PaymentResponse;
 
@@ -28,7 +29,7 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
     private $timezone;
     private $datetime;
 
-    private $responseUrl;
+    private $requestUrl;
 
     public function setUp(){
 
@@ -46,19 +47,17 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
         $this->currency      = 'EUR';
         $this->timezone      = 'Europe/Tallinn';
 
-        $this->datetime      = '2015-09-29T15:00:00+0300';
+        // From ENV variable
+        $this->datetime      = getenv('TEST_DATETIME');
 
-        // Set testing datetime
-        putenv('TEST_DATETIME='.$this->datetime);
-
-        $this->responseUrl   = 'http://example.com';
+        $this->requestUrl   = 'http://example.com';
 
         $this->protocol = new iPizza(
             $this->sellerId,
             __DIR__.'/../keys/iPizza/private_key.pem',
             '',
             __DIR__.'/../keys/iPizza/public_key.pem',
-            $this->responseUrl
+            $this->requestUrl
         );
     }
 
@@ -72,12 +71,12 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
             'VK_STAMP'    => $this->orderId,
             'VK_AMOUNT'   => $this->amount,
             'VK_CURR'     => $this->currency,
-            'VK_REF'      => $this->orderId,
+            'VK_REF'      => ProtocolHelper::calculateReference($this->orderId),
             'VK_MSG'      => $this->message,
-            'VK_RETURN'   => $this->responseUrl,
-            'VK_CANCEL'   => $this->responseUrl,
+            'VK_RETURN'   => $this->requestUrl,
+            'VK_CANCEL'   => $this->requestUrl,
             'VK_LANG'     => $this->language,
-            'VK_MAC'      => 'ZUI8IwTUVOxlU5pHdeN54FnLm4ZSNDZ6no3df75LO6ugaAyRWSdaAi1JSu/od8mN7QH4UOM57OUn7oPWL5+IIAOVhYQC887BqaohjnaDxyE78nuxFbt34mOQOMh/cyr2F1LQzFNFrqgqkjjwLhYN9tUt6LhUn/NFKad2mvGUEOA=',
+            'VK_MAC'      => 'PmAB256IR1FzTKZHNn5LBPso/KyLAhNcTOMq82lhpYn0mXKYtVtpNkolQxyETnTcIn1TcYOmekJEATe86Bz2MRljEQqllkaIl7bNuLCtuBPtAOYWNLmQHoop+5QSiguJEmEV+JJU3w4BApjWcsHA5HYlYze+3L09UO6na0lB/Zs=',
             'VK_DATETIME' => $this->datetime,
         );
 
@@ -91,7 +90,7 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
             __DIR__.'/../keys/iPizza/private_key.pem',
             '',
             __DIR__.'/../keys/iPizza/public_key.pem',
-            $this->responseUrl,
+            $this->requestUrl,
             $this->sellerName,
             $this->sellerAccount
         );
@@ -100,7 +99,7 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
         $expectedData['VK_SERVICE']  = '1011';
         $expectedData['VK_ACC']      = $this->sellerAccount;
         $expectedData['VK_NAME']     = $this->sellerName;
-        $expectedData['VK_MAC']      = 'SGY74ggxAn7Z+foqmhME/g8nh+8cXxhPtzbhPLnk1XFWyFFqFsxVSNefUb14ycSDMQbU8igqxH05a8aHGuyYFR4iTpKe52eWV+YmDOylqbGjsTIgwWLjKGFov5MpuNy59D5PtRnAclVWWpr/EEpQVu4CaYxQxAQfSElsSju74qo=';
+        $expectedData['VK_MAC']      = 'RkwVzvbKGTzwg3xeue2/CPDA82nGP2I8O8DChcdkQ7PdiB1p7wLkRVEIeF6sJKeqx13HQftRtTlKMpbfr9/hdO3h6zZcc7qIT9GVXQBH38Ub+D0YuF9hEGmVLToJFXxequUfdd6W77l61TplDYYeHt+5ZI/kkxWg/mmpV38WmfU=';
         $expectedData['VK_DATETIME'] = $this->datetime;
 
         $responseData = $this->protocol->getPaymentRequestData($this->orderId, $this->amount, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);

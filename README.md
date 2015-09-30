@@ -1,8 +1,8 @@
-[![Build Status](https://travis-ci.org/renekorss/Banklink.svg?branch=master)](https://travis-ci.org/renekorss/Banklink)
+[![Build Status](https://travis-ci.org/renekorss/Banklink.svg?branch=master)](https://travis-ci.org/renekorss/Banklink) [![License](http://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 # PHP Banklink library
 
-> PHP banklink library to easily integrate baltic banklinks.
+> PHP banklink library to easily integrate Baltic banklinks.
 
 **NB!** This library **IS NOT** production ready!
 

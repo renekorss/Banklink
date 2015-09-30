@@ -1,6 +1,9 @@
 <?php
 namespace RKD\Banklink;
 
+use RKD\Banklink\Protocol;
+use RKD\Banklink\Request;
+
 /**
  * RKD Banklink
  *
@@ -17,8 +20,8 @@ abstract class Banklink{
 
     protected $data = null;
 
-    protected $responseUrl;
-    protected $testResponseUrl;
+    protected $requestUrl;
+    protected $testRequestUrl;
 
     protected $requestEncoding  = 'UTF-8';
     protected $responseEncoding = 'ISO-8859-1';
@@ -30,15 +33,15 @@ abstract class Banklink{
      * @param string Response URL
      */
 
-    public function __construct($protocol, $debug = false, $responseUrl = null){
+    public function __construct(Protocol $protocol, $debug = false, $requestUrl = null){
 
         $this->protocol = $protocol;
 
         if($debug){
-            $this->responseUrl = $this->testResponseUrl;
+            $this->requestUrl = $this->testRequestUrl;
         }
-        else if($responseUrl){
-            $this->responseUrl = $responseUrl;
+        else if($requestUrl){
+            $this->requestUrl = $requestUrl;
         }
     }
 
@@ -64,7 +67,7 @@ abstract class Banklink{
         // Add additional fields
         $this->data = array_merge($this->data, $this->getAdditionalFields());
 
-        return $this->data;
+        return new PaymentRequest($this->requestUrl, $this->data);
     }
 
     /**
@@ -94,26 +97,12 @@ abstract class Banklink{
     }
 
     /**
-     * Get request hidden inputs
-     */
-
-    public function getRequestInputs(){
-        $html = '';
-
-        foreach ($this->data as $key => $value) {
-            $html .= vsprintf('<input type="hidden" id="%s" name="%s" value="%s" />', array(strtolower($key), $key, $value))."\n";
-        }
-
-        return $html;
-    }
-
-    /**
      * Get response URL
      *
      * @return string
      */
-    public function getResponseUrl(){
-        return $this->responseUrl;
+    public function getrequestUrl(){
+        return $this->requestUrl;
     }
 
     /**

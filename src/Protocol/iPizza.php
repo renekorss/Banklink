@@ -1,6 +1,7 @@
 <?php
 namespace RKD\Banklink\Protocol;
 
+use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\iPizza\Services;
 use RKD\Banklink\Response\PaymentResponse;
 
@@ -20,7 +21,7 @@ class iPizza implements Protocol{
     protected $sellerName;
     protected $sellerAccount;
     protected $version;
-    protected $responseUrl;
+    protected $requestUrl;
     protected $serviceId;
 
     protected $result;
@@ -42,7 +43,7 @@ class iPizza implements Protocol{
      * @return void
      */
 
-    public function __construct($sellerId, $privateKey, $privateKeyPassword, $publicKey, $responseUrl, $sellerName = null, $sellerAccount = null, $useMbStrlen = false, $version = '008'){
+    public function __construct($sellerId, $privateKey, $privateKeyPassword, $publicKey, $requestUrl, $sellerName = null, $sellerAccount = null, $useMbStrlen = false, $version = '008'){
         $this->privateKey         = $privateKey;
         $this->privateKeyPassword = $privateKeyPassword;
         $this->publicKey          = $publicKey;
@@ -51,7 +52,7 @@ class iPizza implements Protocol{
         $this->sellerName         = $sellerName;
         $this->sellerAccount      = $sellerAccount;
         $this->version            = $version;
-        $this->responseUrl        = $responseUrl;
+        $this->requestUrl         = $requestUrl;
 
         // Detect which service to use
         $this->serviceId          = (strlen($sellerName) > 0 && strlen($sellerAccount) > 0) ? Services::PAYMENT_REQUEST_1011 : Services::PAYMENT_REQUEST_1012;
@@ -81,10 +82,10 @@ class iPizza implements Protocol{
             'VK_STAMP'    => $orderId,
             'VK_AMOUNT'   => $sum,
             'VK_CURR'     => $currency,
-            'VK_REF'      => $orderId,
+            'VK_REF'      => ProtocolHelper::calculateReference($orderId),
             'VK_MSG'      => $message,
-            'VK_RETURN'   => $this->responseUrl,
-            'VK_CANCEL'   => $this->responseUrl,
+            'VK_RETURN'   => $this->requestUrl,
+            'VK_CANCEL'   => $this->requestUrl,
             'VK_DATETIME' => $datetime->format('Y-m-d\TH:i:sO'),
             'VK_LANG'     => $language
         );

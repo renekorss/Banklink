@@ -13,8 +13,8 @@ use RKD\Banklink\Protocol\iPizza;
 
 class SEB extends Banklink{
 
-    protected $responseUrl     = 'https://www.seb.ee/cgi-bin/unet3.sh/un3min.r';
-    protected $testResponseUrl = 'http://localhost:8080/banklink/seb-common';
+    protected $requestUrl     = 'https://www.seb.ee/cgi-bin/unet3.sh/un3min.r';
+    protected $testRequestUrl = 'http://localhost:8080/banklink/seb-common';
     protected $requestEncoding = 'ISO-8859-1';
 
     /**
@@ -27,8 +27,8 @@ class SEB extends Banklink{
      * @return void
      */
 
-    public function __construct(iPizza $protocol, $debug = false, $responseUrl = null){
-        parent::__construct($protocol, $debug, $responseUrl);
+    public function __construct(iPizza $protocol, $debug = false, $requestUrl = null){
+        parent::__construct($protocol, $debug, $requestUrl);
     }
 
     /**
