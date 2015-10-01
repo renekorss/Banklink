@@ -1,8 +1,8 @@
 <?php
 namespace RKD\Banklink;
 
-use RKD\Banklink\Protocol;
-use RKD\Banklink\Request;
+use RKD\Banklink\Protocol\Protocol;
+use RKD\Banklink\Request\PaymentRequest;
 
 /**
  * RKD Banklink
@@ -94,15 +94,6 @@ abstract class Banklink{
         }
 
         return $this->responseEncoding;
-    }
-
-    /**
-     * Get response URL
-     *
-     * @return string
-     */
-    public function getrequestUrl(){
-        return $this->requestUrl;
     }
 
     /**

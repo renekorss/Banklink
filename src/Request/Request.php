@@ -21,7 +21,7 @@ abstract class Request{
      * @return void
      */
 
-    public function __constructor($requestUrl, array $requestData){
+    public function __construct($requestUrl, array $requestData){
         $this->requestUrl  = $requestUrl;
         $this->requestData = $requestData;
     }
