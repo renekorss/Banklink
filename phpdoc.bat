@@ -1,1 +1,1 @@
-vendor\bin\phpdoc -d ./src -t ./docs --template="clean"
+vendor\bin\phpdoc -d ./src -t ./docs --template="responsive-twig"

@@ -14,6 +14,11 @@
 
 TODO
 
+## Tasks
+
+ - `phpunit` - run tests
+ - `phpdoc` - build API documentation
+
 ## Testing your banklink
 
 You can test your banklink with <a href="http://pangalink.net/" target="_blank">pangalink.net</a> application (Windows, Mac, Linux).
