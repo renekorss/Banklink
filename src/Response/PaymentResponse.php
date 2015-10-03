@@ -84,14 +84,15 @@ class PaymentResponse extends Response{
      */
 
     public function setSender($senderName, $senderAccount){
-        $this->sender['name']    = $senderName;
-        $this->sender['account'] = $senderAccount;
+        $this->sender          = new stdClass();
+        $this->sender->name    = $senderName;
+        $this->sender->account = $senderAccount;
     }
 
     /**
      * Get sender
      *
-     * @return array Sender array, containing name and account
+     * @return object Sender object, containing name and account
      */
 
     public function getSender(){
