@@ -12,7 +12,8 @@
   "require": {},
   "require-dev": {
     "phpunit/phpunit": "4.8.*",
-    "phpdocumentor/phpdocumentor": "dev-master"
+    "phpdocumentor/phpdocumentor": "dev-master",
+    "satooshi/php-coveralls": "dev-master"
   },
   "autoload": {
     "psr-4": {"RKD\\Banklink\\": "src"}
