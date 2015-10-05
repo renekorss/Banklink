@@ -19,7 +19,7 @@
         <env name="TEST_DATETIME" value="2015-09-29T15:00:00+0300"/>
     </php>
     <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
+        <whitelist addUncoveredFilesFromWhitelist="true" processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">/src</directory>
         </whitelist>
     </filter>
