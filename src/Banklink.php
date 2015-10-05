@@ -142,7 +142,7 @@ abstract class Banklink{
      */
 
     protected function getEncodingField(){
-        return null;
+        return null; // @codeCoverageIgnore
     }
 
     /**
@@ -152,7 +152,7 @@ abstract class Banklink{
      */
 
     protected function getAdditionalFields(){
-        return array();
+        return array(); // @codeCoverageIgnore
     }
 }
 

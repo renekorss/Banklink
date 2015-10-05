@@ -1,5 +1,5 @@
 <?php
-namespace RKD\Banklink\iPizza;
+namespace RKD\Banklink;
 
 use RKD\Banklink;
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
@@ -8,14 +8,15 @@ use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Request\PaymentRequest;
 
 /**
- * Test suite for iPizza protocol
+ * Test suite for Swedbank banklink
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
 
-class iPizzaTest extends \PHPUnit_Framework_TestCase{
+class SwedbankTest extends \PHPUnit_Framework_TestCase{
 
     private $protocol;
+    private $swedbank;
 
     private $sellerId;
     private $sellerName;
@@ -41,8 +42,8 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
     public function setUp(){
 
         $this->sellerId      = 'id2000';
-        $this->sellerAccount = '1010342342354345435';
         $this->sellerName    = 'Ülo Pääsuke';
+        $this->sellerAccount = '1010342342354345435';
 
         $this->senderName    = 'Toomas Jäär';
 
@@ -60,13 +61,17 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
 
         $this->protocol = new iPizza(
             $this->sellerId,
-            __DIR__.'/../keys/iPizza/private_key.pem',
+            __DIR__.'/keys/iPizza/private_key.pem',
             '',
-            __DIR__.'/../keys/iPizza/public_key.pem',
-            $this->requestUrl
+            __DIR__.'/keys/iPizza/public_key.pem',
+            $this->requestUrl,
+            '',
+            '',
+            true
         );
 
-        // Test data
+        $this->swedbank = new Banklink\Swedbank($this->protocol);
+
         $this->expectedData = array(
             'VK_SERVICE'  => '1012',
             'VK_VERSION'  => '008',
@@ -80,7 +85,8 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
             'VK_CANCEL'   => $this->requestUrl,
             'VK_LANG'     => $this->language,
             'VK_MAC'      => 'PmAB256IR1FzTKZHNn5LBPso/KyLAhNcTOMq82lhpYn0mXKYtVtpNkolQxyETnTcIn1TcYOmekJEATe86Bz2MRljEQqllkaIl7bNuLCtuBPtAOYWNLmQHoop+5QSiguJEmEV+JJU3w4BApjWcsHA5HYlYze+3L09UO6na0lB/Zs=',
-            'VK_DATETIME' => $this->datetime
+            'VK_DATETIME' => $this->datetime,
+            'VK_ENCODING' => 'UTF-8'
         );
     }
 
@@ -91,30 +97,35 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
     public function testGetPaymentRequestService1012(){
 
         // Test service 1012
-        $requestData = $this->protocol->getPaymentRequest($this->orderId, $this->amount, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
+        $request = $this->swedbank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
 
         // Instance of PaymentRequest and data is same
-        $this->assertEquals($this->expectedData, $requestData);
+        $this->assertInstanceOf('RKD\Banklink\Request\PaymentRequest', $request);
+        $this->assertEquals($this->expectedData, $request->getRequestData());
 
+        // Production env url
+        $this->assertEquals('https://www.swedbank.ee/banklink', $request->getRequestUrl());
     }
 
     /**
      * Test for correctly generated request data for service 1011
-     * Test keys as strings
+     * Test debug url
      */
 
     public function testGetPaymentRequestService1011(){
 
-        // Create new protocol, with keys as strings
+        // Test service 1011
         $this->protocol = new iPizza(
             $this->sellerId,
-            file_get_contents(__DIR__.'/../keys/iPizza/private_key.pem'),
+            __DIR__.'/keys/iPizza/private_key.pem',
             '',
-            file_get_contents(__DIR__.'/../keys/iPizza/public_key.pem'),
+            __DIR__.'/keys/iPizza/public_key.pem',
             $this->requestUrl,
             $this->sellerName,
             $this->sellerAccount
         );
+
+        $this->swedbank = new Banklink\Swedbank($this->protocol, true);
 
         // New expected values
         $this->expectedData['VK_SERVICE']  = '1011';
@@ -123,10 +134,18 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
         $this->expectedData['VK_MAC']      = 'RkwVzvbKGTzwg3xeue2/CPDA82nGP2I8O8DChcdkQ7PdiB1p7wLkRVEIeF6sJKeqx13HQftRtTlKMpbfr9/hdO3h6zZcc7qIT9GVXQBH38Ub+D0YuF9hEGmVLToJFXxequUfdd6W77l61TplDYYeHt+5ZI/kkxWg/mmpV38WmfU=';
         $this->expectedData['VK_DATETIME'] = $this->datetime;
 
-        $requestData = $this->protocol->getPaymentRequest($this->orderId, $this->amount, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
+        $request = $this->swedbank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
 
-        // Return data is correct
-        $this->assertEquals($this->expectedData, $requestData);
+        // Instance of PaymentRequest and data is same
+        $this->assertInstanceOf('RKD\Banklink\Request\PaymentRequest', $request);
+        $this->assertEquals($this->expectedData, $request->getRequestData());
+
+        // Test env url
+        $this->assertEquals('http://localhost:8080/banklink/swedbank-common', $request->getRequestUrl());
+
+        // Get HTML
+        $this->assertContains('<input type="hidden"', $request->getRequestInputs());
+
     }
 
     /**
@@ -150,37 +169,20 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
             'VK_REF'        => $this->orderId,
             'VK_MSG'        => $this->message,
             'VK_MAC'        => 'qtOjJvtRymP54/Xua+W75JADgq5Dc/lMpVnzA9nv9GP7n75VPKeHsKI07ok0XnY1fCeRHms2E+PKilgq8JzTUF80oTR1Jtt2OqW/IzGxoxMbmhmFGLR45W+3KmmcPOl6E95ZwjwF9cFe9NPsl/4RwvsKeOad5XeidaNsS43EHoY=',
-            'VK_T_DATETIME' => $this->datetime
+            'VK_T_DATETIME' => $this->datetime,
+            'VK_ENCODING'   => 'ISO-8859-1'
         );
 
-        $response = $this->protocol->handleResponse($responseData);
+        $response = $this->swedbank->handleResponse($responseData);
 
         $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
         $this->assertEquals(PaymentResponse::STATUS_SUCCESS, $response->getStatus());
 
-        // This is valid response
+        // This is not valid response, so validation should fail
         $this->assertTrue($response->wasSuccessful());
-
-        // We should have exactly same data
-        $this->assertEquals($responseData, $response->getResponseData());
-
-        // Order id is set to every response
-        $this->assertEquals($this->orderId, $response->getOrderId());
-
-        $expextedSender          = new \stdClass();
-        $expextedSender->name    = 'Mart Mets';
-        $expextedSender->account = '101032423434543';
-
-        // Test correct data
-        $this->assertEquals($this->amount, $response->getSum());
-        $this->assertEquals($this->currency, $response->getCurrency());
-        $this->assertEquals($expextedSender, $response->getSender());
-        $this->assertEquals(100, $response->getTransactionId());
-        $this->assertEquals($this->datetime, $response->getTransactionDate());
-
     }
 
-    /**
+   /**
      * Test failed payment response
      */
 
@@ -197,58 +199,13 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
             'VK_DATETIME' => $this->datetime,
         );
 
-        $response = $this->protocol->handleResponse($responseData);
+        $response = $this->swedbank->handleResponse($responseData);
 
         $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
         $this->assertEquals(PaymentResponse::STATUS_ERROR, $response->getStatus());
 
         // This is not valid response, so validation should fail
         $this->assertFalse($response->wasSuccessful());
-
-        // We should have exactly same data
-        $this->assertEquals($responseData, $response->getResponseData());
-
-        // Order id is set to every response
-        $this->assertEquals($this->orderId, $response->getOrderId());
-
-        // Failed request is not settings response data
-        $this->assertNull($response->getSum());
-        $this->assertNull($response->getCurrency());
-        $this->assertNull($response->getSender());
-        $this->assertNull($response->getTransactionId());
-        $this->assertNull($response->getTransactionDate());
-
     }
 
-    /**
-     * @expectedException UnexpectedValueException
-     */
-
-    public function testHandlePaymentResponseUnsupportedService(){
-        $responseData = array(
-            'VK_SERVICE'  => '0000',
-        );
-
-        $response = $this->protocol->handleResponse($responseData);
-    }
-
-    /**
-     * @expectedException UnexpectedValueException
-     */
-
-    public function testGetPaymentRequestFieldMissing(){
-        $responseData = $this->protocol->getPaymentRequest($this->orderId, '', $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
-    }
-
-    /**
-     * Test can't generate request inputs
-     *
-     * @expectedException UnexpectedValueException
-     */
-
-    public function testNoRequestData(){
-        $request = new PaymentRequest('http://google.com', array());
-
-        $request->getRequestInputs();
-    }
 }
