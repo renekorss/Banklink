@@ -1,4 +1,14 @@
 <?php
+/**
+ * RKD Banklink
+ *
+ * @package Banklink\Protocol\iPizza
+ * @link https://github.com/renekorss/Banklink/
+ * @author Rene Korss <rene.korss@gmail.com>
+ * @copyright 2015 Rene Korss
+ * @license MIT
+ */
+
 namespace RKD\Banklink\Protocol\iPizza;
 
 /**
@@ -10,18 +20,64 @@ namespace RKD\Banklink\Protocol\iPizza;
 final class Services{
 
     // Payment
+    /**
+     * Request 1011
+     * @var string
+     */
     const PAYMENT_REQUEST_1011     = '1011';
-    const PAYMENT_REQUEST_1012     = '1012'; // Without account number and name
 
+    /**
+     * Request 1012
+     * Dosen't require name and account number
+     * @var string
+     */
+    const PAYMENT_REQUEST_1012     = '1012';
+
+    /**
+     * Successful response service
+     * @var string
+     */
     const PAYMENT_RESPONSE_SUCCESS = '1111';
+
+    /**
+     * Failed response service
+     * Dosen't require name and account number
+     * @var string
+     */
     const PAYMENT_RESPONSE_FAILED  = '1911';
 
     // Authentication
+    /**
+     * Request 4012
+     * @var string
+     */
     const AUTH_REQUEST_4012        = '4012';
+
+    /**
+     * Response 3013
+     * @var string
+     */
     const AUTH_RESPONSE_3013       = '3013';
 
+    /**
+     * Request 4011
+     * @var string
+     */
     const AUTH_REQUEST_4011        = '4011';
+
+    /**
+     * Response 3012
+     * @var string
+     */
     const AUTH_RESPONSE_3012       = '3012';
+
+    /**
+     * Get fields required for service
+     *
+     * @param string $serviceId Service number
+     *
+     * @return array Array of fields for service
+     */
 
     public static function getFields($serviceId){
 

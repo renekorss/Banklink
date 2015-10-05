@@ -1,4 +1,14 @@
 <?php
+/**
+ * RKD Banklink
+ *
+ * @package Banklink\Response
+ * @link https://github.com/renekorss/Banklink/
+ * @author Rene Korss <rene.korss@gmail.com>
+ * @copyright 2015 Rene Korss
+ * @license MIT
+ */
+
 namespace RKD\Banklink\Response;
 
 /**
@@ -9,17 +19,46 @@ namespace RKD\Banklink\Response;
 
 class PaymentResponse extends Response{
 
+    /**
+     * Order id
+     * @var string
+     */
     protected $orderId;
+
+    /**
+     * Transaction sum
+     * @var string
+     */
     protected $sum;
+
+    /**
+     * Currency used
+     * @var string
+     */
     protected $currency;
+
+    /**
+     * Sender data (name and account)
+     * @var object
+     */
     protected $sender;
+
+    /**
+     * Transaction id
+     * @var string
+     */
     protected $transactionId;
+
+    /**
+     * Transaction date
+     * @var string
+     */
     protected $transactionDate;
 
     /**
      * Set order ID
      *
-     * @param string Order ID
+     * @param string $orderId Order ID
      */
 
     public function setOrderId($orderId){
@@ -39,7 +78,7 @@ class PaymentResponse extends Response{
     /**
      * Set sum
      *
-     * @param double Sum
+     * @param double $sum Sum
      */
 
     public function setSum($sum){
@@ -59,7 +98,7 @@ class PaymentResponse extends Response{
     /**
      * Set currency
      *
-     * @param string Currency
+     * @param string $currency Currency
      */
 
     public function setCurrency($currency){
@@ -79,8 +118,8 @@ class PaymentResponse extends Response{
     /**
      * Set sender
      *
-     * @param string Sender name
-     * @param string Sender account
+     * @param string $senderName Sender name
+     * @param string $senderAccount Sender account
      */
 
     public function setSender($senderName, $senderAccount){
@@ -102,7 +141,7 @@ class PaymentResponse extends Response{
     /**
      * Set transactionId
      *
-     * @param string Transaction ID
+     * @param string $transactionId Transaction ID
      */
 
     public function setTransactionId($transactionId){
@@ -122,7 +161,7 @@ class PaymentResponse extends Response{
     /**
      * Set transactionDate
      *
-     * @param string Transaction date
+     * @param string $transactionDate Transaction date
      */
 
     public function setTransactionDate($transactionDate){

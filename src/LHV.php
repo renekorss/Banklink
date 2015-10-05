@@ -1,4 +1,14 @@
 <?php
+/**
+ * RKD Banklink
+ *
+ * @package Banklink
+ * @link https://github.com/renekorss/Banklink/
+ * @author Rene Korss <rene.korss@gmail.com>
+ * @copyright 2015 Rene Korss
+ * @license MIT
+ */
+
 namespace RKD\Banklink;
 
 use RKD\Banklink\Protocol\iPizza;
@@ -13,15 +23,24 @@ use RKD\Banklink\Protocol\iPizza;
 
 class LHV extends Banklink{
 
+    /**
+     * Request url
+     * @var string
+     */
     protected $requestUrl     = 'https://www.lhv.ee/banklink';
+
+    /**
+     * Test request url
+     * @var string
+     */
     protected $testRequestUrl = 'http://localhost:8080/banklink/lhv-common';
 
     /**
      * Force LHV class to use iPizza protocol
      *
-     * @param RKD\Banklink\Protocol\iPizza $protocol
-     * @param boolean Is in debug mode?
-     * @param string Response URL
+     * @param RKD\Banklink\Protocol\iPizza $protocol Protocol used
+     * @param boolean $debug Is in debug mode?
+     * @param string $requestUrl Request URL
      *
      * @return void
      */
@@ -41,7 +60,7 @@ class LHV extends Banklink{
     /**
      * LHV uses UTF-8
      *
-     * @return array Array of additiona fields to send to bank
+     * @return array Array of additional fields to send to bank
      */
     protected function getAdditionalFields(){
         return array(

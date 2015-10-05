@@ -1,6 +1,15 @@
 <?php
-namespace RKD\Banklink\Response;
+/**
+ * RKD Banklink
+ *
+ * @package Banklink\Response
+ * @link https://github.com/renekorss/Banklink/
+ * @author Rene Korss <rene.korss@gmail.com>
+ * @copyright 2015 Rene Korss
+ * @license MIT
+ */
 
+namespace RKD\Banklink\Response;
 
 /**
  * Response wrapper
@@ -21,14 +30,23 @@ class Response{
 
     const STATUS_ERROR   = -1;
 
+    /**
+     * Response status
+     * @var int
+     */
     protected $status;
+
+    /**
+     * Response data
+     * @var array
+     */
     protected $responseData;
 
     /**
-     * @param integer Verification status
-     * @param array Array of bank response
+     * Set response status and data
      *
-     * @return void
+     * @param int $status Verification status
+     * @param array $responseData Array of bank response
      */
 
     public function __construct($status, array $responseData){
@@ -39,17 +57,17 @@ class Response{
     /**
      * Get boolean to know is transaction was successful
      *
-     * @return boolean True on sucess, false othweriws
+     * @return boolean True on sucess, false othwerwise
      */
 
-    public function isSuccessful(){
+    public function wasSuccessful(){
         return $this->status === self::STATUS_SUCCESS;
     }
 
     /**
      * Get transaction status
      *
-     * @return boolean True on sucess, false otherwise
+     * @return int Status
      */
 
     public function getStatus(){
@@ -59,7 +77,7 @@ class Response{
     /**
      * Get response data
      *
-     * @return array TArray of response
+     * @return array Array of response
      */
 
     public function getResponseData(){

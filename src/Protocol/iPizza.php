@@ -1,4 +1,14 @@
 <?php
+/**
+ * RKD Banklink
+ *
+ * @package Banklink\Protocol
+ * @link https://github.com/renekorss/Banklink/
+ * @author Rene Korss <rene.korss@gmail.com>
+ * @copyright 2015 Rene Korss
+ * @license MIT
+ */
+
 namespace RKD\Banklink\Protocol;
 
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
@@ -13,32 +23,84 @@ use RKD\Banklink\Response\PaymentResponse;
 
 class iPizza implements Protocol{
 
+    /**
+     * File path or file contents of public key
+     * @var string
+     */
     protected $publicKey;
+
+    /**
+     * File path or file contents of private key
+     * @var string
+     */
     protected $privateKey;
+
+    /**
+     * Private key password
+     * @var string
+     */
     protected $privateKeyPassword;
 
+    /**
+     * Seller id, provided by bank
+     * @var string
+     */
     protected $sellerId;
+
+    /**
+     * Seller name, mus match with bank account name
+     * @var string
+     */
     protected $sellerName;
+
+    /**
+     * Selelr account number
+     * @var string
+     */
     protected $sellerAccount;
+
+    /**
+     * Protocol version used for communication
+     * @var string
+     */
     protected $version;
+
+    /**
+     * Request url, where data will be sent
+     * @var string
+     */
     protected $requestUrl;
+
+    /**
+     * Service number used
+     * @var string
+     */
     protected $serviceId;
 
+    /**
+     * Result of signature validation
+     * @var boolean
+     */
     protected $result;
 
+    /**
+     * Is nb_strlen function used to get string length?
+     * @var boolean
+     */
     protected $useMbStrlen;
 
     /**
      * Init iPizza protocol
      *
-     * @param string Seller ID (SND ID)
-     * @param string Path to private key
-     * @param string Path to public key
-     * @param string Resonse URL
-     * @param boolean Use mb_strlen
-     * @param string Encryption used
-     * @param string Seller name
-     * @param string Seller account number
+     * @param string $sellerId Seller ID (SND ID)
+     * @param string $privateKey Path to private key
+     * @param string $privateKeyPassword Private key password, if used
+     * @param string $publicKey Path to public key
+     * @param string $requestUrl Request URL
+     * @param string $sellerName Seller name
+     * @param string $sellerAccount Seller account
+     * @param boolean $useMbStrlen Use mb_strlen
+     * @param string $version Encryption used
      *
      * @return void
      */
@@ -58,19 +120,21 @@ class iPizza implements Protocol{
         $this->serviceId          = (strlen($sellerName) > 0 && strlen($sellerAccount) > 0) ? Services::PAYMENT_REQUEST_1011 : Services::PAYMENT_REQUEST_1012;
     }
 
-    /**
-     * Get data for payment
+     /**
+     * Get payment object
      *
-     * @param string Order ID
-     * @param float Sum of order
-     * @param string Message
-     * @param string Encoding
-     * @param string Language
-     * @param string Currency
-     * @param string Timezone
+     * @param string $orderId Order ID
+     * @param float $sum Sum of order
+     * @param string $message Transaction description
+     * @param string $encoding Encoding
+     * @param string $language Language
+     * @param string $currency Currency. Default: EUR
+     * @param string $timezone Timezone. Default: Europe/Tallinn
+     *
+     * @return RKD\Banklink\Request\PaymentRequest Payment object
      */
 
-    public function getPaymentRequestData($orderId, $sum, $message, $encoding = 'UTF-8', $language = 'EST', $currency = 'EUR', $timezone = 'Europe/Tallinn'){
+    public function getPaymentRequest($orderId, $sum, $message, $encoding = 'UTF-8', $language = 'EST', $currency = 'EUR', $timezone = 'Europe/Tallinn'){
 
         $time     = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
         $datetime = new \Datetime($time, new \DateTimeZone($timezone));
@@ -102,7 +166,12 @@ class iPizza implements Protocol{
     }
 
     /**
-     * Handle response from bank
+     * Handles response from bank
+     *
+     * @param array $responseData Response data from bank
+     * @param string $encoding Encoding
+     *
+     * @return RKD\Banklink\Response\PaymentResponse|RKD\Banklink\Response\AuthResponse Response object, depending on request made
      */
 
     public function handleResponse(array $response, $encoding = 'UTF-8'){
@@ -127,13 +196,13 @@ class iPizza implements Protocol{
     /**
      * Get payment response
      *
-     * @param array Response data from bank
-     * @param boolean Signature validated?
+     * @param array $responseData Response data from bank
+     * @param boolean $success Signature validated?
      *
      * @return \RKD\Banklink\Response\PaymentResponse
      */
 
-    public function handlePaymentResponse(array $responseData, $success){
+    protected function handlePaymentResponse(array $responseData, $success){
         if($success && $responseData['VK_SERVICE'] === Services::PAYMENT_RESPONSE_SUCCESS){
             $status = PaymentResponse::STATUS_SUCCESS;
         }
@@ -158,13 +227,13 @@ class iPizza implements Protocol{
     /**
      * Get authentication response
      *
-     * @param array Response data from bank
-     * @param boolean Signature validated?
+     * @param array $responseData Response data from bank
+     * @param boolean $success Signature validated?
      *
      * @return \RKD\Banklink\Response\AuthResponse
      */
 
-    public function handleAuthResponse(array $responseData, $success){
+    protected function handleAuthResponse(array $responseData, $success){
 
         if($success){
             $status = AuthResponse::STATUS_SUCCESS;
@@ -181,7 +250,10 @@ class iPizza implements Protocol{
     /**
      * Generates signature for request
      *
-     * @param
+     * @param array $data Request data
+     * @param string $encoding Encoding
+     *
+     * @return string Signature
      */
 
     protected function getSignature(array $data, $encoding = 'UTF-8'){
@@ -205,7 +277,9 @@ class iPizza implements Protocol{
     /**
      * Generate MAC string from array of fields
      *
-     * @param array Array of VK_* fields
+     * @param array $data Array of VK_* fields
+     * @param string $encoding Encoding
+     *
      * @return string MAC key
      */
 
@@ -218,7 +292,7 @@ class iPizza implements Protocol{
         foreach($fields as $key){
 
             // Check if field exists
-            if(!isset($data[$key])){
+            if(!isset($data[$key]) || strlen($data[$key]) == 0){
                 throw new \UnexpectedValueException(vsprintf('Field %s must have value to use service %s.', array($key, $service)));
             }
 
@@ -233,7 +307,8 @@ class iPizza implements Protocol{
     /**
      * Validate bank signature
      *
-     * @param array Array of VK_* fields
+     * @param array $response Array of VK_* fields
+     * @param string $encoding Encoding
      *
      * @return boolean True on success, false otherwise
      */

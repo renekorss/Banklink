@@ -1,22 +1,41 @@
 <?php
+/**
+ * RKD Banklink
+ *
+ * @package Banklink\Request
+ * @link https://github.com/renekorss/Banklink/
+ * @author Rene Korss <rene.korss@gmail.com>
+ * @copyright 2015 Rene Korss
+ * @license MIT
+ */
+
 namespace RKD\Banklink\Request;
 
 /**
- * Request class
+ * Abstract request class
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
 
 abstract class Request{
 
+    /**
+     * Request url
+     * @var string
+     */
     protected $requestUrl;
+
+    /**
+     * Request data
+     * @var array
+     */
     protected $requestData;
 
     /**
      * Constructor
      *
-     * @param string Request URL
-     * @param array Request array
+     * @param string $requestUrl Request URL
+     * @param array $requestData Request array
      *
      * @return void
      */
