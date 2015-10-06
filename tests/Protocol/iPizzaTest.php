@@ -56,7 +56,7 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
         // From ENV variable
         $this->datetime      = getenv('TEST_DATETIME');
 
-        $this->requestUrl   = 'http://example.com';
+        $this->requestUrl    = 'http://example.com';
 
         $this->protocol = new iPizza(
             $this->sellerId,
@@ -93,7 +93,7 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
         // Test service 1012
         $requestData = $this->protocol->getPaymentRequest($this->orderId, $this->amount, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
 
-        // Instance of PaymentRequest and data is same
+        // We should have exactly same data
         $this->assertEquals($this->expectedData, $requestData);
 
     }
@@ -125,7 +125,7 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
 
         $requestData = $this->protocol->getPaymentRequest($this->orderId, $this->amount, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
 
-        // Return data is correct
+        // We should have exactly same data
         $this->assertEquals($this->expectedData, $requestData);
     }
 
