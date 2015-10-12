@@ -1,6 +1,7 @@
 {
   "name": "renekorss/banklink",
   "description": "PHP banklink library to easily integrate Baltic banklinks.",
+  "keywords": ["banklink", "pangalink", "baltic banklinks"],
   "license": "MIT",
   "authors": [
     {

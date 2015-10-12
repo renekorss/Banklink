@@ -2,7 +2,7 @@
 
 # PHP Banklink library
 
-> PHP banklink library to easily integrate Baltic banklinks.
+> PHP banklink library to easily integrate Baltic banklinks. View API documentation at http://renekorss.github.io/Banklink/
 
 ## Composer
 
@@ -50,6 +50,7 @@ Estcard (coming) | :x:                 | not supported
     $seb = new Banklink\SEB($protocol);
 
     // Set payment data and get payment request object
+    // orderId, sum, message, language
     $request = $seb->getPaymentRequest(123453, 150, 'Test makse', 'EST');
 ?>
 
@@ -83,6 +84,61 @@ Estcard (coming) | :x:                 | not supported
 
     // Get auth request object
     $request = $seb->getAuthRequest();
+?>
+
+<form method="POST" action="<?php echo $request->getRequestUrl(); ?>">
+  <?php echo $request->getRequestInputs(); ?>
+  <input type="submit" value="Authenticate with SEB!" />
+</form>
+
+````
+
+### Response from provider
+
+````php
+<?php
+    require __DIR__ . '/vendor/autoload.php';
+
+    use RKD\Banklink;
+
+    // Init protocol
+    $protocol = new Banklink\Protocol\iPizza(
+        'uid100010', // seller ID (SND ID)
+        __DIR__ . '/../keys/seb_user_key.pem', // private key
+        '', // private key password, leave empty, if not needed
+        __DIR__ . '/../keys/seb_bank_cert.pem', // public key
+        'http://localhost/banklink/SEB.php' // return url
+    );
+
+    // Init banklink
+    // set second argument to true, if in debug mode
+    $seb = new Banklink\SEB($protocol);
+
+    // Get response object
+    $response = $seb->handleResponse($_POST);
+
+    // Successful
+    if($response->wasSuccessful()){
+      // Get whole array of response
+      $responseData    = $response->getResponseData();
+
+      // Payment data
+      $orderId         = $response->getOrderId();
+      $sum             = $response->getSum();
+      $currency        = $response->getCurrency();
+      $sender          = $response->getSender();
+      $transactionId   = $response->getTransactionId();
+      $transactionDate = $response->getTransactionDate();
+
+      // Auth data
+    }
+    // Failed
+    else{
+      // Payment data
+      $orderId         = $response->getOrderId();
+
+      // Auth data
+    }
 ?>
 
 <form method="POST" action="<?php echo $request->getRequestUrl(); ?>">
