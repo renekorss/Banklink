@@ -20,7 +20,9 @@ namespace RKD\Banklink\Response;
 class AuthResponse extends Response{
 
     /**
-     *
+     * Authentication methods mapping with token value
+     * token => human readable auth method
+     * @var array
      */
     private static $authMethods = array(
             1 => 'ID card',
