@@ -18,9 +18,11 @@ namespace RKD\Banklink;
  *
  * For more information, please visit: http://www.nordea.ee/sitemod/upload/root/content/nordea_ee_ee/eeee_corporate/eeee_co_igapaevapangandus_pr/epangandus/e-makse_teh_kirj.pdf
  *
+ * Coverage ignore, since SOLO protocol is not supported yet
+ *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-
+// @codeCoverageIgnoreStart
 class Nordea extends Banklink{
 
     /**
@@ -50,3 +52,4 @@ class Nordea extends Banklink{
         parent::__construct($protocol, $debug, $requestUrl);
     }
 }
+// @codeCoverageIgnoreEnd

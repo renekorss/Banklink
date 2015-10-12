@@ -237,7 +237,7 @@ class iPizza implements Protocol{
         if(in_array($service, Services::getAuthenticationResponseServices())){
             return $this->handleAuthResponse($response, $success);
         }
-    }
+    } // @codeCoverageIgnore
 
 
     /**

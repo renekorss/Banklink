@@ -48,11 +48,21 @@ class Danskebank extends Banklink{
     }
 
     /**
+     * Override encoding field
+     */
+
+    protected function getEncodingField(){
+        return 'VK_ENCODING';
+    }
+
+    /**
      * Danskebank uses UTF-8
      *
      * @return array Array of additional fields to send to bank
      */
     protected function getAdditionalFields(){
-        return array();
+        return array(
+            'VK_ENCODING' => $this->requestEncoding
+        );
     }
 }

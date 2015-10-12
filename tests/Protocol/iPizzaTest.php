@@ -315,14 +315,15 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
     public function testHandleAuthResponseError(){
 
         $responseData = array(
-            'VK_SERVICE'   => '3013',
+            'VK_SERVICE'   => '3012',
             'VK_VERSION'   => '008',
+            'VK_USER'      => '',
             'VK_DATETIME'  => '2015-10-12T08:47:15+0300',
             'VK_SND_ID'    => 'uid100010',
             'VK_REC_ID'    => 'EYP',
             'VK_RID'       => 'random-rid',
             'VK_NONCE'     => 'random-nonce',
-            'VK_USER_NAME' => 'Error here',
+            'VK_USER_NAME' => 'Tõõger Leõpäöld',
             'VK_USER_ID'   => '37602294565',
             'VK_COUNTRY'   => 'EE',
             'VK_OTHER'     => '',

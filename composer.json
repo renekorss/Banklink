@@ -1,5 +1,5 @@
 {
-  "name": "renekorss/Banklink",
+  "name": "renekorss/banklink",
   "description": "PHP banklink library to easily integrate Baltic banklinks.",
   "license": "MIT",
   "authors": [
@@ -9,7 +9,11 @@
     }
   ],
   "minimum-stability": "dev",
-  "require": {},
+  "require": {
+    "php": ">=5.4",
+    "ext-mbstring": "*",
+    "lib-openssl": "*"
+  },
   "require-dev": {
     "phpunit/phpunit": "4.8.*",
     "phpdocumentor/phpdocumentor": "dev-master",
