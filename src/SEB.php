@@ -36,12 +36,6 @@ class SEB extends Banklink{
     protected $testRequestUrl = 'http://localhost:8080/banklink/seb-common';
 
     /**
-     * Response encoding
-     * @var string
-     */
-    protected $requestEncoding = 'ISO-8859-1';
-
-    /**
      * Force SEB class to use iPizza protocol
      *
      * @param RKD\Banklink\Protocol\iPizza $protocol Protocol used

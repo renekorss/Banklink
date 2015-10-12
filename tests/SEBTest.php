@@ -83,7 +83,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase{
             'VK_LANG'     => $this->language,
             'VK_MAC'      => 'PmAB256IR1FzTKZHNn5LBPso/KyLAhNcTOMq82lhpYn0mXKYtVtpNkolQxyETnTcIn1TcYOmekJEATe86Bz2MRljEQqllkaIl7bNuLCtuBPtAOYWNLmQHoop+5QSiguJEmEV+JJU3w4BApjWcsHA5HYlYze+3L09UO6na0lB/Zs=',
             'VK_DATETIME' => $this->datetime,
-            'VK_ENCODING' => 'ISO-8859-1'
+            'VK_ENCODING' => 'UTF-8'
         );
     }
 
@@ -128,7 +128,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase{
         $this->expectedData['VK_SERVICE']  = '1011';
         $this->expectedData['VK_ACC']      = $this->sellerAccount;
         $this->expectedData['VK_NAME']     = $this->sellerName;
-        $this->expectedData['VK_MAC']      = 'RkwVzvbKGTzwg3xeue2/CPDA82nGP2I8O8DChcdkQ7PdiB1p7wLkRVEIeF6sJKeqx13HQftRtTlKMpbfr9/hdO3h6zZcc7qIT9GVXQBH38Ub+D0YuF9hEGmVLToJFXxequUfdd6W77l61TplDYYeHt+5ZI/kkxWg/mmpV38WmfU=';
+        $this->expectedData['VK_MAC']      = 'PuJTjADqHeArALfzTo2ZsynckTOVRFZMnOnbv9tv30KrF2a9m/yJuRn9vcd3JuaSjgzKoS7DRSouDgXAe6GNLZnduhXZrYx5JtVMmnlgooQ+/pJqO6ZOzwsEjaXooTLCCnKA5P9zWoxXpe8Al4IC9pj7jLNFG3dCeG9XO5uRZEs=';
         $this->expectedData['VK_DATETIME'] = $this->datetime;
 
         $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
@@ -165,9 +165,9 @@ class SEBTest extends \PHPUnit_Framework_TestCase{
             'VK_SND_NAME'   => 'Mart Mets',
             'VK_REF'        => $this->orderId,
             'VK_MSG'        => $this->message,
-            'VK_MAC'        => 'qtOjJvtRymP54/Xua+W75JADgq5Dc/lMpVnzA9nv9GP7n75VPKeHsKI07ok0XnY1fCeRHms2E+PKilgq8JzTUF80oTR1Jtt2OqW/IzGxoxMbmhmFGLR45W+3KmmcPOl6E95ZwjwF9cFe9NPsl/4RwvsKeOad5XeidaNsS43EHoY=',
+            'VK_MAC'        => 'Sp0VzYSPyZviiCewmwbtqny8cYRcnYU4Noh0cwxOYoZ5IpQwHuolNbFI+1Kkuk5n6cWs2X48IYYOUMRi9VTqdsfSN7z5jpUwEwjLsCMDUDdro421Je7eXXkEkbZlEcgY8wtR5H+OO955aqxDdZeS0dkuuxTN70Z9Esv5feXYxsw=',
             'VK_T_DATETIME' => $this->datetime,
-            'VK_ENCODING'   => 'ISO-8859-1'
+            'VK_ENCODING'   => 'UTF-8'
         );
 
         $response = $this->seb->handleResponse($responseData);
@@ -175,7 +175,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase{
         $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
         $this->assertEquals(PaymentResponse::STATUS_SUCCESS, $response->getStatus());
 
-        // This is not valid response, so validation should fail
+        // This is valid response
         $this->assertTrue($response->wasSuccessful());
     }
 

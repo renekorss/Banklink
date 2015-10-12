@@ -58,7 +58,7 @@ class Krediidipank extends Banklink{
      */
 
     protected function getEncodingField(){
-        return 'VK_CHARSET';
+        return 'VK_ENCODING';
     }
 
     /**
@@ -68,7 +68,7 @@ class Krediidipank extends Banklink{
      */
     protected function getAdditionalFields(){
         return array(
-            'VK_CHARSET' => $this->requestEncoding
+            'VK_ENCODING' => $this->requestEncoding
         );
     }
 }

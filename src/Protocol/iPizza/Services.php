@@ -144,6 +144,61 @@ final class Services{
                         'VK_MSG'
                     );
                 break;
+            case self::AUTH_REQUEST_4011:
+                    return array(
+                        'VK_SERVICE',
+                        'VK_VERSION',
+                        'VK_SND_ID',
+                        'VK_REPLY',
+                        'VK_RETURN',
+                        'VK_DATETIME',
+                        'VK_RID'
+                    );
+                break;
+            case self::AUTH_REQUEST_4012:
+                    return array(
+                        'VK_SERVICE',
+                        'VK_VERSION',
+                        'VK_SND_ID',
+                        'VK_REC_ID',
+                        'VK_NONCE',
+                        'VK_RETURN',
+                        'VK_DATETIME',
+                        'VK_RID'
+                    );
+                break;
+            case self::AUTH_RESPONSE_3012:
+                    return array(
+                        'VK_SERVICE',
+                        'VK_VERSION',
+                        'VK_USER',
+                        'VK_DATETIME',
+                        'VK_SND_ID',
+                        'VK_REC_ID',
+                        'VK_USER_NAME',
+                        'VK_USER_ID',
+                        'VK_COUNTRY',
+                        'VK_OTHER',
+                        'VK_TOKEN',
+                        'VK_RID'
+                    );
+                break;
+            case self::AUTH_RESPONSE_3013:
+                    return array(
+                        'VK_SERVICE',
+                        'VK_VERSION',
+                        'VK_DATETIME',
+                        'VK_SND_ID',
+                        'VK_REC_ID',
+                        'VK_NONCE',
+                        'VK_USER_NAME',
+                        'VK_USER_ID',
+                        'VK_COUNTRY',
+                        'VK_OTHER',
+                        'VK_TOKEN',
+                        'VK_RID'
+                    );
+                break;
             default:
                 throw new \UnexpectedValueException(sprintf('Service %s is not supported.', $serviceId));
                 break;

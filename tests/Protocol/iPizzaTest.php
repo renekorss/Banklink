@@ -5,6 +5,7 @@ use RKD\Banklink;
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\iPizza;
 use RKD\Banklink\Response\PaymentResponse;
+use RKD\Banklink\Response\AuthResponse;
 use RKD\Banklink\Request\PaymentRequest;
 
 /**
@@ -120,7 +121,7 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
         $this->expectedData['VK_SERVICE']  = '1011';
         $this->expectedData['VK_ACC']      = $this->sellerAccount;
         $this->expectedData['VK_NAME']     = $this->sellerName;
-        $this->expectedData['VK_MAC']      = 'RkwVzvbKGTzwg3xeue2/CPDA82nGP2I8O8DChcdkQ7PdiB1p7wLkRVEIeF6sJKeqx13HQftRtTlKMpbfr9/hdO3h6zZcc7qIT9GVXQBH38Ub+D0YuF9hEGmVLToJFXxequUfdd6W77l61TplDYYeHt+5ZI/kkxWg/mmpV38WmfU=';
+        $this->expectedData['VK_MAC']      = 'PuJTjADqHeArALfzTo2ZsynckTOVRFZMnOnbv9tv30KrF2a9m/yJuRn9vcd3JuaSjgzKoS7DRSouDgXAe6GNLZnduhXZrYx5JtVMmnlgooQ+/pJqO6ZOzwsEjaXooTLCCnKA5P9zWoxXpe8Al4IC9pj7jLNFG3dCeG9XO5uRZEs=';
         $this->expectedData['VK_DATETIME'] = $this->datetime;
 
         $requestData = $this->protocol->getPaymentRequest($this->orderId, $this->amount, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
@@ -149,7 +150,7 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
             'VK_SND_NAME'   => 'Mart Mets',
             'VK_REF'        => $this->orderId,
             'VK_MSG'        => $this->message,
-            'VK_MAC'        => 'qtOjJvtRymP54/Xua+W75JADgq5Dc/lMpVnzA9nv9GP7n75VPKeHsKI07ok0XnY1fCeRHms2E+PKilgq8JzTUF80oTR1Jtt2OqW/IzGxoxMbmhmFGLR45W+3KmmcPOl6E95ZwjwF9cFe9NPsl/4RwvsKeOad5XeidaNsS43EHoY=',
+            'VK_MAC'        => 'Sp0VzYSPyZviiCewmwbtqny8cYRcnYU4Noh0cwxOYoZ5IpQwHuolNbFI+1Kkuk5n6cWs2X48IYYOUMRi9VTqdsfSN7z5jpUwEwjLsCMDUDdro421Je7eXXkEkbZlEcgY8wtR5H+OO955aqxDdZeS0dkuuxTN70Z9Esv5feXYxsw=',
             'VK_T_DATETIME' => $this->datetime
         );
 
@@ -221,10 +222,133 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
     }
 
     /**
+     * Test authentication request data
+     * Test service 4011
+     */
+
+    public function testGetAuthRequest4011(){
+
+        $expectedData = array(
+            'VK_SERVICE'  => '4011',
+            'VK_VERSION'  => '008',
+            'VK_SND_ID'   => 'id2000',
+            'VK_RETURN'   => 'http://example.com',
+            'VK_DATETIME' => '2015-09-29T15:00:00+0300',
+            'VK_RID'      => '',
+            'VK_LANG'     => 'EST',
+            'VK_REPLY'    => '3012',
+            'VK_MAC'      => 'tCzsgSP0NVlNDvzsPnDZpwfPDwlrWoLFOUDSJ80sYDMbPsXBiid0M8xKT9ep0KVmj8BBUwWOGGjENSkaNXcZKAoqw0h1V1J7Hxuy1/gnIgkAkiY1OQftMYNuyrmKj1xVP4JGH3kp4ZEiyXJ0ySj/VGW4P1Vyv2oMUVHN+vDqHR0=',
+        );
+
+        $requestData = $this->protocol->getAuthRequest();
+
+        // We should have exactly same data
+        $this->assertEquals($expectedData, $requestData);
+    }
+
+    /**
+     * Test authentication request data
+     * Test service 4012
+     */
+
+    public function testGetAuthRequest4012(){
+
+        $expectedData = array(
+            'VK_SERVICE'  => '4012',
+            'VK_VERSION'  => '008',
+            'VK_SND_ID'   => 'id2000',
+            'VK_REC_ID'   => 'bank-id',
+            'VK_NONCE'    => 'random-nonce',
+            'VK_RETURN'   => 'http://example.com',
+            'VK_DATETIME' => $this->datetime,
+            'VK_RID'      => 'random-rid',
+            'VK_LANG'     => 'EST',
+            'VK_MAC'      => 'MtmH+8VgmKhw/Q6kO4EZdgNMP9ZWhCXfO0OHUgyHd74ofhdkvhLnzSWxqHZgWv9lCo3ZSrZ1mHJEf1rezBod7QQDcPmMVHl9iijJug2oySgT27Re89oytVN3Zlzmko9LFEaE8JIYnvxN4B9mc/bWfW0hvHSyBehpWdlVO5HIO+c=',
+        );
+
+        $requestData = $this->protocol->getAuthRequest('bank-id', 'random-nonce', 'random-rid');
+
+        // We should have exactly same data
+        $this->assertEquals($expectedData, $requestData);
+    }
+
+    /**
+     * Test successful authentication response
+     */
+
+    public function testHandleAuthResponseSuccess(){
+
+        $responseData = array(
+            'VK_SERVICE'   => '3013',
+            'VK_VERSION'   => '008',
+            'VK_DATETIME'  => '2015-10-12T08:47:15+0300',
+            'VK_SND_ID'    => 'uid100010',
+            'VK_REC_ID'    => 'EYP',
+            'VK_RID'       => 'random-rid',
+            'VK_NONCE'     => 'random-nonce',
+            'VK_USER_NAME' => 'Tõõger Leõpäöld',
+            'VK_USER_ID'   => '37602294565',
+            'VK_COUNTRY'   => 'EE',
+            'VK_OTHER'     => '',
+            'VK_TOKEN'     => '1',
+            'VK_ENCODING'  => 'UTF-8',
+            'VK_LANG'      => 'EST',
+            'VK_MAC'       => 'RBkszGx+hP/B24Bziuq+vAJx0saRILcoc8BRQt8WYaq5mK6PdfOimZ3cTz9/t+4AQyZJfvA+Nv7NUxtieDKPorp4P1jzlbcR4K6lkit286H+TptIlWbPvcD2dj7Q7UapNtEB5FmMc62IMbbQCiTVyV5bs6f3DJYr3kOrOV/LHTY='
+        );
+
+        $response = $this->protocol->handleResponse($responseData);
+
+        $this->assertInstanceOf('RKD\Banklink\Response\AuthResponse', $response);
+        $this->assertEquals(AuthResponse::STATUS_SUCCESS, $response->getStatus());
+
+        // This is valid response
+        $this->assertTrue($response->wasSuccessful());
+
+        // We should have exactly same data
+        $this->assertEquals($responseData, $response->getResponseData());
+    }
+
+    /**
+     * Test failed authentication response
+     */
+
+    public function testHandleAuthResponseError(){
+
+        $responseData = array(
+            'VK_SERVICE'   => '3013',
+            'VK_VERSION'   => '008',
+            'VK_DATETIME'  => '2015-10-12T08:47:15+0300',
+            'VK_SND_ID'    => 'uid100010',
+            'VK_REC_ID'    => 'EYP',
+            'VK_RID'       => 'random-rid',
+            'VK_NONCE'     => 'random-nonce',
+            'VK_USER_NAME' => 'Error here',
+            'VK_USER_ID'   => '37602294565',
+            'VK_COUNTRY'   => 'EE',
+            'VK_OTHER'     => '',
+            'VK_TOKEN'     => '1',
+            'VK_ENCODING'  => 'UTF-8',
+            'VK_LANG'      => 'EST',
+            'VK_MAC'       => 'RBkszGx+hP/B24Bziuq+vAJx0saRILcoc8BRQt8WYaq5mK6PdfOimZ3cTz9/t+4AQyZJfvA+Nv7NUxtieDKPorp4P1jzlbcR4K6lkit286H+TptIlWbPvcD2dj7Q7UapNtEB5FmMc62IMbbQCiTVyV5bs6f3DJYr3kOrOV/LHTY='
+        );
+
+        $response = $this->protocol->handleResponse($responseData);
+
+        $this->assertInstanceOf('RKD\Banklink\Response\AuthResponse', $response);
+        $this->assertEquals(AuthResponse::STATUS_ERROR, $response->getStatus());
+
+        // This is not valid response
+        $this->assertFalse($response->wasSuccessful());
+
+        // We should have exactly same data
+        $this->assertEquals($responseData, $response->getResponseData());
+    }
+
+    /**
      * @expectedException UnexpectedValueException
      */
 
-    public function testHandlePaymentResponseUnsupportedService(){
+    public function testHandleResponseUnsupportedService(){
         $responseData = array(
             'VK_SERVICE'  => '0000',
         );
@@ -236,8 +360,8 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
      * @expectedException UnexpectedValueException
      */
 
-    public function testGetPaymentRequestFieldMissing(){
-        $responseData = $this->protocol->getPaymentRequest($this->orderId, '', $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
+    public function testGetRequestFieldMissing(){
+        $responseData = $this->protocol->getPaymentRequest($this->orderId, null, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
     }
 
     /**
@@ -250,5 +374,62 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
         $request = new PaymentRequest('http://google.com', array());
 
         $request->getRequestInputs();
+    }
+
+    /**
+     * Test invalid public key
+     * @expectedException UnexpectedValueException
+     */
+
+    public function testInvalidPublicKey(){
+        $this->protocol = new iPizza(
+            $this->sellerId,
+            __DIR__.'/../keys/iPizza/private_key.pem',
+            '',
+            __DIR__.'/../keys/iPizza/no_key.pem',
+            $this->requestUrl,
+            $this->sellerName,
+            $this->sellerAccount
+        );
+
+        $responseData = array(
+            'VK_SERVICE'   => '3013',
+            'VK_VERSION'   => '008',
+            'VK_DATETIME'  => '2015-10-12T08:47:15+0300',
+            'VK_SND_ID'    => 'uid100010',
+            'VK_REC_ID'    => 'EYP',
+            'VK_RID'       => 'random-rid',
+            'VK_NONCE'     => 'random-nonce',
+            'VK_USER_NAME' => 'Error here',
+            'VK_USER_ID'   => '37602294565',
+            'VK_COUNTRY'   => 'EE',
+            'VK_OTHER'     => '',
+            'VK_TOKEN'     => '1',
+            'VK_ENCODING'  => 'UTF-8',
+            'VK_LANG'      => 'EST',
+            'VK_MAC'       => 'RBkszGx+hP/B24Bziuq+vAJx0saRILcoc8BRQt8WYaq5mK6PdfOimZ3cTz9/t+4AQyZJfvA+Nv7NUxtieDKPorp4P1jzlbcR4K6lkit286H+TptIlWbPvcD2dj7Q7UapNtEB5FmMc62IMbbQCiTVyV5bs6f3DJYr3kOrOV/LHTY='
+        );
+
+        $this->protocol->handleResponse($responseData);
+    }
+
+    /**
+     * Test invalid private key
+     * @expectedException UnexpectedValueException
+     */
+
+    public function testInvalidPrivateKey(){
+
+        $this->protocol = new iPizza(
+            $this->sellerId,
+            __DIR__.'/../keys/iPizza/no_key.pem',
+            '',
+            __DIR__.'/../keys/iPizza/public_key.pem',
+            $this->requestUrl,
+            $this->sellerName,
+            $this->sellerAccount
+        );
+
+        $this->protocol->getAuthRequest();
     }
 }
