@@ -260,6 +260,10 @@ class iPizza implements Protocol{
         $response          = new PaymentResponse($status, $responseData);
         $response->setOrderId($responseData['VK_STAMP']);
 
+        if(isset($responseData['VK_LANG'])){
+            $response->setLanguage($responseData['VK_LANG']);
+        }
+
         if(PaymentResponse::STATUS_SUCCESS === $status){
             $response->setSum($responseData['VK_AMOUNT']);
             $response->setCurrency($responseData['VK_CURR']);
@@ -290,6 +294,23 @@ class iPizza implements Protocol{
         }
 
         $response = new AuthResponse($status, $responseData);
+
+        if(isset($responseData['VK_LANG'])){
+            $response->setLanguage($responseData['VK_LANG']);
+        }
+
+        if(PaymentResponse::STATUS_SUCCESS === $status){
+            // Person data
+            $response->setUserId($responseData['VK_USER_ID']);
+            $response->setUserName($responseData['VK_USER_NAME']);
+            $response->setUserCountry($responseData['VK_COUNTRY']);
+            $response->setToken($responseData['VK_TOKEN']);
+
+            // Request data
+            $response->setRid($responseData['VK_RID']);
+            $response->setNonce($responseData['VK_NONCE']);
+            $response->setAuthDate($responseData['VK_DATETIME']);
+        }
 
         return $response;
     }

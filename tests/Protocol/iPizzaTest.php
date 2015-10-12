@@ -151,7 +151,8 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
             'VK_REF'        => $this->orderId,
             'VK_MSG'        => $this->message,
             'VK_MAC'        => 'Sp0VzYSPyZviiCewmwbtqny8cYRcnYU4Noh0cwxOYoZ5IpQwHuolNbFI+1Kkuk5n6cWs2X48IYYOUMRi9VTqdsfSN7z5jpUwEwjLsCMDUDdro421Je7eXXkEkbZlEcgY8wtR5H+OO955aqxDdZeS0dkuuxTN70Z9Esv5feXYxsw=',
-            'VK_T_DATETIME' => $this->datetime
+            'VK_T_DATETIME' => $this->datetime,
+            'VK_LANG'       => 'EST'
         );
 
         $response = $this->protocol->handleResponse($responseData);
@@ -167,6 +168,9 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
 
         // Order id is set to every response
         $this->assertEquals($this->orderId, $response->getOrderId());
+
+        // We should get same prefered language
+        $this->assertEquals('EST', $response->getLanguage());
 
         $expextedSender          = new \stdClass();
         $expextedSender->name    = 'Mart Mets';
@@ -306,6 +310,37 @@ class iPizzaTest extends \PHPUnit_Framework_TestCase{
 
         // We should have exactly same data
         $this->assertEquals($responseData, $response->getResponseData());
+
+        // We should get same prefered language
+        $this->assertEquals('EST', $response->getLanguage());
+
+        // Test user data
+        $this->assertEquals($responseData['VK_USER_ID'], $response->getUserId());
+        $this->assertEquals($responseData['VK_USER_NAME'], $response->getUserName());
+        $this->assertEquals($responseData['VK_COUNTRY'], $response->getUserCountry());
+        $this->assertEquals($responseData['VK_TOKEN'], $response->getToken());
+        $this->assertEquals($responseData['VK_NONCE'], $response->getNonce());
+        $this->assertEquals($responseData['VK_RID'], $response->getRid());
+        $this->assertEquals($responseData['VK_DATETIME'], $response->getAuthDate());
+
+        // Test all auth methods
+        $this->assertEquals('ID card', $response->getAuthMethod());
+
+        $response->setToken(2);
+        $this->assertEquals('Mobile ID', $response->getAuthMethod());
+
+        $response->setToken(5);
+        $this->assertEquals('One-off code card', $response->getAuthMethod());
+
+        $response->setToken(6);
+        $this->assertEquals('PIN-calculator', $response->getAuthMethod());
+
+        $response->setToken(7);
+        $this->assertEquals('Code card', $response->getAuthMethod());
+
+        $response->setToken(0);
+        $this->assertEquals('unknown', $response->getAuthMethod());
+
     }
 
     /**

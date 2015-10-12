@@ -2,7 +2,9 @@
 
 # PHP Banklink library
 
-> PHP banklink library to easily integrate Baltic banklinks. View API documentation at http://renekorss.github.io/Banklink/
+> PHP banklink library to easily integrate Baltic banklinks.
+
+> View API documentation at http://renekorss.github.io/Banklink/
 
 ## Composer
 
@@ -111,7 +113,8 @@ Estcard (coming) | :x:                 | not supported
     );
 
     // Init banklink
-    // set second argument to true, if in debug mode
+    // Set second argument to true, if in debug mode.
+    // Debug mode uses test url, what can be set as third parameter.
     $seb = new Banklink\SEB($protocol);
 
     // Get response object
@@ -122,29 +125,33 @@ Estcard (coming) | :x:                 | not supported
       // Get whole array of response
       $responseData    = $response->getResponseData();
 
-      // Payment data
+      // User prefered language
+      $language        = $response->getLanguage();
+
+      // Only for payment data
       $orderId         = $response->getOrderId();
       $sum             = $response->getSum();
       $currency        = $response->getCurrency();
       $sender          = $response->getSender();
       $transactionId   = $response->getTransactionId();
       $transactionDate = $response->getTransactionDate();
-
-      // Auth data
+      
+      // Only for auth data
+      $userId          = $response->getUserId(); // Person ID
+      $userName        = $response->getUserName(); // Person name
+      $country         = $response->getUserCountry(); // Person country
+      $authDate        = $response->getAuthDate(); // Authentication response datetime
+      
+      // Method used for authentication 
+      // Possible values: ID Card, Mobile ID, One-off code card, PIN-calculator, Code card or unknown
+      $authMethod      = $response->getAuthMethod();
     }
     // Failed
     else{
       // Payment data
-      $orderId         = $response->getOrderId();
-
-      // Auth data
+      $orderId         = $response->getOrderId(); // Order id to cancel order etc.
     }
 ?>
-
-<form method="POST" action="<?php echo $request->getRequestUrl(); ?>">
-  <?php echo $request->getRequestInputs(); ?>
-  <input type="submit" value="Authenticate with SEB!" />
-</form>
 
 ````
 

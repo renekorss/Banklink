@@ -43,6 +43,12 @@ class Response{
     protected $responseData;
 
     /**
+     * Prefered language
+     * @var array
+     */
+    protected $language;
+
+    /**
      * Set response status and data
      *
      * @param int $status Verification status
@@ -82,5 +88,25 @@ class Response{
 
     public function getResponseData(){
         return $this->responseData;
+    }
+
+    /**
+     * Set prefered language
+     *
+     * @param string $language Prefered language
+     */
+
+    public function setLanguage($language){
+        $this->language = $language;
+    }
+
+    /**
+     * Get prefered language
+     *
+     * @return string Language (EST, ENG, RUS)
+     */
+
+    public function getLanguage(){
+        return $this->language;
     }
 }
