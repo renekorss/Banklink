@@ -1,1 +1,1 @@
-vendor\bin\phpdoc -d ./src -t ./docs/api --template="responsive-twig"
+vendor\bin\phpdoc -d ./src -t ./gh-pages --template="responsive-twig"
