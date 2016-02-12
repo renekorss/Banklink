@@ -356,7 +356,7 @@ class IPizza implements Protocol
 
         if (is_file($this->privateKey)) {
             $privateKey = openssl_pkey_get_private('file://'.$this->privateKey, $this->privateKeyPassword);
-        } elseif(is_string($this->privateKey)) {
+        } elseif (is_string($this->privateKey)) {
             $privateKey = openssl_pkey_get_private($this->privateKey, $this->privateKeyPassword);
         }
 
@@ -416,7 +416,7 @@ class IPizza implements Protocol
 
         if (is_file($this->publicKey)) {
             $publicKey = openssl_get_publickey('file://'.$this->publicKey);
-        } elseif(is_string($this->publicKey)) {
+        } elseif (is_string($this->publicKey)) {
             $publicKey = openssl_get_publickey($this->publicKey);
         }
 
