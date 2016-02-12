@@ -9,5 +9,7 @@
             <property name="lineLimit" value="150"/>
             <property name="absoluteLineLimit" value="150" />
         </properties>
+        <!-- Exclude /tests, since we have very long MAC strings -->
+        <exclude-pattern>*/tests/*</exclude-pattern>
     </rule>
 </ruleset>

@@ -4,7 +4,7 @@ namespace RKD\BanklinkTests;
 
 use RKD\Banklink;
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
-use RKD\Banklink\Protocol\iPizza;
+use RKD\Banklink\Protocol\IPizza;
 use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Request\PaymentRequest;
 
@@ -63,11 +63,11 @@ class SEBTest extends \PHPUnit_Framework_TestCase
 
         $this->customRequestUrl = 'http://example.com';
 
-        $this->protocol = new iPizza(
+        $this->protocol = new IPizza(
             $this->sellerId,
-            __DIR__.'/keys/iPizza/private_key.pem',
+            __DIR__.'/keys/IPizza/private_key.pem',
             '',
-            __DIR__.'/keys/iPizza/public_key.pem',
+            __DIR__.'/keys/IPizza/public_key.pem',
             $this->customRequestUrl
         );
 
@@ -116,11 +116,11 @@ class SEBTest extends \PHPUnit_Framework_TestCase
     {
 
         // Test service 1011
-        $this->protocol = new iPizza(
+        $this->protocol = new IPizza(
             $this->sellerId,
-            __DIR__.'/keys/iPizza/private_key.pem',
+            __DIR__.'/keys/IPizza/private_key.pem',
             '',
-            __DIR__.'/keys/iPizza/public_key.pem',
+            __DIR__.'/keys/IPizza/public_key.pem',
             $this->customRequestUrl,
             $this->sellerName,
             $this->sellerAccount

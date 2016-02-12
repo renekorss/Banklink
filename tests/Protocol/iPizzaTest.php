@@ -1,6 +1,6 @@
 <?php
 
-namespace RKD\BanklinkTests\iPizza;
+namespace RKD\BanklinkTests\IPizza;
 
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\IPizza;
@@ -9,7 +9,7 @@ use RKD\Banklink\Response\AuthResponse;
 use RKD\Banklink\Request\PaymentRequest;
 
 /**
- * Test suite for iPizza protocol.
+ * Test suite for IPizza protocol.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
@@ -57,11 +57,11 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
 
         $this->requestUrl = 'http://example.com';
 
-        $this->protocol = new iPizza(
+        $this->protocol = new IPizza(
             $this->sellerId,
-            __DIR__.'/../keys/iPizza/private_key.pem',
+            __DIR__.'/../keys/IPizza/private_key.pem',
             '',
-            __DIR__.'/../keys/iPizza/public_key.pem',
+            __DIR__.'/../keys/IPizza/public_key.pem',
             $this->requestUrl
         );
 
@@ -112,11 +112,11 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
     {
 
         // Create new protocol, with keys as strings
-        $this->protocol = new iPizza(
+        $this->protocol = new IPizza(
             $this->sellerId,
-            file_get_contents(__DIR__.'/../keys/iPizza/private_key.pem'),
+            file_get_contents(__DIR__.'/../keys/IPizza/private_key.pem'),
             '',
-            file_get_contents(__DIR__.'/../keys/iPizza/public_key.pem'),
+            file_get_contents(__DIR__.'/../keys/IPizza/public_key.pem'),
             $this->requestUrl,
             $this->sellerName,
             $this->sellerAccount
@@ -417,11 +417,11 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidPublicKey()
     {
-        $this->protocol = new iPizza(
+        $this->protocol = new IPizza(
             $this->sellerId,
-            __DIR__.'/../keys/iPizza/private_key.pem',
+            __DIR__.'/../keys/IPizza/private_key.pem',
             '',
-            __DIR__.'/../keys/iPizza/no_key.pem',
+            __DIR__.'/../keys/IPizza/no_key.pem',
             $this->requestUrl,
             $this->sellerName,
             $this->sellerAccount
@@ -455,11 +455,11 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidPrivateKey()
     {
-        $this->protocol = new iPizza(
+        $this->protocol = new IPizza(
             $this->sellerId,
-            __DIR__.'/../keys/iPizza/no_key.pem',
+            __DIR__.'/../keys/IPizza/no_key.pem',
             '',
-            __DIR__.'/../keys/iPizza/public_key.pem',
+            __DIR__.'/../keys/IPizza/public_key.pem',
             $this->requestUrl,
             $this->sellerName,
             $this->sellerAccount

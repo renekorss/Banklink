@@ -353,7 +353,12 @@ class IPizza implements Protocol
     protected function getSignature(array $data, $encoding = 'UTF-8')
     {
         $mac = $this->generateSignature($data, $encoding);
-        $privateKey = is_file($this->privateKey) ? openssl_pkey_get_private('file://'.$this->privateKey, $this->privateKeyPassword) : openssl_pkey_get_private($this->privateKey, $this->privateKeyPassword);
+
+        if (is_file($this->privateKey)) {
+            $privateKey = openssl_pkey_get_private('file://'.$this->privateKey, $this->privateKeyPassword);
+        } elseif(is_string($this->privateKey)) {
+            $privateKey = openssl_pkey_get_private($this->privateKey, $this->privateKeyPassword);
+        }
 
         if (!$privateKey) {
             throw new \UnexpectedValueException('Can not get private key.');
@@ -382,7 +387,6 @@ class IPizza implements Protocol
         $mac = '';
 
         foreach ($fields as $key) {
-
             // Check if field exists
             if (!isset($data[$key])) {
                 throw new \UnexpectedValueException(
@@ -409,7 +413,12 @@ class IPizza implements Protocol
     protected function validateSignature(array $response, $encoding = 'UTF-8')
     {
         $data = $this->generateSignature($response, $encoding);
-        $publicKey = is_file($this->publicKey) ? openssl_get_publickey('file://'.$this->publicKey) : openssl_get_publickey($this->publicKey);
+
+        if (is_file($this->publicKey)) {
+            $publicKey = openssl_get_publickey('file://'.$this->publicKey);
+        } elseif(is_string($this->publicKey)) {
+            $publicKey = openssl_get_publickey($this->publicKey);
+        }
 
         if (!$publicKey) {
             throw new \UnexpectedValueException('Can not get public key.');

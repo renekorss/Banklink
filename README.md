@@ -44,7 +44,7 @@ Estcard (coming) | :x:                 | not supported
     use RKD\Banklink;
 
     // Init protocol
-    $protocol = new Banklink\Protocol\iPizza(
+    $protocol = new Banklink\Protocol\IPizza(
         'uid100010', // seller ID (VK_SND_ID)
         __DIR__ . '/../keys/seb_user_key.pem', // private key
         '', // private key password, leave empty, if not needed
@@ -53,7 +53,6 @@ Estcard (coming) | :x:                 | not supported
     );
 
     // Init banklink
-    // set second argument to true, if in debug mode
     $seb = new Banklink\SEB($protocol);
 
     // Set payment data and get payment request object
@@ -77,7 +76,7 @@ Estcard (coming) | :x:                 | not supported
     use RKD\Banklink;
 
     // Init protocol
-    $protocol = new Banklink\Protocol\iPizza(
+    $protocol = new Banklink\Protocol\IPizza(
         'uid100010', // seller ID (SND ID)
         __DIR__ . '/../keys/seb_user_key.pem', // private key
         '', // private key password, leave empty, if not needed
@@ -86,7 +85,6 @@ Estcard (coming) | :x:                 | not supported
     );
 
     // Init banklink
-    // set second argument to true, if in debug mode
     $seb = new Banklink\SEB($protocol);
 
     // Get auth request object
@@ -109,7 +107,7 @@ Estcard (coming) | :x:                 | not supported
     use RKD\Banklink;
 
     // Init protocol
-    $protocol = new Banklink\Protocol\iPizza(
+    $protocol = new Banklink\Protocol\IPizza(
         'uid100010', // seller ID (SND ID)
         __DIR__ . '/../keys/seb_user_key.pem', // private key
         '', // private key password, leave empty, if not needed
@@ -118,15 +116,13 @@ Estcard (coming) | :x:                 | not supported
     );
 
     // Init banklink
-    // Set second argument to true, if in debug mode.
-    // Debug mode uses test url, what can be set as third parameter.
     $seb = new Banklink\SEB($protocol);
 
     // Get response object
     $response = $seb->handleResponse($_POST);
 
     // Successful
-    if($response->wasSuccessful()){
+    if ($response->wasSuccessful()) {
       // Get whole array of response
       $responseData    = $response->getResponseData();
 
@@ -150,9 +146,9 @@ Estcard (coming) | :x:                 | not supported
       // Method used for authentication 
       // Possible values: ID Card, Mobile ID, One-off code card, PIN-calculator, Code card or unknown
       $authMethod      = $response->getAuthMethod();
-    }
+    
     // Failed
-    else{
+    } else {
       // Payment data
       $orderId         = $response->getOrderId(); // Order id to cancel order etc.
     }
