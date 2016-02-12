@@ -1,14 +1,13 @@
 <?php
 /**
- * RKD Banklink
+ * RKD Banklink.
  *
- * @package Banklink
  * @link https://github.com/renekorss/Banklink/
+ *
  * @author Rene Korss <rene.korss@gmail.com>
  * @copyright 2015 Rene Korss
  * @license MIT
  */
-
 namespace RKD\Banklink;
 
 use RKD\Banklink\Protocol\Protocol;
@@ -20,88 +19,90 @@ use RKD\Banklink\Request\AuthRequest;
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-
-abstract class Banklink{
-
+abstract class Banklink
+{
     /**
-     * Protocol object used for communication
+     * Protocol object used for communication.
+     *
      * @var RKD\Banklink\Protocol
      */
     protected $protocol;
 
     /**
-     * Request data
+     * Request data.
+     *
      * @var array
      */
     protected $requestData = null;
 
     /**
-     * Authentication data
+     * Authentication data.
+     *
      * @var array
      */
     protected $authData = null;
 
-
     /**
-     * Request url
+     * Request url.
+     *
      * @var string
      */
     protected $requestUrl;
 
     /**
-     * Test request url
+     * Test request url.
+     *
      * @var string
      */
     protected $testRequestUrl;
 
     /**
-     * Request encoding
+     * Request encoding.
+     *
      * @var string
      */
-    protected $requestEncoding  = 'UTF-8';
+    protected $requestEncoding = 'UTF-8';
 
     /**
-     * Response encoding
+     * Response encoding.
+     *
      * @var string
      */
     protected $responseEncoding = 'ISO-8859-1';
 
     /**
-     * Init banklink
+     * Init banklink.
      *
-     * @param RKD\Banklink\Protocol $protocol Protocol object used
-     * @param boolean $debug Use banklink in debug mode?
-     * @param string $requestUrl Response URL
+     * @param RKD\Banklink\Protocol $protocol   Protocol object used
+     * @param bool                  $debug      Use banklink in debug mode?
+     * @param string                $requestUrl Response URL
      */
-
-    public function __construct(Protocol $protocol, $debug = false, $requestUrl = null){
-
+    public function __construct(Protocol $protocol, $debug = false, $requestUrl = null)
+    {
         $this->protocol = $protocol;
 
-        if($debug){
+        if ($debug) {
             $this->requestUrl = $this->testRequestUrl;
-        }
-        else if($requestUrl){
+        } elseif ($requestUrl) {
             $this->requestUrl = $requestUrl;
         }
     }
 
-     /**
-     * Get payment object
+    /**
+     * Get payment object.
      *
-     * @param string $orderID Order ID
-     * @param float $sum Sum of order
-     * @param string $message Transaction description
+     * @param string $orderID  Order ID
+     * @param float  $sum      Sum of order
+     * @param string $message  Transaction description
      * @param string $language Language
      * @param string $currency Currency. Default: EUR
      * @param string $timezone Timezone. Default: Europe/Tallinn
      *
      * @return RKD\Banklink\Request\PaymentRequest Payment object
      */
-
-    public function getPaymentRequest($orderId, $sum, $message, $language = 'EST', $currency = 'EUR', $timezone = 'Europe/Tallinn'){
-
-        if($this->requestData){
+    public function getPaymentRequest($orderId, $sum, $message, $language = 'EST', $currency = 'EUR', $timezone = 'Europe/Tallinn')
+    {
+        if ($this->requestData) {
             return $this->requestData;
         }
 
@@ -116,24 +117,23 @@ abstract class Banklink{
     }
 
      /**
-     * Get auhtnetication object
-     *
-     * @param string $rec_id Bank identifier
-     * @param string $nonce Random nonce
-     * @param string $rid Session identifier.
-     * @param string $language Language
-     * @param string $timezone Timezone. Default: Europe/Tallinn
-     *
-     * @return RKD\Banklink\Request\AuthRequest Authentication object
-     */
-
-     public function getAuthRequest($rec_id = null, $nonce = null, $rid = null, $language = 'EST', $timezone = 'Europe/Tallinn'){
-
-        if($this->authData){
+      * Get auhtnetication object.
+      *
+      * @param string $recId Bank identifier
+      * @param string $nonce Random nonce
+      * @param string $rid Session identifier.
+      * @param string $language Language
+      * @param string $timezone Timezone. Default: Europe/Tallinn
+      *
+      * @return RKD\Banklink\Request\AuthRequest Authentication object
+      */
+    public function getAuthRequest($recId = null, $nonce = null, $rid = null, $language = 'EST', $timezone = 'Europe/Tallinn')
+    {
+        if ($this->authData) {
             return $this->authData;
         }
 
-        $authData = $this->protocol->getAuthRequest($rec_id, $nonce, $rid, $this->requestEncoding, $language, $timezone);
+        $authData = $this->protocol->getAuthRequest($recId, $nonce, $rid, $this->requestEncoding, $language, $timezone);
 
         // Add additional fields
         $authData = array_merge($authData, $this->getAdditionalFields());
@@ -141,29 +141,29 @@ abstract class Banklink{
         $this->authData = new AuthRequest($this->requestUrl, $authData);
 
         return $this->authData;
-     }
+    }
 
     /**
-     * Handles response from bank
+     * Handles response from bank.
      *
      * @param array $responseData Response data from bank
      *
-     * @return RKD\Banklink\Response\PaymentResponse|RKD\Banklink\Response\AuthResponse Response object, depending on request made
+     * @return \Response\PaymentResponse|\Response\AuthResponse Response object, depending on request made
      */
-
-    public function handleResponse(array $responseData){
+    public function handleResponse(array $responseData)
+    {
         return $this->protocol->handleResponse($responseData, $this->getResponseEncoding($responseData));
     }
 
     /**
-     * Get encoding for response, if response data has it
+     * Get encoding for response, if response data has it.
      *
      * @param array $responseData Response data from bank
      *
      * @return string Encoding
      */
-
-    protected function getResponseEncoding(array $responseData){
+    protected function getResponseEncoding(array $responseData)
+    {
         if ($this->getEncodingField() && isset($responseData[$this->getEncodingField()])) {
             return $responseData[$this->getEncodingField()];
         }
@@ -172,23 +172,22 @@ abstract class Banklink{
     }
 
     /**
-     * Detect if bank sent us data with encoding field
+     * Detect if bank sent us data with encoding field.
      *
      * @return string|null Encoding field name
      */
-
-    protected function getEncodingField(){
-        return null; // @codeCoverageIgnore
+    protected function getEncodingField()
+    {
+        return; // @codeCoverageIgnore
     }
 
     /**
-     * Add additional fields
+     * Add additional fields.
      *
      * @return array Array of additional fields
      */
-
-    protected function getAdditionalFields(){
+    protected function getAdditionalFields()
+    {
         return array(); // @codeCoverageIgnore
     }
 }
-

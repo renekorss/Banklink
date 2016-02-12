@@ -1,89 +1,88 @@
 <?php
 /**
- * RKD Banklink
+ * RKD Banklink.
  *
- * @package Banklink\Request
  * @link https://github.com/renekorss/Banklink/
+ *
  * @author Rene Korss <rene.korss@gmail.com>
  * @copyright 2015 Rene Korss
  * @license MIT
  */
-
 namespace RKD\Banklink\Request;
 
 /**
- * Abstract request class
+ * Abstract request class.
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-
-abstract class Request{
-
+abstract class Request
+{
     /**
-     * Request url
+     * Request url.
+     *
      * @var string
      */
     protected $requestUrl;
 
     /**
-     * Request data
+     * Request data.
+     *
      * @var array
      */
     protected $requestData;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param string $requestUrl Request URL
-     * @param array $requestData Request array
-     *
-     * @return void
+     * @param string $requestUrl  Request URL
+     * @param array  $requestData Request array
      */
-
-    public function __construct($requestUrl, array $requestData){
-        $this->requestUrl  = $requestUrl;
+    public function __construct($requestUrl, array $requestData)
+    {
+        $this->requestUrl = $requestUrl;
         $this->requestData = $requestData;
     }
 
     /**
-     * Get request hidden inputs
+     * Get request hidden inputs.
      *
      * @return string HTML of hidden request inputs
      */
-
-    public function getRequestInputs(){
-
-        if(empty($this->requestData)){
+    public function getRequestInputs()
+    {
+        if (empty($this->requestData)) {
             throw new \UnexpectedValueException('Can\'t generate inputs. Request data is empty.');
         }
 
         $html = '';
 
         foreach ($this->requestData as $key => $value) {
-            $html .= vsprintf('<input type="hidden" id="%s" name="%s" value="%s" />', array(strtolower($key), $key, $value))."\n";
+            $html .= vsprintf(
+                '<input type="hidden" id="%s" name="%s" value="%s" />',
+                array(strtolower($key), $key, $value)
+            )."\n";
         }
 
         return $html;
     }
 
     /**
-     * Get request URL
+     * Get request URL.
      *
      * @return string Request URL
      */
-
-    public function getRequestUrl(){
+    public function getRequestUrl()
+    {
         return $this->requestUrl;
     }
 
     /**
-     * Get request data
+     * Get request data.
      *
      * @return array Request data
      */
-
-    public function getRequestData(){
+    public function getRequestData()
+    {
         return $this->requestData;
     }
-
 }

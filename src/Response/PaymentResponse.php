@@ -1,180 +1,184 @@
 <?php
 /**
- * RKD Banklink
+ * RKD Banklink.
  *
- * @package Banklink\Response
  * @link https://github.com/renekorss/Banklink/
+ *
  * @author Rene Korss <rene.korss@gmail.com>
  * @copyright 2015 Rene Korss
  * @license MIT
  */
-
 namespace RKD\Banklink\Response;
 
 /**
- * Payment response wrapper
+ * Payment response wrapper.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-
-class PaymentResponse extends Response{
-
+class PaymentResponse extends Response
+{
     /**
-     * Order id
+     * Order id.
+     *
      * @var string
      */
     protected $orderId;
 
     /**
-     * Transaction sum
+     * Transaction sum.
+     *
      * @var string
      */
     protected $sum;
 
     /**
-     * Currency used
+     * Currency used.
+     *
      * @var string
      */
     protected $currency;
 
     /**
-     * Sender data (name and account)
+     * Sender data (name and account).
+     *
      * @var object
      */
     protected $sender;
 
     /**
-     * Transaction id
+     * Transaction id.
+     *
      * @var string
      */
     protected $transactionId;
 
     /**
-     * Transaction date
+     * Transaction date.
+     *
      * @var string
      */
     protected $transactionDate;
 
     /**
-     * Set order ID
+     * Set order ID.
      *
      * @param string $orderId Order ID
      */
-
-    public function setOrderId($orderId){
+    public function setOrderId($orderId)
+    {
         $this->orderId = $orderId;
     }
 
     /**
-     * Get order ID
+     * Get order ID.
      *
      * @return string Order ID
      */
-
-    public function getOrderId(){
+    public function getOrderId()
+    {
         return $this->orderId;
     }
 
     /**
-     * Set sum
+     * Set sum.
      *
-     * @param double $sum Sum
+     * @param float $sum Sum
      */
-
-    public function setSum($sum){
+    public function setSum($sum)
+    {
         $this->sum = $sum;
     }
 
     /**
-     * Get sum
+     * Get sum.
      *
-     * @return double Sum
+     * @return float Sum
      */
-
-    public function getSum(){
+    public function getSum()
+    {
         return $this->sum;
     }
 
     /**
-     * Set currency
+     * Set currency.
      *
      * @param string $currency Currency
      */
-
-    public function setCurrency($currency){
+    public function setCurrency($currency)
+    {
         $this->currency = $currency;
     }
 
     /**
-     * Get currency
+     * Get currency.
      *
      * @return string Currency
      */
-
-    public function getCurrency(){
+    public function getCurrency()
+    {
         return $this->currency;
     }
 
     /**
-     * Set sender
+     * Set sender.
      *
-     * @param string $senderName Sender name
+     * @param string $senderName    Sender name
      * @param string $senderAccount Sender account
      */
-
-    public function setSender($senderName, $senderAccount){
-        $this->sender          = new \stdClass();
-        $this->sender->name    = $senderName;
+    public function setSender($senderName, $senderAccount)
+    {
+        $this->sender = new \stdClass();
+        $this->sender->name = $senderName;
         $this->sender->account = $senderAccount;
     }
 
     /**
-     * Get sender
+     * Get sender.
      *
      * @return object Sender object, containing name and account
      */
-
-    public function getSender(){
+    public function getSender()
+    {
         return $this->sender;
     }
 
     /**
-     * Set transactionId
+     * Set transactionId.
      *
      * @param string $transactionId Transaction ID
      */
-
-    public function setTransactionId($transactionId){
+    public function setTransactionId($transactionId)
+    {
         $this->transactionId = $transactionId;
     }
 
     /**
-     * Get transactionId
+     * Get transactionId.
      *
      * @return string Transaction ID
      */
-
-    public function getTransactionId(){
+    public function getTransactionId()
+    {
         return $this->transactionId;
     }
 
     /**
-     * Set transactionDate
+     * Set transactionDate.
      *
      * @param string $transactionDate Transaction date
      */
-
-    public function setTransactionDate($transactionDate){
+    public function setTransactionDate($transactionDate)
+    {
         $this->transactionDate = $transactionDate;
     }
 
     /**
-     * Get transactionDate
+     * Get transactionDate.
      *
      * @return string Transaction date
      */
-
-    public function getTransactionDate(){
+    public function getTransactionDate()
+    {
         return $this->transactionDate;
     }
 }

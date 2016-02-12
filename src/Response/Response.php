@@ -1,112 +1,112 @@
 <?php
 /**
- * RKD Banklink
+ * RKD Banklink.
  *
- * @package Banklink\Response
  * @link https://github.com/renekorss/Banklink/
+ *
  * @author Rene Korss <rene.korss@gmail.com>
  * @copyright 2015 Rene Korss
  * @license MIT
  */
-
 namespace RKD\Banklink\Response;
 
 /**
- * Response wrapper
+ * Response wrapper.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-
-class Response{
-
+class Response
+{
     /**
-     * Signature verified and transaction successful
+     * Signature verified and transaction successful.
      */
     const STATUS_SUCCESS = 1;
 
     /**
-     * Signature not verified
+     * Signature not verified.
      */
-
-    const STATUS_ERROR   = -1;
+    const STATUS_ERROR = -1;
 
     /**
-     * Response status
+     * Response status.
+     *
      * @var int
      */
     protected $status;
 
     /**
-     * Response data
+     * Response data.
+     *
      * @var array
      */
     protected $responseData;
 
     /**
-     * Prefered language
+     * Prefered language.
+     *
      * @var array
      */
     protected $language;
 
     /**
-     * Set response status and data
+     * Set response status and data.
      *
-     * @param int $status Verification status
+     * @param int   $status       Verification status
      * @param array $responseData Array of bank response
      */
-
-    public function __construct($status, array $responseData){
-        $this->status       = $status;
+    public function __construct($status, array $responseData)
+    {
+        $this->status = $status;
         $this->responseData = $responseData;
     }
 
     /**
-     * Get boolean to know is transaction was successful
+     * Get boolean to know is transaction was successful.
      *
-     * @return boolean True on sucess, false othwerwise
+     * @return bool True on sucess, false othwerwise
      */
-
-    public function wasSuccessful(){
+    public function wasSuccessful()
+    {
         return $this->status === self::STATUS_SUCCESS;
     }
 
     /**
-     * Get transaction status
+     * Get transaction status.
      *
      * @return int Status
      */
-
-    public function getStatus(){
+    public function getStatus()
+    {
         return $this->status;
     }
 
     /**
-     * Get response data
+     * Get response data.
      *
      * @return array Array of response
      */
-
-    public function getResponseData(){
+    public function getResponseData()
+    {
         return $this->responseData;
     }
 
     /**
-     * Set prefered language
+     * Set prefered language.
      *
      * @param string $language Prefered language
      */
-
-    public function setLanguage($language){
+    public function setLanguage($language)
+    {
         $this->language = $language;
     }
 
     /**
-     * Get prefered language
+     * Get prefered language.
      *
      * @return string Language (EST, ENG, RUS)
      */
-
-    public function getLanguage(){
+    public function getLanguage()
+    {
         return $this->language;
     }
 }

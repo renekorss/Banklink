@@ -1,70 +1,69 @@
 <?php
 /**
- * RKD Banklink
+ * RKD Banklink.
  *
- * @package Banklink
  * @link https://github.com/renekorss/Banklink/
+ *
  * @author Rene Korss <rene.korss@gmail.com>
  * @copyright 2015 Rene Korss
  * @license MIT
  */
-
 namespace RKD\Banklink;
 
-use RKD\Banklink\Protocol\iPizza;
+use RKD\Banklink\Protocol\IPizza;
 
 /**
- * Banklink settings for LHV
+ * Banklink settings for LHV.
  *
  * For more information, please visit: https://www.lhv.ee/en/banking-services/banklink/?l3=en
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-
-class LHV extends Banklink{
-
+class LHV extends Banklink
+{
     /**
-     * Request url
+     * Request url.
+     *
      * @var string
      */
-    protected $requestUrl     = 'https://www.lhv.ee/banklink';
+    protected $requestUrl = 'https://www.lhv.ee/banklink';
 
     /**
-     * Test request url
+     * Test request url.
+     *
      * @var string
      */
     protected $testRequestUrl = 'http://localhost:8080/banklink/lhv-common';
 
     /**
-     * Force LHV class to use iPizza protocol
+     * Force LHV class to use IPizza protocol.
      *
-     * @param RKD\Banklink\Protocol\iPizza $protocol Protocol used
-     * @param boolean $debug Is in debug mode?
-     * @param string $requestUrl Request URL
-     *
-     * @return void
+     * @param RKD\Banklink\Protocol\IPizza $protocol   Protocol used
+     * @param bool                         $debug      Is in debug mode?
+     * @param string                       $requestUrl Request URL
      */
-
-    public function __construct(iPizza $protocol, $debug = false, $requestUrl = null){
+    public function __construct(IPizza $protocol, $debug = false, $requestUrl = null)
+    {
         parent::__construct($protocol, $debug, $requestUrl);
     }
 
     /**
-     * Override encoding field
+     * Override encoding field.
      */
-
-    protected function getEncodingField(){
+    protected function getEncodingField()
+    {
         return 'VK_ENCODING';
     }
 
     /**
-     * LHV uses UTF-8
+     * LHV uses UTF-8.
      *
      * @return array Array of additional fields to send to bank
      */
-    protected function getAdditionalFields(){
+    protected function getAdditionalFields()
+    {
         return array(
-            'VK_ENCODING' => $this->requestEncoding
+            'VK_ENCODING' => $this->requestEncoding,
         );
     }
 }

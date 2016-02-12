@@ -1,27 +1,26 @@
 <?php
 /**
- * RKD Banklink
+ * RKD Banklink.
  *
- * @package Banklink\Response
  * @link https://github.com/renekorss/Banklink/
+ *
  * @author Rene Korss <rene.korss@gmail.com>
  * @copyright 2015 Rene Korss
  * @license MIT
  */
-
 namespace RKD\Banklink\Response;
 
 /**
- * Authentication response wrapper
+ * Authentication response wrapper.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-
-class AuthResponse extends Response{
-
+class AuthResponse extends Response
+{
     /**
      * Authentication methods mapping with token value
-     * token => human readable auth method
+     * token => human readable auth method.
+     *
      * @var array
      */
     private static $authMethods = array(
@@ -29,206 +28,211 @@ class AuthResponse extends Response{
             2 => 'Mobile ID',
             5 => 'One-off code card',
             6 => 'PIN-calculator',
-            7 => 'Code card'
+            7 => 'Code card',
         );
 
     /**
-     * User id (personal code)
+     * User id (personal code).
+     *
      * @var int
      */
     protected $userId;
 
     /**
-     * User name
+     * User name.
+     *
      * @var string
      */
     protected $userName;
 
     /**
-     * Country
+     * Country.
+     *
      * @var string
      */
     protected $country;
 
     /**
-     * Token
+     * Token.
+     *
      * @var int
      */
     protected $token;
 
     /**
-     * RID
+     * RID.
+     *
      * @var string
      */
     protected $rid;
 
     /**
-     * Nonce
+     * Nonce.
+     *
      * @var string
      */
     protected $nonce;
 
     /**
-     * Authentication date
+     * Authentication date.
+     *
      * @var string
      */
     protected $authDate;
 
     /**
-     * Set user id
+     * Set user id.
      *
      * @param int $userId User id
      */
-
-    public function setUserId($userId){
+    public function setUserId($userId)
+    {
         $this->userId = $userId;
     }
 
     /**
-     * Get user id
+     * Get user id.
      *
      * @return int User id
      */
-
-    public function getUserId(){
+    public function getUserId()
+    {
         return $this->userId;
     }
 
     /**
-     * Set user name
+     * Set user name.
      *
      * @param string $userName User name
      */
-
-    public function setUserName($userName){
+    public function setUserName($userName)
+    {
         $this->userName = $userName;
     }
 
     /**
-     * Get user name
+     * Get user name.
      *
      * @return string User name
      */
-
-    public function getUserName(){
+    public function getUserName()
+    {
         return $this->userName;
     }
 
     /**
-     * Set user country
+     * Set user country.
      *
      * @param string $country Country
      */
-
-    public function setUserCountry($country){
+    public function setUserCountry($country)
+    {
         $this->userCountry = $country;
     }
 
     /**
-     * Get user country
+     * Get user country.
      *
      * @return string Country
      */
-
-    public function getUserCountry(){
+    public function getUserCountry()
+    {
         return $this->userCountry;
     }
 
     /**
-     * Set token
+     * Set token.
      *
      * @param string $token Token (VK_TOKEN)
      */
-
-    public function setToken($token){
+    public function setToken($token)
+    {
         $this->token = $token;
     }
 
     /**
-     * Get token
+     * Get token.
      *
      * @return string Token
      */
-
-    public function getToken(){
+    public function getToken()
+    {
         return $this->token;
     }
 
     /**
-     * Set nonce
+     * Set nonce.
      *
      * @param string $nonce Nonce (VK_NONCE)
      */
-
-    public function setNonce($nonce){
+    public function setNonce($nonce)
+    {
         $this->nonce = $nonce;
     }
 
     /**
-     * Get nonce
+     * Get nonce.
      *
      * @return string Nonce
      */
-
-    public function getNonce(){
+    public function getNonce()
+    {
         return $this->nonce;
     }
 
     /**
-     * Set rid
+     * Set rid.
      *
      * @param string $rid Rid (VK_RID)
      */
-
-    public function setRid($rid){
+    public function setRid($rid)
+    {
         $this->rid = $rid;
     }
 
     /**
-     * Get rid
+     * Get rid.
      *
      * @return string Rid
      */
-
-    public function getRid(){
+    public function getRid()
+    {
         return $this->rid;
     }
 
-   /**
-     * Set auth date
+    /**
+     * Set auth date.
      *
      * @param string $authDate Auth date
      */
-
-    public function setAuthDate($authDate){
+    public function setAuthDate($authDate)
+    {
         $this->authDate = $authDate;
     }
 
     /**
-     * Get auth date
+     * Get auth date.
      *
      * @return string Auth date
      */
-
-    public function getAuthDate(){
+    public function getAuthDate()
+    {
         return $this->authDate;
     }
 
     /**
-     * Get auth method
+     * Get auth method.
      *
      * @return string Authentication method
      */
-
-    public function getAuthMethod(){
-
+    public function getAuthMethod()
+    {
         $authMethod = 'unknown';
 
-        if((int)$this->token > 0 && in_array($this->token, array_keys(self::$authMethods))){
+        if ((int) $this->token > 0 && in_array($this->token, array_keys(self::$authMethods))) {
             $authMethod = self::$authMethods[$this->token];
         }
 
         return $authMethod;
     }
-
 }

@@ -1,24 +1,22 @@
 <?php
 /**
- * RKD Banklink
+ * RKD Banklink.
  *
- * @package Banklink\Request
  * @link https://github.com/renekorss/Banklink/
+ *
  * @author Rene Korss <rene.korss@gmail.com>
  * @copyright 2015 Rene Korss
  * @license MIT
  */
-
 namespace RKD\Banklink\Request;
 
 /**
- * AuthRequest class
+ * AuthRequest class.
  *
  * Holds authentication requests data
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-
-class AuthRequest extends Request{
-
+class AuthRequest extends Request
+{
 }
