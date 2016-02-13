@@ -71,6 +71,9 @@ class SEBTest extends \PHPUnit_Framework_TestCase
             $this->customRequestUrl
         );
 
+        // Use mb_strlen
+        $this->protocol->useMbStrlen(true);
+
         $this->seb = new $this->bankClass($this->protocol);
 
         $this->expectedData = array(
