@@ -9,7 +9,7 @@ use RKD\Banklink\Protocol\Helper\ProtocolHelper;
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class ProtocolTest extends \PHPUnit_Framework_TestCase
+class ProtocolHelperTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * Test reference calculator.

@@ -5,7 +5,7 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2015 Rene Korss
+ * @copyright 2016 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink;
@@ -74,18 +74,29 @@ abstract class Banklink
      * Init banklink.
      *
      * @param RKD\Banklink\Protocol $protocol   Protocol object used
-     * @param bool                  $debug      Use banklink in debug mode?
-     * @param string                $requestUrl Response URL
      */
-    public function __construct(Protocol $protocol, $debug = false, $requestUrl = null)
+    public function __construct(Protocol $protocol)
     {
         $this->protocol = $protocol;
+    }
 
-        if ($debug) {
-            $this->requestUrl = $this->testRequestUrl;
-        } elseif ($requestUrl) {
-            $this->requestUrl = $requestUrl;
-        }
+    /**
+     * Activate debug mode. Changes requestUrl to testRequestUrl
+     */
+    public function debugMode()
+    {
+        $this->setRequestUrl($this->testRequestUrl);
+    }
+
+    /**
+     * Set request URL
+     *
+     * @param string $requestUrl Request URL
+     */
+
+    public function setRequestUrl($requestUrl)
+    {
+        $this->requestUrl = $requestUrl;
     }
 
     /**

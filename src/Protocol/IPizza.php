@@ -5,7 +5,7 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2015 Rene Korss
+ * @copyright 2016 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink\Protocol;
@@ -93,11 +93,11 @@ class IPizza implements Protocol
     protected $result;
 
     /**
-     * Is nb_strlen function used to get string length?
+     * Is mb_strlen function used to get string length?
      *
      * @var bool
      */
-    protected $useMbStrlen;
+    protected $useMbStrlen = true;
 
     /**
      * Init IPizza protocol.
@@ -109,7 +109,6 @@ class IPizza implements Protocol
      * @param string $requestUrl         Request URL
      * @param string $sellerName         Seller name
      * @param string $sellerAccount      Seller account
-     * @param bool   $useMbStrlen        Use mb_strlen
      * @param string $version            Encryption used
      */
     public function __construct(
@@ -120,7 +119,6 @@ class IPizza implements Protocol
         $requestUrl,
         $sellerName = null,
         $sellerAccount = null,
-        $useMbStrlen = true,
         $version = '008'
     ) {
         $this->privateKey = $privateKey;
@@ -132,14 +130,25 @@ class IPizza implements Protocol
         $this->sellerAccount = $sellerAccount;
         $this->version = $version;
         $this->requestUrl = $requestUrl;
-        $this->useMbStrlen = $useMbStrlen;
 
         // Detect which service to use
-        $this->serviceId = Services::PAYMENT_REQUEST_1012;
-
         if (strlen($sellerName) > 0 && strlen($sellerAccount) > 0) {
             $this->serviceId = Services::PAYMENT_REQUEST_1011;
+            return;
         }
+
+        $this->serviceId = Services::PAYMENT_REQUEST_1012;
+    }
+
+    /**
+     * Set mb_strlen usage
+     *
+     * @param bool $useMbStrlen Use mb_strlen
+     */
+
+    public function useMbStrlen($useMbStrlen)
+    {
+        $this->useMbStrlen = (boolean)$useMbStrlen;
     }
 
     /**

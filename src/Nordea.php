@@ -5,7 +5,7 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2015 Rene Korss
+ * @copyright 2016 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink;
@@ -43,15 +43,13 @@ class Nordea extends Banklink
      * Force Nordea class to use Solo protocol.
      *
      * @param RKD\Banklink\Protocol\Solo $protocol   Protocol used
-     * @param bool                       $debug      Is in debug mode?
-     * @param string                     $requestUrl Request URL
      */
-    public function __construct(Solo $protocol, $debug = false, $requestUrl = null)
+    public function __construct(Solo $protocol)
     {
         // TODO
         // Must add support for SOLO protocol
 
-        parent::__construct($protocol, $debug, $requestUrl);
+        parent::__construct($protocol);
     }
 }
 // @codeCoverageIgnoreEnd

@@ -126,7 +126,8 @@ class SEBTest extends \PHPUnit_Framework_TestCase
             $this->sellerAccount
         );
 
-        $this->seb = new $this->bankClass($this->protocol, true);
+        $this->seb = new $this->bankClass($this->protocol);
+        $this->seb->debugMode();
 
         // New expected values
         $this->expectedData['VK_SERVICE'] = '1011';
@@ -282,7 +283,8 @@ class SEBTest extends \PHPUnit_Framework_TestCase
      */
     public function testCustomRequestUrl()
     {
-        $this->seb = new $this->bankClass($this->protocol, false, 'http://google.com');
+        $this->seb = new $this->bankClass($this->protocol);
+        $this->seb->setRequestUrl('http://google.com');
 
         $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
 

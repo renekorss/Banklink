@@ -5,7 +5,7 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2015 Rene Korss
+ * @copyright 2016 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink\Protocol;
@@ -37,6 +37,27 @@ interface Protocol
         $encoding = 'UTF-8',
         $language = 'EST',
         $currency = 'EUR',
+        $timezone = 'Europe/Tallinn'
+    );
+
+    /**
+     * Get authnetication object.
+     *
+     * @param string $recId Bank identifier
+     * @param string $nonce Random nonce
+     * @param string $rid Session identifier.
+     * @param string $encoding Encoding
+     * @param string $language Language
+     * @param string $timezone Timezone. Default: Europe/Tallinn
+     *
+     * @return array Authentication request data
+     */
+    public function getAuthRequest(
+        $recId = null,
+        $nonce = null,
+        $rid = null,
+        $encoding = 'UTF-8',
+        $language = 'EST',
         $timezone = 'Europe/Tallinn'
     );
 

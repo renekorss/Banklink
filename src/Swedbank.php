@@ -5,7 +5,7 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2015 Rene Korss
+ * @copyright 2016 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink;
@@ -39,12 +39,10 @@ class Swedbank extends Banklink
      * Force Swedbank class to use IPizza protocol.
      *
      * @param RKD\Banklink\Protocol\IPizza $protocol   Protocol used
-     * @param bool                         $debug      Is in debug mode?
-     * @param string                       $requestUrl Request URL
      */
-    public function __construct(IPizza $protocol, $debug = false, $requestUrl = null)
+    public function __construct(IPizza $protocol)
     {
-        parent::__construct($protocol, $debug, $requestUrl);
+        parent::__construct($protocol);
     }
 
     /**

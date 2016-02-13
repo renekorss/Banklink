@@ -5,7 +5,7 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2015 Rene Korss
+ * @copyright 2016 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink\Response;
@@ -221,7 +221,7 @@ class AuthResponse extends Response
     }
 
     /**
-     * Get auth method.
+     * Get human readable auth method.
      *
      * @return string Authentication method
      */

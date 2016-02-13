@@ -12,7 +12,12 @@
 
     <!-- Import entire rule sets -->
     <rule ref="rulesets/cleancode.xml">
-        <exclude name="StaticAccess" />
+        <exclude name="StaticAccess"/>
+    </rule>
+    <rule ref="rulesets/cleancode.xml/StaticAccess">
+        <properties>
+            <property name="exceptions" value="\RKD\Banklink\Protocol\IPizza\Services,\RKD\Banklink\Protocol\Helper\ProtocolHelper" />
+        </properties>
     </rule>
     <rule ref="rulesets/codesize.xml" />
     <rule ref="rulesets/controversial.xml" />
