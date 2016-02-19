@@ -24,8 +24,8 @@ Krediidipank     | :white_check_mark:  | :white_check_mark:
 LHV              | :white_check_mark:  | :white_check_mark:
 SEB              | :white_check_mark:  | :white_check_mark:
 Swedbank         | :white_check_mark:  | :white_check_mark:
-Nordea (coming)  | :x:                 | :x:
-Estcard (coming) | :x:                 | not supported
+Nordea           | :white_check_mark:  | :white_check_mark:
+Estcard (coming) | :x:                 | does not apply
 
 ## How to use?
 

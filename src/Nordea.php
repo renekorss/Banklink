@@ -10,19 +10,17 @@
  */
 namespace RKD\Banklink;
 
-// use RKD\Banklink\Protocol\Solo;
+use RKD\Banklink\Protocol\IPizza;
 
 /**
  * Banklink settings for Nordea.
  *
  * For more information, please visit:
- * http://www.nordea.ee/corporate+customers/daily+banking/collection+of+payment/e-payment/798312.html
- *
- * Coverage ignore, since SOLO protocol is not supported yet
+ * http://www.nordea.ee/teenused+%C3%A4rikliendile/igap%C3%A4evapangandus/maksete+kogumine/e-makse/1562142.html
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-// @codeCoverageIgnoreStart
+
 class Nordea extends Banklink
 {
     /**
@@ -30,26 +28,42 @@ class Nordea extends Banklink
      *
      * @var string
      */
-    protected $requestUrl = 'https://netbank.nordea.com/pnbepay/epayn.jsp';
+    protected $requestUrl = 'https://netbank.nordea.com/pnbepay/epayp.jsp';
 
     /**
      * Test request url.
      *
      * @var string
      */
-    protected $testRequestUrl = 'http://localhost:8080/banklink/nordea';
+    protected $testRequestUrl = 'http://localhost:8080/banklink/ipizza';
 
     /**
-     * Force Nordea class to use Solo protocol.
+     * Force Nordea class to use IPizza protocol.
      *
-     * @param RKD\Banklink\Protocol\Solo $protocol   Protocol used
+     * @param RKD\Banklink\Protocol\IPizza $protocol   Protocol used
      */
-    public function __construct(Solo $protocol)
+    public function __construct(IPizza $protocol)
     {
-        // TODO
-        // Must add support for SOLO protocol
-
         parent::__construct($protocol);
     }
+
+    /**
+     * Override encoding field.
+     */
+    protected function getEncodingField()
+    {
+        return 'VK_ENCODING';
+    }
+
+    /**
+     * Swedbank uses UTF-8.
+     *
+     * @return array Array of additional fields to send to bank
+     */
+    protected function getAdditionalFields()
+    {
+        return array(
+            'VK_ENCODING' => $this->requestEncoding,
+        );
+    }
 }
-// @codeCoverageIgnoreEnd
