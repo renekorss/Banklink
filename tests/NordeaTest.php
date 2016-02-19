@@ -7,7 +7,7 @@ namespace RKD\BanklinkTests;
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class KrediidipankTest extends SEBTest
+class NordeaTest extends SEBTest
 {
     protected $bankClass = "RKD\Banklink\Nordea";
 
