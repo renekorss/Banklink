@@ -5,9 +5,9 @@
 [![Total Downloads](https://poser.pugx.org/renekorss/banklink/downloads)](https://packagist.org/packages/renekorss/banklink)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-# PHP Banklink library
+# PHP Payment library
 
-> PHP banklink library to easily integrate Baltic banklinks.
+> PHP payment library to easily integrate Baltic banklinks, E-commerce gateaway (Estcard, Nets Estonia) and Liizi Payment Link.
 
 > View API documentation at http://renekorss.github.io/Banklink/
 
