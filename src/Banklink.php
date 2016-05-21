@@ -102,7 +102,7 @@ abstract class Banklink
     /**
      * Get payment object.
      *
-     * @param string $orderID  Order ID
+     * @param string $orderId  Order ID
      * @param float  $sum      Sum of order
      * @param string $message  Transaction description
      * @param string $language Language

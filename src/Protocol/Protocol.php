@@ -64,7 +64,7 @@ interface Protocol
     /**
      * Handles response from bank.
      *
-     * @param array  $responseData Response data from bank
+     * @param array  $response Response data from bank
      * @param string $encoding     Encoding
      *
      * @return \Response\PaymentResponse|\Response\AuthResponse Response object, depending on request made
