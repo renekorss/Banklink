@@ -82,7 +82,7 @@ class ProtocolHelper
             return $languages[$language];
         }
 
-        return false;
+        return false; // @codeCoverageIgnore
     }
 
     /**
@@ -91,6 +91,8 @@ class ProtocolHelper
      * Format: YYYYMM + rand between 100 000 - 999 999
      *
      * @return string Random ecuno
+     *
+     * @codeCoverageIgnore
      */
     public static function generateEcuno()
     {

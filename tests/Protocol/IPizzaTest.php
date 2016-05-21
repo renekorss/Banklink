@@ -181,10 +181,15 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
         $expextedSender->name = 'Mart Mets';
         $expextedSender->account = '101032423434543';
 
+        $expextedReceiver = new \stdClass();
+        $expextedReceiver->name = $this->sellerName;
+        $expextedReceiver->account = $this->sellerAccount;
+
         // Test correct data
         $this->assertEquals($this->amount, $response->getSum());
         $this->assertEquals($this->currency, $response->getCurrency());
         $this->assertEquals($expextedSender, $response->getSender());
+        $this->assertEquals($expextedReceiver, $response->getReceiver());
         $this->assertEquals(100, $response->getTransactionId());
         $this->assertEquals($this->datetime, $response->getTransactionDate());
     }
