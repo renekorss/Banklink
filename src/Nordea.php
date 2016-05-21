@@ -56,7 +56,7 @@ class Nordea extends Banklink
     }
 
     /**
-     * Swedbank uses UTF-8.
+     * Nordea uses UTF-8.
      *
      * @return array Array of additional fields to send to bank
      */

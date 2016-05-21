@@ -56,7 +56,7 @@ class Estcard extends Banklink
     }
 
     /**
-     * Swedbank uses UTF-8.
+     * Estcard uses UTF-8.
      *
      * @return array Array of additional fields to send to bank
      */
