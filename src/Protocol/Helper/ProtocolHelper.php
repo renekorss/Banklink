@@ -59,4 +59,68 @@ class ProtocolHelper
 
         return $orderId.$checkNum;
     }
+
+    /**
+     * Convert ISO-639-2 language code to ISO-639-1
+     *
+     * @param string $language ISO-639-2 language code
+     *
+     * @return string ISO-639-1 langauge code
+     */
+    public static function langToISO6391($language)
+    {
+        $languages = array(
+            'est' => 'et',
+            'rus' => 'ru',
+            'eng' => 'en',
+            'fin' => 'fi'
+        );
+
+        $language = strtolower($language);
+
+        if (in_array($language, array_keys($languages))) {
+            return $languages[$language];
+        }
+
+        return false;
+    }
+
+    /**
+     * Generates transaction number for ECommerce protocol
+     *
+     * Format: YYYYMM + rand between 100 000 - 999 999
+     *
+     * @return string Random ecuno
+     */
+    public static function generateEcuno()
+    {
+        $rnd   = rand(100000, 999999);
+        $date  = date("Ym");
+        $ecuno = $date . $rnd;
+
+        return $ecuno;
+    }
+
+    /**
+     * Multibyte str_pad
+     *
+     * @param mixed $input Input value
+     * @param int $padLength Desired length
+     * @param string $padString Pad with
+     * @param string $padType Pad direction
+     * @param string $encoding Encoding
+     *
+     * @return string Padded string
+     */
+
+    public static function mbStrPad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT, $encoding = null)
+    {
+        $diff = strlen($input) - mb_strlen($input);
+
+        if ($encoding) {
+            $diff = strlen($input) - mb_strlen($input, $encoding);
+        }
+
+        return str_pad($input, $padLength + $diff, $padString, $padType);
+    }
 }

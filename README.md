@@ -17,15 +17,16 @@
 
 ## Supported providers
 
-Provider         | Payment             | Authentication
----------------- | ------------------- | -------------
-Danskebank       | :white_check_mark:  | :white_check_mark:
-Krediidipank     | :white_check_mark:  | :white_check_mark:
-LHV              | :white_check_mark:  | :white_check_mark:
-SEB              | :white_check_mark:  | :white_check_mark:
-Swedbank         | :white_check_mark:  | :white_check_mark:
-Nordea           | :white_check_mark:  | :white_check_mark:
-Estcard (coming) | :x:                 | does not apply
+Provider          | Payment             | Authentication    
+------------------| ------------------- | ------------------
+Danskebank        | :white_check_mark:  | :white_check_mark:
+Krediidipank      | :white_check_mark:  | :white_check_mark:
+LHV               | :white_check_mark:  | :white_check_mark:
+SEB               | :white_check_mark:  | :white_check_mark:
+Swedbank          | :white_check_mark:  | :white_check_mark:
+Nordea            | :white_check_mark:  | :white_check_mark:
+Estcard           | :white_check_mark:  | does not apply
+Liizi Payment Link| :x:                 | does not apply
 
 ## How to use?
 
@@ -160,7 +161,9 @@ Estcard (coming) | :x:                 | does not apply
 
  - `phpunit` - run tests
  - `phpdoc` - build API documentation
-
+ - `phpmd ./src text phpmd.xml` - run PHP Mess Detector
+ - `phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests` - run PHP CodeSniffer
+ 
 ## Testing your banklink
 
 You can test your banklink with <a href="http://pangalink.net/" target="_blank">pangalink.net</a> application (Windows, Mac, Linux).
