@@ -26,7 +26,7 @@ SEB               | :white_check_mark:  | :white_check_mark:
 Swedbank          | :white_check_mark:  | :white_check_mark:
 Nordea            | :white_check_mark:  | :white_check_mark:
 Estcard           | :white_check_mark:  | does not apply
-Liizi Payment Link| :x:                 | does not apply
+Liizi Payment Link| :white_check_mark:  | does not apply
 
 ## How to use?
 
