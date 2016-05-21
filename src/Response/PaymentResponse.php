@@ -143,6 +143,29 @@ class PaymentResponse extends Response
     }
 
     /**
+     * Set receiver.
+     *
+     * @param string $receiverName    Receiver name
+     * @param string $receiverAccount Receiver account
+     */
+    public function setReceiver($receiverName, $receiverAccount)
+    {
+        $this->receiver = new \stdClass();
+        $this->receiver->name = $receiverName;
+        $this->receiver->account = $receiverAccount;
+    }
+
+    /**
+     * Get receiver.
+     *
+     * @return object Receiver object, containing name and account
+     */
+    public function getReceiver()
+    {
+        return $this->receiver;
+    }
+
+    /**
      * Set transactionId.
      *
      * @param string $transactionId Transaction ID

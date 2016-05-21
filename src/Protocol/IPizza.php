@@ -307,6 +307,7 @@ class IPizza implements Protocol
             $response->setSum($responseData['VK_AMOUNT']);
             $response->setCurrency($responseData['VK_CURR']);
             $response->setSender($responseData['VK_SND_NAME'], $responseData['VK_SND_ACC']);
+            $response->setReceiver($responseData['VK_REC_NAME'], $responseData['VK_REC_ACC']);
             $response->setTransactionId($responseData['VK_T_NO']);
             $response->setTransactionDate($responseData['VK_T_DATETIME']);
         }
