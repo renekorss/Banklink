@@ -10,7 +10,7 @@
  */
 namespace RKD\Banklink;
 
-use RKD\Banklink\Protocol\IPizza;
+use RKD\Banklink\Protocol\LiiziPayment;
 
 /**
  * Ssettings for Liizi payment link.
@@ -38,11 +38,11 @@ class Liizi extends Banklink
     protected $testRequestUrl = 'https://prelive.liisi.ee:8953/api/ipizza/';
 
     /**
-     * Force Liizi class to use IPizza protocol.
+     * Force Liizi class to use LiiziPayment protocol.
      *
-     * @param RKD\Banklink\Protocol\IPizza $protocol   Protocol used
+     * @param RKD\Banklink\Protocol\LiiziPayment $protocol   Protocol used
      */
-    public function __construct(IPizza $protocol)
+    public function __construct(LiiziPayment $protocol)
     {
         parent::__construct($protocol);
     }

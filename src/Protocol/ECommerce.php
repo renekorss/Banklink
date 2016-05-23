@@ -12,6 +12,7 @@ namespace RKD\Banklink\Protocol;
 
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Response\PaymentResponse;
+use RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait;
 
 /**
  * Protocol for ECommerce payment.
@@ -20,6 +21,9 @@ use RKD\Banklink\Response\PaymentResponse;
  */
 class ECommerce implements Protocol
 {
+    // No authentication for this protocol
+    use NoAuthTrait;
+
     /**
      * Successful response code.
      *
@@ -150,43 +154,6 @@ class ECommerce implements Protocol
     }
 
     /**
-     * Get authnetication object.
-     *
-     * @param string $recId Bank identifier
-     * @param string $nonce Random nonce
-     * @param string $rid Session identifier.
-     * @param string $encoding Encoding
-     * @param string $language Language
-     * @param string $timezone Timezone. Default: Europe/Tallinn
-     *
-     * @return array Authentication request data
-     */
-    public function getAuthRequest(
-        $recId = null,
-        $nonce = null,
-        $rid = null,
-        $encoding = 'UTF-8',
-        $language = 'EST',
-        $timezone = 'Europe/Tallinn'
-    ) {
-        throw new \LogicException('ECommerce protocol dosen\'t support authentication.');
-    }
-
-    /**
-     * Handles response from bank.
-     *
-     * @param array  $response Response data from bank
-     * @param string $encoding     Encoding
-     *
-     * @return \Response\PaymentResponse|\Response\AuthResponse Response object, depending on request made
-     */
-    public function handleResponse(array $response, $encoding = 'UTF-8')
-    {
-        $success = $this->validateSignature($response, $encoding);
-        return $this->handlePaymentResponse($response, $success);
-    } // @codeCoverageIgnore
-
-    /**
      * Get payment response.
      *
      * @param array $responseData Response data from bank
@@ -306,7 +273,7 @@ class ECommerce implements Protocol
 
         foreach ($fields as $key) {
             // Check if field exists
-            if (!isset($data[$key])) {
+            if (!isset($data[$key]) || $data[$key] === false) {
                 throw new \UnexpectedValueException(
                     vsprintf('Field %s must be set to use ECommerce protocol.', array($key))
                 );
