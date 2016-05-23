@@ -15,7 +15,8 @@ namespace RKD\Banklink\Protocol\ProtocolTrait;
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-trait NoAuthTrait{
+trait NoAuthTrait
+{
     /**
      * Get authentication object.
      *
@@ -27,6 +28,8 @@ trait NoAuthTrait{
      * @param string $timezone Timezone. Default: Europe/Tallinn
      *
      * @return array Authentication request data
+     *
+     * @SuppressWarnings("unused")
      */
     public function getAuthRequest(
         $recId = null,

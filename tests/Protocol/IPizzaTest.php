@@ -15,24 +15,24 @@ use RKD\Banklink\Request\PaymentRequest;
  */
 class IPizzaTest extends \PHPUnit_Framework_TestCase
 {
-    private $protocol;
+    protected $protocol;
 
-    private $sellerId;
-    private $sellerName;
-    private $sellerAccount;
+    protected $sellerId;
+    protected $sellerName;
+    protected $sellerAccount;
 
-    private $senderName;
+    protected $senderName;
 
-    private $orderId;
-    private $amount;
-    private $message;
-    private $language;
-    private $currency;
-    private $timezone;
-    private $datetime;
-    private $expectedData;
+    protected $orderId;
+    protected $amount;
+    protected $message;
+    protected $language;
+    protected $currency;
+    protected $timezone;
+    protected $datetime;
+    protected $expectedData;
 
-    private $requestUrl;
+    protected $requestUrl;
 
     /**
      * Set test data.

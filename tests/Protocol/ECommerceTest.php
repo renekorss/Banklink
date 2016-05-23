@@ -11,6 +11,24 @@ use RKD\Banklink\Protocol\ECommerce;
  */
 class ECommerceTest extends \PHPUnit_Framework_TestCase
 {
+    protected $protocol;
+
+    protected $sellerId;
+    protected $sellerName;
+    protected $sellerAccount;
+
+    protected $senderName;
+
+    protected $orderId;
+    protected $amount;
+    protected $message;
+    protected $language;
+    protected $currency;
+    protected $timezone;
+    protected $datetime;
+
+    protected $requestUrl;
+
     /**
      * Set test data.
      */
