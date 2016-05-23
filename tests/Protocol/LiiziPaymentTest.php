@@ -30,12 +30,42 @@ class LiiziPaymentTest extends IPizzaTest
     }
 
     /**
-     * Authentication should throw an LogicException
+     * Test successful authentication response.
+     *
+     * @group ignore
+     */
+    public function testHandleAuthResponseSuccess()
+    {
+        // Auth not supported
+    }
+
+    /**
+     * Test failed authentication response.
+     *
+     * @group ignore
+     */
+    public function testHandleAuthResponseError()
+    {
+        // Auth not supported
+    }
+
+    /**
+     * Test authentication request data
      *
      * @expectedException LogicException
      */
-    public function testGetAuthRequest()
+    public function testGetAuthRequest4011()
     {
-        $request = $this->protocol->getAuthRequest();
+        parent::testGetAuthRequest4011();
+    }
+
+    /**
+     * Test authentication request data
+     *
+     * @expectedException LogicException
+     */
+    public function testGetAuthRequest4012()
+    {
+        parent::testGetAuthRequest4012();
     }
 }
