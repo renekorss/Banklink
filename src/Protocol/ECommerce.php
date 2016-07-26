@@ -32,7 +32,7 @@ class ECommerce implements Protocol
     const PAYMENT_RESPONSE_SUCCESS = '000';
     
     /**
-     * Successful response code.
+     * Abort (user aborted payment) response code.
      *
      * @var string
      */
