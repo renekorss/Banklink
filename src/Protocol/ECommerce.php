@@ -30,6 +30,13 @@ class ECommerce implements Protocol
      * @var string
      */
     const PAYMENT_RESPONSE_SUCCESS = '000';
+    
+    /**
+     * Successful response code.
+     *
+     * @var string
+     */
+    const PAYMENT_RESPONSE_ABORT = '017';
 
     /**
      * File path or file contents of public key.
@@ -252,8 +259,8 @@ class ECommerce implements Protocol
             );
 
             $data['receipt_no'] = ProtocolHelper::mbStrPad($data['receipt_no'], 6, "0", STR_PAD_LEFT, $encoding);
+            $data['msgdata'] = ProtocolHelper::mbStrPad($data['msgdata'], 40, " ", STR_PAD_RIGHT, $encoding, $data['respcode'] === self::PAYMENT_RESPONSE_ABORT);
             $data['respcode'] = ProtocolHelper::mbStrPad($data['respcode'], 3, "0", STR_PAD_LEFT, $encoding);
-            $data['msgdata'] = ProtocolHelper::mbStrPad($data['msgdata'], 40, " ", STR_PAD_RIGHT, $encoding);
             $data['actiontext'] = ProtocolHelper::mbStrPad($data['actiontext'], 40, " ", STR_PAD_RIGHT, $encoding);
         }
 
