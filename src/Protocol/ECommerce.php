@@ -153,6 +153,11 @@ class ECommerce implements Protocol
             'delivery' => 'S',
             'additionalinfo' => $message
         );
+        
+        // If additionalinfo is sent it needs to be included in MAC calculation
+        // But how (what position, etc) is not specified by available specification, seems to be secret
+        // So just remove it but leave it otherwise in the code - maybe somebody figures it out
+        unset($data['additionalinfo']);
 
         // Generate signature
         $data['mac'] = $this->getSignature($data, $encoding);
