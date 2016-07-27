@@ -17,7 +17,7 @@ class EstcardTest extends \PHPUnit_Framework_TestCase
     protected $bankClass = "RKD\Banklink\Estcard";
     protected $protocolClass = "RKD\Banklink\Protocol\ECommerce";
 
-    protected $requestUrl = 'https://pos.estcard.ee/test-pos/iPayServlet';
+    protected $requestUrl = 'https://pos.estcard.ee/ecom/iPayServlet';
     protected $testRequestUrl = 'http://localhost:8080/banklink/ec';
 
     /**
@@ -53,7 +53,6 @@ class EstcardTest extends \PHPUnit_Framework_TestCase
             'ecuno'          => $this->orderId,
             'eamount'        => $this->amount * 100,
             'cur'            => $this->currency,
-            'additionalinfo' => $this->message,
             'feedBackUrl'    => $this->customRequestUrl,
             'lang'           => 'et',
             'delivery'       => 'S',

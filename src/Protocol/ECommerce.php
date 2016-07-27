@@ -30,6 +30,13 @@ class ECommerce implements Protocol
      * @var string
      */
     const PAYMENT_RESPONSE_SUCCESS = '000';
+    
+    /**
+     * Abort (user aborted payment) response code.
+     *
+     * @var string
+     */
+    const PAYMENT_RESPONSE_ABORT = '017';
 
     /**
      * File path or file contents of public key.
@@ -146,6 +153,11 @@ class ECommerce implements Protocol
             'delivery' => 'S',
             'additionalinfo' => $message
         );
+        
+        // If additionalinfo is sent it needs to be included in MAC calculation
+        // But how (what position, etc) is not specified by available specification, seems to be secret
+        // So just remove it but leave it otherwise in the code - maybe somebody figures it out
+        unset($data['additionalinfo']);
 
         // Generate signature
         $data['mac'] = $this->getSignature($data, $encoding);
@@ -252,8 +264,14 @@ class ECommerce implements Protocol
             );
 
             $data['receipt_no'] = ProtocolHelper::mbStrPad($data['receipt_no'], 6, "0", STR_PAD_LEFT, $encoding);
+            $data['msgdata'] = ProtocolHelper::mbStrPad(
+                $data['respcode'] === self::PAYMENT_RESPONSE_ABORT && strlen($data['msgdata']) == 0 ? ' ' : $data['msgdata'],
+                40,
+                " ",
+                STR_PAD_RIGHT,
+                $encoding
+            );
             $data['respcode'] = ProtocolHelper::mbStrPad($data['respcode'], 3, "0", STR_PAD_LEFT, $encoding);
-            $data['msgdata'] = ProtocolHelper::mbStrPad($data['msgdata'], 40, " ", STR_PAD_RIGHT, $encoding);
             $data['actiontext'] = ProtocolHelper::mbStrPad($data['actiontext'], 40, " ", STR_PAD_RIGHT, $encoding);
         }
 
