@@ -115,9 +115,9 @@ class ProtocolHelper
      * @return string Padded string
      */
 
-    public static function mbStrPad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT, $encoding = null, $allowEmpty = false)
+    public static function mbStrPad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT, $encoding = null)
     {
-        if (is_null($input) || (!$allowEmpty && strlen($input) == 0)) {
+        if (is_null($input) || strlen($input) == 0) {
             return false;
         }
 
