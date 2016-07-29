@@ -20,9 +20,9 @@ class SEBTest extends \PHPUnit_Framework_TestCase
 
     protected $requestUrl = 'https://www.seb.ee/cgi-bin/unet3.sh/un3min.r';
     protected $testRequestUrl = 'http://localhost:8080/banklink/seb-common';
+    protected $bank;
 
     private $protocol;
-    private $bank;
 
     private $sellerId;
     private $sellerName;
