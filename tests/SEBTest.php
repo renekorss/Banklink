@@ -22,7 +22,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
     protected $testRequestUrl = 'http://localhost:8080/banklink/seb-common';
 
     private $protocol;
-    private $seb;
+    private $bank;
 
     private $sellerId;
     private $sellerName;

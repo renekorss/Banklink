@@ -392,7 +392,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
             'VK_SERVICE' => '0000',
         );
 
-        $response = $this->protocol->handleResponse($responseData);
+        $this->protocol->handleResponse($responseData);
     }
 
     /**
@@ -400,7 +400,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetRequestFieldMissing()
     {
-        $responseData = $this->protocol->getPaymentRequest($this->orderId, null, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
+        $this->protocol->getPaymentRequest($this->orderId, null, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
     }
 
     /**

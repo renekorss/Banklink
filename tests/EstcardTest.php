@@ -137,7 +137,7 @@ class EstcardTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAuthRequest4011()
     {
-        $request = $this->bank->getAuthRequest();
+        $this->bank->getAuthRequest();
     }
 
     /**
@@ -147,7 +147,7 @@ class EstcardTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAuthRequest4012()
     {
-        $request = $this->bank->getAuthRequest('bank-id', 'random-nonce', 'random-rid');
+        $this->bank->getAuthRequest('bank-id', 'random-nonce', 'random-rid');
     }
 
     /**

@@ -66,7 +66,7 @@ class ECommerceTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetRequestFieldMissing()
     {
-        $responseData = $this->protocol->getPaymentRequest(null, $this->amount, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
+        $this->protocol->getPaymentRequest(null, $this->amount, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
     }
 
     /**
@@ -132,6 +132,6 @@ class ECommerceTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAuthRequest()
     {
-        $request = $this->protocol->getAuthRequest();
+        $this->protocol->getAuthRequest();
     }
 }
