@@ -19,7 +19,7 @@ use RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait;
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-class ECommerce implements Protocol
+class ECommerce implements ProtocolInterface
 {
     // No authentication for this protocol
     use NoAuthTrait;
@@ -30,7 +30,7 @@ class ECommerce implements Protocol
      * @var string
      */
     const PAYMENT_RESPONSE_SUCCESS = '000';
-    
+
     /**
      * Abort (user aborted payment) response code.
      *
@@ -153,7 +153,7 @@ class ECommerce implements Protocol
             'delivery' => 'S',
             'additionalinfo' => $message
         );
-        
+
         // If additionalinfo is sent it needs to be included in MAC calculation
         // But how (what position, etc) is not specified by available specification, seems to be secret
         // So just remove it but leave it otherwise in the code - maybe somebody figures it out

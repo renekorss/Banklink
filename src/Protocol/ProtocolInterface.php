@@ -15,7 +15,7 @@ namespace RKD\Banklink\Protocol;
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-interface Protocol
+interface ProtocolInterface
 {
     /**
      * Get payment object.

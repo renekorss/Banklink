@@ -20,7 +20,7 @@ use RKD\Banklink\Response\AuthResponse;
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-class IPizza implements Protocol
+class IPizza implements ProtocolInterface
 {
     /**
      * File path or file contents of public key.
