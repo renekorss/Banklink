@@ -5,6 +5,7 @@
 [![Latest Stable Version](https://poser.pugx.org/renekorss/banklink/v/stable)](https://packagist.org/packages/renekorss/banklink)
 [![Total Downloads](https://poser.pugx.org/renekorss/banklink/downloads)](https://packagist.org/packages/renekorss/banklink)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4cf7fcfd-17f3-46a0-af94-0742c4332e16/mini.png)](https://insight.sensiolabs.com/projects/4cf7fcfd-17f3-46a0-af94-0742c4332e16)
 
 # PHP Payment library
 
