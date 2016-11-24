@@ -10,7 +10,7 @@
  */
 namespace RKD\Banklink;
 
-use RKD\Banklink\Protocol\Protocol;
+use RKD\Banklink\Protocol\ProtocolInterface;
 use RKD\Banklink\Request\PaymentRequest;
 use RKD\Banklink\Request\AuthRequest;
 
@@ -75,7 +75,7 @@ abstract class Banklink
      *
      * @param RKD\Banklink\Protocol $protocol   Protocol object used
      */
-    public function __construct(Protocol $protocol)
+    public function __construct(ProtocolInterface $protocol)
     {
         $this->protocol = $protocol;
     }
