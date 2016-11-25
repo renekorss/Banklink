@@ -13,7 +13,7 @@ namespace RKD\Banklink;
 use RKD\Banklink\Protocol\LiiziPayment;
 
 /**
- * Ssettings for Liizi payment link.
+ * Settings for Liizi payment link.
  *
  * For more information, please visit:
  * https://klient.liisi.ee/static/payment_link_doc/
