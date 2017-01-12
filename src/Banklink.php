@@ -111,13 +111,13 @@ abstract class Banklink
      *
      * @return RKD\Banklink\Request\PaymentRequest Payment object
      */
-    public function getPaymentRequest($orderId, $sum, $message, $language = 'EST', $currency = 'EUR', $timezone = 'Europe/Tallinn')
+    public function getPaymentRequest($orderId, $sum, $message, $language = 'EST', $currency = 'EUR', $timezone = 'Europe/Tallinn', $referenceNumber = false)
     {
         if ($this->requestData) {
             return $this->requestData;
         }
 
-        $requestData = $this->protocol->getPaymentRequest($orderId, $sum, $message, $this->requestEncoding, $language, $currency, $timezone);
+        $requestData = $this->protocol->getPaymentRequest($orderId, $sum, $message, $this->requestEncoding, $language, $currency, $timezone, $referenceNumber);
 
         // Add additional fields
         $requestData = array_merge($requestData, $this->getAdditionalFields());

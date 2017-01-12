@@ -154,13 +154,14 @@ class IPizza implements ProtocolInterface
     /**
      * Get payment object.
      *
-     * @param string $orderId  Order ID
-     * @param float  $sum      Sum of order
-     * @param string $message  Transaction description
+     * @param string $orderId Order ID
+     * @param float $sum Sum of order
+     * @param string $message Transaction description
      * @param string $encoding Encoding
      * @param string $language Language
      * @param string $currency Currency. Default: EUR
      * @param string $timezone Timezone. Default: Europe/Tallinn
+     * @param bool $referenceNumber
      *
      * @return array Payment request data
      */
@@ -171,7 +172,8 @@ class IPizza implements ProtocolInterface
         $encoding = 'UTF-8',
         $language = 'EST',
         $currency = 'EUR',
-        $timezone = 'Europe/Tallinn'
+        $timezone = 'Europe/Tallinn',
+        $referenceNumber = false
     ) {
         $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
         $datetime = new \Datetime($time, new \DateTimeZone($timezone));
@@ -183,7 +185,7 @@ class IPizza implements ProtocolInterface
             'VK_STAMP' => $orderId,
             'VK_AMOUNT' => $sum,
             'VK_CURR' => $currency,
-            'VK_REF' => ProtocolHelper::calculateReference($orderId),
+            'VK_REF' => $referenceNumber ? $referenceNumber : ProtocolHelper::calculateReference($orderId),
             'VK_MSG' => $message,
             'VK_RETURN' => $this->requestUrl,
             'VK_CANCEL' => $this->requestUrl,

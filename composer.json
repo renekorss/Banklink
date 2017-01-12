@@ -1,5 +1,5 @@
 {
-  "name": "renekorss/banklink",
+  "name": "ahtinurme/banklink",
   "description": "PHP banklink library to easily integrate Baltic banklinks.",
   "keywords": ["banklink", "pangalink", "baltic banklinks"],
   "license": "MIT",
@@ -7,6 +7,10 @@
     {
       "name": "Rene Korss",
       "email": "rene.korss@gmail.com"
+    },
+    {
+      "name": "Ahti Nurme",
+      "email": "ahtinurme@gmail.com"
     }
   ],
   "minimum-stability": "dev",

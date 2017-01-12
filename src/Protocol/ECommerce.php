@@ -117,13 +117,14 @@ class ECommerce implements ProtocolInterface
     /**
      * Get payment object.
      *
-     * @param string $orderId  Order ID
-     * @param float  $sum      Sum of order
-     * @param string $message  Transaction description
+     * @param string $orderId Order ID
+     * @param float $sum Sum of order
+     * @param string $message Transaction description
      * @param string $encoding Encoding
      * @param string $language Language
      * @param string $currency Currency. Default: EUR
      * @param string $timezone Timezone. Default: Europe/Tallinn
+     * @param bool $referenceNumber
      *
      * @return array Payment request data
      */
@@ -134,7 +135,8 @@ class ECommerce implements ProtocolInterface
         $encoding = 'UTF-8',
         $language = 'EST',
         $currency = 'EUR',
-        $timezone = 'Europe/Tallinn'
+        $timezone = 'Europe/Tallinn',
+        $referenceNumber = false
     ) {
         $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
         $datetime = new \Datetime($time, new \DateTimeZone($timezone));
