@@ -27,7 +27,7 @@ class SEB extends Banklink
      *
      * @var string
      */
-    protected $requestUrl = 'https://www.seb.ee/cgi-bin/unet3.sh/un3min.r';
+    protected $requestUrl = 'https://www.seb.ee/cgi-bin/unet3.sh/ipank.r';
 
     /**
      * Test request url.
