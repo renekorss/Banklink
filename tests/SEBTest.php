@@ -18,7 +18,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
     protected $bankClass = "RKD\Banklink\SEB";
     protected $protocolClass = "RKD\Banklink\Protocol\IPizza";
 
-    protected $requestUrl = 'https://www.seb.ee/cgi-bin/unet3.sh/un3min.r';
+    protected $requestUrl = 'https://www.seb.ee/cgi-bin/unet3.sh/ipank.r';
     protected $testRequestUrl = 'http://localhost:8080/banklink/seb-common';
     protected $bank;
 
