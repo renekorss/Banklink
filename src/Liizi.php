@@ -15,28 +15,16 @@ use RKD\Banklink\Protocol\LiiziPayment;
 /**
  * Settings for Liizi payment link.
  *
+ * NOTE: This class is preserved only for BC
+ *
  * For more information, please visit:
  * https://klient.liisi.ee/static/payment_link_doc/
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
 
-class Liizi extends Banklink
+class Liizi extends Liisi
 {
-    /**
-     * Request url.
-     *
-     * @var string
-     */
-    protected $requestUrl = 'https://klient.liisi.ee/api/ipizza/';
-
-    /**
-     * Test request url.
-     *
-     * @var string
-     */
-    protected $testRequestUrl = 'https://prelive.liisi.ee:8953/api/ipizza/';
-
     /**
      * Force Liizi class to use LiiziPayment protocol.
      *
@@ -45,25 +33,5 @@ class Liizi extends Banklink
     public function __construct(LiiziPayment $protocol)
     {
         parent::__construct($protocol);
-    }
-
-    /**
-     * Override encoding field.
-     */
-    protected function getEncodingField()
-    {
-        return 'VK_ENCODING';
-    }
-
-    /**
-     * Liizi uses UTF-8.
-     *
-     * @return array Array of additional fields to send to bank
-     */
-    protected function getAdditionalFields()
-    {
-        return array(
-            'VK_ENCODING' => $this->requestEncoding,
-        );
     }
 }

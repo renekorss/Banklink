@@ -2,17 +2,17 @@
 
 namespace RKD\BanklinkTests;
 
-use RKD\Banklink\Protocol\LiiziPayment;
+use RKD\Banklink\Protocol\LiisiPayment;
 
 /**
- * Test suite for Liizi banklink.
+ * Test suite for Liisi banklink.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class LiiziTest extends SEBTest
+class LiisiTest extends SEBTest
 {
-    protected $bankClass = "RKD\Banklink\Liizi";
-    protected $protocolClass = "RKD\Banklink\Protocol\LiiziPayment";
+    protected $bankClass = "RKD\Banklink\Liisi";
+    protected $protocolClass = "RKD\Banklink\Protocol\LiisiPayment";
 
     protected $requestUrl = 'https://klient.liisi.ee/api/ipizza/';
     protected $testRequestUrl = 'https://prelive.liisi.ee:8953/api/ipizza/';

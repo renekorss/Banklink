@@ -10,14 +10,16 @@
  */
 namespace RKD\Banklink\Protocol;
 
+use RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait;
+
 /**
- * Protocol for Liizi payment link.
+ * Protocol for Liisi payment link.
  * Same as IPizza, but without authentication
- *
- * NOTE: This class is preserved only for BC
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-class LiiziPayment extends LiisiPayment
+class LiisiPayment extends IPizza
 {
+    // No authentication for this protocol
+    use NoAuthTrait;
 }
