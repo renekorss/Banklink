@@ -22,8 +22,8 @@
         <whitelist addUncoveredFilesFromWhitelist="true" processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src</directory>
             <exclude>
-                <file>/src/Liizi.php</file>
-                <file>/src/Protocol/LiiziPayment.php</file>
+                <file>./src/Liizi.php</file>
+                <file>./src/Protocol/LiiziPayment.php</file>
             </exclude>
         </whitelist>
     </filter>
