@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/renekorss/Banklink.svg?branch=master)](https://travis-ci.org/renekorss/Banklink) 
+[![Build Status](https://travis-ci.org/renekorss/Banklink.svg?branch=master)](https://travis-ci.org/renekorss/Banklink)
 [![Coverage Status](https://coveralls.io/repos/renekorss/Banklink/badge.svg?branch=master&service=github)](https://coveralls.io/github/renekorss/Banklink?branch=master)
 [![HHVM Status](http://hhvm.h4cc.de/badge/renekorss/banklink.svg?style=flat)](http://hhvm.h4cc.de/package/renekorss/banklink)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e40d4d283c7e41b2993656fce3645439)](https://www.codacy.com/app/renekorss/Banklink?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=renekorss/Banklink&amp;utm_campaign=Badge_Grade)
@@ -32,7 +32,7 @@ Liisi Payment Link| :white_check_mark:  | does not apply
 
 ## How to use?
 
-> **SECURITY WARNING** 
+> **SECURITY WARNING**
 
 > Never keep your private and public keys in publicly accessible folder. Instead place keys **under** root folder (usually `public_html` or `www`).
 
@@ -139,17 +139,17 @@ Liisi Payment Link| :white_check_mark:  | does not apply
       $sender          = $response->getSender();
       $transactionId   = $response->getTransactionId();
       $transactionDate = $response->getTransactionDate();
-      
+
       // Only for auth data
       $userId          = $response->getUserId(); // Person ID
       $userName        = $response->getUserName(); // Person name
       $country         = $response->getUserCountry(); // Person country
       $authDate        = $response->getAuthDate(); // Authentication response datetime
-      
-      // Method used for authentication 
+
+      // Method used for authentication
       // Possible values: ID Card, Mobile ID, One-off code card, PIN-calculator, Code card or unknown
       $authMethod      = $response->getAuthMethod();
-    
+
     // Failed
     } else {
       // Payment data
@@ -161,11 +161,11 @@ Liisi Payment Link| :white_check_mark:  | does not apply
 
 ## Tasks
 
- - `phpunit` - run tests
- - `phpdoc` - build API documentation
- - `phpmd ./src text phpmd.xml` - run PHP Mess Detector
- - `phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests` - run PHP CodeSniffer
- 
+ - `compsoer tests` - run tests
+ - `composer docs` - build API documentation
+ - `composer phpmd` - run PHP Mess Detector
+ - `composer phpcs` - run PHP CodeSniffer
+
 ## Testing your banklink
 
 You can test your banklink with <a href="http://pangalink.net/" target="_blank">pangalink.net</a> application (Windows, Mac, Linux).

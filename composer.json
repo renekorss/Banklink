@@ -27,5 +27,11 @@
       "RKD\\Banklink\\": "src",
       "RKD\\BanklinkTests\\": "tests"
     }
+  },
+  "scripts": {
+    "tests": "phpunit",
+    "docs": "phpdoc -d ./src -t ./docs --template=responsive-twig",
+    "phpmd": "phpmd ./src text phpmd.xml",
+    "phpcs": "phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests"
   }
 }
