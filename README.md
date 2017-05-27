@@ -161,7 +161,7 @@ Liisi Payment Link| :white_check_mark:  | does not apply
 
 ## Tasks
 
- - `compsoer tests` - run tests
+ - `composer tests` - run tests
  - `composer docs` - build API documentation
  - `composer phpmd` - run PHP Mess Detector
  - `composer phpcs` - run PHP CodeSniffer
