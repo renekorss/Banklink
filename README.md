@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/renekorss/Banklink.svg?branch=master)](https://travis-ci.org/renekorss/Banklink)
 [![Coverage Status](https://coveralls.io/repos/renekorss/Banklink/badge.svg?branch=master&service=github)](https://coveralls.io/github/renekorss/Banklink?branch=master)
-[![HHVM Status](http://hhvm.h4cc.de/badge/renekorss/banklink.svg?style=flat)](http://hhvm.h4cc.de/package/renekorss/banklink)
+[![Test Status](https://php-eye.com/badge/renekorss/Banklink/tested.svg)](http://hhvm.h4cc.de/package/renekorss/banklink)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e40d4d283c7e41b2993656fce3645439)](https://www.codacy.com/app/renekorss/Banklink?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=renekorss/Banklink&amp;utm_campaign=Badge_Grade)
 [![Latest Stable Version](https://poser.pugx.org/renekorss/banklink/v/stable)](https://packagist.org/packages/renekorss/banklink)
 [![Total Downloads](https://poser.pugx.org/renekorss/banklink/downloads)](https://packagist.org/packages/renekorss/banklink)
