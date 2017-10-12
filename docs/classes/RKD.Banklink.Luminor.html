@@ -3,7 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
     <meta charset="utf-8"/>
-    <title>    API Documentation &raquo; \RKD\Banklink\Banklink
+    <title>    API Documentation &raquo; \RKD\Banklink\Luminor
 </title>
     <meta name="author" content=""/>
     <meta name="description" content=""/>
@@ -119,37 +119,37 @@
         <li class="nav-header">
             <i class="icon-custom icon-method"></i> Methods
             <ul>
-                                                                                                    <li class="method public">
+                                                                                                    <li class="method public inherited">
         <a href="#method___construct" title="__construct :: Init banklink.">
             <span class="description">Init banklink.</span><pre>__construct</pre>
         </a>
     </li>
 
-                                                                                                        <li class="method public">
+                                                                                                        <li class="method public inherited">
         <a href="#method_debugMode" title="debugMode :: Activate debug mode. Changes requestUrl to testRequestUrl">
             <span class="description">Activate debug mode. Changes requestUrl to testRequestUrl</span><pre>debugMode</pre>
         </a>
     </li>
 
-                                                                                                                                                                <li class="method public">
+                                                                                                                                                                <li class="method public inherited">
         <a href="#method_getAuthRequest" title="getAuthRequest :: Get auhtnetication object.">
             <span class="description">Get auhtnetication object.</span><pre>getAuthRequest</pre>
         </a>
     </li>
 
-                                                                                                                                                                <li class="method public">
+                                                                                                                                                                <li class="method public inherited">
         <a href="#method_getPaymentRequest" title="getPaymentRequest :: Get payment object.">
             <span class="description">Get payment object.</span><pre>getPaymentRequest</pre>
         </a>
     </li>
 
-                                                                                                                                                                <li class="method public">
+                                                                                                                                                                <li class="method public inherited">
         <a href="#method_handleResponse" title="handleResponse :: Handles response from bank.">
             <span class="description">Handles response from bank.</span><pre>handleResponse</pre>
         </a>
     </li>
 
-                                                                                                        <li class="method public">
+                                                                                                        <li class="method public inherited">
         <a href="#method_setRequestUrl" title="setRequestUrl :: Set request URL">
             <span class="description">Set request URL</span><pre>setRequestUrl</pre>
         </a>
@@ -159,17 +159,17 @@
         </li>
         <li class="nav-header protected">» Protected
             <ul>
-                                                                                                                                                    <li class="method protected">
+                                                                                                                                                    <li class="method protected inherited">
                             <a href="#method_getAdditionalFields" title="getAdditionalFields :: Add additional fields.">
                                 <span class="description">Add additional fields.</span><pre>getAdditionalFields</pre>
                             </a>
                         </li>
-                                                                                                                    <li class="method protected">
+                                                                                                                    <li class="method protected inherited">
                             <a href="#method_getEncodingField" title="getEncodingField :: Detect if bank sent us data with encoding field.">
                                 <span class="description">Detect if bank sent us data with encoding field.</span><pre>getEncodingField</pre>
                             </a>
                         </li>
-                                                                                                                    <li class="method protected">
+                                                                                                                    <li class="method protected inherited">
                             <a href="#method_getResponseEncoding" title="getResponseEncoding :: Get encoding for response, if response data has it.">
                                 <span class="description">Get encoding for response, if response data has it.</span><pre>getResponseEncoding</pre>
                             </a>
@@ -192,13 +192,15 @@
 
         <div class="span8">
             <div class="element class">
-                <h1>Banklink</h1>
+                <h1>Luminor</h1>
                 <small style="display: block; text-align: right">
+                                            Extends <a href="../classes/RKD.Banklink.Nordea.html">\RKD\Banklink\Nordea</a>
                                                         </small>
-                <p class="short_description">Abstract class for every banklink.</p>
+                <p class="short_description">Banklink settings for Luminor.</p>
                 <div class="details">
                     <div class="long_description">
-                        
+                        <p>For more information, please visit:
+<a href="http://www.nordea.ee/Corporate%20customers/Daily%20banking/Collection%20of%20payment/E-payment/798312.html">http://www.nordea.ee/Corporate%20customers/Daily%20banking/Collection%20of%20payment/E-payment/798312.html</a></p>
                     </div>
                     <table class="table table-bordered">
                                                                                     <tr>
@@ -219,15 +221,15 @@
                                                                                 <p>Default</p>
                                     </td>
                                 </tr>
-                                                                                                                                                                                                                                                                                                                                            </table>
+                                                                                                                                                                                </table>
 
                     <h3><i class="icon-custom icon-method"></i> Methods</h3>
                                                                 <a id="method___construct"></a>
-                        <div class="element clickable method public  method___construct" data-toggle="collapse" data-target=".method___construct .collapse">
+                        <div class="element clickable method public  method___construct inherited" data-toggle="collapse" data-target=".method___construct .collapse">
                             <h2>Init banklink.</h2>
                             <pre>__construct(\RKD\Banklink\RKD\Banklink\Protocol $protocol) </pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
 
                             
                             <div class="row collapse">
@@ -255,11 +257,11 @@
 
                         </div>
                                             <a id="method_debugMode"></a>
-                        <div class="element clickable method public  method_debugMode" data-toggle="collapse" data-target=".method_debugMode .collapse">
+                        <div class="element clickable method public  method_debugMode inherited" data-toggle="collapse" data-target=".method_debugMode .collapse">
                             <h2>Activate debug mode. Changes requestUrl to testRequestUrl</h2>
                             <pre>debugMode() </pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
 
                             
                             <div class="row collapse">
@@ -289,11 +291,11 @@
 
                         </div>
                                             <a id="method_getAdditionalFields"></a>
-                        <div class="element clickable method protected  method_getAdditionalFields" data-toggle="collapse" data-target=".method_getAdditionalFields .collapse">
+                        <div class="element clickable method protected  method_getAdditionalFields inherited" data-toggle="collapse" data-target=".method_getAdditionalFields .collapse">
                             <h2>Add additional fields.</h2>
                             <pre>getAdditionalFields() : array</pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
 
                             
                             <div class="row collapse">
@@ -318,11 +320,11 @@
 
                         </div>
                                             <a id="method_getAuthRequest"></a>
-                        <div class="element clickable method public  method_getAuthRequest" data-toggle="collapse" data-target=".method_getAuthRequest .collapse">
+                        <div class="element clickable method public  method_getAuthRequest inherited" data-toggle="collapse" data-target=".method_getAuthRequest .collapse">
                             <h2>Get auhtnetication object.</h2>
                             <pre>getAuthRequest(string $recId = null, string $nonce = null, string $rid = null, string $language = &#039;EST&#039;, string $timezone = &#039;Europe/Tallinn&#039;) : \RKD\Banklink\RKD\Banklink\Request\AuthRequest</pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
 
                             
                             <div class="row collapse">
@@ -361,11 +363,11 @@
 
                         </div>
                                             <a id="method_getEncodingField"></a>
-                        <div class="element clickable method protected  method_getEncodingField" data-toggle="collapse" data-target=".method_getEncodingField .collapse">
+                        <div class="element clickable method protected  method_getEncodingField inherited" data-toggle="collapse" data-target=".method_getEncodingField .collapse">
                             <h2>Detect if bank sent us data with encoding field.</h2>
                             <pre>getEncodingField() : string|null</pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
 
                             
                             <div class="row collapse">
@@ -390,11 +392,11 @@
 
                         </div>
                                             <a id="method_getPaymentRequest"></a>
-                        <div class="element clickable method public  method_getPaymentRequest" data-toggle="collapse" data-target=".method_getPaymentRequest .collapse">
+                        <div class="element clickable method public  method_getPaymentRequest inherited" data-toggle="collapse" data-target=".method_getPaymentRequest .collapse">
                             <h2>Get payment object.</h2>
                             <pre>getPaymentRequest(string $orderId, float $sum, string $message, string $language = &#039;EST&#039;, string $currency = &#039;EUR&#039;, string $timezone = &#039;Europe/Tallinn&#039;) : \RKD\Banklink\RKD\Banklink\Request\PaymentRequest</pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
 
                             
                             <div class="row collapse">
@@ -437,11 +439,11 @@
 
                         </div>
                                             <a id="method_getResponseEncoding"></a>
-                        <div class="element clickable method protected  method_getResponseEncoding" data-toggle="collapse" data-target=".method_getResponseEncoding .collapse">
+                        <div class="element clickable method protected  method_getResponseEncoding inherited" data-toggle="collapse" data-target=".method_getResponseEncoding .collapse">
                             <h2>Get encoding for response, if response data has it.</h2>
                             <pre>getResponseEncoding(array $responseData) : string</pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
 
                             
                             <div class="row collapse">
@@ -464,11 +466,11 @@
 
                         </div>
                                             <a id="method_handleResponse"></a>
-                        <div class="element clickable method public  method_handleResponse" data-toggle="collapse" data-target=".method_handleResponse .collapse">
+                        <div class="element clickable method public  method_handleResponse inherited" data-toggle="collapse" data-target=".method_handleResponse .collapse">
                             <h2>Handles response from bank.</h2>
                             <pre>handleResponse(array $responseData) : \Response\PaymentResponse|\Response\AuthResponse</pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
 
                             
                             <div class="row collapse">
@@ -491,11 +493,11 @@
 
                         </div>
                                             <a id="method_setRequestUrl"></a>
-                        <div class="element clickable method public  method_setRequestUrl" data-toggle="collapse" data-target=".method_setRequestUrl .collapse">
+                        <div class="element clickable method public  method_setRequestUrl inherited" data-toggle="collapse" data-target=".method_setRequestUrl .collapse">
                             <h2>Set request URL</h2>
                             <pre>setRequestUrl(string $requestUrl) </pre>
                             <div class="labels">
-                                                                                                                                                                                            </div>
+                                <span class="label">inherited</span>                                                                                                                                                            </div>
 
                             
                             <div class="row collapse">
@@ -525,90 +527,12 @@
                     
                     
                                                                 <h3><i class="icon-custom icon-property"></i> Properties</h3>
-                                                    <a id="property_protocol"> </a>
-                            <div class="element clickable property  protected property_protocol" data-toggle="collapse" data-target=".property_protocol .collapse">
-                                <h2>Protocol object used for communication.</h2>
-                                <pre>protocol : \RKD\Banklink\RKD\Banklink\Protocol</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description"></div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-
-                                                                                    <h3>Type(s)</h3>
-                                            <code>\RKD\Banklink\RKD\Banklink\Protocol</code>
-                                                                            </div>
-                                </div>
-                            </div>
-                                                    <a id="property_requestData"> </a>
-                            <div class="element clickable property  protected property_requestData" data-toggle="collapse" data-target=".property_requestData .collapse">
-                                <h2>Request data.</h2>
-                                <pre>requestData : array</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description"></div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-
-                                                                                    <h3>Type(s)</h3>
-                                            <code>array</code>
-                                                                            </div>
-                                </div>
-                            </div>
-                                                    <a id="property_authData"> </a>
-                            <div class="element clickable property  protected property_authData" data-toggle="collapse" data-target=".property_authData .collapse">
-                                <h2>Authentication data.</h2>
-                                <pre>authData : array</pre>
-                                <div class="labels">
-                                                                                                        </div>
-                                <div class="row collapse">
-                                    <div class="detail-description">
-                                        <div class="long_description"></div>
-
-                                        <table class="table">
-                                                                                            <tr>
-                                                    <th>
-                                                        var
-                                                    </th>
-                                                    <td>
-                                                                                                                    
-                                                                                                            </td>
-                                                </tr>
-                                                                                    </table>
-
-                                                                                    <h3>Type(s)</h3>
-                                            <code>array</code>
-                                                                            </div>
-                                </div>
-                            </div>
                                                     <a id="property_requestUrl"> </a>
-                            <div class="element clickable property  protected property_requestUrl" data-toggle="collapse" data-target=".property_requestUrl .collapse">
+                            <div class="element clickable property  protected property_requestUrl inherited" data-toggle="collapse" data-target=".property_requestUrl .collapse">
                                 <h2>Request url.</h2>
                                 <pre>requestUrl : string</pre>
                                 <div class="labels">
-                                                                                                        </div>
+                                    <span class="label">inherited</span>                                                                    </div>
                                 <div class="row collapse">
                                     <div class="detail-description">
                                         <div class="long_description"></div>
@@ -630,11 +554,11 @@
                                 </div>
                             </div>
                                                     <a id="property_testRequestUrl"> </a>
-                            <div class="element clickable property  protected property_testRequestUrl" data-toggle="collapse" data-target=".property_testRequestUrl .collapse">
+                            <div class="element clickable property  protected property_testRequestUrl inherited" data-toggle="collapse" data-target=".property_testRequestUrl .collapse">
                                 <h2>Test request url.</h2>
                                 <pre>testRequestUrl : string</pre>
                                 <div class="labels">
-                                                                                                        </div>
+                                    <span class="label">inherited</span>                                                                    </div>
                                 <div class="row collapse">
                                     <div class="detail-description">
                                         <div class="long_description"></div>
@@ -655,12 +579,90 @@
                                                                             </div>
                                 </div>
                             </div>
+                                                    <a id="property_protocol"> </a>
+                            <div class="element clickable property  protected property_protocol inherited" data-toggle="collapse" data-target=".property_protocol .collapse">
+                                <h2>Protocol object used for communication.</h2>
+                                <pre>protocol : \RKD\Banklink\RKD\Banklink\Protocol</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>\RKD\Banklink\RKD\Banklink\Protocol</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_requestData"> </a>
+                            <div class="element clickable property  protected property_requestData inherited" data-toggle="collapse" data-target=".property_requestData .collapse">
+                                <h2>Request data.</h2>
+                                <pre>requestData : array</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>array</code>
+                                                                            </div>
+                                </div>
+                            </div>
+                                                    <a id="property_authData"> </a>
+                            <div class="element clickable property  protected property_authData inherited" data-toggle="collapse" data-target=".property_authData .collapse">
+                                <h2>Authentication data.</h2>
+                                <pre>authData : array</pre>
+                                <div class="labels">
+                                    <span class="label">inherited</span>                                                                    </div>
+                                <div class="row collapse">
+                                    <div class="detail-description">
+                                        <div class="long_description"></div>
+
+                                        <table class="table">
+                                                                                            <tr>
+                                                    <th>
+                                                        var
+                                                    </th>
+                                                    <td>
+                                                                                                                    
+                                                                                                            </td>
+                                                </tr>
+                                                                                    </table>
+
+                                                                                    <h3>Type(s)</h3>
+                                            <code>array</code>
+                                                                            </div>
+                                </div>
+                            </div>
                                                     <a id="property_requestEncoding"> </a>
-                            <div class="element clickable property  protected property_requestEncoding" data-toggle="collapse" data-target=".property_requestEncoding .collapse">
+                            <div class="element clickable property  protected property_requestEncoding inherited" data-toggle="collapse" data-target=".property_requestEncoding .collapse">
                                 <h2>Request encoding.</h2>
                                 <pre>requestEncoding : string</pre>
                                 <div class="labels">
-                                                                                                        </div>
+                                    <span class="label">inherited</span>                                                                    </div>
                                 <div class="row collapse">
                                     <div class="detail-description">
                                         <div class="long_description"></div>
@@ -682,11 +684,11 @@
                                 </div>
                             </div>
                                                     <a id="property_responseEncoding"> </a>
-                            <div class="element clickable property  protected property_responseEncoding" data-toggle="collapse" data-target=".property_responseEncoding .collapse">
+                            <div class="element clickable property  protected property_responseEncoding inherited" data-toggle="collapse" data-target=".property_responseEncoding .collapse">
                                 <h2>Response encoding.</h2>
                                 <pre>responseEncoding : string</pre>
                                 <div class="labels">
-                                                                                                        </div>
+                                    <span class="label">inherited</span>                                                                    </div>
                                 <div class="row collapse">
                                     <div class="detail-description">
                                         <div class="long_description"></div>
@@ -709,14 +711,14 @@
                             </div>
                                                             </div>
             </div>
-            <a id="\RKD\Banklink\Banklink"></a>
+            <a id="\RKD\Banklink\Luminor"></a>
             <ul class="breadcrumb">
                 <li><a href="../index.html"><i class="icon-custom icon-class"></i></a></li>
                     
     
     <li><span class="divider">\</span><a href="../namespaces/RKD.Banklink.html">Banklink</a></li>
 
-                <li class="active"><span class="divider">\</span><a href="../classes/RKD.Banklink.Banklink.html">Banklink</a></li>
+                <li class="active"><span class="divider">\</span><a href="../classes/RKD.Banklink.Luminor.html">Luminor</a></li>
             </ul>
         </div>
     </div>
@@ -727,7 +729,7 @@
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Thu, 12 Oct 2017 18:27:24 +0300.<br/>
+            generated on Thu, 12 Oct 2017 18:27:25 +0300.<br/>
     </footer>
     </body>
 </html>
