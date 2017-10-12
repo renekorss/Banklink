@@ -16,7 +16,7 @@ use RKD\Banklink\Protocol\IPizza;
  * Banklink settings for Nordea.
  *
  * For more information, please visit:
- * http://www.nordea.ee/teenused+%C3%A4rikliendile/igap%C3%A4evapangandus/maksete+kogumine/e-makse/1562142.html
+ * http://www.nordea.ee/Corporate%20customers/Daily%20banking/Collection%20of%20payment/E-payment/798312.html
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */

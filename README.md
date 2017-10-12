@@ -22,10 +22,11 @@
 Provider          | Payment             | Authentication    
 ------------------| ------------------- | ------------------
 Danskebank        | :white_check_mark:  | :white_check_mark:
-Krediidipank      | :white_check_mark:  | :white_check_mark:
+Coop Pank         | :white_check_mark:  | :white_check_mark:
 LHV               | :white_check_mark:  | :white_check_mark:
 SEB               | :white_check_mark:  | :white_check_mark:
 Swedbank          | :white_check_mark:  | :white_check_mark:
+Luminor           | :white_check_mark:  | :white_check_mark:
 Nordea            | :white_check_mark:  | :white_check_mark:
 Estcard           | :white_check_mark:  | does not apply
 Liisi Payment Link| :white_check_mark:  | does not apply

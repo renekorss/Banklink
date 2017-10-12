@@ -13,13 +13,14 @@ namespace RKD\Banklink;
 use RKD\Banklink\Protocol\IPizza;
 
 /**
- * Banklink settings for Krediidipank.
+ * Banklink settings for Coop Pank.
  *
- * For more information, please visit: http://www.krediidipank.ee/business/settlements/bank-link/index.html
+ * For more information, please visit: UNKNOWN
+ * @TODO: Link broken due to bank name change. New url unknown. E-mail sent.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class Krediidipank extends Banklink
+class CoopPank extends Banklink
 {
     /**
      * Request url.
