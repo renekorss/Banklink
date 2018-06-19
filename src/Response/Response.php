@@ -44,7 +44,7 @@ class Response
     /**
      * Prefered language.
      *
-     * @var array
+     * @var string
      */
     protected $language;
 
