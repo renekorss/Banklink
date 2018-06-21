@@ -10,7 +10,7 @@
 # PHP Payment library
 
 > PHP payment library to easily integrate Baltic banklinks, E-commerce gateaway (Estcard, Nets Estonia) and Liizi Payment Link.
-
+>
 > View API documentation at http://renekorss.github.io/Banklink/
 
 ## Composer
@@ -35,9 +35,9 @@ Liisi Payment Link| :white_check_mark:  | does not apply
 ## How to use?
 
 > **SECURITY WARNING**
-
+>
 > Never keep your private and public keys in publicly accessible folder. Instead place keys **under** root folder (usually `public_html` or `www`).
-
+>
 > If you store keys as strings in database, then they should be accessible only over HTTPS protocol.
 
 ### Payment
