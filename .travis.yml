@@ -25,9 +25,18 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  - if [ "$RUN_PHPCS" == "yes" ]; then vendor/bin/phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests; fi
-  - if [ "$RUN_PHPMD" == "yes" ]; then vendor/bin/phpmd ./src text phpmd.xml; fi
-  - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+  - if [ "$RUN_PHPCS" == "yes" ];
+    then vendor/bin/phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests;
+    fi
+  - if [ "$RUN_PHPMD" == "yes" ];
+    then vendor/bin/phpmd ./src text phpmd.xml;
+    fi
+  - if [ "$RUN_COVERALLS" == "yes" ];
+    then vendor/bin/phpunit --coverage-clover build/logs/clover.xml;
+    else vendor/bin/phpunit;
+    fi
 
 after_success:
-  - if [ "$RUN_COVERALLS" == "yes" ]; then php vendor/bin/php-coveralls -v; fi
+  - if [ "$RUN_COVERALLS" == "yes" ];
+    then php vendor/bin/php-coveralls -v;
+    fi
