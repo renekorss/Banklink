@@ -115,13 +115,29 @@ abstract class Banklink
      *
      * @return RKD\Banklink\Request\PaymentRequest Payment object
      */
-    public function getPaymentRequest($orderId, $sum, $message, $language = 'EST', $currency = 'EUR', $customRequestData = [], $timezone = 'Europe/Tallinn') : RequestInterface
-    {
+    public function getPaymentRequest(
+        $orderId,
+        $sum,
+        $message,
+        $language = 'EST',
+        $currency = 'EUR',
+        $customRequestData = [],
+        $timezone = 'Europe/Tallinn'
+    ) : RequestInterface {
         if ($this->requestData) {
             return $this->requestData;
         }
 
-        $requestData = $this->protocol->getPaymentRequest($orderId, $sum, $message, $language, $currency, $customRequestData, $this->requestEncoding, $timezone);
+        $requestData = $this->protocol->getPaymentRequest(
+            $orderId,
+            $sum,
+            $message,
+            $language,
+            $currency,
+            $customRequestData,
+            $this->requestEncoding,
+            $timezone
+        );
 
         // Add additional fields
         $requestData = array_merge($requestData, $this->getAdditionalFields());
@@ -142,8 +158,13 @@ abstract class Banklink
       *
       * @return RKD\Banklink\Request\RequestInterface Authentication object
       */
-    public function getAuthRequest($recId = null, $nonce = null, $rid = null, $language = 'EST', $timezone = 'Europe/Tallinn') : RequestInterface
-    {
+    public function getAuthRequest(
+        $recId = null,
+        $nonce = null,
+        $rid = null,
+        $language = 'EST',
+        $timezone = 'Europe/Tallinn'
+    ) : RequestInterface {
         if ($this->authData) {
             return $this->authData;
         }
