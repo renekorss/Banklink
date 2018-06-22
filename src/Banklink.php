@@ -11,6 +11,8 @@
 namespace RKD\Banklink;
 
 use RKD\Banklink\Protocol\ProtocolInterface;
+use RKD\Banklink\Response\ResponseInterface;
+use RKD\Banklink\Request\RequestInterface;
 use RKD\Banklink\Request\PaymentRequest;
 use RKD\Banklink\Request\AuthRequest;
 
@@ -85,7 +87,7 @@ abstract class Banklink
      */
     public function debugMode()
     {
-        $this->setRequestUrl($this->testRequestUrl);
+        return $this->setRequestUrl($this->testRequestUrl);
     }
 
     /**
@@ -97,27 +99,29 @@ abstract class Banklink
     public function setRequestUrl($requestUrl)
     {
         $this->requestUrl = $requestUrl;
+        return $this;
     }
 
     /**
      * Get payment object.
      *
-     * @param string $orderId  Order ID
-     * @param float  $sum      Sum of order
-     * @param string $message  Transaction description
+     * @param string $orderId Order ID
+     * @param float  $sum Sum of order
+     * @param string $message Transaction description
      * @param string $language Language
      * @param string $currency Currency. Default: EUR
+     * @param array  $customRequestData Optional custom request data
      * @param string $timezone Timezone. Default: Europe/Tallinn
      *
      * @return RKD\Banklink\Request\PaymentRequest Payment object
      */
-    public function getPaymentRequest($orderId, $sum, $message, $language = 'EST', $currency = 'EUR', $timezone = 'Europe/Tallinn')
+    public function getPaymentRequest($orderId, $sum, $message, $language = 'EST', $currency = 'EUR', $customRequestData = [], $timezone = 'Europe/Tallinn') : RequestInterface
     {
         if ($this->requestData) {
             return $this->requestData;
         }
 
-        $requestData = $this->protocol->getPaymentRequest($orderId, $sum, $message, $this->requestEncoding, $language, $currency, $timezone);
+        $requestData = $this->protocol->getPaymentRequest($orderId, $sum, $message, $language, $currency, $customRequestData, $this->requestEncoding, $timezone);
 
         // Add additional fields
         $requestData = array_merge($requestData, $this->getAdditionalFields());
@@ -136,9 +140,9 @@ abstract class Banklink
       * @param string $language Language
       * @param string $timezone Timezone. Default: Europe/Tallinn
       *
-      * @return RKD\Banklink\Request\AuthRequest Authentication object
+      * @return RKD\Banklink\Request\RequestInterface Authentication object
       */
-    public function getAuthRequest($recId = null, $nonce = null, $rid = null, $language = 'EST', $timezone = 'Europe/Tallinn')
+    public function getAuthRequest($recId = null, $nonce = null, $rid = null, $language = 'EST', $timezone = 'Europe/Tallinn') : RequestInterface
     {
         if ($this->authData) {
             return $this->authData;
@@ -159,9 +163,9 @@ abstract class Banklink
      *
      * @param array $responseData Response data from bank
      *
-     * @return \Response\PaymentResponse|\Response\AuthResponse Response object, depending on request made
+     * @return RKD\Banklink\Response\ResponseInterface Response object, depending on request made
      */
-    public function handleResponse(array $responseData)
+    public function handleResponse(array $responseData) : ResponseInterface
     {
         return $this->protocol->handleResponse($responseData, $this->getResponseEncoding($responseData));
     }
@@ -173,7 +177,7 @@ abstract class Banklink
      *
      * @return string Encoding
      */
-    protected function getResponseEncoding(array $responseData)
+    protected function getResponseEncoding(array $responseData) : string
     {
         if ($this->getEncodingField() && isset($responseData[$this->getEncodingField()])) {
             return $responseData[$this->getEncodingField()];
@@ -187,9 +191,9 @@ abstract class Banklink
      *
      * @return string|null Encoding field name
      */
-    protected function getEncodingField()
+    protected function getEncodingField() : string
     {
-        return; // @codeCoverageIgnore
+        return ''; // @codeCoverageIgnore
     }
 
     /**
@@ -197,7 +201,7 @@ abstract class Banklink
      *
      * @return array Array of additional fields
      */
-    protected function getAdditionalFields()
+    protected function getAdditionalFields() : array
     {
         return []; // @codeCoverageIgnore
     }

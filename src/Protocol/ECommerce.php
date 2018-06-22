@@ -12,6 +12,7 @@ namespace RKD\Banklink\Protocol;
 
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Response\PaymentResponse;
+use RKD\Banklink\Response\ResponseInterface;
 use RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait;
 
 /**
@@ -120,9 +121,10 @@ class ECommerce implements ProtocolInterface
      * @param string $orderId  Order ID
      * @param float  $sum      Sum of order
      * @param string $message  Transaction description
-     * @param string $encoding Encoding
      * @param string $language Language
      * @param string $currency Currency. Default: EUR
+     * @param array  $customRequestData Optional custom request data
+     * @param string $encoding Encoding
      * @param string $timezone Timezone. Default: Europe/Tallinn
      *
      * @return array Payment request data
@@ -131,11 +133,12 @@ class ECommerce implements ProtocolInterface
         $orderId,
         $sum,
         $message,
-        $encoding = 'UTF-8',
         $language = 'EST',
         $currency = 'EUR',
+        $customRequestData = [],
+        $encoding = 'UTF-8',
         $timezone = 'Europe/Tallinn'
-    ) {
+    ) : array {
         $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
         $datetime = new \Datetime($time, new \DateTimeZone($timezone));
 
@@ -154,6 +157,11 @@ class ECommerce implements ProtocolInterface
             'additionalinfo' => $message
         ];
 
+        // Merge custom data
+        if (is_array($customRequestData)) {
+            $data = array_merge($data, $customRequestData);
+        }
+
         // If additionalinfo is sent it needs to be included in MAC calculation
         // But how (what position, etc) is not specified by available specification, seems to be secret
         // So just remove it but leave it otherwise in the code - maybe somebody figures it out
@@ -171,9 +179,9 @@ class ECommerce implements ProtocolInterface
      * @param array $responseData Response data from bank
      * @param bool  $success      Signature validated?
      *
-     * @return \RKD\Banklink\Response\PaymentResponse
+     * @return \RKD\Banklink\Response\Response
      */
-    protected function handlePaymentResponse(array $responseData, $success)
+    protected function handlePaymentResponse(array $responseData, $success) : ResponseInterface
     {
         $status = PaymentResponse::STATUS_ERROR;
 
@@ -204,7 +212,7 @@ class ECommerce implements ProtocolInterface
      *
      * @return string Signature
      */
-    protected function getSignature(array $data, $encoding = 'UTF-8')
+    protected function getSignature(array $data, $encoding = 'UTF-8') : string
     {
         $mac = $this->generateSignature($data, $encoding);
 
@@ -234,7 +242,7 @@ class ECommerce implements ProtocolInterface
      *
      * @return string MAC key
      */
-    protected function generateSignature(array $data, $encoding = 'UTF-8')
+    protected function generateSignature(array $data, $encoding = 'UTF-8') : string
     {
         // Request mac
         $fields = [
@@ -291,7 +299,7 @@ class ECommerce implements ProtocolInterface
 
         foreach ($fields as $key) {
             // Check if field exists
-            if (!isset($data[$key]) || $data[$key] === false) {
+            if (!isset($data[$key]) || $data[$key] == false) {
                 throw new \UnexpectedValueException(
                     vsprintf('Field %s must be set to use ECommerce protocol.', [$key])
                 );
@@ -311,7 +319,7 @@ class ECommerce implements ProtocolInterface
      *
      * @return bool True on success, false otherwise
      */
-    protected function validateSignature(array $response, $encoding = 'UTF-8')
+    protected function validateSignature(array $response, $encoding = 'UTF-8') : bool
     {
         $data = $this->generateSignature($response, $encoding);
 

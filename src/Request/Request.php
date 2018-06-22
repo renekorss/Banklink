@@ -15,7 +15,7 @@ namespace RKD\Banklink\Request;
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-abstract class Request
+abstract class Request implements RequestInterface
 {
     /**
      * Request url.
@@ -48,7 +48,7 @@ abstract class Request
      *
      * @return string HTML of hidden request inputs
      */
-    public function getRequestInputs()
+    public function getRequestInputs() : string
     {
         if (empty($this->requestData)) {
             throw new \UnexpectedValueException('Can\'t generate inputs. Request data is empty.');
@@ -71,7 +71,7 @@ abstract class Request
      *
      * @return string Request URL
      */
-    public function getRequestUrl()
+    public function getRequestUrl() : string
     {
         return $this->requestUrl;
     }
@@ -81,7 +81,7 @@ abstract class Request
      *
      * @return array Request data
      */
-    public function getRequestData()
+    public function getRequestData() : array
     {
         return $this->requestData;
     }

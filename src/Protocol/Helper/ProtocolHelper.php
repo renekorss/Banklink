@@ -31,7 +31,7 @@ class ProtocolHelper
      *
      * @throws InvalidArgumentException If order ID is not in correct length
      */
-    public static function calculateReference($orderId)
+    public static function calculateReference($orderId) : string
     {
         $length = strlen($orderId);
 
@@ -67,7 +67,7 @@ class ProtocolHelper
      *
      * @return string ISO-639-1 langauge code
      */
-    public static function langToISO6391($language)
+    public static function langToISO6391($language) : string
     {
         $languages = [
             'est' => 'et',
@@ -78,11 +78,11 @@ class ProtocolHelper
 
         $language = strtolower($language);
 
-        if (in_array($language, array_keys($languages))) {
+        if (array_key_exists($language, $languages)) {
             return $languages[$language];
         }
 
-        return false; // @codeCoverageIgnore
+        return 'et'; // @codeCoverageIgnore
     }
 
     /**
@@ -91,10 +91,8 @@ class ProtocolHelper
      * Format: YYYYMM + rand between 100 000 - 999 999
      *
      * @return string Random ecuno
-     *
-     * @codeCoverageIgnore
      */
-    public static function generateEcuno()
+    public static function generateEcuno() : string
     {
         $rnd   = rand(100000, 999999);
         $date  = date("Ym");
@@ -115,7 +113,7 @@ class ProtocolHelper
      * @return string Padded string
      */
 
-    public static function mbStrPad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT, $encoding = null)
+    public static function mbStrPad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT, $encoding = null) : string
     {
         if (is_null($input) || strlen($input) == 0) {
             return false;

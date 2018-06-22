@@ -50,7 +50,7 @@ class Estcard extends Banklink
     /**
      * Override encoding field.
      */
-    protected function getEncodingField()
+    protected function getEncodingField() : string
     {
         return 'charEncoding';
     }
@@ -60,7 +60,7 @@ class Estcard extends Banklink
      *
      * @return array Array of additional fields to send to bank
      */
-    protected function getAdditionalFields()
+    protected function getAdditionalFields() : array
     {
         return [
             'charEncoding' => $this->requestEncoding,

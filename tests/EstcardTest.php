@@ -91,7 +91,7 @@ class EstcardTest extends TestCase
     {
 
         // Test service 1012
-        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Instance of PaymentRequest and data is same
         $this->assertInstanceOf('RKD\Banklink\Request\PaymentRequest', $request);
@@ -159,10 +159,10 @@ class EstcardTest extends TestCase
         $this->seb = new $this->bankClass($this->protocol);
         $this->seb->setRequestUrl('http://google.com');
 
-        $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Get same data again, already exists
-        $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Custom url
         $this->assertEquals('http://google.com', $request->getRequestUrl());

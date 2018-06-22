@@ -12,6 +12,7 @@ namespace RKD\Banklink\Protocol;
 
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\IPizza\Services;
+use RKD\Banklink\Response\ResponseInterface;
 use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Response\AuthResponse;
 
@@ -154,12 +155,13 @@ class IPizza implements ProtocolInterface
     /**
      * Get payment object.
      *
-     * @param string $orderId  Order ID
-     * @param float  $sum      Sum of order
-     * @param string $message  Transaction description
-     * @param string $encoding Encoding
+     * @param string $orderId Order ID
+     * @param float  $sum Sum of order
+     * @param string $message Transaction description
      * @param string $language Language
+     * @param array  $customRequestData Optional custom request data
      * @param string $currency Currency. Default: EUR
+     * @param string $encoding Encoding
      * @param string $timezone Timezone. Default: Europe/Tallinn
      *
      * @return array Payment request data
@@ -168,11 +170,12 @@ class IPizza implements ProtocolInterface
         $orderId,
         $sum,
         $message,
-        $encoding = 'UTF-8',
         $language = 'EST',
         $currency = 'EUR',
+        $customRequestData = [],
+        $encoding = 'UTF-8',
         $timezone = 'Europe/Tallinn'
-    ) {
+    ) : array {
         $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
         $datetime = new \Datetime($time, new \DateTimeZone($timezone));
 
@@ -194,6 +197,11 @@ class IPizza implements ProtocolInterface
         if (Services::PAYMENT_REQUEST_1011 === $this->serviceId) {
             $data['VK_NAME'] = $this->sellerName;
             $data['VK_ACC'] = $this->sellerAccount;
+        }
+
+       // Merge custom data
+        if (is_array($customRequestData)) {
+            $data = array_merge($data, $customRequestData);
         }
 
         // Generate signature
@@ -221,7 +229,7 @@ class IPizza implements ProtocolInterface
         $encoding = 'UTF-8',
         $language = 'EST',
         $timezone = 'Europe/Tallinn'
-    ) {
+    ) : array {
         $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
         $datetime = new \Datetime($time, new \DateTimeZone($timezone));
 
@@ -261,9 +269,9 @@ class IPizza implements ProtocolInterface
      * @param array  $response Response data from bank
      * @param string $encoding     Encoding
      *
-     * @return \Response\PaymentResponse|\Response\AuthResponse Response object, depending on request made
+     * @return RKD\Banklink\Response\Response Response object, depending on request made
      */
-    public function handleResponse(array $response, $encoding = 'UTF-8')
+    public function handleResponse(array $response, $encoding = 'UTF-8') : ResponseInterface
     {
         $success = $this->validateSignature($response, $encoding);
 
@@ -288,7 +296,7 @@ class IPizza implements ProtocolInterface
      *
      * @return \RKD\Banklink\Response\PaymentResponse
      */
-    protected function handlePaymentResponse(array $responseData, $success)
+    protected function handlePaymentResponse(array $responseData, $success) : ResponseInterface
     {
         $status = PaymentResponse::STATUS_ERROR;
 
@@ -323,7 +331,7 @@ class IPizza implements ProtocolInterface
      *
      * @return \RKD\Banklink\Response\AuthResponse
      */
-    protected function handleAuthResponse(array $responseData, $success)
+    protected function handleAuthResponse(array $responseData, $success) : ResponseInterface
     {
         $status = AuthResponse::STATUS_ERROR;
         if ($success) {
@@ -360,7 +368,7 @@ class IPizza implements ProtocolInterface
      *
      * @return string Signature
      */
-    protected function getSignature(array $data, $encoding = 'UTF-8')
+    protected function getSignature(array $data, $encoding = 'UTF-8') : string
     {
         $mac = $this->generateSignature($data, $encoding);
 
@@ -390,7 +398,7 @@ class IPizza implements ProtocolInterface
      *
      * @return string MAC key
      */
-    protected function generateSignature(array $data, $encoding = 'UTF-8')
+    protected function generateSignature(array $data, $encoding = 'UTF-8') : string
     {
         $service = $data['VK_SERVICE'];
         $fields = Services::getFields($service);
@@ -420,7 +428,7 @@ class IPizza implements ProtocolInterface
      *
      * @return bool True on success, false otherwise
      */
-    protected function validateSignature(array $response, $encoding = 'UTF-8')
+    protected function validateSignature(array $response, $encoding = 'UTF-8') : bool
     {
         $data = $this->generateSignature($response, $encoding);
 

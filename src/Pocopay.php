@@ -51,7 +51,7 @@ class Pocopay extends Banklink
     /**
      * Override encoding field.
      */
-    protected function getEncodingField()
+    protected function getEncodingField() : string
     {
         return 'VK_ENCODING';
     }
@@ -61,7 +61,7 @@ class Pocopay extends Banklink
      *
      * @return array Array of additional fields to send to bank
      */
-    protected function getAdditionalFields()
+    protected function getAdditionalFields() : array
     {
         return [
             'VK_ENCODING' => $this->requestEncoding,

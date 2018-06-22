@@ -15,7 +15,7 @@ namespace RKD\Banklink\Response;
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class Response
+class Response implements ResponseInterface
 {
     /**
      * Signature verified and transaction successful.
@@ -44,7 +44,7 @@ class Response
     /**
      * Prefered language.
      *
-     * @var array
+     * @var string
      */
     protected $language;
 
@@ -65,7 +65,7 @@ class Response
      *
      * @return bool True on sucess, false othwerwise
      */
-    public function wasSuccessful()
+    public function wasSuccessful() : bool
     {
         return $this->status === self::STATUS_SUCCESS;
     }
@@ -75,7 +75,7 @@ class Response
      *
      * @return int Status
      */
-    public function getStatus()
+    public function getStatus() : int
     {
         return $this->status;
     }
@@ -85,7 +85,7 @@ class Response
      *
      * @return array Array of response
      */
-    public function getResponseData()
+    public function getResponseData() : array
     {
         return $this->responseData;
     }
@@ -95,9 +95,10 @@ class Response
      *
      * @param string $language Prefered language
      */
-    public function setLanguage($language)
+    public function setLanguage($language) : ResponseInterface
     {
         $this->language = $language;
+        return $this;
     }
 
     /**
@@ -105,7 +106,7 @@ class Response
      *
      * @return string Language (EST, ENG, RUS)
      */
-    public function getLanguage()
+    public function getLanguage() : string
     {
         return $this->language;
     }

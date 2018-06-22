@@ -10,6 +10,8 @@
  */
 namespace RKD\Banklink\Protocol\ProtocolTrait;
 
+use RKD\Banklink\Response\ResponseInterface;
+
 /**
  * Trait for protocols not using auth request.
  *
@@ -38,7 +40,7 @@ trait NoAuthTrait
         $encoding = 'UTF-8',
         $language = 'EST',
         $timezone = 'Europe/Tallinn'
-    ) {
+    ) : array {
         throw new \LogicException(get_class().' protocol dosen\'t support authentication.');
     }
 
@@ -50,7 +52,7 @@ trait NoAuthTrait
      *
      * @return \Response\PaymentResponse Payment response object
      */
-    public function handleResponse(array $response, $encoding = 'UTF-8')
+    public function handleResponse(array $response, $encoding = 'UTF-8') : ResponseInterface
     {
         $success = $this->validateSignature($response, $encoding);
         return $this->handlePaymentResponse($response, $success);

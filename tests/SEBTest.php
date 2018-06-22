@@ -133,7 +133,7 @@ class SEBTest extends TestCase
     {
 
         // Test service 1012
-        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Instance of PaymentRequest and data is same
         $this->assertInstanceOf('RKD\Banklink\Request\PaymentRequest', $request);
@@ -161,7 +161,7 @@ class SEBTest extends TestCase
         $this->expectedData['VK_MAC']      = 'PuJTjADqHeArALfzTo2ZsynckTOVRFZMnOnbv9tv30KrF2a9m/yJuRn9vcd3JuaSjgzKoS7DRSouDgXAe6GNLZnduhXZrYx5JtVMmnlgooQ+/pJqO6ZOzwsEjaXooTLCCnKA5P9zWoxXpe8Al4IC9pj7jLNFG3dCeG9XO5uRZEs=';
         $this->expectedData['VK_DATETIME'] = $this->datetime;
 
-        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Instance of PaymentRequest and data is same
         $this->assertInstanceOf('RKD\Banklink\Request\PaymentRequest', $request);
@@ -311,12 +311,34 @@ class SEBTest extends TestCase
         $this->bank = new $this->bankClass($this->protocol);
         $this->bank->setRequestUrl('http://google.com');
 
-        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Get same data again, already exists
-        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Custom url
         $this->assertEquals('http://google.com', $request->getRequestUrl());
+    }
+
+    /**
+     * Test custom request data
+     */
+    public function testCustomRequestData()
+    {
+        $this->bank = new $this->bankClass($this->protocol);
+        $this->bank->setRequestUrl('http://google.com');
+
+        $customData = [
+            'INAPP' => 1, // new data
+            'VK_REF' => 'mycustomref', // override data
+            'VK_MAC' => 'F5dQRFcxC5sMfGddhnCgQMYMwu9uJvoPpt0W+CZGDhnt3aqiL5ZvhbVAObm47beyTsQ9cs74egl+3zGRSGPO/0OLL9MaR1wwrVAvzbAh/hp6cwYVx4GAWLadki+O4aw3O5Ho1fqVKyvWgMbKLNKb2NIWE/2qBlNlg9FLjZk/CiM='
+        ];
+
+        $this->expectedData = array_merge($this->expectedData, $customData);
+
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $customData, $this->timezone);
+
+        // Custom url
+        $this->assertEquals($this->expectedData, $request->getRequestData());
     }
 }

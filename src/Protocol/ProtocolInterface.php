@@ -10,6 +10,8 @@
  */
 namespace RKD\Banklink\Protocol;
 
+use RKD\Banklink\Response\ResponseInterface;
+
 /**
  * Protocol interface.
  *
@@ -23,25 +25,27 @@ interface ProtocolInterface
      * @param string $orderId  Order ID
      * @param float  $sum      Sum of order
      * @param string $message  Transaction description
-     * @param string $encoding Encoding
      * @param string $language Language
      * @param string $currency Currency. Default: EUR
+     * @param array  $customRequestData Optional custom request data
+     * @param string $encoding Encoding
      * @param string $timezone Timezone. Default: Europe/Tallinn
      *
-     * @return RKD\Banklink\Request\PaymentRequest Payment object
+     * @return array Payment request data
      */
     public function getPaymentRequest(
         $orderId,
         $sum,
         $message,
-        $encoding = 'UTF-8',
         $language = 'EST',
         $currency = 'EUR',
+        $customRequestData = [],
+        $encoding = 'UTF-8',
         $timezone = 'Europe/Tallinn'
-    );
+    ) : array;
 
     /**
-     * Get authnetication object.
+     * Get authetication object.
      *
      * @param string $recId Bank identifier
      * @param string $nonce Random nonce
@@ -59,7 +63,7 @@ interface ProtocolInterface
         $encoding = 'UTF-8',
         $language = 'EST',
         $timezone = 'Europe/Tallinn'
-    );
+    ) : array;
 
     /**
      * Handles response from bank.
@@ -67,7 +71,7 @@ interface ProtocolInterface
      * @param array  $response Response data from bank
      * @param string $encoding     Encoding
      *
-     * @return \Response\PaymentResponse|\Response\AuthResponse Response object, depending on request made
+     * @return RKD\Banklink\Response\ResponseInterface Response object, depending on request made
      */
-    public function handleResponse(array $response, $encoding = 'UTF-8');
+    public function handleResponse(array $response, $encoding = 'UTF-8') : ResponseInterface;
 }

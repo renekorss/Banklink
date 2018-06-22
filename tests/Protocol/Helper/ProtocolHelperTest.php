@@ -48,4 +48,26 @@ class ProtocolHelperTest extends TestCase
     {
         ProtocolHelper::calculateReference('');
     }
+
+    /**
+     * Test language code converter
+     */
+    public function testLangToISO6391()
+    {
+        $this->assertEquals('et', ProtocolHelper::langToISO6391('est'));
+        $this->assertEquals('ru', ProtocolHelper::langToISO6391('rus'));
+        $this->assertEquals('en', ProtocolHelper::langToISO6391('eng'));
+        $this->assertEquals('fi', ProtocolHelper::langToISO6391('fin'));
+    }
+
+    /**
+     * Test ecuno generator
+     */
+    public function testGenerateEcuno()
+    {
+        $ecuno = ProtocolHelper::generateEcuno();
+
+        $this->assertStringStartsWith(date('Ym'), $ecuno);
+        $this->assertEquals(12, strlen($ecuno));
+    }
 }

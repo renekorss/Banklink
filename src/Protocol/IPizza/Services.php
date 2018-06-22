@@ -84,14 +84,16 @@ final class Services
      *
      * @return array Array of fields for service
      *
+     * @throws UnexpectedValueException If service is not supported
+     *
      * Keep it readable
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    public static function getFields($serviceId)
+    public static function getFields($serviceId) : array
     {
         switch ($serviceId) {
             case self::PAYMENT_REQUEST_1011:
-                return array(
+                return [
                     'VK_SERVICE',
                     'VK_VERSION',
                     'VK_SND_ID',
@@ -105,10 +107,10 @@ final class Services
                     'VK_RETURN',
                     'VK_CANCEL',
                     'VK_DATETIME',
-                );
+                ];
                 break;
             case self::PAYMENT_REQUEST_1012:
-                return array(
+                return [
                     'VK_SERVICE',
                     'VK_VERSION',
                     'VK_SND_ID',
@@ -120,10 +122,10 @@ final class Services
                     'VK_RETURN',
                     'VK_CANCEL',
                     'VK_DATETIME',
-                );
+                ];
                 break;
             case self::PAYMENT_RESPONSE_SUCCESS:
-                return array(
+                return [
                     'VK_SERVICE',
                     'VK_VERSION',
                     'VK_SND_ID',
@@ -139,10 +141,10 @@ final class Services
                     'VK_REF',
                     'VK_MSG',
                     'VK_T_DATETIME',
-                );
+                ];
                 break;
             case self::PAYMENT_RESPONSE_FAILED:
-                return array(
+                return [
                     'VK_SERVICE',
                     'VK_VERSION',
                     'VK_SND_ID',
@@ -150,10 +152,10 @@ final class Services
                     'VK_STAMP',
                     'VK_REF',
                     'VK_MSG',
-                );
+                ];
                 break;
             case self::AUTH_REQUEST_4011:
-                return array(
+                return [
                     'VK_SERVICE',
                     'VK_VERSION',
                     'VK_SND_ID',
@@ -161,10 +163,10 @@ final class Services
                     'VK_RETURN',
                     'VK_DATETIME',
                     'VK_RID',
-                );
+                ];
                 break;
             case self::AUTH_REQUEST_4012:
-                return array(
+                return [
                     'VK_SERVICE',
                     'VK_VERSION',
                     'VK_SND_ID',
@@ -173,10 +175,10 @@ final class Services
                     'VK_RETURN',
                     'VK_DATETIME',
                     'VK_RID',
-                );
+                ];
                 break;
             case self::AUTH_RESPONSE_3012:
-                return array(
+                return [
                     'VK_SERVICE',
                     'VK_VERSION',
                     'VK_USER',
@@ -189,10 +191,10 @@ final class Services
                     'VK_OTHER',
                     'VK_TOKEN',
                     'VK_RID',
-                );
+                ];
                 break;
             case self::AUTH_RESPONSE_3013:
-                return array(
+                return [
                     'VK_SERVICE',
                     'VK_VERSION',
                     'VK_DATETIME',
@@ -205,7 +207,7 @@ final class Services
                     'VK_OTHER',
                     'VK_TOKEN',
                     'VK_RID',
-                );
+                ];
                 break;
             default:
                 throw new \UnexpectedValueException(sprintf('Service %s is not supported.', $serviceId));
@@ -218,12 +220,12 @@ final class Services
      *
      * @return array Array of payments services ID-s
      */
-    public static function getPaymentResponseServices()
+    public static function getPaymentResponseServices() : array
     {
-        return array(
+        return [
             self::PAYMENT_RESPONSE_SUCCESS,
             self::PAYMENT_RESPONSE_FAILED,
-        );
+        ];
     }
 
     /**
@@ -231,11 +233,11 @@ final class Services
      *
      * @return array Array of payments services ID-s
      */
-    public static function getAuthenticationResponseServices()
+    public static function getAuthenticationResponseServices() : array
     {
-        return array(
+        return [
             self::AUTH_RESPONSE_3012,
             self::AUTH_RESPONSE_3013,
-        );
+        ];
     }
 }

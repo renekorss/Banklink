@@ -95,9 +95,10 @@ class IPizzaTest extends TestCase
             $this->orderId,
             $this->amount,
             $this->message,
-            'UTF-8',
             $this->language,
             $this->currency,
+            [],
+            'UTF-8',
             $this->timezone
         );
 
@@ -130,7 +131,7 @@ class IPizzaTest extends TestCase
         $this->expectedData['VK_MAC'] = 'PuJTjADqHeArALfzTo2ZsynckTOVRFZMnOnbv9tv30KrF2a9m/yJuRn9vcd3JuaSjgzKoS7DRSouDgXAe6GNLZnduhXZrYx5JtVMmnlgooQ+/pJqO6ZOzwsEjaXooTLCCnKA5P9zWoxXpe8Al4IC9pj7jLNFG3dCeG9XO5uRZEs=';
         $this->expectedData['VK_DATETIME'] = $this->datetime;
 
-        $requestData = $this->protocol->getPaymentRequest($this->orderId, $this->amount, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
+        $requestData = $this->protocol->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], 'UTF-8', $this->timezone);
 
         // We should have exactly same data
         $this->assertEquals($this->expectedData, $requestData);
@@ -401,7 +402,7 @@ class IPizzaTest extends TestCase
      */
     public function testGetRequestFieldMissing()
     {
-        $this->protocol->getPaymentRequest($this->orderId, null, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
+        $this->protocol->getPaymentRequest($this->orderId, null, $this->message, $this->language, $this->currency, [], 'UTF-8', $this->timezone);
     }
 
     /**

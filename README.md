@@ -63,6 +63,13 @@ Liisi Payment Link| :white_check_mark:  | does not apply
     // Set payment data and get payment request object
     // orderId, sum, message, language
     $request = $seb->getPaymentRequest(123453, 150, 'Test makse', 'EST');
+
+    // You can also add custom request data and/or override request data
+    // Optional
+    $request = $seb->getPaymentRequest(123453, 150, 'Test makse', 'EST', 'EUR', [
+      'VK_REF' => 'my_custom_reference_number', // Override reference number
+      'INAPP' => true // Pocopay specific example
+    ]);
 ?>
 
 <form method="POST" action="<?php echo $request->getRequestUrl(); ?>">
