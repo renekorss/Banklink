@@ -59,7 +59,7 @@ abstract class Request
         foreach ($this->requestData as $key => $value) {
             $html .= vsprintf(
                 '<input type="hidden" id="%s" name="%s" value="%s" />',
-                array(strtolower($key), $key, $value)
+                [strtolower($key), $key, $value]
             )."\n";
         }
 

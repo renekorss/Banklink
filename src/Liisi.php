@@ -62,8 +62,8 @@ class Liisi extends Banklink
      */
     protected function getAdditionalFields()
     {
-        return array(
+        return [
             'VK_ENCODING' => $this->requestEncoding,
-        );
+        ];
     }
 }

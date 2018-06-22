@@ -199,6 +199,6 @@ abstract class Banklink
      */
     protected function getAdditionalFields()
     {
-        return array(); // @codeCoverageIgnore
+        return []; // @codeCoverageIgnore
     }
 }

@@ -176,7 +176,7 @@ class IPizza implements ProtocolInterface
         $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
         $datetime = new \Datetime($time, new \DateTimeZone($timezone));
 
-        $data = array(
+        $data = [
             'VK_SERVICE' => $this->serviceId,
             'VK_VERSION' => $this->version,
             'VK_SND_ID' => $this->sellerId,
@@ -189,7 +189,7 @@ class IPizza implements ProtocolInterface
             'VK_CANCEL' => $this->requestUrl,
             'VK_DATETIME' => $datetime->format('Y-m-d\TH:i:sO'),
             'VK_LANG' => $language,
-        );
+        ];
 
         if (Services::PAYMENT_REQUEST_1011 === $this->serviceId) {
             $data['VK_NAME'] = $this->sellerName;
@@ -227,7 +227,7 @@ class IPizza implements ProtocolInterface
 
         $this->serviceId = (is_null($nonce)) ? Services::AUTH_REQUEST_4011 : Services::AUTH_REQUEST_4012;
 
-        $data = array(
+        $data = [
             'VK_SERVICE' => $this->serviceId,
             'VK_VERSION' => $this->version,
             'VK_SND_ID' => $this->sellerId,
@@ -236,7 +236,7 @@ class IPizza implements ProtocolInterface
             'VK_RID' => '',
             'VK_LANG' => $language,
             'VK_REPLY' => Services::AUTH_RESPONSE_3012
-        );
+        ];
 
         if (!is_null($nonce)) {
             $data['VK_SERVICE'] = Services::AUTH_REQUEST_4012;
@@ -400,7 +400,7 @@ class IPizza implements ProtocolInterface
             // Check if field exists
             if (!isset($data[$key])) {
                 throw new \UnexpectedValueException(
-                    vsprintf('Field %s must be set to use service %s.', array($key, $service))
+                    vsprintf('Field %s must be set to use service %s.', [$key, $service])
                 );
             }
 

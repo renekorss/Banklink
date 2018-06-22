@@ -45,7 +45,7 @@ class ProtocolHelper
         }
 
         $orderId = (string) $orderId;
-        $multipliers = array(7, 3, 1);
+        $multipliers = [7, 3, 1];
         $total = 0;
         $multiplierKey = 0;
 
@@ -69,12 +69,12 @@ class ProtocolHelper
      */
     public static function langToISO6391($language)
     {
-        $languages = array(
+        $languages = [
             'est' => 'et',
             'rus' => 'ru',
             'eng' => 'en',
             'fin' => 'fi'
-        );
+        ];
 
         $language = strtolower($language);
 

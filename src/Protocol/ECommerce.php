@@ -139,7 +139,7 @@ class ECommerce implements ProtocolInterface
         $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
         $datetime = new \Datetime($time, new \DateTimeZone($timezone));
 
-        $data = array(
+        $data = [
             'lang' => ProtocolHelper::langToISO6391($language),
             'action' => 'gaf',
             'ver' => $this->version,
@@ -152,7 +152,7 @@ class ECommerce implements ProtocolInterface
             'feedBackUrl' => $this->requestUrl,
             'delivery' => 'S',
             'additionalinfo' => $message
-        );
+        ];
 
         // If additionalinfo is sent it needs to be included in MAC calculation
         // But how (what position, etc) is not specified by available specification, seems to be secret
@@ -237,7 +237,7 @@ class ECommerce implements ProtocolInterface
     protected function generateSignature(array $data, $encoding = 'UTF-8')
     {
         // Request mac
-        $fields = array(
+        $fields = [
           'ver',
           'id',
           'ecuno',
@@ -246,11 +246,11 @@ class ECommerce implements ProtocolInterface
           'datetime',
           'feedBackUrl',
           'delivery'
-        );
+        ];
 
         if (isset($data['respcode'])) {
             // Response mac
-            $fields = array(
+            $fields = [
               'ver',
               'id',
               'ecuno',
@@ -261,7 +261,7 @@ class ECommerce implements ProtocolInterface
               'datetime',
               'msgdata',
               'actiontext'
-            );
+            ];
 
             $data['receipt_no'] = ProtocolHelper::mbStrPad($data['receipt_no'], 6, "0", STR_PAD_LEFT, $encoding);
             $data['msgdata'] = ProtocolHelper::mbStrPad(
@@ -293,7 +293,7 @@ class ECommerce implements ProtocolInterface
             // Check if field exists
             if (!isset($data[$key]) || $data[$key] === false) {
                 throw new \UnexpectedValueException(
-                    vsprintf('Field %s must be set to use ECommerce protocol.', array($key))
+                    vsprintf('Field %s must be set to use ECommerce protocol.', [$key])
                 );
             }
 

@@ -23,13 +23,13 @@ class AuthResponse extends Response
      *
      * @var array
      */
-    private static $authMethods = array(
+    private static $authMethods = [
             1 => 'ID card',
             2 => 'Mobile ID',
             5 => 'One-off code card',
             6 => 'PIN-calculator',
             7 => 'Code card',
-        );
+        ];
 
     /**
      * User id (personal code).

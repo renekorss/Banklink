@@ -62,8 +62,8 @@ class Estcard extends Banklink
      */
     protected function getAdditionalFields()
     {
-        return array(
+        return [
             'charEncoding' => $this->requestEncoding,
-        );
+        ];
     }
 }
