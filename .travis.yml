@@ -11,6 +11,7 @@ env:
 matrix:
   fast_finish: true
   include:
+    - php: 7.0
     - php: 7.1
       env: RUN_PHPCS="yes" RUN_PHPMD="yes" RUN_COVERALLS="yes"
     - php: 7.2
