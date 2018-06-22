@@ -168,10 +168,6 @@ Liisi Payment Link| :white_check_mark:  | does not apply
  - `composer phpmd` - run PHP Mess Detector
  - `composer phpcs` - run PHP CodeSniffer
 
-## Testing your banklink
-
-You can test your banklink with <a href="http://pangalink.net/" target="_blank">pangalink.net</a> application (Windows, Mac, Linux).
-
 ## License
 
 Licensed under [MIT](LICENSE)

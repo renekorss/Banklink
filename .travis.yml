@@ -11,13 +11,11 @@ env:
 matrix:
   fast_finish: true
   include:
-    - php: 7.2
     - php: 7.1
-    - php: 7.0
+      env: RUN_PHPCS="yes" RUN_PHPMD="yes" RUN_COVERALLS="yes"
+    - php: 7.2
     - php: hhvm
     - php: nightly
-    - php: 5.6
-      env: RUN_PHPCS="yes" RUN_PHPMD="yes" RUN_COVERALLS="yes"
   allow_failures:
     - php: nightly
 
@@ -32,4 +30,4 @@ script:
   - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_success:
-  - if [ "$RUN_COVERALLS" == "yes" ]; then php vendor/bin/coveralls -v; fi
+  - if [ "$RUN_COVERALLS" == "yes" ]; then php vendor/bin/php-coveralls -v; fi

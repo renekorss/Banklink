@@ -31,7 +31,7 @@ class Pocopay extends Banklink
 
     /**
      * Test request url.
-     * 
+     *
      * @todo Add correct testing URL.
      *
      * @var string
