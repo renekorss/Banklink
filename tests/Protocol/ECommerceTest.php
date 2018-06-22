@@ -3,13 +3,14 @@
 namespace RKD\BanklinkTests\ECommerce;
 
 use RKD\Banklink\Protocol\ECommerce;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test suite for ECommerce protocol.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class ECommerceTest extends \PHPUnit_Framework_TestCase
+class ECommerceTest extends TestCase
 {
     protected $protocol;
 

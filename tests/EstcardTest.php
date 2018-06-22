@@ -6,13 +6,14 @@ use RKD\Banklink;
 use RKD\Banklink\Protocol\ECommerce;
 use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Request\PaymentRequest;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test suite for Estcard payment gateway.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class EstcardTest extends \PHPUnit_Framework_TestCase
+class EstcardTest extends TestCase
 {
     protected $bankClass = "RKD\Banklink\Estcard";
     protected $protocolClass = "RKD\Banklink\Protocol\ECommerce";

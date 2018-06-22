@@ -7,13 +7,14 @@ use RKD\Banklink\Protocol\IPizza;
 use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Response\AuthResponse;
 use RKD\Banklink\Request\PaymentRequest;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test suite for IPizza protocol.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class IPizzaTest extends \PHPUnit_Framework_TestCase
+class IPizzaTest extends TestCase
 {
     protected $protocol;
 

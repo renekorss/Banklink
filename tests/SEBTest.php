@@ -7,13 +7,14 @@ use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\IPizza;
 use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Request\PaymentRequest;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test suite for SEB banklink.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class SEBTest extends \PHPUnit_Framework_TestCase
+class SEBTest extends TestCase
 {
     protected $bankClass = "RKD\Banklink\SEB";
     protected $protocolClass = "RKD\Banklink\Protocol\IPizza";

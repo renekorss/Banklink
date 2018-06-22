@@ -3,13 +3,14 @@
 namespace RKD\BanklinkTests\Protocol\Helper;
 
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test suite for protocol helper.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class ProtocolHelperTest extends \PHPUnit_Framework_TestCase
+class ProtocolHelperTest extends TestCase
 {
     /**
      * Test reference calculator.
