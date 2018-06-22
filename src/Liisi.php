@@ -56,7 +56,7 @@ class Liisi extends Banklink
     }
 
     /**
-     * Liisi uses UTF-8.
+     * By default uses UTF-8.
      *
      * @return array Array of additional fields to send to bank
      */
