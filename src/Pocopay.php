@@ -32,11 +32,9 @@ class Pocopay extends Banklink
     /**
      * Test request url.
      *
-     * @todo Add correct testing URL.
-     *
      * @var string
      */
-    protected $testRequestUrl = 'http://localhost:8080/banklink/seb-common';
+    protected $testRequestUrl = 'https://alpha.elementare.eu/banklink';
 
     /**
      * Force SEB class to use IPizza protocol.
