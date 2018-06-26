@@ -12,5 +12,5 @@ class PocopayTest extends SEBTest
     protected $bankClass = "RKD\Banklink\Pocopay";
 
     protected $requestUrl = 'https://my.pocopay.com/banklink';
-    protected $testRequestUrl = 'http://localhost:8080/banklink/seb-common';
+    protected $testRequestUrl = 'https://alpha.elementare.eu/banklink';
 }
