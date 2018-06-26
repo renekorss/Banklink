@@ -88,6 +88,7 @@ class AuthResponse extends Response
     public function setUserId($userId)
     {
         $this->userId = $userId;
+        return $this;
     }
 
     /**
@@ -108,6 +109,7 @@ class AuthResponse extends Response
     public function setUserName($userName)
     {
         $this->userName = $userName;
+        return $this;
     }
 
     /**
@@ -128,6 +130,7 @@ class AuthResponse extends Response
     public function setUserCountry($country)
     {
         $this->userCountry = $country;
+        return $this;
     }
 
     /**
@@ -148,6 +151,7 @@ class AuthResponse extends Response
     public function setToken($token)
     {
         $this->token = $token;
+        return $this;
     }
 
     /**
@@ -168,6 +172,7 @@ class AuthResponse extends Response
     public function setNonce($nonce)
     {
         $this->nonce = $nonce;
+        return $this;
     }
 
     /**
@@ -188,6 +193,7 @@ class AuthResponse extends Response
     public function setRid($rid)
     {
         $this->rid = $rid;
+        return $this;
     }
 
     /**
@@ -208,6 +214,7 @@ class AuthResponse extends Response
     public function setAuthDate($authDate)
     {
         $this->authDate = $authDate;
+        return $this;
     }
 
     /**

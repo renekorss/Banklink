@@ -312,12 +312,13 @@ class IPizza implements ProtocolInterface
         }
 
         if (PaymentResponse::STATUS_SUCCESS === $status) {
-            $response->setSum($responseData['VK_AMOUNT']);
-            $response->setCurrency($responseData['VK_CURR']);
-            $response->setSender($responseData['VK_SND_NAME'], $responseData['VK_SND_ACC']);
-            $response->setReceiver($responseData['VK_REC_NAME'], $responseData['VK_REC_ACC']);
-            $response->setTransactionId($responseData['VK_T_NO']);
-            $response->setTransactionDate($responseData['VK_T_DATETIME']);
+            $response
+                ->setSum($responseData['VK_AMOUNT'])
+                ->setCurrency($responseData['VK_CURR'])
+                ->setSender($responseData['VK_SND_NAME'], $responseData['VK_SND_ACC'])
+                ->setReceiver($responseData['VK_REC_NAME'], $responseData['VK_REC_ACC'])
+                ->setTransactionId($responseData['VK_T_NO'])
+                ->setTransactionDate($responseData['VK_T_DATETIME']);
         }
 
         return $response;
@@ -345,16 +346,16 @@ class IPizza implements ProtocolInterface
         }
 
         if (PaymentResponse::STATUS_SUCCESS === $status) {
-            // Person data
-            $response->setUserId($responseData['VK_USER_ID']);
-            $response->setUserName($responseData['VK_USER_NAME']);
-            $response->setUserCountry($responseData['VK_COUNTRY']);
-            $response->setToken($responseData['VK_TOKEN']);
-
-            // Request data
-            $response->setRid($responseData['VK_RID']);
-            $response->setNonce($responseData['VK_NONCE']);
-            $response->setAuthDate($responseData['VK_DATETIME']);
+            $response
+                // Person data
+                ->setUserId($responseData['VK_USER_ID'])
+                ->setUserName($responseData['VK_USER_NAME'])
+                ->setUserCountry($responseData['VK_COUNTRY'])
+                ->setToken($responseData['VK_TOKEN'])
+                // Request data
+                ->setRid($responseData['VK_RID'])
+                ->setNonce($responseData['VK_NONCE'])
+                ->setAuthDate($responseData['VK_DATETIME']);
         }
 
         return $response;

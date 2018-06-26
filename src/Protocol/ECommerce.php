@@ -193,12 +193,11 @@ class ECommerce implements ProtocolInterface
         $response->setOrderId($responseData['ecuno']);
 
         if (PaymentResponse::STATUS_SUCCESS === $status) {
-            $response->setSum(round($responseData['eamount'] / 100, 2));
-            $response->setCurrency($responseData['cur']);
-            $response->setTransactionId($responseData['receipt_no']);
-
-            $datetime = new \Datetime($responseData['datetime']);
-            $response->setTransactionDate($datetime->format('Y-m-d\TH:i:s'));
+            $response
+                ->setSum(round($responseData['eamount'] / 100, 2))
+                ->setCurrency($responseData['cur'])
+                ->setTransactionId($responseData['receipt_no'])
+                ->setTransactionDate((new \Datetime($responseData['datetime']))->format('Y-m-d\TH:i:s'));
         }
 
         return $response;

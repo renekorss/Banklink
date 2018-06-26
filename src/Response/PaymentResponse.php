@@ -67,6 +67,7 @@ class PaymentResponse extends Response
     public function setOrderId($orderId)
     {
         $this->orderId = $orderId;
+        return $this;
     }
 
     /**
@@ -87,6 +88,7 @@ class PaymentResponse extends Response
     public function setSum($sum)
     {
         $this->sum = $sum;
+        return $this;
     }
 
     /**
@@ -107,6 +109,7 @@ class PaymentResponse extends Response
     public function setCurrency($currency)
     {
         $this->currency = $currency;
+        return $this;
     }
 
     /**
@@ -130,6 +133,7 @@ class PaymentResponse extends Response
         $this->sender = new \stdClass();
         $this->sender->name = $senderName;
         $this->sender->account = $senderAccount;
+        return $this;
     }
 
     /**
@@ -153,6 +157,7 @@ class PaymentResponse extends Response
         $this->receiver = new \stdClass();
         $this->receiver->name = $receiverName;
         $this->receiver->account = $receiverAccount;
+        return $this;
     }
 
     /**
@@ -173,6 +178,7 @@ class PaymentResponse extends Response
     public function setTransactionId($transactionId)
     {
         $this->transactionId = $transactionId;
+        return $this;
     }
 
     /**
@@ -193,6 +199,7 @@ class PaymentResponse extends Response
     public function setTransactionDate($transactionDate)
     {
         $this->transactionDate = $transactionDate;
+        return $this;
     }
 
     /**
