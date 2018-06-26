@@ -34,6 +34,8 @@ Liisi Payment Link| :white_check_mark:  | does not apply
 
 ## How to use?
 
+For more information, please visit [Wiki](https://github.com/renekorss/Banklink/wiki). Basic example is below.
+
 > **SECURITY WARNING**
 >
 > Never keep your private and public keys in publicly accessible folder. Instead place keys **under** root folder (usually `public_html` or `www`).
@@ -67,8 +69,8 @@ Liisi Payment Link| :white_check_mark:  | does not apply
     // You can also add custom request data and/or override request data
     // Optional
     $request = $seb->getPaymentRequest(123453, 150, 'Test makse', 'EST', 'EUR', [
-      'VK_REF' => 'my_custom_reference_number', // Override reference number
-      'INAPP' => true // Pocopay specific example
+        'VK_REF' => 'my_custom_reference_number', // Override reference number
+        'INAPP' => true // Pocopay specific example
     ]);
 ?>
 
@@ -135,34 +137,34 @@ Liisi Payment Link| :white_check_mark:  | does not apply
 
     // Successful
     if ($response->wasSuccessful()) {
-      // Get whole array of response
-      $responseData    = $response->getResponseData();
+        // Get whole array of response
+        $responseData    = $response->getResponseData();
 
-      // User prefered language
-      $language        = $response->getLanguage();
+        // User prefered language
+        $language        = $response->getLanguage();
 
-      // Only for payment data
-      $orderId         = $response->getOrderId();
-      $sum             = $response->getSum();
-      $currency        = $response->getCurrency();
-      $sender          = $response->getSender();
-      $transactionId   = $response->getTransactionId();
-      $transactionDate = $response->getTransactionDate();
+        // Only for payment data
+        $orderId         = $response->getOrderId();
+        $sum             = $response->getSum();
+        $currency        = $response->getCurrency();
+        $sender          = $response->getSender();
+        $transactionId   = $response->getTransactionId();
+        $transactionDate = $response->getTransactionDate();
 
-      // Only for auth data
-      $userId          = $response->getUserId(); // Person ID
-      $userName        = $response->getUserName(); // Person name
-      $country         = $response->getUserCountry(); // Person country
-      $authDate        = $response->getAuthDate(); // Authentication response datetime
+        // Only for auth data
+        $userId          = $response->getUserId(); // Person ID
+        $userName        = $response->getUserName(); // Person name
+        $country         = $response->getUserCountry(); // Person country
+        $authDate        = $response->getAuthDate(); // Authentication response datetime
 
-      // Method used for authentication
-      // Possible values: ID Card, Mobile ID, One-off code card, PIN-calculator, Code card or unknown
-      $authMethod      = $response->getAuthMethod();
+        // Method used for authentication
+        // Possible values: ID Card, Mobile ID, One-off code card, PIN-calculator, Code card or unknown
+        $authMethod      = $response->getAuthMethod();
 
     // Failed
     } else {
-      // Payment data
-      $orderId         = $response->getOrderId(); // Order id to cancel order etc.
+        // Payment data
+        $orderId         = $response->getOrderId(); // Order id to cancel order etc.
     }
 ?>
 
@@ -170,10 +172,10 @@ Liisi Payment Link| :white_check_mark:  | does not apply
 
 ## Tasks
 
- - `composer tests` - run tests
- - `composer docs` - build API documentation
- - `composer phpmd` - run PHP Mess Detector
- - `composer phpcs` - run PHP CodeSniffer
+- `composer tests` - run tests
+- `composer docs` - build API documentation
+- `composer phpmd` - run PHP Mess Detector
+- `composer phpcs` - run PHP CodeSniffer
 
 ## License
 
