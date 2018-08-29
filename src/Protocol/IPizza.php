@@ -159,8 +159,8 @@ class IPizza implements ProtocolInterface
      * @param float  $sum Sum of order
      * @param string $message Transaction description
      * @param string $language Language
-     * @param array  $customRequestData Optional custom request data
      * @param string $currency Currency. Default: EUR
+     * @param array  $customRequestData Optional custom request data
      * @param string $encoding Encoding
      * @param string $timezone Timezone. Default: Europe/Tallinn
      *
