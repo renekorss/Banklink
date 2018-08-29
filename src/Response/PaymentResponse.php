@@ -64,7 +64,7 @@ class PaymentResponse extends Response
      *
      * @param string $orderId Order ID
      */
-    public function setOrderId($orderId)
+    public function setOrderId($orderId) : self
     {
         $this->orderId = $orderId;
         return $this;
@@ -75,7 +75,7 @@ class PaymentResponse extends Response
      *
      * @return string Order ID
      */
-    public function getOrderId()
+    public function getOrderId() : string
     {
         return $this->orderId;
     }
@@ -85,7 +85,7 @@ class PaymentResponse extends Response
      *
      * @param float $sum Sum
      */
-    public function setSum($sum)
+    public function setSum($sum) : self
     {
         $this->sum = $sum;
         return $this;
@@ -96,7 +96,7 @@ class PaymentResponse extends Response
      *
      * @return float Sum
      */
-    public function getSum()
+    public function getSum() : ?float
     {
         return $this->sum;
     }
@@ -106,7 +106,7 @@ class PaymentResponse extends Response
      *
      * @param string $currency Currency
      */
-    public function setCurrency($currency)
+    public function setCurrency($currency) : self
     {
         $this->currency = $currency;
         return $this;
@@ -117,7 +117,7 @@ class PaymentResponse extends Response
      *
      * @return string Currency
      */
-    public function getCurrency()
+    public function getCurrency() : ?string
     {
         return $this->currency;
     }
@@ -128,7 +128,7 @@ class PaymentResponse extends Response
      * @param string $senderName    Sender name
      * @param string $senderAccount Sender account
      */
-    public function setSender($senderName, $senderAccount)
+    public function setSender($senderName, $senderAccount) : self
     {
         $this->sender = new \stdClass();
         $this->sender->name = $senderName;
@@ -141,7 +141,7 @@ class PaymentResponse extends Response
      *
      * @return object Sender object, containing name and account
      */
-    public function getSender()
+    public function getSender() : ?\stdClass
     {
         return $this->sender;
     }
@@ -152,7 +152,7 @@ class PaymentResponse extends Response
      * @param string $receiverName    Receiver name
      * @param string $receiverAccount Receiver account
      */
-    public function setReceiver($receiverName, $receiverAccount)
+    public function setReceiver($receiverName, $receiverAccount) : self
     {
         $this->receiver = new \stdClass();
         $this->receiver->name = $receiverName;
@@ -165,7 +165,7 @@ class PaymentResponse extends Response
      *
      * @return object Receiver object, containing name and account
      */
-    public function getReceiver()
+    public function getReceiver() : ?\stdClass
     {
         return $this->receiver;
     }
@@ -175,7 +175,7 @@ class PaymentResponse extends Response
      *
      * @param string $transactionId Transaction ID
      */
-    public function setTransactionId($transactionId)
+    public function setTransactionId($transactionId) : self
     {
         $this->transactionId = $transactionId;
         return $this;
@@ -186,7 +186,7 @@ class PaymentResponse extends Response
      *
      * @return string Transaction ID
      */
-    public function getTransactionId()
+    public function getTransactionId() : ?string
     {
         return $this->transactionId;
     }
@@ -196,7 +196,7 @@ class PaymentResponse extends Response
      *
      * @param string $transactionDate Transaction date
      */
-    public function setTransactionDate($transactionDate)
+    public function setTransactionDate($transactionDate) : self
     {
         $this->transactionDate = $transactionDate;
         return $this;
@@ -207,7 +207,7 @@ class PaymentResponse extends Response
      *
      * @return string Transaction date
      */
-    public function getTransactionDate()
+    public function getTransactionDate() : ?string
     {
         return $this->transactionDate;
     }

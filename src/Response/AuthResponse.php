@@ -85,7 +85,7 @@ class AuthResponse extends Response
      *
      * @param int $userId User id
      */
-    public function setUserId($userId)
+    public function setUserId($userId) : self
     {
         $this->userId = $userId;
         return $this;
@@ -96,7 +96,7 @@ class AuthResponse extends Response
      *
      * @return int User id
      */
-    public function getUserId()
+    public function getUserId() : ?int
     {
         return $this->userId;
     }
@@ -106,7 +106,7 @@ class AuthResponse extends Response
      *
      * @param string $userName User name
      */
-    public function setUserName($userName)
+    public function setUserName($userName) : self
     {
         $this->userName = $userName;
         return $this;
@@ -117,7 +117,7 @@ class AuthResponse extends Response
      *
      * @return string User name
      */
-    public function getUserName()
+    public function getUserName() : ?string
     {
         return $this->userName;
     }
@@ -127,7 +127,7 @@ class AuthResponse extends Response
      *
      * @param string $country Country
      */
-    public function setUserCountry($country)
+    public function setUserCountry($country) : self
     {
         $this->userCountry = $country;
         return $this;
@@ -138,7 +138,7 @@ class AuthResponse extends Response
      *
      * @return string Country
      */
-    public function getUserCountry()
+    public function getUserCountry() : ?string
     {
         return $this->userCountry;
     }
@@ -148,7 +148,7 @@ class AuthResponse extends Response
      *
      * @param string $token Token (VK_TOKEN)
      */
-    public function setToken($token)
+    public function setToken($token) : ?self
     {
         $this->token = $token;
         return $this;
@@ -159,7 +159,7 @@ class AuthResponse extends Response
      *
      * @return string Token
      */
-    public function getToken()
+    public function getToken() : string
     {
         return $this->token;
     }
@@ -169,7 +169,7 @@ class AuthResponse extends Response
      *
      * @param string $nonce Nonce (VK_NONCE)
      */
-    public function setNonce($nonce)
+    public function setNonce($nonce) : self
     {
         $this->nonce = $nonce;
         return $this;
@@ -180,7 +180,7 @@ class AuthResponse extends Response
      *
      * @return string Nonce
      */
-    public function getNonce()
+    public function getNonce() : ?string
     {
         return $this->nonce;
     }
@@ -190,7 +190,7 @@ class AuthResponse extends Response
      *
      * @param string $rid Rid (VK_RID)
      */
-    public function setRid($rid)
+    public function setRid($rid) : self
     {
         $this->rid = $rid;
         return $this;
@@ -201,7 +201,7 @@ class AuthResponse extends Response
      *
      * @return string Rid
      */
-    public function getRid()
+    public function getRid() : ?string
     {
         return $this->rid;
     }
@@ -211,7 +211,7 @@ class AuthResponse extends Response
      *
      * @param string $authDate Auth date
      */
-    public function setAuthDate($authDate)
+    public function setAuthDate($authDate) : self
     {
         $this->authDate = $authDate;
         return $this;
@@ -222,7 +222,7 @@ class AuthResponse extends Response
      *
      * @return string Auth date
      */
-    public function getAuthDate()
+    public function getAuthDate() : ?string
     {
         return $this->authDate;
     }
@@ -232,7 +232,7 @@ class AuthResponse extends Response
      *
      * @return string Authentication method
      */
-    public function getAuthMethod()
+    public function getAuthMethod() : string
     {
         $authMethod = 'unknown';
 

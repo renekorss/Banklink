@@ -85,7 +85,7 @@ abstract class Banklink
     /**
      * Activate debug mode. Changes requestUrl to testRequestUrl
      */
-    public function debugMode()
+    public function debugMode() : self
     {
         return $this->setRequestUrl($this->testRequestUrl);
     }
@@ -96,7 +96,7 @@ abstract class Banklink
      * @param string $requestUrl Request URL
      */
 
-    public function setRequestUrl($requestUrl)
+    public function setRequestUrl($requestUrl) : self
     {
         $this->requestUrl = $requestUrl;
         return $this;

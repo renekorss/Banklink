@@ -30,6 +30,12 @@
     }
   },
   "scripts": {
+    "build": [
+      "@tests",
+      "@phpcs",
+      "@phpmd",
+      "@docs"
+    ],
     "tests": "phpunit",
     "docs": "phpdoc -d ./src -t ./docs --template=responsive-twig",
     "phpmd": "phpmd ./src text phpmd.xml",
