@@ -34,7 +34,7 @@ class AuthResponse extends Response
     /**
      * User id (personal code).
      *
-     * @var int
+     * @var string
      */
     protected $userId;
 
@@ -83,9 +83,11 @@ class AuthResponse extends Response
     /**
      * Set user id.
      *
-     * @param int $userId User id
+     * @param string $userId User id
+     *
+     * @return self
      */
-    public function setUserId($userId) : self
+    public function setUserId(string $userId) : self
     {
         $this->userId = $userId;
         return $this;
@@ -94,9 +96,9 @@ class AuthResponse extends Response
     /**
      * Get user id.
      *
-     * @return int User id
+     * @return string User id
      */
-    public function getUserId() : ?int
+    public function getUserId() : ?string
     {
         return $this->userId;
     }
@@ -106,7 +108,7 @@ class AuthResponse extends Response
      *
      * @param string $userName User name
      */
-    public function setUserName($userName) : self
+    public function setUserName(string $userName) : self
     {
         $this->userName = $userName;
         return $this;
@@ -127,7 +129,7 @@ class AuthResponse extends Response
      *
      * @param string $country Country
      */
-    public function setUserCountry($country) : self
+    public function setUserCountry(string $country) : self
     {
         $this->userCountry = $country;
         return $this;
@@ -148,7 +150,7 @@ class AuthResponse extends Response
      *
      * @param string $token Token (VK_TOKEN)
      */
-    public function setToken($token) : ?self
+    public function setToken(string $token) : ?self
     {
         $this->token = $token;
         return $this;
@@ -169,7 +171,7 @@ class AuthResponse extends Response
      *
      * @param string $nonce Nonce (VK_NONCE)
      */
-    public function setNonce($nonce) : self
+    public function setNonce(string $nonce) : self
     {
         $this->nonce = $nonce;
         return $this;
@@ -190,7 +192,7 @@ class AuthResponse extends Response
      *
      * @param string $rid Rid (VK_RID)
      */
-    public function setRid($rid) : self
+    public function setRid(string $rid) : self
     {
         $this->rid = $rid;
         return $this;
@@ -211,7 +213,7 @@ class AuthResponse extends Response
      *
      * @param string $authDate Auth date
      */
-    public function setAuthDate($authDate) : self
+    public function setAuthDate(string $authDate) : self
     {
         $this->authDate = $authDate;
         return $this;

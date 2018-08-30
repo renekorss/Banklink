@@ -64,7 +64,7 @@ class PaymentResponse extends Response
      *
      * @param string $orderId Order ID
      */
-    public function setOrderId($orderId) : self
+    public function setOrderId(string $orderId) : self
     {
         $this->orderId = $orderId;
         return $this;
@@ -85,7 +85,7 @@ class PaymentResponse extends Response
      *
      * @param float $sum Sum
      */
-    public function setSum($sum) : self
+    public function setSum(float $sum) : self
     {
         $this->sum = $sum;
         return $this;
@@ -106,7 +106,7 @@ class PaymentResponse extends Response
      *
      * @param string $currency Currency
      */
-    public function setCurrency($currency) : self
+    public function setCurrency(string $currency) : self
     {
         $this->currency = $currency;
         return $this;
@@ -128,7 +128,7 @@ class PaymentResponse extends Response
      * @param string $senderName    Sender name
      * @param string $senderAccount Sender account
      */
-    public function setSender($senderName, $senderAccount) : self
+    public function setSender(string $senderName, string $senderAccount) : self
     {
         $this->sender = new \stdClass();
         $this->sender->name = $senderName;
@@ -152,7 +152,7 @@ class PaymentResponse extends Response
      * @param string $receiverName    Receiver name
      * @param string $receiverAccount Receiver account
      */
-    public function setReceiver($receiverName, $receiverAccount) : self
+    public function setReceiver(string $receiverName, string $receiverAccount) : self
     {
         $this->receiver = new \stdClass();
         $this->receiver->name = $receiverName;
@@ -175,7 +175,7 @@ class PaymentResponse extends Response
      *
      * @param string $transactionId Transaction ID
      */
-    public function setTransactionId($transactionId) : self
+    public function setTransactionId(string $transactionId) : self
     {
         $this->transactionId = $transactionId;
         return $this;
@@ -196,7 +196,7 @@ class PaymentResponse extends Response
      *
      * @param string $transactionDate Transaction date
      */
-    public function setTransactionDate($transactionDate) : self
+    public function setTransactionDate(string $transactionDate) : self
     {
         $this->transactionDate = $transactionDate;
         return $this;

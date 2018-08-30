@@ -95,7 +95,7 @@ class Response implements ResponseInterface
      *
      * @param string $language Prefered language
      */
-    public function setLanguage($language) : ResponseInterface
+    public function setLanguage(string $language) : ResponseInterface
     {
         $this->language = $language;
         return $this;

@@ -14,7 +14,7 @@ matrix:
     - php: 7.1
       env: RUN_PHPCS="yes" RUN_PHPMD="yes" RUN_COVERALLS="yes"
     - php: 7.2
-    - php: hhvm-3.24
+    - php: hhvm
     - php: nightly
   allow_failures:
     - php: nightly
