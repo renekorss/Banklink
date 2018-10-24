@@ -1,6 +1,9 @@
 dist: trusty
 
 language: php
+cache:
+  directories:
+    - $HOME/.composer/cache
 
 env:
   global:
