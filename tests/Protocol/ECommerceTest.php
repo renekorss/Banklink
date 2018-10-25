@@ -111,7 +111,7 @@ class ECommerceTest extends TestCase
      *
      * @expectedException UnexpectedValueException
      */
-    /* public function testInvalidPrivateKey()
+    public function testInvalidPrivateKey()
     {
         $this->protocol = new ECommerce(
             $this->sellerId,
@@ -124,7 +124,7 @@ class ECommerceTest extends TestCase
         );
 
         $this->protocol->getPaymentRequest($this->orderId, $this->amount, $this->message);
-    } */
+    }
 
     /**
      * Authentication should throw an LogicException
