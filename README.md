@@ -9,13 +9,15 @@
 
 # PHP Payment library
 
-> PHP payment library to easily integrate Baltic banklinks, E-commerce gateaway (Estcard, Nets Estonia) and Liizi Payment Link.
+> PHP payment library to easily integrate Baltic banklinks, E-commerce gateaway (Estcard, Nets Estonia), Liizi Payment Link and Pocopay.
 >
 > View API documentation at http://renekorss.github.io/Banklink/
 
-## Composer
+## Install
 
-    composer require renekorss/Banklink
+````bash
+composer require renekorss/Banklink
+````
 
 ## Supported providers
 
