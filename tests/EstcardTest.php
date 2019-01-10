@@ -47,7 +47,7 @@ class EstcardTest extends TestCase
 
         $this->customRequestUrl = 'http://example.com';
 
-        $this->expectedData = array(
+        $this->expectedData = [
             'action'         => 'gaf',
             'ver'            => '004',
             'id'             => $this->sellerId,
@@ -60,7 +60,7 @@ class EstcardTest extends TestCase
             'mac'            => 'aaacb942dd3512d915224d244c20862457284e72587057d182ee1ee1b6da1082b43632cf9a9138144f52b48edc6fe8cdeb2193320f7a651c670c3550c92ae619c8fd33713f313d8c88241ec8322c78831bb818715eee3584ed612891ea4ce7a31398d280aa7b878907a7f6a2915629a4d369ddd2b1c0b56ad8dec19f5fafb35f',
             'datetime'       => $this->expectedDate,
             'charEncoding'   => 'UTF-8',
-        );
+        ];
 
         // Set up banklink
         $this->setUpBanklink();
@@ -106,7 +106,7 @@ class EstcardTest extends TestCase
      */
     public function testHandlePaymentResponseSuccess()
     {
-        $responseData = array(
+        $responseData = [
             'action'       => 'afb',
             'ver'          => '4',
             'id'           => $this->sellerId,
@@ -120,7 +120,7 @@ class EstcardTest extends TestCase
             'mac'          => '10e8d613d3d29f4f110ed7d624de85b436ea4b3bf11dcec46f77292f3ce494bf6d8c8f0600e17904b82289e8fa4eecfa65c4f3c015888abcb882ed5b362f3f46ef089912f3b12a89abe59683f6df9f1954723ce59e778e8d3838c71d1e78e48786e36b7619012f7aaa7390bfad24b008d09657779bfb0c283e6826a092928336',
             'datetime'     => $this->expectedDate,
             'charEncoding' => 'UTF-8',
-        );
+        ];
 
         $response = $this->bank->handleResponse($responseData);
 
@@ -157,7 +157,7 @@ class EstcardTest extends TestCase
     public function testCustomRequestUrl()
     {
         $this->seb = new $this->bankClass($this->protocol);
-        $this->seb->setRequestUrl('http://google.com');
+        $this->seb->setRequestUrl('https://google.com');
 
         $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
@@ -165,6 +165,6 @@ class EstcardTest extends TestCase
         $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Custom url
-        $this->assertEquals('http://google.com', $request->getRequestUrl());
+        $this->assertEquals('https://google.com', $request->getRequestUrl());
     }
 }

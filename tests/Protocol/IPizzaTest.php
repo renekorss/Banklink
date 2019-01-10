@@ -67,7 +67,7 @@ class IPizzaTest extends TestCase
         );
 
         // Test data
-        $this->expectedData = array(
+        $this->expectedData = [
             'VK_SERVICE' => '1012',
             'VK_VERSION' => '008',
             'VK_SND_ID' => $this->sellerId,
@@ -81,7 +81,7 @@ class IPizzaTest extends TestCase
             'VK_LANG' => $this->language,
             'VK_MAC' => 'PmAB256IR1FzTKZHNn5LBPso/KyLAhNcTOMq82lhpYn0mXKYtVtpNkolQxyETnTcIn1TcYOmekJEATe86Bz2MRljEQqllkaIl7bNuLCtuBPtAOYWNLmQHoop+5QSiguJEmEV+JJU3w4BApjWcsHA5HYlYze+3L09UO6na0lB/Zs=',
             'VK_DATETIME' => $this->datetime,
-        );
+        ];
     }
 
     /**
@@ -142,7 +142,7 @@ class IPizzaTest extends TestCase
      */
     public function testHandlePaymentResponseSuccess()
     {
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE' => '1111',
             'VK_VERSION' => '008',
             'VK_SND_ID' => $this->senderName,
@@ -160,7 +160,7 @@ class IPizzaTest extends TestCase
             'VK_MAC' => 'Sp0VzYSPyZviiCewmwbtqny8cYRcnYU4Noh0cwxOYoZ5IpQwHuolNbFI+1Kkuk5n6cWs2X48IYYOUMRi9VTqdsfSN7z5jpUwEwjLsCMDUDdro421Je7eXXkEkbZlEcgY8wtR5H+OO955aqxDdZeS0dkuuxTN70Z9Esv5feXYxsw=',
             'VK_T_DATETIME' => $this->datetime,
             'VK_LANG' => 'EST',
-        );
+        ];
 
         $response = $this->protocol->handleResponse($responseData);
 
@@ -201,7 +201,7 @@ class IPizzaTest extends TestCase
      */
     public function testHandlePaymentResponseError()
     {
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE' => '1911',
             'VK_VERSION' => '008',
             'VK_SND_ID' => $this->senderName,
@@ -211,7 +211,7 @@ class IPizzaTest extends TestCase
             'VK_MSG' => $this->message,
             'VK_MAC' => 'o4rju0oEwITuIheUdtDjp2njKhBzvQv8RjKg+rdCB+fwGiUS8zpXzr0I+wj0vl13h+ACGAR1LO9gR2+IG1yq+AJdQdVszJIbeA1jcg1GFtl1xyLN8LXYfubHHUB/7EWwiEGZKcHrNp3pAsADlLwySQLRWatheMLPqRRk2FX96Ko=',
             'VK_DATETIME' => $this->datetime,
-        );
+        ];
 
         $response = $this->protocol->handleResponse($responseData);
 
@@ -241,7 +241,7 @@ class IPizzaTest extends TestCase
      */
     public function testGetAuthRequest4011()
     {
-        $expectedData = array(
+        $expectedData = [
             'VK_SERVICE' => '4011',
             'VK_VERSION' => '008',
             'VK_SND_ID' => 'id2000',
@@ -251,7 +251,7 @@ class IPizzaTest extends TestCase
             'VK_LANG' => 'EST',
             'VK_REPLY' => '3012',
             'VK_MAC' => 'tCzsgSP0NVlNDvzsPnDZpwfPDwlrWoLFOUDSJ80sYDMbPsXBiid0M8xKT9ep0KVmj8BBUwWOGGjENSkaNXcZKAoqw0h1V1J7Hxuy1/gnIgkAkiY1OQftMYNuyrmKj1xVP4JGH3kp4ZEiyXJ0ySj/VGW4P1Vyv2oMUVHN+vDqHR0=',
-        );
+        ];
 
         $requestData = $this->protocol->getAuthRequest();
 
@@ -265,7 +265,7 @@ class IPizzaTest extends TestCase
      */
     public function testGetAuthRequest4012()
     {
-        $expectedData = array(
+        $expectedData = [
             'VK_SERVICE' => '4012',
             'VK_VERSION' => '008',
             'VK_SND_ID' => 'id2000',
@@ -276,7 +276,7 @@ class IPizzaTest extends TestCase
             'VK_RID' => 'random-rid',
             'VK_LANG' => 'EST',
             'VK_MAC' => 'MtmH+8VgmKhw/Q6kO4EZdgNMP9ZWhCXfO0OHUgyHd74ofhdkvhLnzSWxqHZgWv9lCo3ZSrZ1mHJEf1rezBod7QQDcPmMVHl9iijJug2oySgT27Re89oytVN3Zlzmko9LFEaE8JIYnvxN4B9mc/bWfW0hvHSyBehpWdlVO5HIO+c=',
-        );
+        ];
 
         $requestData = $this->protocol->getAuthRequest('bank-id', 'random-nonce', 'random-rid');
 
@@ -289,7 +289,7 @@ class IPizzaTest extends TestCase
      */
     public function testHandleAuthResponseSuccess()
     {
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE' => '3013',
             'VK_VERSION' => '008',
             'VK_DATETIME' => '2015-10-12T08:47:15+0300',
@@ -305,7 +305,7 @@ class IPizzaTest extends TestCase
             'VK_ENCODING' => 'UTF-8',
             'VK_LANG' => 'EST',
             'VK_MAC' => 'RBkszGx+hP/B24Bziuq+vAJx0saRILcoc8BRQt8WYaq5mK6PdfOimZ3cTz9/t+4AQyZJfvA+Nv7NUxtieDKPorp4P1jzlbcR4K6lkit286H+TptIlWbPvcD2dj7Q7UapNtEB5FmMc62IMbbQCiTVyV5bs6f3DJYr3kOrOV/LHTY=',
-        );
+        ];
 
         $response = $this->protocol->handleResponse($responseData);
 
@@ -354,7 +354,7 @@ class IPizzaTest extends TestCase
      */
     public function testHandleAuthResponseError()
     {
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE' => '3012',
             'VK_VERSION' => '008',
             'VK_USER' => '',
@@ -371,7 +371,7 @@ class IPizzaTest extends TestCase
             'VK_ENCODING' => 'UTF-8',
             'VK_LANG' => 'EST',
             'VK_MAC' => 'RBkszGx+hP/B24Bziuq+vAJx0saRILcoc8BRQt8WYaq5mK6PdfOimZ3cTz9/t+4AQyZJfvA+Nv7NUxtieDKPorp4P1jzlbcR4K6lkit286H+TptIlWbPvcD2dj7Q7UapNtEB5FmMc62IMbbQCiTVyV5bs6f3DJYr3kOrOV/LHTY=',
-        );
+        ];
 
         $response = $this->protocol->handleResponse($responseData);
 
@@ -390,9 +390,9 @@ class IPizzaTest extends TestCase
      */
     public function testHandleResponseUnsupportedService()
     {
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE' => '0000',
-        );
+        ];
 
         $this->protocol->handleResponse($responseData);
     }
@@ -423,7 +423,7 @@ class IPizzaTest extends TestCase
      */
     public function testNoRequestData()
     {
-        $request = new PaymentRequest('http://google.com', array());
+        $request = new PaymentRequest('https://google.com', []);
 
         $request->getRequestInputs();
     }
@@ -445,7 +445,7 @@ class IPizzaTest extends TestCase
             $this->sellerAccount
         );
 
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE' => '3013',
             'VK_VERSION' => '008',
             'VK_DATETIME' => '2015-10-12T08:47:15+0300',
@@ -461,7 +461,7 @@ class IPizzaTest extends TestCase
             'VK_ENCODING' => 'UTF-8',
             'VK_LANG' => 'EST',
             'VK_MAC' => 'RBkszGx+hP/B24Bziuq+vAJx0saRILcoc8BRQt8WYaq5mK6PdfOimZ3cTz9/t+4AQyZJfvA+Nv7NUxtieDKPorp4P1jzlbcR4K6lkit286H+TptIlWbPvcD2dj7Q7UapNtEB5FmMc62IMbbQCiTVyV5bs6f3DJYr3kOrOV/LHTY=',
-        );
+        ];
 
         $this->protocol->handleResponse($responseData);
     }
