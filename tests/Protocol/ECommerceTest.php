@@ -67,7 +67,8 @@ class ECommerceTest extends TestCase
      */
     public function testGetRequestFieldMissing()
     {
-        $this->protocol->getPaymentRequest($this->orderId,
+        $this->protocol->getPaymentRequest(
+            $this->orderId,
             $this->amount,
             $this->message,
             $this->language,
