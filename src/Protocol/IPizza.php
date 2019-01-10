@@ -101,6 +101,13 @@ class IPizza implements ProtocolInterface
     protected $useMbStrlen = true;
 
     /**
+     * Algorithm used to generate mac
+     *
+     * @var int|string
+     */
+    protected $algorithm = OPENSSL_ALGO_SHA1;
+
+    /**
      * Init IPizza protocol.
      *
      * @param string $sellerId           Seller ID (SND ID)
@@ -271,7 +278,7 @@ class IPizza implements ProtocolInterface
      *
      * @return RKD\Banklink\Response\Response Response object, depending on request made
      */
-    public function handleResponse(array $response, $encoding = 'UTF-8') : ResponseInterface
+    public function handleResponse(array $response, string $encoding = 'UTF-8') : ResponseInterface
     {
         $success = $this->validateSignature($response, $encoding);
 
@@ -296,7 +303,7 @@ class IPizza implements ProtocolInterface
      *
      * @return \RKD\Banklink\Response\PaymentResponse
      */
-    protected function handlePaymentResponse(array $responseData, $success) : ResponseInterface
+    protected function handlePaymentResponse(array $responseData, bool $success) : ResponseInterface
     {
         $status = PaymentResponse::STATUS_ERROR;
 
@@ -332,7 +339,7 @@ class IPizza implements ProtocolInterface
      *
      * @return \RKD\Banklink\Response\AuthResponse
      */
-    protected function handleAuthResponse(array $responseData, $success) : ResponseInterface
+    protected function handleAuthResponse(array $responseData, bool $success) : ResponseInterface
     {
         $status = AuthResponse::STATUS_ERROR;
         if ($success) {
@@ -369,7 +376,7 @@ class IPizza implements ProtocolInterface
      *
      * @return string Signature
      */
-    protected function getSignature(array $data, $encoding = 'UTF-8') : string
+    protected function getSignature(array $data, string $encoding = 'UTF-8') : string
     {
         $mac = $this->generateSignature($data, $encoding);
 
@@ -383,7 +390,7 @@ class IPizza implements ProtocolInterface
             throw new \UnexpectedValueException('Can not get private key.');
         }
 
-        openssl_sign($mac, $signature, $privateKey);
+        openssl_sign($mac, $signature, $privateKey, $this->algorithm);
         openssl_free_key($privateKey);
 
         $result = base64_encode($signature);
@@ -399,7 +406,7 @@ class IPizza implements ProtocolInterface
      *
      * @return string MAC key
      */
-    protected function generateSignature(array $data, $encoding = 'UTF-8') : string
+    protected function generateSignature(array $data, string $encoding = 'UTF-8') : string
     {
         $service = $data['VK_SERVICE'];
         $fields = Services::getFields($service);
@@ -415,7 +422,7 @@ class IPizza implements ProtocolInterface
 
             $value = $data[$key];
             $length = $this->useMbStrlen ? mb_strlen($value, $encoding) : strlen($value);
-            $mac    .= str_pad($length, 3, '0', STR_PAD_LEFT).$value;
+            $mac .= str_pad($length, 3, '0', STR_PAD_LEFT).$value;
         }
 
         return $mac;
@@ -429,7 +436,7 @@ class IPizza implements ProtocolInterface
      *
      * @return bool True on success, false otherwise
      */
-    protected function validateSignature(array $response, $encoding = 'UTF-8') : bool
+    protected function validateSignature(array $response, string $encoding = 'UTF-8') : bool
     {
         $data = $this->generateSignature($response, $encoding);
 
@@ -447,5 +454,29 @@ class IPizza implements ProtocolInterface
         openssl_free_key($publicKey);
 
         return $this->result === 1;
+    }
+
+    /**
+     * Set algorithm used to generate mac
+     *
+     * Should be one of valid values for openssl_sign functions signature_alg parameter
+     * @see http://ee1.php.net/manual/en/function.openssl-sign.php
+     *
+     * @param int|string
+     */
+    public function setAlgorithm($algorithm) : self
+    {
+        $this->algorithm = $algorithm;
+        return $this;
+    }
+
+    /**
+     * Get algorithm used to generate mac
+     *
+     * @return mixed
+     */
+    public function getAlgorithm()
+    {
+        return $this->algorithm;
     }
 }

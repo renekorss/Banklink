@@ -485,4 +485,23 @@ class IPizzaTest extends TestCase
 
         $this->protocol->getAuthRequest();
     }
+
+    /**
+     * Test that we can change algorithm
+     */
+    public function testSetAlgorithm()
+    {
+        $this->protocol->setAlgorithm(OPENSSL_ALGO_SHA256);
+        $this->assertEquals(OPENSSL_ALGO_SHA256, $this->protocol->getAlgorithm());
+    }
+
+    /**
+     * Get algorithm used to generate mac
+     *
+     * @return mixed
+     */
+    public function getAlgorithm()
+    {
+        return $this->algorithm;
+    }
 }

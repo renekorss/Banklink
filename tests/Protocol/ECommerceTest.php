@@ -146,4 +146,13 @@ class ECommerceTest extends TestCase
     {
         $this->protocol->getAuthRequest();
     }
+
+    /**
+     * Test that we can change algorithm
+     */
+    public function testSetAlgorithm()
+    {
+        $this->protocol->setAlgorithm(OPENSSL_ALGO_SHA256);
+        $this->assertEquals(OPENSSL_ALGO_SHA256, $this->protocol->getAlgorithm());
+    }
 }

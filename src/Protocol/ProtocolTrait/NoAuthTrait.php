@@ -52,7 +52,7 @@ trait NoAuthTrait
      *
      * @return \Response\PaymentResponse Payment response object
      */
-    public function handleResponse(array $response, $encoding = 'UTF-8') : ResponseInterface
+    public function handleResponse(array $response, string $encoding = 'UTF-8') : ResponseInterface
     {
         $success = $this->validateSignature($response, $encoding);
         return $this->handlePaymentResponse($response, $success);

@@ -73,5 +73,5 @@ interface ProtocolInterface
      *
      * @return RKD\Banklink\Response\ResponseInterface Response object, depending on request made
      */
-    public function handleResponse(array $response, $encoding = 'UTF-8') : ResponseInterface;
+    public function handleResponse(array $response, string $encoding = 'UTF-8') : ResponseInterface;
 }

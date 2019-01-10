@@ -89,6 +89,13 @@ class ECommerce implements ProtocolInterface
     protected $result;
 
     /**
+     * Algorithm used to generate mac
+     *
+     * @var int|string
+     */
+    protected $algorithm = OPENSSL_ALGO_SHA1;
+
+    /**
      * Init IPizza protocol.
      *
      * @param string $sellerId           Seller ID (ecom service-id)
@@ -181,7 +188,7 @@ class ECommerce implements ProtocolInterface
      *
      * @return \RKD\Banklink\Response\Response
      */
-    protected function handlePaymentResponse(array $responseData, $success) : ResponseInterface
+    protected function handlePaymentResponse(array $responseData, bool $success) : ResponseInterface
     {
         $status = PaymentResponse::STATUS_ERROR;
 
@@ -211,7 +218,7 @@ class ECommerce implements ProtocolInterface
      *
      * @return string Signature
      */
-    protected function getSignature(array $data, $encoding = 'UTF-8') : string
+    protected function getSignature(array $data, string $encoding = 'UTF-8') : string
     {
         $mac = $this->generateSignature($data, $encoding);
 
@@ -225,7 +232,7 @@ class ECommerce implements ProtocolInterface
             throw new \UnexpectedValueException('Can not get private key.');
         }
 
-        openssl_sign($mac, $signature, $privateKey);
+        openssl_sign($mac, $signature, $privateKey, $this->algorithm);
         openssl_free_key($privateKey);
 
         $result = bin2hex($signature);
@@ -241,7 +248,7 @@ class ECommerce implements ProtocolInterface
      *
      * @return string MAC key
      */
-    protected function generateSignature(array $data, $encoding = 'UTF-8') : string
+    protected function generateSignature(array $data, string $encoding = 'UTF-8') : string
     {
         // Request mac
         $fields = [
@@ -318,7 +325,7 @@ class ECommerce implements ProtocolInterface
      *
      * @return bool True on success, false otherwise
      */
-    protected function validateSignature(array $response, $encoding = 'UTF-8') : bool
+    protected function validateSignature(array $response, string $encoding = 'UTF-8') : bool
     {
         $data = $this->generateSignature($response, $encoding);
 
@@ -336,5 +343,29 @@ class ECommerce implements ProtocolInterface
         openssl_free_key($publicKey);
 
         return $this->result === 1;
+    }
+
+    /**
+     * Set algorithm used to generate mac
+     *
+     * Should be one of valid values for openssl_sign functions signature_alg parameter
+     * @see http://ee1.php.net/manual/en/function.openssl-sign.php
+     *
+     * @param int|string
+     */
+    public function setAlgorithm($algorithm) : self
+    {
+        $this->algorithm = $algorithm;
+        return $this;
+    }
+
+    /**
+     * Get algorithm used to generate mac
+     *
+     * @return mixed
+     */
+    public function getAlgorithm()
+    {
+        return $this->algorithm;
     }
 }
