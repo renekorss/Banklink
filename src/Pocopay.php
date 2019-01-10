@@ -18,7 +18,7 @@ use RKD\Banklink\Protocol\IPizza;
  * For more information, please visit:
  * https://pocopay.com/
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 class Pocopay extends Banklink
 {

@@ -13,7 +13,7 @@ namespace RKD\Banklink\Response;
 /**
  * Response interface.
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 interface ResponseInterface
 {
@@ -42,6 +42,8 @@ interface ResponseInterface
      * Set prefered language.
      *
      * @param string $language Prefered language
+     * 
+     * @return self
      */
     public function setLanguage(string $language) : ResponseInterface;
 

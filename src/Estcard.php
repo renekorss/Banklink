@@ -18,7 +18,7 @@ use RKD\Banklink\Protocol\ECommerce;
  * For more information, please visit:
  * http://www.estcard.ee/publicweb/files/ecomdevel/e-comDocENG.html
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 
 class Estcard extends Banklink

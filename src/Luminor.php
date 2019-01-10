@@ -18,7 +18,7 @@ use RKD\Banklink\Protocol\IPizza;
  * For more information, please visit:
  * http://www.nordea.ee/Corporate%20customers/Daily%20banking/Collection%20of%20payment/E-payment/798312.html
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 
 class Luminor extends Nordea

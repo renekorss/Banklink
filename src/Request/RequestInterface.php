@@ -13,7 +13,7 @@ namespace RKD\Banklink\Request;
 /**
  * Response interface.
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 interface RequestInterface
 {

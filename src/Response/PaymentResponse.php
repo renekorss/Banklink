@@ -13,7 +13,7 @@ namespace RKD\Banklink\Response;
 /**
  * Payment response wrapper.
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 class PaymentResponse extends Response
 {
@@ -63,6 +63,8 @@ class PaymentResponse extends Response
      * Set order ID.
      *
      * @param string $orderId Order ID
+     * 
+     * @return self
      */
     public function setOrderId(string $orderId) : self
     {
@@ -84,6 +86,8 @@ class PaymentResponse extends Response
      * Set sum.
      *
      * @param float $sum Sum
+     * 
+     * @return self
      */
     public function setSum(float $sum) : self
     {
@@ -105,6 +109,8 @@ class PaymentResponse extends Response
      * Set currency.
      *
      * @param string $currency Currency
+     * 
+     * @return self
      */
     public function setCurrency(string $currency) : self
     {
@@ -127,6 +133,8 @@ class PaymentResponse extends Response
      *
      * @param string $senderName    Sender name
      * @param string $senderAccount Sender account
+     * 
+     * @return self
      */
     public function setSender(string $senderName, string $senderAccount) : self
     {
@@ -151,6 +159,8 @@ class PaymentResponse extends Response
      *
      * @param string $receiverName    Receiver name
      * @param string $receiverAccount Receiver account
+     * 
+     * @return self
      */
     public function setReceiver(string $receiverName, string $receiverAccount) : self
     {
@@ -174,6 +184,8 @@ class PaymentResponse extends Response
      * Set transactionId.
      *
      * @param string $transactionId Transaction ID
+     * 
+     * @return self
      */
     public function setTransactionId(string $transactionId) : self
     {
@@ -195,6 +207,8 @@ class PaymentResponse extends Response
      * Set transactionDate.
      *
      * @param string $transactionDate Transaction date
+     * 
+     * @return self
      */
     public function setTransactionDate(string $transactionDate) : self
     {

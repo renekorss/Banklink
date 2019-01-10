@@ -13,7 +13,7 @@ namespace RKD\Banklink\Response;
 /**
  * Response wrapper.
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 class Response implements ResponseInterface
 {
@@ -94,6 +94,8 @@ class Response implements ResponseInterface
      * Set prefered language.
      *
      * @param string $language Prefered language
+     * 
+     * @return self
      */
     public function setLanguage(string $language) : ResponseInterface
     {

@@ -15,10 +15,9 @@ use RKD\Banklink\Protocol\IPizza;
 /**
  * Banklink settings for Coop Pank.
  *
- * For more information, please visit: UNKNOWN
- * @TODO: Link broken due to bank name change. New url unknown. E-mail sent.
+ * For more information, please visit: https://www.cooppank.ee/en/bank-link
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 class CoopPank extends Banklink
 {
@@ -27,7 +26,7 @@ class CoopPank extends Banklink
      *
      * @var string
      */
-    protected $requestUrl = 'https://i-pank.krediidipank.ee/teller/maksa';
+    protected $requestUrl = 'https://i.cooppank.ee/auth';
 
     /**
      * Test request url.

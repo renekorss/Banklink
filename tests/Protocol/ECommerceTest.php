@@ -74,7 +74,7 @@ class ECommerceTest extends TestCase
             $this->language,
             $this->currency,
             [
-                'cur' => null
+                'feedBackUrl' => null
             ],
             'UTF-8',
             $this->timezone

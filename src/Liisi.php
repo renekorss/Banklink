@@ -18,7 +18,7 @@ use RKD\Banklink\Protocol\LiisiPayment;
  * For more information, please visit:
  * https://klient.liisi.ee/static/payment_link_doc/
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 
 class Liisi extends Banklink

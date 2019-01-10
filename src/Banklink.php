@@ -19,7 +19,7 @@ use RKD\Banklink\Request\AuthRequest;
 /**
  * Abstract class for every banklink.
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 abstract class Banklink
 {
@@ -84,6 +84,8 @@ abstract class Banklink
 
     /**
      * Activate debug mode. Changes requestUrl to testRequestUrl
+     * 
+     * @return self
      */
     public function debugMode() : self
     {
@@ -94,8 +96,9 @@ abstract class Banklink
      * Set request URL
      *
      * @param string $requestUrl Request URL
+     * 
+     * @return self
      */
-
     public function setRequestUrl($requestUrl) : self
     {
         $this->requestUrl = $requestUrl;

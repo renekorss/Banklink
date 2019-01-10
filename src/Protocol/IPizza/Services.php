@@ -13,7 +13,7 @@ namespace RKD\Banklink\Protocol\IPizza;
 /**
  * IPizza protocol services.
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 final class Services
 {

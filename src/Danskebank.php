@@ -18,7 +18,7 @@ use RKD\Banklink\Protocol\IPizza;
  * For more information, please visit:
  * https://www.danskebank.ee/public/documents/Pangalingi_tehniline_spetsifikatsioon_2014.pdf
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 class Danskebank extends Banklink
 {

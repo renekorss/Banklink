@@ -17,7 +17,7 @@ use RKD\Banklink\Protocol\IPizza;
  *
  * For more information, please visit: https://www.swedbank.ee/business/cash/ecommerce/banklink
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 class Swedbank extends Banklink
 {

@@ -298,7 +298,7 @@ class ECommerce implements ProtocolInterface
 
         foreach ($fields as $key) {
             // Check if field exists
-            if (!isset($data[$key]) || $data[$key] == false) {
+            if (!isset($data[$key]) || $data[$key] === false || is_null($data[$key])) {
                 throw new \UnexpectedValueException(
                     vsprintf('Field %s must be set to use ECommerce protocol.', [$key])
                 );

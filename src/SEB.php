@@ -18,7 +18,7 @@ use RKD\Banklink\Protocol\IPizza;
  * For more information, please visit:
  * http://www.seb.ee/eng/business/everyday-banking/collection-payments/collection-payments-internet
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 class SEB extends Banklink
 {
