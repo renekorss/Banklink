@@ -84,7 +84,7 @@ abstract class Banklink
 
     /**
      * Activate debug mode. Changes requestUrl to testRequestUrl
-     * 
+     *
      * @return self
      */
     public function debugMode() : self
@@ -96,7 +96,7 @@ abstract class Banklink
      * Set request URL
      *
      * @param string $requestUrl Request URL
-     * 
+     *
      * @return self
      */
     public function setRequestUrl($requestUrl) : self

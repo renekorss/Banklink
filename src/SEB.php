@@ -34,7 +34,7 @@ class SEB extends Banklink
      *
      * @var string
      */
-    protected $testRequestUrl = 'http://localhost:8080/banklink/seb-common';
+    protected $testRequestUrl = 'https://e.seb.ee/cgi-bin/dv.sh/ipank.r';
 
     /**
      * Force SEB class to use IPizza protocol.

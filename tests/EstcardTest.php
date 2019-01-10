@@ -19,7 +19,7 @@ class EstcardTest extends TestCase
     protected $protocolClass = "RKD\Banklink\Protocol\ECommerce";
 
     protected $requestUrl = 'https://pos.estcard.ee/ecom/iPayServlet';
-    protected $testRequestUrl = 'http://localhost:8080/banklink/ec';
+    protected $testRequestUrl = 'https://test.estcard.ee/ecom/iPayServlet';
 
     /**
      * Set test data.

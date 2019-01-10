@@ -12,5 +12,5 @@ class DanskebankTest extends SEBTest
     protected $bankClass = "RKD\Banklink\Danskebank";
 
     protected $requestUrl = 'https://www2.danskebank.ee/ibank/pizza/pizza';
-    protected $testRequestUrl = 'http://localhost:8080/banklink/sampo-common';
+    protected $testRequestUrl = 'https://www2.danskebank.ee/ibank/pizza/pizza';
 }

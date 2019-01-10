@@ -149,7 +149,7 @@ class AuthResponse extends Response
      * Set token.
      *
      * @param string $token Token (VK_TOKEN)
-     * 
+     *
      * @return self
      */
     public function setToken(string $token) : ?self
@@ -172,7 +172,7 @@ class AuthResponse extends Response
      * Set nonce.
      *
      * @param string $nonce Nonce (VK_NONCE)
-     * 
+     *
      * @return self
      */
     public function setNonce(string $nonce) : self
@@ -195,7 +195,7 @@ class AuthResponse extends Response
      * Set rid.
      *
      * @param string $rid Rid (VK_RID)
-     * 
+     *
      * @return self
      */
     public function setRid(string $rid) : self
@@ -218,7 +218,7 @@ class AuthResponse extends Response
      * Set auth date.
      *
      * @param string $authDate Auth date
-     * 
+     *
      * @return self
      */
     public function setAuthDate(string $authDate) : self

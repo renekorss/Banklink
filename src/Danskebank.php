@@ -34,7 +34,7 @@ class Danskebank extends Banklink
      *
      * @var string
      */
-    protected $testRequestUrl = 'http://localhost:8080/banklink/sampo-common';
+    protected $testRequestUrl = 'https://www2.danskebank.ee/ibank/pizza/pizza';
 
     /**
      * Force Danskebank class to use IPizza protocol.

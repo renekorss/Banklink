@@ -35,7 +35,7 @@ class Estcard extends Banklink
      *
      * @var string
      */
-    protected $testRequestUrl = 'http://localhost:8080/banklink/ec';
+    protected $testRequestUrl = 'https://test.estcard.ee/ecom/iPayServlet';
 
     /**
      * Force Nordea class to use ECommerce protocol.

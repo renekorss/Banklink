@@ -11,6 +11,6 @@ class CoopPankTest extends SEBTest
 {
     protected $bankClass = "RKD\Banklink\CoopPank";
 
-    protected $requestUrl = 'https://i-pank.krediidipank.ee/teller/maksa';
-    protected $testRequestUrl = 'http://localhost:8080/banklink/krediidipank-common';
+    protected $requestUrl = 'https://i.cooppank.ee/auth';
+    protected $testRequestUrl = 'https://i.cooppank.ee/auth';
 }

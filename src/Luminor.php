@@ -16,13 +16,27 @@ use RKD\Banklink\Protocol\IPizza;
  * Banklink settings for Luminor.
  *
  * For more information, please visit:
- * http://www.nordea.ee/Corporate%20customers/Daily%20banking/Collection%20of%20payment/E-payment/798312.html
+ * https://www.luminor.ee/en/e-payment
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
 
-class Luminor extends Nordea
+class Luminor extends Banklink
 {
+    /**
+     * Request url.
+     *
+     * @var string
+     */
+    protected $requestUrl = 'https://netbank.nordea.com/pnbepay/epayp.jsp';
+
+    /**
+     * Test request url.
+     *
+     * @var string
+     */
+    protected $testRequestUrl = 'https://netbank.nordea.com/pnbepaytest/epayp.jsp';
+
     /**
      * Force Luminor class to use IPizza protocol.
      *
@@ -31,5 +45,25 @@ class Luminor extends Nordea
     public function __construct(IPizza $protocol)
     {
         parent::__construct($protocol);
+    }
+
+    /**
+     * Override encoding field.
+     */
+    protected function getEncodingField() : string
+    {
+        return 'VK_ENCODING';
+    }
+
+    /**
+     * By default uses UTF-8.
+     *
+     * @return array Array of additional fields to send to bank
+     */
+    protected function getAdditionalFields() : array
+    {
+        return [
+            'VK_ENCODING' => $this->requestEncoding,
+        ];
     }
 }

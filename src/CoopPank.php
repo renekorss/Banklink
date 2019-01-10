@@ -33,7 +33,7 @@ class CoopPank extends Banklink
      *
      * @var string
      */
-    protected $testRequestUrl = 'http://localhost:8080/banklink/krediidipank-common';
+    protected $testRequestUrl = 'https://i.cooppank.ee/auth';
 
     /**
      * Response encoding.

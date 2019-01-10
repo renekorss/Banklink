@@ -33,7 +33,7 @@ class Swedbank extends Banklink
      *
      * @var string
      */
-    protected $testRequestUrl = 'http://localhost:8080/banklink/swedbank-common';
+    protected $testRequestUrl = 'https://www.swedbank.ee/banklink';
 
     /**
      * Force Swedbank class to use IPizza protocol.

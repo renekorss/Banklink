@@ -20,7 +20,7 @@ class SEBTest extends TestCase
     protected $protocolClass = "RKD\Banklink\Protocol\IPizza";
 
     protected $requestUrl = 'https://www.seb.ee/cgi-bin/unet3.sh/ipank.r';
-    protected $testRequestUrl = 'http://localhost:8080/banklink/seb-common';
+    protected $testRequestUrl = 'https://e.seb.ee/cgi-bin/dv.sh/ipank.r';
     protected $bank;
 
     private $protocol;

@@ -12,5 +12,5 @@ class SwedbankTest extends SEBTest
     protected $bankClass = "RKD\Banklink\Swedbank";
 
     protected $requestUrl = 'https://www.swedbank.ee/banklink';
-    protected $testRequestUrl = 'http://localhost:8080/banklink/swedbank-common';
+    protected $testRequestUrl = 'https://www.swedbank.ee/banklink';
 }

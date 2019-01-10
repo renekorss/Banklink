@@ -35,7 +35,7 @@ class Nordea extends Banklink
      *
      * @var string
      */
-    protected $testRequestUrl = 'http://localhost:8080/banklink/ipizza';
+    protected $testRequestUrl = 'https://netbank.nordea.com/pnbepaytest/epayp.jsp';
 
     /**
      * Force Nordea class to use IPizza protocol.

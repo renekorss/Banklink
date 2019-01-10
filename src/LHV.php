@@ -33,7 +33,7 @@ class LHV extends Banklink
      *
      * @var string
      */
-    protected $testRequestUrl = 'http://localhost:8080/banklink/lhv-common';
+    protected $testRequestUrl = 'https://www.lhv.ee/banklink';
 
     /**
      * Force LHV class to use IPizza protocol.
