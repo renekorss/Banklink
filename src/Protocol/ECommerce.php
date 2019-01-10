@@ -118,26 +118,26 @@ class ECommerce implements ProtocolInterface
     /**
      * Get payment object.
      *
-     * @param string $orderId  Order ID
-     * @param float  $sum      Sum of order
-     * @param string $message  Transaction description
-     * @param string $language Language
-     * @param string $currency Currency. Default: EUR
+     * @param int    $orderId           Order ID
+     * @param float  $sum               Sum of order
+     * @param string $message           Transaction description
+     * @param string $language          Language
+     * @param string $currency          Currency. Default: EUR
      * @param array  $customRequestData Optional custom request data
-     * @param string $encoding Encoding
-     * @param string $timezone Timezone. Default: Europe/Tallinn
+     * @param string $encoding          Encoding
+     * @param string $timezone          Timezone. Default: Europe/Tallinn
      *
      * @return array Payment request data
      */
     public function getPaymentRequest(
-        $orderId,
-        $sum,
-        $message,
-        $language = 'EST',
-        $currency = 'EUR',
-        $customRequestData = [],
-        $encoding = 'UTF-8',
-        $timezone = 'Europe/Tallinn'
+        int $orderId,
+        float $sum,
+        string $message,
+        string $language = 'EST',
+        string $currency = 'EUR',
+        array $customRequestData = [],
+        string $encoding = 'UTF-8',
+        string $timezone = 'Europe/Tallinn'
     ) : array {
         $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
         $datetime = new \Datetime($time, new \DateTimeZone($timezone));

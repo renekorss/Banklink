@@ -28,21 +28,10 @@ class ProtocolHelper
      * @param int $orderId Order ID
      *
      * @return string Calculated reference
-     *
-     * @throws InvalidArgumentException If order ID is not in correct length
      */
-    public static function calculateReference($orderId) : string
+    public static function calculateReference(int $orderId) : string
     {
         $length = strlen($orderId);
-
-        if ($length > 19) {
-            throw new \InvalidArgumentException('Order id can be up to 19 digits long.');
-        }
-
-        // This makes sure that order id length is at least 1 digit
-        if (!is_int($orderId)) {
-            throw new \InvalidArgumentException('Order id must be integer.');
-        }
 
         $orderId = (string) $orderId;
         $multipliers = [7, 3, 1];
@@ -67,7 +56,7 @@ class ProtocolHelper
      *
      * @return string ISO-639-1 langauge code
      */
-    public static function langToISO6391($language) : string
+    public static function langToISO6391(string $language) : string
     {
         $languages = [
             'est' => 'et',
@@ -107,13 +96,13 @@ class ProtocolHelper
      * @param mixed $input Input value
      * @param int $padLength Desired length
      * @param string $padString Pad with
-     * @param string $padType Pad direction
+     * @param int $padType Pad direction
      * @param string $encoding Encoding
      *
      * @return string Padded string
      */
 
-    public static function mbStrPad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT, $encoding = null) : string
+    public static function mbStrPad($input, int $padLength, string $padString = ' ', int $padType = STR_PAD_RIGHT, ?string $encoding = null) : string
     {
         if (is_null($input) || strlen($input) == 0) {
             return false;

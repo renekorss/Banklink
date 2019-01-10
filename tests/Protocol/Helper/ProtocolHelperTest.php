@@ -29,24 +29,13 @@ class ProtocolHelperTest extends TestCase
     }
 
     /**
-     * Test exception for too long order id.
-     *
-     * @expectedException InvalidArgumentException
-     */
-    public function testReferenceTooLong()
-    {
-        $orderId = '12345678901234567890';
-        ProtocolHelper::calculateReference($orderId);
-    }
-
-    /**
      * Test exception for too short order id.
      *
-     * @expectedException InvalidArgumentException
+     * @expectedException TypeError
      */
     public function testReferenceTooShortNotInteger()
     {
-        ProtocolHelper::calculateReference('');
+        ProtocolHelper::calculateReference('randomstring');
     }
 
     /**

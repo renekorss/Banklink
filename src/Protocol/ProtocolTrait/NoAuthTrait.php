@@ -22,24 +22,24 @@ trait NoAuthTrait
     /**
      * Get authentication object.
      *
-     * @param string $recId Bank identifier
-     * @param string $nonce Random nonce
-     * @param string $rid Session identifier.
-     * @param string $encoding Encoding
-     * @param string $language Language
-     * @param string $timezone Timezone. Default: Europe/Tallinn
+     * @param string|null $recId    Bank identifier
+     * @param string|null $nonce    Random nonce
+     * @param string|null $rid      Session identifier.
+     * @param string      $encoding Encoding
+     * @param string      $language Language
+     * @param string      $timezone Timezone. Default: Europe/Tallinn
      *
      * @return array Authentication request data
      *
      * @SuppressWarnings("unused")
      */
     public function getAuthRequest(
-        $recId = null,
-        $nonce = null,
-        $rid = null,
-        $encoding = 'UTF-8',
-        $language = 'EST',
-        $timezone = 'Europe/Tallinn'
+        ?string $recId = null,
+        ?string $nonce = null,
+        ?string $rid = null,
+        string $encoding = 'UTF-8',
+        string $language = 'EST',
+        string $timezone = 'Europe/Tallinn'
     ) : array {
         throw new \LogicException(get_class().' protocol dosen\'t support authentication.');
     }

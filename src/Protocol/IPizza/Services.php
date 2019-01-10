@@ -89,7 +89,7 @@ final class Services
      * Keep it readable
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    public static function getFields($serviceId) : array
+    public static function getFields(string $serviceId) : array
     {
         switch ($serviceId) {
             case self::PAYMENT_REQUEST_1011:

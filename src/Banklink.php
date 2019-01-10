@@ -103,26 +103,26 @@ abstract class Banklink
     }
 
     /**
-     * Get payment object.
+     * Get payment object
      *
-     * @param string $orderId Order ID
-     * @param float  $sum Sum of order
-     * @param string $message Transaction description
-     * @param string $language Language
-     * @param string $currency Currency. Default: EUR
+     * @param int    $orderId           Order ID
+     * @param float  $sum               Sum of order
+     * @param string $message           Transaction description
+     * @param string $language          Language
+     * @param string $currency          Currency. Default: EUR
      * @param array  $customRequestData Optional custom request data
-     * @param string $timezone Timezone. Default: Europe/Tallinn
+     * @param string $timezone          Timezone. Default: Europe/Tallinn
      *
      * @return RKD\Banklink\Request\PaymentRequest Payment object
      */
     public function getPaymentRequest(
-        $orderId,
-        $sum,
-        $message,
-        $language = 'EST',
-        $currency = 'EUR',
-        $customRequestData = [],
-        $timezone = 'Europe/Tallinn'
+        int $orderId,
+        float $sum,
+        string $message,
+        string $language = 'EST',
+        string $currency = 'EUR',
+        array $customRequestData = [],
+        string $timezone = 'Europe/Tallinn'
     ) : RequestInterface {
         if ($this->requestData) {
             return $this->requestData;
@@ -148,22 +148,22 @@ abstract class Banklink
     }
 
      /**
-      * Get auhtnetication object.
+      * Get authentication object
       *
-      * @param string $recId Bank identifier
-      * @param string $nonce Random nonce
-      * @param string $rid Session identifier.
-      * @param string $language Language
-      * @param string $timezone Timezone. Default: Europe/Tallinn
+      * @param string|null $recId    Bank identifier
+      * @param string|null $nonce    Random nonce
+      * @param string|null $rid      Session identifier.
+      * @param string      $language Language
+      * @param string      $timezone Timezone. Default: Europe/Tallinn
       *
       * @return RKD\Banklink\Request\RequestInterface Authentication object
       */
     public function getAuthRequest(
-        $recId = null,
-        $nonce = null,
-        $rid = null,
-        $language = 'EST',
-        $timezone = 'Europe/Tallinn'
+        ?string $recId = null,
+        ?string $nonce = null,
+        ?string $rid = null,
+        string $language = 'EST',
+        string $timezone = 'Europe/Tallinn'
     ) : RequestInterface {
         if ($this->authData) {
             return $this->authData;

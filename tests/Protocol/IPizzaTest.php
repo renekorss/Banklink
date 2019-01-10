@@ -402,7 +402,17 @@ class IPizzaTest extends TestCase
      */
     public function testGetRequestFieldMissing()
     {
-        $this->protocol->getPaymentRequest($this->orderId, null, $this->message, $this->language, $this->currency, [], 'UTF-8', $this->timezone);
+        $this->protocol->getPaymentRequest($this->orderId,
+            $this->amount,
+            $this->message,
+            $this->language,
+            $this->currency,
+            [
+                'VK_STAMP' => null
+            ],
+            'UTF-8',
+            $this->timezone
+        );
     }
 
     /**

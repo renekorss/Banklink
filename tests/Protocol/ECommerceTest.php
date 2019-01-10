@@ -67,7 +67,17 @@ class ECommerceTest extends TestCase
      */
     public function testGetRequestFieldMissing()
     {
-        $this->protocol->getPaymentRequest(null, $this->amount, $this->message, $this->language, $this->currency, [], 'UTF-8', $this->timezone);
+        $this->protocol->getPaymentRequest($this->orderId,
+            $this->amount,
+            $this->message,
+            $this->language,
+            $this->currency,
+            [
+                'cur' => null
+            ],
+            'UTF-8',
+            $this->timezone
+        );
     }
 
     /**
