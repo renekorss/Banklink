@@ -496,12 +496,69 @@ class IPizzaTest extends TestCase
     }
 
     /**
-     * Get algorithm used to generate mac
-     *
-     * @return mixed
+     * Test that we can change algorithm
      */
-    public function getAlgorithm()
+    public function testGeneratesCorrectMacWithSHA256()
     {
-        return $this->algorithm;
+        $this->protocol = new IPizza(
+            $this->sellerId,
+            __DIR__.'/../keys/IPizza/private_key_sha256.pem',
+            '',
+            __DIR__.'/../keys/IPizza/public_key_sha256.pem',
+            $this->requestUrl,
+            $this->sellerName,
+            $this->sellerAccount
+        );
+
+        $this->protocol->setAlgorithm(OPENSSL_ALGO_SHA256);
+
+        $requestData = $this->protocol->getAuthRequest();
+
+        // Must match with SHA256 encrypted VK_MAC
+        $this->assertEquals(
+            'BoHSS+z3syMAU0Vi/Ob8lTS8FIMAZ6ZslYnjNXZVEZEn2aXuc/1L2oR/Ef8DvPFJ1ocOjxOHiQ0QJruD5CpiDXI3/hxSJ2qJg0a0HezrTPgc6iVONcsas62+PBlpWFSnZ9u5qg1eETnHgYzjtBZE2FzqWJWC2UuMUxn9uGcGhoxd1wGCrgc2zu4Ub540hhEyoUAJyjN5xA89nKb8H0tY58s96uYM9G8Isj8cDWVICFI4Q5O3Rn56sfhBEyNrSOwMCukf+zsIfoQtt3qto9JZ/IZ6Znl8ze8LCZqwvqnFiRrkXnVwvPI7aiyCIvFccqJiUsl5ahqpXrnFJyt2kyAGDQ==', 
+            $requestData['VK_MAC']
+        );
+    }
+
+    public function testCanHandleSHA256AlgoResponse()
+    {
+        $this->protocol = new IPizza(
+            $this->sellerId,
+            __DIR__.'/../keys/IPizza/private_key_sha256.pem',
+            '',
+            __DIR__.'/../keys/IPizza/public_key_sha256.pem',
+            $this->requestUrl,
+            $this->sellerName,
+            $this->sellerAccount
+        );
+
+        $this->protocol->setAlgorithm(OPENSSL_ALGO_SHA256);
+        
+        $responseData = [
+            "VK_SERVICE" => "1111",
+            "VK_VERSION" => "008",
+            "VK_SND_ID" => "Pocopay",
+            "VK_REC_ID" => "Redwall",
+            "VK_STAMP" => "1476279858",
+            "VK_REF" => "324234234",
+            "VK_MSG" => "Example payment",
+            "VK_ENCODING" => "UTF-8",
+            "VK_LANG" => "EST",
+            "VK_AUTO" => "N",
+            "VK_CURR" => "EUR",
+            "VK_REC_ACC" => "EE439999000010127858",
+            "VK_REC_NAME" => "REDWALL",
+            "VK_AMOUNT" => "1.00",
+            "VK_MAC" => "k0UjizlWrG75i6euZMbzVPp4gaA+PxiTT+bi1WRdVmi9XNZ11EA80WFVRqEBcx187E8otmdauGyVWzHbbOSBzLuGuoHVD5D8n6M/PnpkNrHRQan//bql5kLzJm82togfTGQEa775s1kL7rQPqMbOYN7jIdOvDvgSxlHhLwgQ8G7Vnk1t1JH7nmoUxXgrcJqPtxBaevSa2fOkFE90+cuJ9CZUaRr76emASNvs1SxwHpuW782OCXbcwuTdJo+KSjWG2Hi2phVvYXVQlqNROzac921DXEatOoBYA0EbpsMMDmPAMyartnGiCd3owLtFfgHbnV4ZZJ02IjsWtOJu4n41fg==",
+            "VK_T_NO" => "10117822",
+            "VK_SND_ACC" => "EE529999000010128569",
+            "VK_SND_NAME" => "RENE KORSS",
+            "VK_T_DATETIME" => "2019-01-15T18:10:04+0000",
+        ];
+
+        $response = $this->protocol->handleResponse($responseData);
+
+        $this->assertTrue($response->wasSuccessful());
     }
 }

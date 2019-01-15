@@ -376,7 +376,7 @@ class IPizza implements ProtocolInterface
      *
      * @return string Signature
      */
-    protected function getSignature(array $data, string $encoding = 'UTF-8') : string
+    public function getSignature(array $data, string $encoding = 'UTF-8') : string
     {
         $mac = $this->generateSignature($data, $encoding);
 
