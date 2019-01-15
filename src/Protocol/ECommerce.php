@@ -339,7 +339,7 @@ class ECommerce implements ProtocolInterface
             throw new \UnexpectedValueException('Can not get public key.');
         }
 
-        $this->result = openssl_verify($data, pack('H*', $response['mac']), $publicKey);
+        $this->result = openssl_verify($data, pack('H*', $response['mac']), $publicKey, $this->algorithm);
         openssl_free_key($publicKey);
 
         return $this->result === 1;

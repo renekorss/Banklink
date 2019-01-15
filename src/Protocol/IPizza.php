@@ -450,7 +450,7 @@ class IPizza implements ProtocolInterface
             throw new \UnexpectedValueException('Can not get public key.');
         }
 
-        $this->result = openssl_verify($data, base64_decode($response['VK_MAC']), $publicKey);
+        $this->result = openssl_verify($data, base64_decode($response['VK_MAC']), $publicKey, $this->algorithm);
         openssl_free_key($publicKey);
 
         return $this->result === 1;
