@@ -516,7 +516,7 @@ class IPizzaTest extends TestCase
 
         // Must match with SHA256 encrypted VK_MAC
         $this->assertEquals(
-            'BoHSS+z3syMAU0Vi/Ob8lTS8FIMAZ6ZslYnjNXZVEZEn2aXuc/1L2oR/Ef8DvPFJ1ocOjxOHiQ0QJruD5CpiDXI3/hxSJ2qJg0a0HezrTPgc6iVONcsas62+PBlpWFSnZ9u5qg1eETnHgYzjtBZE2FzqWJWC2UuMUxn9uGcGhoxd1wGCrgc2zu4Ub540hhEyoUAJyjN5xA89nKb8H0tY58s96uYM9G8Isj8cDWVICFI4Q5O3Rn56sfhBEyNrSOwMCukf+zsIfoQtt3qto9JZ/IZ6Znl8ze8LCZqwvqnFiRrkXnVwvPI7aiyCIvFccqJiUsl5ahqpXrnFJyt2kyAGDQ==', 
+            'BoHSS+z3syMAU0Vi/Ob8lTS8FIMAZ6ZslYnjNXZVEZEn2aXuc/1L2oR/Ef8DvPFJ1ocOjxOHiQ0QJruD5CpiDXI3/hxSJ2qJg0a0HezrTPgc6iVONcsas62+PBlpWFSnZ9u5qg1eETnHgYzjtBZE2FzqWJWC2UuMUxn9uGcGhoxd1wGCrgc2zu4Ub540hhEyoUAJyjN5xA89nKb8H0tY58s96uYM9G8Isj8cDWVICFI4Q5O3Rn56sfhBEyNrSOwMCukf+zsIfoQtt3qto9JZ/IZ6Znl8ze8LCZqwvqnFiRrkXnVwvPI7aiyCIvFccqJiUsl5ahqpXrnFJyt2kyAGDQ==',
             $requestData['VK_MAC']
         );
     }
