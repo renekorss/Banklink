@@ -201,8 +201,7 @@ abstract class Banklink
      *
      * @return string Request URL
      *
-     *
-     * @throws UnexpectedValueException If requestUrl is in wrong time or not set
+     * @throws UnexpectedValueException If requestUrl is in wrong type or not set
      */
     public function getRequestUrlFor(string $type) : string
     {
