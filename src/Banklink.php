@@ -47,14 +47,14 @@ abstract class Banklink
     /**
      * Request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $requestUrl;
 
     /**
      * Test request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $testRequestUrl;
 
@@ -145,7 +145,7 @@ abstract class Banklink
         // Add additional fields
         $requestData = array_merge($requestData, $this->getAdditionalFields());
 
-        $this->requestData = new PaymentRequest($this->requestUrl, $requestData);
+        $this->requestData = new PaymentRequest($this->getRequestUrlFor('payment'), $requestData);
 
         return $this->requestData;
     }
@@ -177,7 +177,7 @@ abstract class Banklink
         // Add additional fields
         $authData = array_merge($authData, $this->getAdditionalFields());
 
-        $this->authData = new AuthRequest($this->requestUrl, $authData);
+        $this->authData = new AuthRequest($this->getRequestUrlFor('auth'), $authData);
 
         return $this->authData;
     }
@@ -192,6 +192,27 @@ abstract class Banklink
     public function handleResponse(array $responseData) : ResponseInterface
     {
         return $this->protocol->handleResponse($responseData, $this->getResponseEncoding($responseData));
+    }
+
+    /**
+     * Get request url based on type
+     *
+     * @param string $type Request URL type
+     *
+     * @return string Request URL
+     *
+     *
+     * @throws UnexpectedValueException If requestUrl is in wrong time or not set
+     */
+    public function getRequestUrlFor(string $type) : string
+    {
+        if (is_string($this->requestUrl)) {
+            return $this->requestUrl;
+        } elseif (is_array($this->requestUrl) && array_key_exists($type, $this->requestUrl)) {
+            return $this->requestUrl[$type];
+        }
+
+        throw new \UnexpectedValueException(sprintf('requestUrl is not string or array containing desired type (%s)', $type));
     }
 
     /**

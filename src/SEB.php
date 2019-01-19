@@ -25,14 +25,14 @@ class SEB extends Banklink
     /**
      * Request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $requestUrl = 'https://www.seb.ee/cgi-bin/unet3.sh/ipank.r';
 
     /**
      * Test request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $testRequestUrl = 'https://e.seb.ee/cgi-bin/dv.sh/ipank.r';
 

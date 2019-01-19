@@ -26,14 +26,14 @@ class Estcard extends Banklink
     /**
      * Request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $requestUrl = 'https://pos.estcard.ee/ecom/iPayServlet';
 
     /**
      * Test request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $testRequestUrl = 'https://test.estcard.ee/ecom/iPayServlet';
 

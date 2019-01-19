@@ -26,14 +26,14 @@ class Liisi extends Banklink
     /**
      * Request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $requestUrl = 'https://klient.liisi.ee/api/ipizza/';
 
     /**
      * Test request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $testRequestUrl = 'https://prelive.liisi.ee:8953/api/ipizza/';
 

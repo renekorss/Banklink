@@ -25,14 +25,14 @@ class Danskebank extends Banklink
     /**
      * Request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $requestUrl = 'https://www2.danskebank.ee/ibank/pizza/pizza';
 
     /**
      * Test request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $testRequestUrl = 'https://www2.danskebank.ee/ibank/pizza/pizza';
 

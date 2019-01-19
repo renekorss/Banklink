@@ -26,14 +26,14 @@ class Nordea extends Banklink
     /**
      * Request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $requestUrl = 'https://netbank.nordea.com/pnbepay/epayp.jsp';
 
     /**
      * Test request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $testRequestUrl = 'https://netbank.nordea.com/pnbepaytest/epayp.jsp';
 

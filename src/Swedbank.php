@@ -24,14 +24,14 @@ class Swedbank extends Banklink
     /**
      * Request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $requestUrl = 'https://www.swedbank.ee/banklink';
 
     /**
      * Test request url.
      *
-     * @var string
+     * @var mixed
      */
     protected $testRequestUrl = 'https://www.swedbank.ee/banklink';
 

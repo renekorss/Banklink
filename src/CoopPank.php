@@ -24,16 +24,22 @@ class CoopPank extends Banklink
     /**
      * Request url.
      *
-     * @var string
+     * @var mixed
      */
-    protected $requestUrl = 'https://i.cooppank.ee/auth';
+    protected $requestUrl = [
+        'payment' => 'https://i.cooppank.ee/pay',
+        'auth' => 'https://i.cooppank.ee/auth'
+    ];
 
     /**
      * Test request url.
      *
-     * @var string
+     * @var mixed
      */
-    protected $testRequestUrl = 'https://i.cooppank.ee/auth';
+    protected $testRequestUrl = [
+        'payment' => 'https://i.cooppank.ee/pay',
+        'auth' => 'https://i.cooppank.ee/auth'
+    ];
 
     /**
      * Response encoding.

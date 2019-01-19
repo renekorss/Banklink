@@ -19,8 +19,14 @@ class SEBTest extends TestCase
     protected $bankClass = "RKD\Banklink\SEB";
     protected $protocolClass = "RKD\Banklink\Protocol\IPizza";
 
-    protected $requestUrl = 'https://www.seb.ee/cgi-bin/unet3.sh/ipank.r';
-    protected $testRequestUrl = 'https://e.seb.ee/cgi-bin/dv.sh/ipank.r';
+    protected $requestUrl = [
+        'payment' => 'https://www.seb.ee/cgi-bin/unet3.sh/ipank.r',
+        'auth' => 'https://www.seb.ee/cgi-bin/unet3.sh/ipank.r'
+    ];
+    protected $testRequestUrl = [
+        'payment' => 'https://e.seb.ee/cgi-bin/dv.sh/ipank.r',
+        'auth' => 'https://e.seb.ee/cgi-bin/dv.sh/ipank.r'
+    ];
     protected $bank;
 
     private $protocol;
@@ -140,7 +146,7 @@ class SEBTest extends TestCase
         $this->assertEquals($this->expectedData, $request->getRequestData());
 
         // Production env url
-        $this->assertEquals($this->requestUrl, $request->getRequestUrl());
+        $this->assertEquals($this->requestUrl['payment'], $request->getRequestUrl());
     }
 
     /**
@@ -168,7 +174,7 @@ class SEBTest extends TestCase
         $this->assertEquals($this->expectedData, $request->getRequestData());
 
         // Test env url
-        $this->assertEquals($this->testRequestUrl, $request->getRequestUrl());
+        $this->assertEquals($this->testRequestUrl['payment'], $request->getRequestUrl());
 
         // Get HTML
         $this->assertContains('<input type="hidden"', $request->getRequestInputs());
@@ -259,7 +265,7 @@ class SEBTest extends TestCase
         $this->assertEquals($expectedData, $request->getRequestData());
 
         // Test env url
-        $this->assertEquals($this->requestUrl, $request->getRequestUrl());
+        $this->assertEquals($this->requestUrl['auth'], $request->getRequestUrl());
 
         // Get HTML
         $this->assertContains('<input type="hidden"', $request->getRequestInputs());
@@ -291,7 +297,7 @@ class SEBTest extends TestCase
         $this->assertEquals($expectedData, $request->getRequestData());
 
         // Test env url
-        $this->assertEquals($this->requestUrl, $request->getRequestUrl());
+        $this->assertEquals($this->requestUrl['auth'], $request->getRequestUrl());
 
         // Get HTML
         $this->assertContains('<input type="hidden"', $request->getRequestInputs());
@@ -339,5 +345,60 @@ class SEBTest extends TestCase
 
         // Custom url
         $this->assertEquals($this->expectedData, $request->getRequestData());
+    }
+
+    /**
+     * Test we can set multiple request urls
+     */
+    public function testMultipleRequestUrls()
+    {
+        $this->bank = new $this->bankClass($this->protocol);
+        $this->bank->setRequestUrl([
+            'auth' => 'https://custom.com/auth',
+            'payment' => 'https://custom.com/pay'
+        ]);
+
+        // Custom url set
+        $this->assertEquals('https://custom.com/auth', $this->bank->getRequestUrlFor('auth'));
+        $this->assertEquals('https://custom.com/pay', $this->bank->getRequestUrlFor('payment'));
+    }
+
+    /**
+     * Test we can set one request url which is used for payment and authentication
+     */
+    public function testSingleRequestUrl()
+    {
+        $this->bank = new $this->bankClass($this->protocol);
+        $this->bank->setRequestUrl('https://custom.com/endpoint');
+
+        // Custom url set
+        $this->assertEquals('https://custom.com/endpoint', $this->bank->getRequestUrlFor('auth'));
+        $this->assertEquals('https://custom.com/endpoint', $this->bank->getRequestUrlFor('payment'));
+    }
+
+    /**
+     * getRequestUrlFor should throw an UnexpectedValueException if in wrong type
+     *
+     * @expectedException UnexpectedValueException
+     */
+    public function testRequestUrlWrongType()
+    {
+        $this->bank = new $this->bankClass($this->protocol);
+        $this->bank->setRequestUrl(null);
+
+        $this->assertEquals('https://custom.com/endpoint', $this->bank->getRequestUrlFor('payment'));
+    }
+
+    /**
+     * getRequestUrlFor should throw an UnexpectedValueException if don't have correct type
+     *
+     * @expectedException UnexpectedValueException
+     */
+    public function testNoRequestUrlType()
+    {
+        $this->bank = new $this->bankClass($this->protocol);
+        $this->bank->setRequestUrl([]);
+
+        $this->assertEquals('https://custom.com/endpoint', $this->bank->getRequestUrlFor('payment'));
     }
 }
