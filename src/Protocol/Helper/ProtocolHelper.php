@@ -104,7 +104,7 @@ class ProtocolHelper
 
     public static function mbStrPad($input, int $padLength, string $padString = ' ', int $padType = STR_PAD_RIGHT, ?string $encoding = null) : string
     {
-        if (is_null($input)) {
+        if (is_null($input) || strlen($input) === 0) {
             $input = '';
         }
 
