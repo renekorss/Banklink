@@ -61,7 +61,7 @@ class Response implements ResponseInterface
     }
 
     /**
-     * Get boolean to know is transaction was successful.
+     * Get boolean to know if transaction was successful.
      *
      * @return bool True on sucess, false othwerwise
      */
