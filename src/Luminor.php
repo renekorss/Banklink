@@ -28,14 +28,20 @@ class Luminor extends Banklink
      *
      * @var mixed
      */
-    protected $requestUrl = 'https://netbank.nordea.com/pnbepay/epayp.jsp';
+    protected $requestUrl = [
+        'payment' => 'https://netbank.nordea.com/pnbepay/epayp.jsp',
+        'auth' => 'https://netbank.nordea.com/pnbeid/eidp.jsp'
+    ];
 
     /**
      * Test request url.
      *
      * @var mixed
      */
-    protected $testRequestUrl = 'https://netbank.nordea.com/pnbepaytest/epayp.jsp';
+    protected $testRequestUrl = [
+        'payment' => 'https://netbank.nordea.com/pnbepaytest/epayp.jsp',
+        'auth' => 'https://netbank.nordea.com/pnbeidtest/eidp.jsp',
+    ];
 
     /**
      * Force Luminor class to use IPizza protocol.
