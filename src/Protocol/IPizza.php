@@ -59,7 +59,7 @@ class IPizza implements ProtocolInterface
     protected $sellerName;
 
     /**
-     * Selelr account number.
+     * Seller account number.
      *
      * @var string
      */
