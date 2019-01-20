@@ -5,13 +5,14 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2016-2017 Rene Korss
+ * @copyright 2016-2019 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink\Protocol;
 
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\IPizza\Services;
+use RKD\Banklink\Response\ResponseInterface;
 use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Response\AuthResponse;
 
@@ -58,7 +59,7 @@ class IPizza implements ProtocolInterface
     protected $sellerName;
 
     /**
-     * Selelr account number.
+     * Seller account number.
      *
      * @var string
      */
@@ -98,6 +99,13 @@ class IPizza implements ProtocolInterface
      * @var bool
      */
     protected $useMbStrlen = true;
+
+    /**
+     * Algorithm used to generate mac
+     *
+     * @var int|string
+     */
+    protected $algorithm = OPENSSL_ALGO_SHA1;
 
     /**
      * Init IPizza protocol.
@@ -152,31 +160,33 @@ class IPizza implements ProtocolInterface
     }
 
     /**
-     * Get payment object.
+     * Get payment object
      *
-     * @param string $orderId  Order ID
-     * @param float  $sum      Sum of order
-     * @param string $message  Transaction description
-     * @param string $encoding Encoding
-     * @param string $language Language
-     * @param string $currency Currency. Default: EUR
-     * @param string $timezone Timezone. Default: Europe/Tallinn
+     * @param int    $orderId           Order ID
+     * @param float  $sum               Sum of order
+     * @param string $message           Transaction description
+     * @param string $language          Language
+     * @param string $currency          Currency. Default: EUR
+     * @param array  $customRequestData Optional custom request data
+     * @param string $encoding          Encoding
+     * @param string $timezone          Timezone. Default: Europe/Tallinn
      *
      * @return array Payment request data
      */
     public function getPaymentRequest(
-        $orderId,
-        $sum,
-        $message,
-        $encoding = 'UTF-8',
-        $language = 'EST',
-        $currency = 'EUR',
-        $timezone = 'Europe/Tallinn'
-    ) {
+        int $orderId,
+        float $sum,
+        string $message,
+        string $language = 'EST',
+        string $currency = 'EUR',
+        array $customRequestData = [],
+        string $encoding = 'UTF-8',
+        string $timezone = 'Europe/Tallinn'
+    ) : array {
         $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
         $datetime = new \Datetime($time, new \DateTimeZone($timezone));
 
-        $data = array(
+        $data = [
             'VK_SERVICE' => $this->serviceId,
             'VK_VERSION' => $this->version,
             'VK_SND_ID' => $this->sellerId,
@@ -189,11 +199,16 @@ class IPizza implements ProtocolInterface
             'VK_CANCEL' => $this->requestUrl,
             'VK_DATETIME' => $datetime->format('Y-m-d\TH:i:sO'),
             'VK_LANG' => $language,
-        );
+        ];
 
         if (Services::PAYMENT_REQUEST_1011 === $this->serviceId) {
             $data['VK_NAME'] = $this->sellerName;
             $data['VK_ACC'] = $this->sellerAccount;
+        }
+
+       // Merge custom data
+        if (is_array($customRequestData)) {
+            $data = array_merge($data, $customRequestData);
         }
 
         // Generate signature
@@ -203,31 +218,31 @@ class IPizza implements ProtocolInterface
     }
 
     /**
-     * Get authnetication object.
+     * Get authentication object
      *
-     * @param string $recId Bank identifier
-     * @param string $nonce Random nonce
-     * @param string $rid Session identifier.
-     * @param string $encoding Encoding
-     * @param string $language Language
-     * @param string $timezone Timezone. Default: Europe/Tallinn
+     * @param string|null $recId    Bank identifier
+     * @param string|null $nonce    Random nonce
+     * @param string|null $rid      Session identifier.
+     * @param string      $encoding Encoding
+     * @param string      $language Language
+     * @param string      $timezone Timezone. Default: Europe/Tallinn
      *
      * @return array Authentication request data
      */
     public function getAuthRequest(
-        $recId = null,
-        $nonce = null,
-        $rid = null,
-        $encoding = 'UTF-8',
-        $language = 'EST',
-        $timezone = 'Europe/Tallinn'
-    ) {
+        ?string $recId = null,
+        ?string $nonce = null,
+        ?string $rid = null,
+        string $encoding = 'UTF-8',
+        string $language = 'EST',
+        string $timezone = 'Europe/Tallinn'
+    ) : array {
         $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
         $datetime = new \Datetime($time, new \DateTimeZone($timezone));
 
         $this->serviceId = (is_null($nonce)) ? Services::AUTH_REQUEST_4011 : Services::AUTH_REQUEST_4012;
 
-        $data = array(
+        $data = [
             'VK_SERVICE' => $this->serviceId,
             'VK_VERSION' => $this->version,
             'VK_SND_ID' => $this->sellerId,
@@ -236,7 +251,7 @@ class IPizza implements ProtocolInterface
             'VK_RID' => '',
             'VK_LANG' => $language,
             'VK_REPLY' => Services::AUTH_RESPONSE_3012
-        );
+        ];
 
         if (!is_null($nonce)) {
             $data['VK_SERVICE'] = Services::AUTH_REQUEST_4012;
@@ -261,9 +276,9 @@ class IPizza implements ProtocolInterface
      * @param array  $response Response data from bank
      * @param string $encoding     Encoding
      *
-     * @return \Response\PaymentResponse|\Response\AuthResponse Response object, depending on request made
+     * @return RKD\Banklink\Response\Response Response object, depending on request made
      */
-    public function handleResponse(array $response, $encoding = 'UTF-8')
+    public function handleResponse(array $response, string $encoding = 'UTF-8') : ResponseInterface
     {
         $success = $this->validateSignature($response, $encoding);
 
@@ -288,7 +303,7 @@ class IPizza implements ProtocolInterface
      *
      * @return \RKD\Banklink\Response\PaymentResponse
      */
-    protected function handlePaymentResponse(array $responseData, $success)
+    protected function handlePaymentResponse(array $responseData, bool $success) : ResponseInterface
     {
         $status = PaymentResponse::STATUS_ERROR;
 
@@ -304,12 +319,13 @@ class IPizza implements ProtocolInterface
         }
 
         if (PaymentResponse::STATUS_SUCCESS === $status) {
-            $response->setSum($responseData['VK_AMOUNT']);
-            $response->setCurrency($responseData['VK_CURR']);
-            $response->setSender($responseData['VK_SND_NAME'], $responseData['VK_SND_ACC']);
-            $response->setReceiver($responseData['VK_REC_NAME'], $responseData['VK_REC_ACC']);
-            $response->setTransactionId($responseData['VK_T_NO']);
-            $response->setTransactionDate($responseData['VK_T_DATETIME']);
+            $response
+                ->setSum($responseData['VK_AMOUNT'])
+                ->setCurrency($responseData['VK_CURR'])
+                ->setSender($responseData['VK_SND_NAME'], $responseData['VK_SND_ACC'])
+                ->setReceiver($responseData['VK_REC_NAME'], $responseData['VK_REC_ACC'])
+                ->setTransactionId($responseData['VK_T_NO'])
+                ->setTransactionDate($responseData['VK_T_DATETIME']);
         }
 
         return $response;
@@ -323,7 +339,7 @@ class IPizza implements ProtocolInterface
      *
      * @return \RKD\Banklink\Response\AuthResponse
      */
-    protected function handleAuthResponse(array $responseData, $success)
+    protected function handleAuthResponse(array $responseData, bool $success) : ResponseInterface
     {
         $status = AuthResponse::STATUS_ERROR;
         if ($success) {
@@ -337,16 +353,16 @@ class IPizza implements ProtocolInterface
         }
 
         if (PaymentResponse::STATUS_SUCCESS === $status) {
-            // Person data
-            $response->setUserId($responseData['VK_USER_ID']);
-            $response->setUserName($responseData['VK_USER_NAME']);
-            $response->setUserCountry($responseData['VK_COUNTRY']);
-            $response->setToken($responseData['VK_TOKEN']);
-
-            // Request data
-            $response->setRid($responseData['VK_RID']);
-            $response->setNonce($responseData['VK_NONCE']);
-            $response->setAuthDate($responseData['VK_DATETIME']);
+            $response
+                // Person data
+                ->setUserId($responseData['VK_USER_ID'])
+                ->setUserName($responseData['VK_USER_NAME'])
+                ->setUserCountry($responseData['VK_COUNTRY'])
+                ->setToken($responseData['VK_TOKEN'])
+                // Request data
+                ->setRid($responseData['VK_RID'])
+                ->setNonce($responseData['VK_NONCE'])
+                ->setAuthDate($responseData['VK_DATETIME']);
         }
 
         return $response;
@@ -360,7 +376,7 @@ class IPizza implements ProtocolInterface
      *
      * @return string Signature
      */
-    protected function getSignature(array $data, $encoding = 'UTF-8')
+    public function getSignature(array $data, string $encoding = 'UTF-8') : string
     {
         $mac = $this->generateSignature($data, $encoding);
 
@@ -374,7 +390,7 @@ class IPizza implements ProtocolInterface
             throw new \UnexpectedValueException('Can not get private key.');
         }
 
-        openssl_sign($mac, $signature, $privateKey);
+        openssl_sign($mac, $signature, $privateKey, $this->algorithm);
         openssl_free_key($privateKey);
 
         $result = base64_encode($signature);
@@ -390,7 +406,7 @@ class IPizza implements ProtocolInterface
      *
      * @return string MAC key
      */
-    protected function generateSignature(array $data, $encoding = 'UTF-8')
+    protected function generateSignature(array $data, string $encoding = 'UTF-8') : string
     {
         $service = $data['VK_SERVICE'];
         $fields = Services::getFields($service);
@@ -398,15 +414,15 @@ class IPizza implements ProtocolInterface
 
         foreach ($fields as $key) {
             // Check if field exists
-            if (!isset($data[$key])) {
+            if (!isset($data[$key]) || $data[$key] === false || is_null($data[$key])) {
                 throw new \UnexpectedValueException(
-                    vsprintf('Field %s must be set to use service %s.', array($key, $service))
+                    vsprintf('Field %s must be set to use service %s.', [$key, $service])
                 );
             }
 
             $value = $data[$key];
             $length = $this->useMbStrlen ? mb_strlen($value, $encoding) : strlen($value);
-            $mac    .= str_pad($length, 3, '0', STR_PAD_LEFT).$value;
+            $mac .= str_pad($length, 3, '0', STR_PAD_LEFT).$value;
         }
 
         return $mac;
@@ -420,7 +436,7 @@ class IPizza implements ProtocolInterface
      *
      * @return bool True on success, false otherwise
      */
-    protected function validateSignature(array $response, $encoding = 'UTF-8')
+    protected function validateSignature(array $response, string $encoding = 'UTF-8') : bool
     {
         $data = $this->generateSignature($response, $encoding);
 
@@ -434,9 +450,33 @@ class IPizza implements ProtocolInterface
             throw new \UnexpectedValueException('Can not get public key.');
         }
 
-        $this->result = openssl_verify($data, base64_decode($response['VK_MAC']), $publicKey);
+        $this->result = openssl_verify($data, base64_decode($response['VK_MAC']), $publicKey, $this->algorithm);
         openssl_free_key($publicKey);
 
         return $this->result === 1;
+    }
+
+    /**
+     * Set algorithm used to generate mac
+     *
+     * Should be one of valid values for openssl_sign functions signature_alg parameter
+     * @see http://ee1.php.net/manual/en/function.openssl-sign.php
+     *
+     * @param int|string
+     */
+    public function setAlgorithm($algorithm) : self
+    {
+        $this->algorithm = $algorithm;
+        return $this;
+    }
+
+    /**
+     * Get algorithm used to generate mac
+     *
+     * @return mixed
+     */
+    public function getAlgorithm()
+    {
+        return $this->algorithm;
     }
 }

@@ -5,7 +5,7 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2016-2017 Rene Korss
+ * @copyright 2016-2019 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink\Response;
@@ -13,9 +13,9 @@ namespace RKD\Banklink\Response;
 /**
  * Response wrapper.
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
-class Response
+class Response implements ResponseInterface
 {
     /**
      * Signature verified and transaction successful.
@@ -44,7 +44,7 @@ class Response
     /**
      * Prefered language.
      *
-     * @var array
+     * @var string
      */
     protected $language;
 
@@ -61,11 +61,11 @@ class Response
     }
 
     /**
-     * Get boolean to know is transaction was successful.
+     * Get boolean to know if transaction was successful.
      *
      * @return bool True on sucess, false othwerwise
      */
-    public function wasSuccessful()
+    public function wasSuccessful() : bool
     {
         return $this->status === self::STATUS_SUCCESS;
     }
@@ -75,7 +75,7 @@ class Response
      *
      * @return int Status
      */
-    public function getStatus()
+    public function getStatus() : int
     {
         return $this->status;
     }
@@ -85,7 +85,7 @@ class Response
      *
      * @return array Array of response
      */
-    public function getResponseData()
+    public function getResponseData() : array
     {
         return $this->responseData;
     }
@@ -94,10 +94,13 @@ class Response
      * Set prefered language.
      *
      * @param string $language Prefered language
+     *
+     * @return self
      */
-    public function setLanguage($language)
+    public function setLanguage(string $language) : ResponseInterface
     {
         $this->language = $language;
+        return $this;
     }
 
     /**
@@ -105,7 +108,7 @@ class Response
      *
      * @return string Language (EST, ENG, RUS)
      */
-    public function getLanguage()
+    public function getLanguage() : string
     {
         return $this->language;
     }

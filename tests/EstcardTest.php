@@ -6,19 +6,20 @@ use RKD\Banklink;
 use RKD\Banklink\Protocol\ECommerce;
 use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Request\PaymentRequest;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test suite for Estcard payment gateway.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class EstcardTest extends \PHPUnit_Framework_TestCase
+class EstcardTest extends TestCase
 {
-    protected $bankClass = "RKD\Banklink\Estcard";
+    protected $bankClass = "RKD\Banklink\EE\Estcard";
     protected $protocolClass = "RKD\Banklink\Protocol\ECommerce";
 
     protected $requestUrl = 'https://pos.estcard.ee/ecom/iPayServlet';
-    protected $testRequestUrl = 'http://localhost:8080/banklink/ec';
+    protected $testRequestUrl = 'https://test.estcard.ee/ecom/iPayServlet';
 
     /**
      * Set test data.
@@ -46,7 +47,7 @@ class EstcardTest extends \PHPUnit_Framework_TestCase
 
         $this->customRequestUrl = 'http://example.com';
 
-        $this->expectedData = array(
+        $this->expectedData = [
             'action'         => 'gaf',
             'ver'            => '004',
             'id'             => $this->sellerId,
@@ -59,7 +60,7 @@ class EstcardTest extends \PHPUnit_Framework_TestCase
             'mac'            => 'aaacb942dd3512d915224d244c20862457284e72587057d182ee1ee1b6da1082b43632cf9a9138144f52b48edc6fe8cdeb2193320f7a651c670c3550c92ae619c8fd33713f313d8c88241ec8322c78831bb818715eee3584ed612891ea4ce7a31398d280aa7b878907a7f6a2915629a4d369ddd2b1c0b56ad8dec19f5fafb35f',
             'datetime'       => $this->expectedDate,
             'charEncoding'   => 'UTF-8',
-        );
+        ];
 
         // Set up banklink
         $this->setUpBanklink();
@@ -90,7 +91,7 @@ class EstcardTest extends \PHPUnit_Framework_TestCase
     {
 
         // Test service 1012
-        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Instance of PaymentRequest and data is same
         $this->assertInstanceOf('RKD\Banklink\Request\PaymentRequest', $request);
@@ -105,7 +106,7 @@ class EstcardTest extends \PHPUnit_Framework_TestCase
      */
     public function testHandlePaymentResponseSuccess()
     {
-        $responseData = array(
+        $responseData = [
             'action'       => 'afb',
             'ver'          => '4',
             'id'           => $this->sellerId,
@@ -119,7 +120,8 @@ class EstcardTest extends \PHPUnit_Framework_TestCase
             'mac'          => '10e8d613d3d29f4f110ed7d624de85b436ea4b3bf11dcec46f77292f3ce494bf6d8c8f0600e17904b82289e8fa4eecfa65c4f3c015888abcb882ed5b362f3f46ef089912f3b12a89abe59683f6df9f1954723ce59e778e8d3838c71d1e78e48786e36b7619012f7aaa7390bfad24b008d09657779bfb0c283e6826a092928336',
             'datetime'     => $this->expectedDate,
             'charEncoding' => 'UTF-8',
-        );
+            'feedBackUrl'  => ''
+        ];
 
         $response = $this->bank->handleResponse($responseData);
 
@@ -156,14 +158,14 @@ class EstcardTest extends \PHPUnit_Framework_TestCase
     public function testCustomRequestUrl()
     {
         $this->seb = new $this->bankClass($this->protocol);
-        $this->seb->setRequestUrl('http://google.com');
+        $this->seb->setRequestUrl('https://google.com');
 
-        $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Get same data again, already exists
-        $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Custom url
-        $this->assertEquals('http://google.com', $request->getRequestUrl());
+        $this->assertEquals('https://google.com', $request->getRequestUrl());
     }
 }

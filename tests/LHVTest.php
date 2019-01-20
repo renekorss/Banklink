@@ -9,8 +9,14 @@ namespace RKD\BanklinkTests;
  */
 class LHVTest extends SEBTest
 {
-    protected $bankClass = "RKD\Banklink\LHV";
+    protected $bankClass = "RKD\Banklink\EE\LHV";
 
-    protected $requestUrl = 'https://www.lhv.ee/banklink';
-    protected $testRequestUrl = 'http://localhost:8080/banklink/lhv-common';
+    protected $requestUrl = [
+        'payment' => 'https://www.lhv.ee/banklink',
+        'auth' => 'https://www.lhv.ee/banklink'
+    ];
+    protected $testRequestUrl = [
+        'payment' => 'https://www.lhv.ee/banklink',
+        'auth' => 'https://www.lhv.ee/banklink'
+    ];
 }

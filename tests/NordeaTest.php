@@ -9,8 +9,14 @@ namespace RKD\BanklinkTests;
  */
 class NordeaTest extends SEBTest
 {
-    protected $bankClass = "RKD\Banklink\Nordea";
+    protected $bankClass = "RKD\Banklink\EE\Nordea";
 
-    protected $requestUrl = 'https://netbank.nordea.com/pnbepay/epayp.jsp';
-    protected $testRequestUrl = 'http://localhost:8080/banklink/ipizza';
+    protected $requestUrl = [
+        'payment' => 'https://netbank.nordea.com/pnbepay/epayp.jsp',
+        'auth' => 'https://netbank.nordea.com/pnbepay/epayp.jsp'
+    ];
+    protected $testRequestUrl = [
+        'payment' => 'https://netbank.nordea.com/pnbepaytest/epayp.jsp',
+        'auth' => 'https://netbank.nordea.com/pnbepaytest/epayp.jsp'
+    ];
 }

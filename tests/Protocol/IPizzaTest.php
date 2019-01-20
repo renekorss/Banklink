@@ -7,13 +7,14 @@ use RKD\Banklink\Protocol\IPizza;
 use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Response\AuthResponse;
 use RKD\Banklink\Request\PaymentRequest;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test suite for IPizza protocol.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class IPizzaTest extends \PHPUnit_Framework_TestCase
+class IPizzaTest extends TestCase
 {
     protected $protocol;
 
@@ -66,7 +67,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
         );
 
         // Test data
-        $this->expectedData = array(
+        $this->expectedData = [
             'VK_SERVICE' => '1012',
             'VK_VERSION' => '008',
             'VK_SND_ID' => $this->sellerId,
@@ -80,7 +81,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
             'VK_LANG' => $this->language,
             'VK_MAC' => 'PmAB256IR1FzTKZHNn5LBPso/KyLAhNcTOMq82lhpYn0mXKYtVtpNkolQxyETnTcIn1TcYOmekJEATe86Bz2MRljEQqllkaIl7bNuLCtuBPtAOYWNLmQHoop+5QSiguJEmEV+JJU3w4BApjWcsHA5HYlYze+3L09UO6na0lB/Zs=',
             'VK_DATETIME' => $this->datetime,
-        );
+        ];
     }
 
     /**
@@ -94,9 +95,10 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
             $this->orderId,
             $this->amount,
             $this->message,
-            'UTF-8',
             $this->language,
             $this->currency,
+            [],
+            'UTF-8',
             $this->timezone
         );
 
@@ -129,7 +131,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
         $this->expectedData['VK_MAC'] = 'PuJTjADqHeArALfzTo2ZsynckTOVRFZMnOnbv9tv30KrF2a9m/yJuRn9vcd3JuaSjgzKoS7DRSouDgXAe6GNLZnduhXZrYx5JtVMmnlgooQ+/pJqO6ZOzwsEjaXooTLCCnKA5P9zWoxXpe8Al4IC9pj7jLNFG3dCeG9XO5uRZEs=';
         $this->expectedData['VK_DATETIME'] = $this->datetime;
 
-        $requestData = $this->protocol->getPaymentRequest($this->orderId, $this->amount, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
+        $requestData = $this->protocol->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], 'UTF-8', $this->timezone);
 
         // We should have exactly same data
         $this->assertEquals($this->expectedData, $requestData);
@@ -140,7 +142,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
      */
     public function testHandlePaymentResponseSuccess()
     {
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE' => '1111',
             'VK_VERSION' => '008',
             'VK_SND_ID' => $this->senderName,
@@ -158,7 +160,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
             'VK_MAC' => 'Sp0VzYSPyZviiCewmwbtqny8cYRcnYU4Noh0cwxOYoZ5IpQwHuolNbFI+1Kkuk5n6cWs2X48IYYOUMRi9VTqdsfSN7z5jpUwEwjLsCMDUDdro421Je7eXXkEkbZlEcgY8wtR5H+OO955aqxDdZeS0dkuuxTN70Z9Esv5feXYxsw=',
             'VK_T_DATETIME' => $this->datetime,
             'VK_LANG' => 'EST',
-        );
+        ];
 
         $response = $this->protocol->handleResponse($responseData);
 
@@ -199,7 +201,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
      */
     public function testHandlePaymentResponseError()
     {
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE' => '1911',
             'VK_VERSION' => '008',
             'VK_SND_ID' => $this->senderName,
@@ -209,7 +211,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
             'VK_MSG' => $this->message,
             'VK_MAC' => 'o4rju0oEwITuIheUdtDjp2njKhBzvQv8RjKg+rdCB+fwGiUS8zpXzr0I+wj0vl13h+ACGAR1LO9gR2+IG1yq+AJdQdVszJIbeA1jcg1GFtl1xyLN8LXYfubHHUB/7EWwiEGZKcHrNp3pAsADlLwySQLRWatheMLPqRRk2FX96Ko=',
             'VK_DATETIME' => $this->datetime,
-        );
+        ];
 
         $response = $this->protocol->handleResponse($responseData);
 
@@ -239,7 +241,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAuthRequest4011()
     {
-        $expectedData = array(
+        $expectedData = [
             'VK_SERVICE' => '4011',
             'VK_VERSION' => '008',
             'VK_SND_ID' => 'id2000',
@@ -249,7 +251,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
             'VK_LANG' => 'EST',
             'VK_REPLY' => '3012',
             'VK_MAC' => 'tCzsgSP0NVlNDvzsPnDZpwfPDwlrWoLFOUDSJ80sYDMbPsXBiid0M8xKT9ep0KVmj8BBUwWOGGjENSkaNXcZKAoqw0h1V1J7Hxuy1/gnIgkAkiY1OQftMYNuyrmKj1xVP4JGH3kp4ZEiyXJ0ySj/VGW4P1Vyv2oMUVHN+vDqHR0=',
-        );
+        ];
 
         $requestData = $this->protocol->getAuthRequest();
 
@@ -263,7 +265,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAuthRequest4012()
     {
-        $expectedData = array(
+        $expectedData = [
             'VK_SERVICE' => '4012',
             'VK_VERSION' => '008',
             'VK_SND_ID' => 'id2000',
@@ -274,7 +276,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
             'VK_RID' => 'random-rid',
             'VK_LANG' => 'EST',
             'VK_MAC' => 'MtmH+8VgmKhw/Q6kO4EZdgNMP9ZWhCXfO0OHUgyHd74ofhdkvhLnzSWxqHZgWv9lCo3ZSrZ1mHJEf1rezBod7QQDcPmMVHl9iijJug2oySgT27Re89oytVN3Zlzmko9LFEaE8JIYnvxN4B9mc/bWfW0hvHSyBehpWdlVO5HIO+c=',
-        );
+        ];
 
         $requestData = $this->protocol->getAuthRequest('bank-id', 'random-nonce', 'random-rid');
 
@@ -287,7 +289,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
      */
     public function testHandleAuthResponseSuccess()
     {
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE' => '3013',
             'VK_VERSION' => '008',
             'VK_DATETIME' => '2015-10-12T08:47:15+0300',
@@ -303,7 +305,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
             'VK_ENCODING' => 'UTF-8',
             'VK_LANG' => 'EST',
             'VK_MAC' => 'RBkszGx+hP/B24Bziuq+vAJx0saRILcoc8BRQt8WYaq5mK6PdfOimZ3cTz9/t+4AQyZJfvA+Nv7NUxtieDKPorp4P1jzlbcR4K6lkit286H+TptIlWbPvcD2dj7Q7UapNtEB5FmMc62IMbbQCiTVyV5bs6f3DJYr3kOrOV/LHTY=',
-        );
+        ];
 
         $response = $this->protocol->handleResponse($responseData);
 
@@ -352,7 +354,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
      */
     public function testHandleAuthResponseError()
     {
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE' => '3012',
             'VK_VERSION' => '008',
             'VK_USER' => '',
@@ -369,7 +371,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
             'VK_ENCODING' => 'UTF-8',
             'VK_LANG' => 'EST',
             'VK_MAC' => 'RBkszGx+hP/B24Bziuq+vAJx0saRILcoc8BRQt8WYaq5mK6PdfOimZ3cTz9/t+4AQyZJfvA+Nv7NUxtieDKPorp4P1jzlbcR4K6lkit286H+TptIlWbPvcD2dj7Q7UapNtEB5FmMc62IMbbQCiTVyV5bs6f3DJYr3kOrOV/LHTY=',
-        );
+        ];
 
         $response = $this->protocol->handleResponse($responseData);
 
@@ -388,9 +390,9 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
      */
     public function testHandleResponseUnsupportedService()
     {
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE' => '0000',
-        );
+        ];
 
         $this->protocol->handleResponse($responseData);
     }
@@ -400,7 +402,18 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetRequestFieldMissing()
     {
-        $this->protocol->getPaymentRequest($this->orderId, null, $this->message, 'UTF-8', $this->language, $this->currency, $this->timezone);
+        $this->protocol->getPaymentRequest(
+            $this->orderId,
+            $this->amount,
+            $this->message,
+            $this->language,
+            $this->currency,
+            [
+                'VK_STAMP' => null
+            ],
+            'UTF-8',
+            $this->timezone
+        );
     }
 
     /**
@@ -410,7 +423,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
      */
     public function testNoRequestData()
     {
-        $request = new PaymentRequest('http://google.com', array());
+        $request = new PaymentRequest('https://google.com', []);
 
         $request->getRequestInputs();
     }
@@ -432,7 +445,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
             $this->sellerAccount
         );
 
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE' => '3013',
             'VK_VERSION' => '008',
             'VK_DATETIME' => '2015-10-12T08:47:15+0300',
@@ -448,7 +461,7 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
             'VK_ENCODING' => 'UTF-8',
             'VK_LANG' => 'EST',
             'VK_MAC' => 'RBkszGx+hP/B24Bziuq+vAJx0saRILcoc8BRQt8WYaq5mK6PdfOimZ3cTz9/t+4AQyZJfvA+Nv7NUxtieDKPorp4P1jzlbcR4K6lkit286H+TptIlWbPvcD2dj7Q7UapNtEB5FmMc62IMbbQCiTVyV5bs6f3DJYr3kOrOV/LHTY=',
-        );
+        ];
 
         $this->protocol->handleResponse($responseData);
     }
@@ -471,5 +484,81 @@ class IPizzaTest extends \PHPUnit_Framework_TestCase
         );
 
         $this->protocol->getAuthRequest();
+    }
+
+    /**
+     * Test that we can change algorithm
+     */
+    public function testSetAlgorithm()
+    {
+        $this->protocol->setAlgorithm(OPENSSL_ALGO_SHA256);
+        $this->assertEquals(OPENSSL_ALGO_SHA256, $this->protocol->getAlgorithm());
+    }
+
+    /**
+     * Test that we can change algorithm
+     */
+    public function testGeneratesCorrectMacWithSHA256()
+    {
+        $this->protocol = new IPizza(
+            $this->sellerId,
+            __DIR__.'/../keys/IPizza/private_key_sha256.pem',
+            '',
+            __DIR__.'/../keys/IPizza/public_key_sha256.pem',
+            $this->requestUrl,
+            $this->sellerName,
+            $this->sellerAccount
+        );
+
+        $this->protocol->setAlgorithm(OPENSSL_ALGO_SHA256);
+
+        $requestData = $this->protocol->getAuthRequest();
+
+        // Must match with SHA256 encrypted VK_MAC
+        $this->assertEquals(
+            'BoHSS+z3syMAU0Vi/Ob8lTS8FIMAZ6ZslYnjNXZVEZEn2aXuc/1L2oR/Ef8DvPFJ1ocOjxOHiQ0QJruD5CpiDXI3/hxSJ2qJg0a0HezrTPgc6iVONcsas62+PBlpWFSnZ9u5qg1eETnHgYzjtBZE2FzqWJWC2UuMUxn9uGcGhoxd1wGCrgc2zu4Ub540hhEyoUAJyjN5xA89nKb8H0tY58s96uYM9G8Isj8cDWVICFI4Q5O3Rn56sfhBEyNrSOwMCukf+zsIfoQtt3qto9JZ/IZ6Znl8ze8LCZqwvqnFiRrkXnVwvPI7aiyCIvFccqJiUsl5ahqpXrnFJyt2kyAGDQ==',
+            $requestData['VK_MAC']
+        );
+    }
+
+    public function testCanHandleSHA256AlgoResponse()
+    {
+        $this->protocol = new IPizza(
+            $this->sellerId,
+            __DIR__.'/../keys/IPizza/private_key_sha256.pem',
+            '',
+            __DIR__.'/../keys/IPizza/public_key_sha256.pem',
+            $this->requestUrl,
+            $this->sellerName,
+            $this->sellerAccount
+        );
+
+        $this->protocol->setAlgorithm(OPENSSL_ALGO_SHA256);
+        
+        $responseData = [
+            "VK_SERVICE" => "1111",
+            "VK_VERSION" => "008",
+            "VK_SND_ID" => "Pocopay",
+            "VK_REC_ID" => "Redwall",
+            "VK_STAMP" => "1476279858",
+            "VK_REF" => "324234234",
+            "VK_MSG" => "Example payment",
+            "VK_ENCODING" => "UTF-8",
+            "VK_LANG" => "EST",
+            "VK_AUTO" => "N",
+            "VK_CURR" => "EUR",
+            "VK_REC_ACC" => "EE439999000010127858",
+            "VK_REC_NAME" => "REDWALL",
+            "VK_AMOUNT" => "1.00",
+            "VK_MAC" => "k0UjizlWrG75i6euZMbzVPp4gaA+PxiTT+bi1WRdVmi9XNZ11EA80WFVRqEBcx187E8otmdauGyVWzHbbOSBzLuGuoHVD5D8n6M/PnpkNrHRQan//bql5kLzJm82togfTGQEa775s1kL7rQPqMbOYN7jIdOvDvgSxlHhLwgQ8G7Vnk1t1JH7nmoUxXgrcJqPtxBaevSa2fOkFE90+cuJ9CZUaRr76emASNvs1SxwHpuW782OCXbcwuTdJo+KSjWG2Hi2phVvYXVQlqNROzac921DXEatOoBYA0EbpsMMDmPAMyartnGiCd3owLtFfgHbnV4ZZJ02IjsWtOJu4n41fg==",
+            "VK_T_NO" => "10117822",
+            "VK_SND_ACC" => "EE529999000010128569",
+            "VK_SND_NAME" => "RENE KORSS",
+            "VK_T_DATETIME" => "2019-01-15T18:10:04+0000",
+        ];
+
+        $response = $this->protocol->handleResponse($responseData);
+
+        $this->assertTrue($response->wasSuccessful());
     }
 }

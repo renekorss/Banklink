@@ -4,38 +4,44 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e40d4d283c7e41b2993656fce3645439)](https://www.codacy.com/app/renekorss/Banklink?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=renekorss/Banklink&amp;utm_campaign=Badge_Grade)
 [![Latest Stable Version](https://poser.pugx.org/renekorss/banklink/v/stable)](https://packagist.org/packages/renekorss/banklink)
 [![Total Downloads](https://poser.pugx.org/renekorss/banklink/downloads)](https://packagist.org/packages/renekorss/banklink)
-[![License](http://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/4cf7fcfd-17f3-46a0-af94-0742c4332e16/mini.png)](https://insight.sensiolabs.com/projects/4cf7fcfd-17f3-46a0-af94-0742c4332e16)
 
 # PHP Payment library
 
-> PHP payment library to easily integrate Baltic banklinks, E-commerce gateaway (Estcard, Nets Estonia) and Liizi Payment Link.
-
+> PHP payment library to easily integrate Baltic banklinks, E-commerce gateaway (Estcard, Nets Estonia), Liizi Payment Link and Pocopay.
+>
 > View API documentation at http://renekorss.github.io/Banklink/
 
-## Composer
+## Install
 
-    composer require renekorss/Banklink
+````bash
+composer require renekorss/Banklink
+````
 
 ## Supported providers
 
 Provider          | Payment             | Authentication    
 ------------------| ------------------- | ------------------
 Danskebank        | :white_check_mark:  | :white_check_mark:
-Krediidipank      | :white_check_mark:  | :white_check_mark:
+Coop Pank         | :white_check_mark:  | :white_check_mark:
 LHV               | :white_check_mark:  | :white_check_mark:
 SEB               | :white_check_mark:  | :white_check_mark:
 Swedbank          | :white_check_mark:  | :white_check_mark:
+Luminor           | :white_check_mark:  | :white_check_mark:
 Nordea            | :white_check_mark:  | :white_check_mark:
+Pocopay           | :white_check_mark:  | does not apply
 Estcard           | :white_check_mark:  | does not apply
 Liisi Payment Link| :white_check_mark:  | does not apply
 
 ## How to use?
 
+For more information, please visit [Wiki](https://github.com/renekorss/Banklink/wiki). Basic example is below.
+
 > **SECURITY WARNING**
-
+>
 > Never keep your private and public keys in publicly accessible folder. Instead place keys **under** root folder (usually `public_html` or `www`).
-
+>
 > If you store keys as strings in database, then they should be accessible only over HTTPS protocol.
 
 ### Payment
@@ -61,6 +67,13 @@ Liisi Payment Link| :white_check_mark:  | does not apply
     // Set payment data and get payment request object
     // orderId, sum, message, language
     $request = $seb->getPaymentRequest(123453, 150, 'Test makse', 'EST');
+
+    // You can also add custom request data and/or override request data
+    // Optional
+    $request = $seb->getPaymentRequest(123453, 150, 'Test makse', 'EST', 'EUR', [
+        'VK_REF' => 'my_custom_reference_number', // Override reference number
+        'INAPP' => true // Pocopay specific example
+    ]);
 ?>
 
 <form method="POST" action="<?php echo $request->getRequestUrl(); ?>">
@@ -126,34 +139,34 @@ Liisi Payment Link| :white_check_mark:  | does not apply
 
     // Successful
     if ($response->wasSuccessful()) {
-      // Get whole array of response
-      $responseData    = $response->getResponseData();
+        // Get whole array of response
+        $responseData    = $response->getResponseData();
 
-      // User prefered language
-      $language        = $response->getLanguage();
+        // User prefered language
+        $language        = $response->getLanguage();
 
-      // Only for payment data
-      $orderId         = $response->getOrderId();
-      $sum             = $response->getSum();
-      $currency        = $response->getCurrency();
-      $sender          = $response->getSender();
-      $transactionId   = $response->getTransactionId();
-      $transactionDate = $response->getTransactionDate();
+        // Only for payment data
+        $orderId         = $response->getOrderId();
+        $sum             = $response->getSum();
+        $currency        = $response->getCurrency();
+        $sender          = $response->getSender();
+        $transactionId   = $response->getTransactionId();
+        $transactionDate = $response->getTransactionDate();
 
-      // Only for auth data
-      $userId          = $response->getUserId(); // Person ID
-      $userName        = $response->getUserName(); // Person name
-      $country         = $response->getUserCountry(); // Person country
-      $authDate        = $response->getAuthDate(); // Authentication response datetime
+        // Only for auth data
+        $userId          = $response->getUserId(); // Person ID
+        $userName        = $response->getUserName(); // Person name
+        $country         = $response->getUserCountry(); // Person country
+        $authDate        = $response->getAuthDate(); // Authentication response datetime
 
-      // Method used for authentication
-      // Possible values: ID Card, Mobile ID, One-off code card, PIN-calculator, Code card or unknown
-      $authMethod      = $response->getAuthMethod();
+        // Method used for authentication
+        // Possible values: ID Card, Mobile ID, One-off code card, PIN-calculator, Code card or unknown
+        $authMethod      = $response->getAuthMethod();
 
     // Failed
     } else {
-      // Payment data
-      $orderId         = $response->getOrderId(); // Order id to cancel order etc.
+        // Payment data
+        $orderId         = $response->getOrderId(); // Order id to cancel order etc.
     }
 ?>
 
@@ -161,14 +174,10 @@ Liisi Payment Link| :white_check_mark:  | does not apply
 
 ## Tasks
 
- - `composer tests` - run tests
- - `composer docs` - build API documentation
- - `composer phpmd` - run PHP Mess Detector
- - `composer phpcs` - run PHP CodeSniffer
-
-## Testing your banklink
-
-You can test your banklink with <a href="http://pangalink.net/" target="_blank">pangalink.net</a> application (Windows, Mac, Linux).
+- `composer tests` - run tests
+- `composer docs` - build API documentation
+- `composer phpmd` - run PHP Mess Detector
+- `composer phpcs` - run PHP CodeSniffer
 
 ## License
 

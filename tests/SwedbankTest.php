@@ -9,8 +9,14 @@ namespace RKD\BanklinkTests;
  */
 class SwedbankTest extends SEBTest
 {
-    protected $bankClass = "RKD\Banklink\Swedbank";
+    protected $bankClass = "RKD\Banklink\EE\Swedbank";
 
-    protected $requestUrl = 'https://www.swedbank.ee/banklink';
-    protected $testRequestUrl = 'http://localhost:8080/banklink/swedbank-common';
+    protected $requestUrl = [
+        'payment' => 'https://www.swedbank.ee/banklink',
+        'auth' => 'https://www.swedbank.ee/banklink'
+    ];
+    protected $testRequestUrl = [
+        'payment' => 'https://www.swedbank.ee/banklink',
+        'auth' => 'https://www.swedbank.ee/banklink'
+    ];
 }

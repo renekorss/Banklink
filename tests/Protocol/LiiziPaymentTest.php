@@ -2,15 +2,15 @@
 
 namespace RKD\BanklinkTests\IPizza;
 
-use RKD\Banklink\Protocol\LiiziPayment;
+use RKD\Banklink\Protocol\LiisiPayment;
 use RKD\BanklinkTests\IPizza\IPizzaTest;
 
 /**
- * Test suite for Liizi payment protocol.
+ * Test suite for Liisi payment protocol.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class LiiziPaymentTest extends IPizzaTest
+class LiisiPaymentTest extends IPizzaTest
 {
 
    /**
@@ -20,7 +20,7 @@ class LiiziPaymentTest extends IPizzaTest
     {
         parent::setUp();
 
-        $this->protocol = new LiiziPayment(
+        $this->protocol = new LiisiPayment(
             $this->sellerId,
             __DIR__.'/../keys/IPizza/private_key.pem',
             '',

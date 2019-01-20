@@ -11,11 +11,17 @@ use RKD\Banklink\Protocol\LiisiPayment;
  */
 class LiisiTest extends SEBTest
 {
-    protected $bankClass = "RKD\Banklink\Liisi";
+    protected $bankClass = "RKD\Banklink\EE\Liisi";
     protected $protocolClass = "RKD\Banklink\Protocol\LiisiPayment";
 
-    protected $requestUrl = 'https://klient.liisi.ee/api/ipizza/';
-    protected $testRequestUrl = 'https://prelive.liisi.ee:8953/api/ipizza/';
+    protected $requestUrl = [
+        'payment' => 'https://klient.liisi.ee/api/ipizza/',
+        'auth' => 'https://klient.liisi.ee/api/ipizza/'
+    ];
+    protected $testRequestUrl = [
+        'payment' => 'https://prelive.liisi.ee:8953/api/ipizza/',
+        'auth' => 'https://prelive.liisi.ee:8953/api/ipizza/'
+    ];
 
     /**
      * Authentication should throw an LogicException

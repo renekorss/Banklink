@@ -5,7 +5,7 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2016-2017 Rene Korss
+ * @copyright 2016-2019 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink\Protocol\Helper;
@@ -28,24 +28,13 @@ class ProtocolHelper
      * @param int $orderId Order ID
      *
      * @return string Calculated reference
-     *
-     * @throws InvalidArgumentException If order ID is not in correct length
      */
-    public static function calculateReference($orderId)
+    public static function calculateReference(int $orderId) : string
     {
         $length = strlen($orderId);
 
-        if ($length > 19) {
-            throw new \InvalidArgumentException('Order id can be up to 19 digits long.');
-        }
-
-        // This makes sure that order id length is at least 1 digit
-        if (!is_int($orderId)) {
-            throw new \InvalidArgumentException('Order id must be integer.');
-        }
-
         $orderId = (string) $orderId;
-        $multipliers = array(7, 3, 1);
+        $multipliers = [7, 3, 1];
         $total = 0;
         $multiplierKey = 0;
 
@@ -67,22 +56,22 @@ class ProtocolHelper
      *
      * @return string ISO-639-1 langauge code
      */
-    public static function langToISO6391($language)
+    public static function langToISO6391(string $language) : string
     {
-        $languages = array(
+        $languages = [
             'est' => 'et',
             'rus' => 'ru',
             'eng' => 'en',
             'fin' => 'fi'
-        );
+        ];
 
         $language = strtolower($language);
 
-        if (in_array($language, array_keys($languages))) {
+        if (array_key_exists($language, $languages)) {
             return $languages[$language];
         }
 
-        return false; // @codeCoverageIgnore
+        return 'et'; // @codeCoverageIgnore
     }
 
     /**
@@ -91,10 +80,8 @@ class ProtocolHelper
      * Format: YYYYMM + rand between 100 000 - 999 999
      *
      * @return string Random ecuno
-     *
-     * @codeCoverageIgnore
      */
-    public static function generateEcuno()
+    public static function generateEcuno() : string
     {
         $rnd   = rand(100000, 999999);
         $date  = date("Ym");
@@ -109,16 +96,16 @@ class ProtocolHelper
      * @param mixed $input Input value
      * @param int $padLength Desired length
      * @param string $padString Pad with
-     * @param string $padType Pad direction
+     * @param int $padType Pad direction
      * @param string $encoding Encoding
      *
      * @return string Padded string
      */
 
-    public static function mbStrPad($input, $padLength, $padString = ' ', $padType = STR_PAD_RIGHT, $encoding = null)
+    public static function mbStrPad($input, int $padLength, string $padString = ' ', int $padType = STR_PAD_RIGHT, ?string $encoding = null) : string
     {
-        if (is_null($input) || strlen($input) == 0) {
-            return false;
+        if (is_null($input) || strlen($input) === 0) {
+            $input = '';
         }
 
         $diff = strlen($input) - mb_strlen($input);

@@ -5,7 +5,7 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2016-2017 Rene Korss
+ * @copyright 2016-2019 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink\Request;
@@ -15,7 +15,7 @@ namespace RKD\Banklink\Request;
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-abstract class Request
+abstract class Request implements RequestInterface
 {
     /**
      * Request url.
@@ -37,7 +37,7 @@ abstract class Request
      * @param string $requestUrl  Request URL
      * @param array  $requestData Request array
      */
-    public function __construct($requestUrl, array $requestData)
+    public function __construct(string $requestUrl, array $requestData)
     {
         $this->requestUrl = $requestUrl;
         $this->requestData = $requestData;
@@ -48,7 +48,7 @@ abstract class Request
      *
      * @return string HTML of hidden request inputs
      */
-    public function getRequestInputs()
+    public function getRequestInputs() : string
     {
         if (empty($this->requestData)) {
             throw new \UnexpectedValueException('Can\'t generate inputs. Request data is empty.');
@@ -59,7 +59,7 @@ abstract class Request
         foreach ($this->requestData as $key => $value) {
             $html .= vsprintf(
                 '<input type="hidden" id="%s" name="%s" value="%s" />',
-                array(strtolower($key), $key, $value)
+                [strtolower($key), $key, $value]
             )."\n";
         }
 
@@ -71,7 +71,7 @@ abstract class Request
      *
      * @return string Request URL
      */
-    public function getRequestUrl()
+    public function getRequestUrl() : string
     {
         return $this->requestUrl;
     }
@@ -81,7 +81,7 @@ abstract class Request
      *
      * @return array Request data
      */
-    public function getRequestData()
+    public function getRequestData() : array
     {
         return $this->requestData;
     }

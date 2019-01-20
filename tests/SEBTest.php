@@ -7,19 +7,26 @@ use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\IPizza;
 use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Request\PaymentRequest;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test suite for SEB banklink.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
  */
-class SEBTest extends \PHPUnit_Framework_TestCase
+class SEBTest extends TestCase
 {
-    protected $bankClass = "RKD\Banklink\SEB";
+    protected $bankClass = "RKD\Banklink\EE\SEB";
     protected $protocolClass = "RKD\Banklink\Protocol\IPizza";
 
-    protected $requestUrl = 'https://www.seb.ee/cgi-bin/unet3.sh/ipank.r';
-    protected $testRequestUrl = 'http://localhost:8080/banklink/seb-common';
+    protected $requestUrl = [
+        'payment' => 'https://www.seb.ee/cgi-bin/unet3.sh/ipank.r',
+        'auth' => 'https://www.seb.ee/cgi-bin/unet3.sh/ipank.r'
+    ];
+    protected $testRequestUrl = [
+        'payment' => 'https://e.seb.ee/cgi-bin/dv.sh/ipank.r',
+        'auth' => 'https://e.seb.ee/cgi-bin/dv.sh/ipank.r'
+    ];
     protected $bank;
 
     private $protocol;
@@ -64,7 +71,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
 
         $this->customRequestUrl = 'http://example.com';
 
-        $this->expectedData = array(
+        $this->expectedData = [
             'VK_SERVICE'  => '1012',
             'VK_VERSION'  => '008',
             'VK_SND_ID'   => $this->sellerId,
@@ -79,7 +86,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
             'VK_MAC'      => 'PmAB256IR1FzTKZHNn5LBPso/KyLAhNcTOMq82lhpYn0mXKYtVtpNkolQxyETnTcIn1TcYOmekJEATe86Bz2MRljEQqllkaIl7bNuLCtuBPtAOYWNLmQHoop+5QSiguJEmEV+JJU3w4BApjWcsHA5HYlYze+3L09UO6na0lB/Zs=',
             'VK_DATETIME' => $this->datetime,
             'VK_ENCODING' => 'UTF-8',
-        );
+        ];
 
         // Set up banklink
         $this->setUpBanklink();
@@ -132,14 +139,14 @@ class SEBTest extends \PHPUnit_Framework_TestCase
     {
 
         // Test service 1012
-        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Instance of PaymentRequest and data is same
         $this->assertInstanceOf('RKD\Banklink\Request\PaymentRequest', $request);
         $this->assertEquals($this->expectedData, $request->getRequestData());
 
         // Production env url
-        $this->assertEquals($this->requestUrl, $request->getRequestUrl());
+        $this->assertEquals($this->requestUrl['payment'], $request->getRequestUrl());
     }
 
     /**
@@ -160,14 +167,14 @@ class SEBTest extends \PHPUnit_Framework_TestCase
         $this->expectedData['VK_MAC']      = 'PuJTjADqHeArALfzTo2ZsynckTOVRFZMnOnbv9tv30KrF2a9m/yJuRn9vcd3JuaSjgzKoS7DRSouDgXAe6GNLZnduhXZrYx5JtVMmnlgooQ+/pJqO6ZOzwsEjaXooTLCCnKA5P9zWoxXpe8Al4IC9pj7jLNFG3dCeG9XO5uRZEs=';
         $this->expectedData['VK_DATETIME'] = $this->datetime;
 
-        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Instance of PaymentRequest and data is same
         $this->assertInstanceOf('RKD\Banklink\Request\PaymentRequest', $request);
         $this->assertEquals($this->expectedData, $request->getRequestData());
 
         // Test env url
-        $this->assertEquals($this->testRequestUrl, $request->getRequestUrl());
+        $this->assertEquals($this->testRequestUrl['payment'], $request->getRequestUrl());
 
         // Get HTML
         $this->assertContains('<input type="hidden"', $request->getRequestInputs());
@@ -178,7 +185,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
      */
     public function testHandlePaymentResponseSuccess()
     {
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE'    => '1111',
             'VK_VERSION'    => '008',
             'VK_SND_ID'     => $this->senderName,
@@ -196,7 +203,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
             'VK_MAC'        => 'Sp0VzYSPyZviiCewmwbtqny8cYRcnYU4Noh0cwxOYoZ5IpQwHuolNbFI+1Kkuk5n6cWs2X48IYYOUMRi9VTqdsfSN7z5jpUwEwjLsCMDUDdro421Je7eXXkEkbZlEcgY8wtR5H+OO955aqxDdZeS0dkuuxTN70Z9Esv5feXYxsw=',
             'VK_T_DATETIME' => $this->datetime,
             'VK_ENCODING'   => 'UTF-8',
-        );
+        ];
 
         $response = $this->bank->handleResponse($responseData);
 
@@ -212,7 +219,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
      */
     public function testHandlePaymentResponseError()
     {
-        $responseData = array(
+        $responseData = [
             'VK_SERVICE'  => '1911',
             'VK_VERSION'  => '008',
             'VK_SND_ID'   => $this->senderName,
@@ -222,7 +229,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
             'VK_MSG'      => $this->message,
             'VK_MAC'      => 'o4rju0oEwITuIheUdtDjp2njKhBzvQv8RjKg+rdCB+fwGiUS8zpXzr0I+wj0vl13h+ACGAR1LO9gR2+IG1yq+AJdQdVszJIbeA1jcg1GFtl1xyLN8LXYfubHHUB/7EWwiEGZKcHrNp3pAsADlLwySQLRWatheMLPqRRk2FX96Ko=',
             'VK_DATETIME' => $this->datetime,
-        );
+        ];
 
         $response = $this->bank->handleResponse($responseData);
 
@@ -239,7 +246,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAuthRequest4011()
     {
-        $expectedData = array(
+        $expectedData = [
             'VK_SERVICE'  => '4011',
             'VK_VERSION'  => '008',
             'VK_SND_ID'   => 'id2000',
@@ -250,7 +257,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
             'VK_REPLY'    => '3012',
             'VK_ENCODING' => 'UTF-8',
             'VK_MAC'      => 'tCzsgSP0NVlNDvzsPnDZpwfPDwlrWoLFOUDSJ80sYDMbPsXBiid0M8xKT9ep0KVmj8BBUwWOGGjENSkaNXcZKAoqw0h1V1J7Hxuy1/gnIgkAkiY1OQftMYNuyrmKj1xVP4JGH3kp4ZEiyXJ0ySj/VGW4P1Vyv2oMUVHN+vDqHR0=',
-        );
+        ];
 
         $request = $this->bank->getAuthRequest();
 
@@ -258,7 +265,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedData, $request->getRequestData());
 
         // Test env url
-        $this->assertEquals($this->requestUrl, $request->getRequestUrl());
+        $this->assertEquals($this->requestUrl['auth'], $request->getRequestUrl());
 
         // Get HTML
         $this->assertContains('<input type="hidden"', $request->getRequestInputs());
@@ -270,7 +277,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetAuthRequest4012()
     {
-        $expectedData = array(
+        $expectedData = [
             'VK_SERVICE'  => '4012',
             'VK_VERSION'  => '008',
             'VK_SND_ID'   => 'id2000',
@@ -282,7 +289,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
             'VK_LANG'     => 'EST',
             'VK_ENCODING' => 'UTF-8',
             'VK_MAC'      => 'MtmH+8VgmKhw/Q6kO4EZdgNMP9ZWhCXfO0OHUgyHd74ofhdkvhLnzSWxqHZgWv9lCo3ZSrZ1mHJEf1rezBod7QQDcPmMVHl9iijJug2oySgT27Re89oytVN3Zlzmko9LFEaE8JIYnvxN4B9mc/bWfW0hvHSyBehpWdlVO5HIO+c=',
-        );
+        ];
 
         $request = $this->bank->getAuthRequest('bank-id', 'random-nonce', 'random-rid');
 
@@ -290,7 +297,7 @@ class SEBTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedData, $request->getRequestData());
 
         // Test env url
-        $this->assertEquals($this->requestUrl, $request->getRequestUrl());
+        $this->assertEquals($this->requestUrl['auth'], $request->getRequestUrl());
 
         // Get HTML
         $this->assertContains('<input type="hidden"', $request->getRequestInputs());
@@ -308,14 +315,90 @@ class SEBTest extends \PHPUnit_Framework_TestCase
     public function testCustomRequestUrl()
     {
         $this->bank = new $this->bankClass($this->protocol);
-        $this->bank->setRequestUrl('http://google.com');
+        $this->bank->setRequestUrl('https://google.com');
 
-        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Get same data again, already exists
-        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $this->timezone);
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Custom url
-        $this->assertEquals('http://google.com', $request->getRequestUrl());
+        $this->assertEquals('https://google.com', $request->getRequestUrl());
+    }
+
+    /**
+     * Test custom request data
+     */
+    public function testCustomRequestData()
+    {
+        $this->bank = new $this->bankClass($this->protocol);
+
+        $customData = [
+            'INAPP' => 1, // new data
+            'VK_REF' => 'mycustomref', // override data
+            'VK_MAC' => 'F5dQRFcxC5sMfGddhnCgQMYMwu9uJvoPpt0W+CZGDhnt3aqiL5ZvhbVAObm47beyTsQ9cs74egl+3zGRSGPO/0OLL9MaR1wwrVAvzbAh/hp6cwYVx4GAWLadki+O4aw3O5Ho1fqVKyvWgMbKLNKb2NIWE/2qBlNlg9FLjZk/CiM='
+        ];
+
+        $this->expectedData = array_merge($this->expectedData, $customData);
+
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, $customData, $this->timezone);
+
+        // Custom url
+        $this->assertEquals($this->expectedData, $request->getRequestData());
+    }
+
+    /**
+     * Test we can set multiple request urls
+     */
+    public function testMultipleRequestUrls()
+    {
+        $this->bank = new $this->bankClass($this->protocol);
+        $this->bank->setRequestUrl([
+            'auth' => 'https://custom.com/auth',
+            'payment' => 'https://custom.com/pay'
+        ]);
+
+        // Custom url set
+        $this->assertEquals('https://custom.com/auth', $this->bank->getRequestUrlFor('auth'));
+        $this->assertEquals('https://custom.com/pay', $this->bank->getRequestUrlFor('payment'));
+    }
+
+    /**
+     * Test we can set one request url which is used for payment and authentication
+     */
+    public function testSingleRequestUrl()
+    {
+        $this->bank = new $this->bankClass($this->protocol);
+        $this->bank->setRequestUrl('https://custom.com/endpoint');
+
+        // Custom url set
+        $this->assertEquals('https://custom.com/endpoint', $this->bank->getRequestUrlFor('auth'));
+        $this->assertEquals('https://custom.com/endpoint', $this->bank->getRequestUrlFor('payment'));
+    }
+
+    /**
+     * getRequestUrlFor should throw an UnexpectedValueException if in wrong type
+     *
+     * @expectedException UnexpectedValueException
+     */
+    public function testRequestUrlWrongType()
+    {
+        $this->bank = new $this->bankClass($this->protocol);
+        $this->bank->setRequestUrl(null);
+
+        $this->assertEquals('https://custom.com/endpoint', $this->bank->getRequestUrlFor('payment'));
+    }
+
+    /**
+     * getRequestUrlFor should throw an UnexpectedValueException if don't have correct type
+     *
+     * @expectedException UnexpectedValueException
+     */
+    public function testNoRequestUrlType()
+    {
+        $this->bank = new $this->bankClass($this->protocol);
+        $this->bank->setRequestUrl([]);
+
+        $this->assertEquals('https://custom.com/endpoint', $this->bank->getRequestUrlFor('payment'));
     }
 }
