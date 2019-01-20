@@ -62,7 +62,7 @@ For more information, please visit [Wiki](https://github.com/renekorss/Banklink/
     );
 
     // Init banklink
-    $seb = new Banklink\SEB($protocol);
+    $seb = new Banklink\EE\SEB($protocol);
 
     // Set payment data and get payment request object
     // orderId, sum, message, language
@@ -101,7 +101,7 @@ For more information, please visit [Wiki](https://github.com/renekorss/Banklink/
     );
 
     // Init banklink
-    $seb = new Banklink\SEB($protocol);
+    $seb = new Banklink\EE\SEB($protocol);
 
     // Get auth request object
     $request = $seb->getAuthRequest();
@@ -132,7 +132,7 @@ For more information, please visit [Wiki](https://github.com/renekorss/Banklink/
     );
 
     // Init banklink
-    $seb = new Banklink\SEB($protocol);
+    $seb = new Banklink\EE\SEB($protocol);
 
     // Get response object
     $response = $seb->handleResponse($_POST);
