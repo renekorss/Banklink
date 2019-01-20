@@ -13,10 +13,10 @@ class LuminorTest extends SEBTest
 
     protected $requestUrl = [
         'payment' => 'https://netbank.nordea.com/pnbepay/epayp.jsp',
-        'auth' => 'https://netbank.nordea.com/pnbepay/epayp.jsp'
+        'auth' => 'https://netbank.nordea.com/pnbeid/eidp.jsp'
     ];
     protected $testRequestUrl = [
         'payment' => 'https://netbank.nordea.com/pnbepaytest/epayp.jsp',
-        'auth' => 'https://netbank.nordea.com/pnbepaytest/epayp.jsp'
+        'auth' => 'https://netbank.nordea.com/pnbeidtest/eidp.jsp'
     ];
 }

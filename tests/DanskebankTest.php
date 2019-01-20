@@ -12,11 +12,11 @@ class DanskebankTest extends SEBTest
     protected $bankClass = "RKD\Banklink\Danskebank";
 
     protected $requestUrl = [
-        'payment' => 'https://www2.danskebank.ee/ibank/pizza/pizza',
-        'auth' => 'https://www2.danskebank.ee/ibank/pizza/pizza'
+        'payment' => 'https://e.danskebank.ee/ib/site/ibpay/login',
+        'auth' => 'https://e.danskebank.ee/ib/site/ibpay/login'
     ];
     protected $testRequestUrl = [
-        'payment' => 'https://www2.danskebank.ee/ibank/pizza/pizza',
-        'auth' => 'https://www2.danskebank.ee/ibank/pizza/pizza'
+        'payment' => 'https://e.danskebank.ee/ib/site/ibpay/login',
+        'auth' => 'https://e.danskebank.ee/ib/site/ibpay/login'
     ];
 }

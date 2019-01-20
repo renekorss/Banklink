@@ -16,7 +16,7 @@ use RKD\Banklink\Protocol\IPizza;
  * Banklink settings for Danske bank.
  *
  * For more information, please visit:
- * https://www.danskebank.ee/public/documents/Pangalingi_tehniline_spetsifikatsioon_2014.pdf
+ * https://danskebank.ee/-/media/pdf/danske-bank/ee/ee/ettevottele/elektroonilised-kanalid/bank-link/active/pangalingi-tehniline-spetsifikatsioon-est-.-la=et-ee.pdf
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
@@ -27,14 +27,14 @@ class Danskebank extends Banklink
      *
      * @var mixed
      */
-    protected $requestUrl = 'https://www2.danskebank.ee/ibank/pizza/pizza';
+    protected $requestUrl = 'https://e.danskebank.ee/ib/site/ibpay/login';
 
     /**
      * Test request url.
      *
      * @var mixed
      */
-    protected $testRequestUrl = 'https://www2.danskebank.ee/ibank/pizza/pizza';
+    protected $testRequestUrl = 'https://e.danskebank.ee/ib/site/ibpay/login';
 
     /**
      * Force Danskebank class to use IPizza protocol.
