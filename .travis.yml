@@ -20,13 +20,14 @@ matrix:
     - php: 7.3
     - php: hhvm
     - php: nightly
+      env: COMPOSER_ARGS="--ignore-platform-reqs"
   allow_failures:
     - php: nightly
 
 before_script:
   - rm composer.lock
   - composer self-update
-  - composer install --prefer-dist --no-interaction
+  - composer install --prefer-dist --no-interaction $COMPOSER_ARGS
 
 script:
   - mkdir -p build/logs
