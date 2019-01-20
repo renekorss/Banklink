@@ -20,8 +20,9 @@
     "phpunit/phpunit": "6.*",
     "squizlabs/php_codesniffer": "^3.3",
     "phpmd/phpmd": "^2.6",
-    "phpdocumentor/phpdocumentor": "^2.9",
-    "php-coveralls/php-coveralls": "2.*"
+    "php-coveralls/php-coveralls": "2.*",
+    "apigen/apigen": "dev-master",
+    "roave/better-reflection": "dev-master"
   },
   "autoload": {
     "psr-4": {
@@ -37,7 +38,7 @@
       "@docs"
     ],
     "tests": "phpunit",
-    "docs": "phpdoc -d ./src -t ./docs --template=responsive-twig",
+    "docs": "apigen generate src --destination docs",
     "phpmd": "phpmd ./src text phpmd.xml",
     "phpcs": "phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests"
   }
