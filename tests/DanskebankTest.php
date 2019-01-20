@@ -9,7 +9,7 @@ namespace RKD\BanklinkTests;
  */
 class DanskebankTest extends SEBTest
 {
-    protected $bankClass = "RKD\Banklink\Danskebank";
+    protected $bankClass = "RKD\Banklink\EE\Danskebank";
 
     protected $requestUrl = [
         'payment' => 'https://e.danskebank.ee/ib/site/ibpay/login',

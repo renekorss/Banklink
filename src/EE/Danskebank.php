@@ -8,8 +8,9 @@
  * @copyright 2016-2019 Rene Korss
  * @license MIT
  */
-namespace RKD\Banklink;
+namespace RKD\Banklink\EE;
 
+use RKD\Banklink\Banklink;
 use RKD\Banklink\Protocol\IPizza;
 
 /**

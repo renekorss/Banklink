@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
  */
 class SEBTest extends TestCase
 {
-    protected $bankClass = "RKD\Banklink\SEB";
+    protected $bankClass = "RKD\Banklink\EE\SEB";
     protected $protocolClass = "RKD\Banklink\Protocol\IPizza";
 
     protected $requestUrl = [

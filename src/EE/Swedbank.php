@@ -8,43 +8,36 @@
  * @copyright 2016-2019 Rene Korss
  * @license MIT
  */
-namespace RKD\Banklink;
+namespace RKD\Banklink\EE;
 
+use RKD\Banklink\Banklink;
 use RKD\Banklink\Protocol\IPizza;
 
 /**
- * Banklink settings for Luminor.
+ * Banklink settings for Swedbank.
  *
- * For more information, please visit:
- * https://www.luminor.ee/en/e-payment
+ * For more information, please visit: https://www.swedbank.ee/business/cash/ecommerce/banklink
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-
-class Luminor extends Banklink
+class Swedbank extends Banklink
 {
     /**
      * Request url.
      *
      * @var mixed
      */
-    protected $requestUrl = [
-        'payment' => 'https://netbank.nordea.com/pnbepay/epayp.jsp',
-        'auth' => 'https://netbank.nordea.com/pnbeid/eidp.jsp'
-    ];
+    protected $requestUrl = 'https://www.swedbank.ee/banklink';
 
     /**
      * Test request url.
      *
      * @var mixed
      */
-    protected $testRequestUrl = [
-        'payment' => 'https://netbank.nordea.com/pnbepaytest/epayp.jsp',
-        'auth' => 'https://netbank.nordea.com/pnbeidtest/eidp.jsp',
-    ];
+    protected $testRequestUrl = 'https://www.swedbank.ee/banklink';
 
     /**
-     * Force Luminor class to use IPizza protocol.
+     * Force Swedbank class to use IPizza protocol.
      *
      * @param RKD\Banklink\Protocol\IPizza $protocol   Protocol used
      */

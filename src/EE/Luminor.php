@@ -8,35 +8,44 @@
  * @copyright 2016-2019 Rene Korss
  * @license MIT
  */
-namespace RKD\Banklink;
+namespace RKD\Banklink\EE;
 
+use RKD\Banklink\Banklink;
 use RKD\Banklink\Protocol\IPizza;
 
 /**
- * Banklink settings for LHV.
+ * Banklink settings for Luminor.
  *
- * For more information, please visit: https://www.lhv.ee/en/banking-services/banklink/?l3=en
+ * For more information, please visit:
+ * https://www.luminor.ee/en/e-payment
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-class LHV extends Banklink
+
+class Luminor extends Banklink
 {
     /**
      * Request url.
      *
      * @var mixed
      */
-    protected $requestUrl = 'https://www.lhv.ee/banklink';
+    protected $requestUrl = [
+        'payment' => 'https://netbank.nordea.com/pnbepay/epayp.jsp',
+        'auth' => 'https://netbank.nordea.com/pnbeid/eidp.jsp'
+    ];
 
     /**
      * Test request url.
      *
      * @var mixed
      */
-    protected $testRequestUrl = 'https://www.lhv.ee/banklink';
+    protected $testRequestUrl = [
+        'payment' => 'https://netbank.nordea.com/pnbepaytest/epayp.jsp',
+        'auth' => 'https://netbank.nordea.com/pnbeidtest/eidp.jsp',
+    ];
 
     /**
-     * Force LHV class to use IPizza protocol.
+     * Force Luminor class to use IPizza protocol.
      *
      * @param RKD\Banklink\Protocol\IPizza $protocol   Protocol used
      */

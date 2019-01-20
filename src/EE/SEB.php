@@ -8,37 +8,37 @@
  * @copyright 2016-2019 Rene Korss
  * @license MIT
  */
-namespace RKD\Banklink;
+namespace RKD\Banklink\EE;
 
+use RKD\Banklink\Banklink;
 use RKD\Banklink\Protocol\IPizza;
 
 /**
- * Banklink settings for Nordea.
+ * Banklink settings for SEB.
  *
  * For more information, please visit:
- * http://www.nordea.ee/Corporate%20customers/Daily%20banking/Collection%20of%20payment/E-payment/798312.html
+ * http://www.seb.ee/eng/business/everyday-banking/collection-payments/collection-payments-internet
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-
-class Nordea extends Banklink
+class SEB extends Banklink
 {
     /**
      * Request url.
      *
      * @var mixed
      */
-    protected $requestUrl = 'https://netbank.nordea.com/pnbepay/epayp.jsp';
+    protected $requestUrl = 'https://www.seb.ee/cgi-bin/unet3.sh/ipank.r';
 
     /**
      * Test request url.
      *
      * @var mixed
      */
-    protected $testRequestUrl = 'https://netbank.nordea.com/pnbepaytest/epayp.jsp';
+    protected $testRequestUrl = 'https://e.seb.ee/cgi-bin/dv.sh/ipank.r';
 
     /**
-     * Force Nordea class to use IPizza protocol.
+     * Force SEB class to use IPizza protocol.
      *
      * @param RKD\Banklink\Protocol\IPizza $protocol   Protocol used
      */

@@ -9,7 +9,7 @@ namespace RKD\BanklinkTests;
  */
 class CoopPankTest extends SEBTest
 {
-    protected $bankClass = "RKD\Banklink\CoopPank";
+    protected $bankClass = "RKD\Banklink\EE\CoopPank";
 
     protected $requestUrl = [
         'payment' => 'https://i.cooppank.ee/pay',

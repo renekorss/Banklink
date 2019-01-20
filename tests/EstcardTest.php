@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
  */
 class EstcardTest extends TestCase
 {
-    protected $bankClass = "RKD\Banklink\Estcard";
+    protected $bankClass = "RKD\Banklink\EE\Estcard";
     protected $protocolClass = "RKD\Banklink\Protocol\ECommerce";
 
     protected $requestUrl = 'https://pos.estcard.ee/ecom/iPayServlet';

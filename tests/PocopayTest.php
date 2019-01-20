@@ -9,7 +9,7 @@ namespace RKD\BanklinkTests;
  */
 class PocopayTest extends SEBTest
 {
-    protected $bankClass = "RKD\Banklink\Pocopay";
+    protected $bankClass = "RKD\Banklink\EE\Pocopay";
 
     protected $requestUrl = [
         'payment' => 'https://my.pocopay.com/banklink',

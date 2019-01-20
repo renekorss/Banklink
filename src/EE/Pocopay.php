@@ -8,33 +8,34 @@
  * @copyright 2016-2019 Rene Korss
  * @license MIT
  */
-namespace RKD\Banklink;
+namespace RKD\Banklink\EE;
 
+use RKD\Banklink\Banklink;
 use RKD\Banklink\Protocol\IPizza;
 
 /**
- * Banklink settings for SEB.
+ * Banklink settings for Pocopay.
  *
  * For more information, please visit:
- * http://www.seb.ee/eng/business/everyday-banking/collection-payments/collection-payments-internet
+ * https://pocopay.com/
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-class SEB extends Banklink
+class Pocopay extends Banklink
 {
     /**
      * Request url.
      *
      * @var mixed
      */
-    protected $requestUrl = 'https://www.seb.ee/cgi-bin/unet3.sh/ipank.r';
+    protected $requestUrl = 'https://my.pocopay.com/banklink';
 
     /**
      * Test request url.
      *
      * @var mixed
      */
-    protected $testRequestUrl = 'https://e.seb.ee/cgi-bin/dv.sh/ipank.r';
+    protected $testRequestUrl = 'https://alpha.elementare.eu/banklink';
 
     /**
      * Force SEB class to use IPizza protocol.

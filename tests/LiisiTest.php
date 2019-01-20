@@ -11,7 +11,7 @@ use RKD\Banklink\Protocol\LiisiPayment;
  */
 class LiisiTest extends SEBTest
 {
-    protected $bankClass = "RKD\Banklink\Liisi";
+    protected $bankClass = "RKD\Banklink\EE\Liisi";
     protected $protocolClass = "RKD\Banklink\Protocol\LiisiPayment";
 
     protected $requestUrl = [

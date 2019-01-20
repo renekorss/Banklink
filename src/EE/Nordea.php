@@ -8,48 +8,38 @@
  * @copyright 2016-2019 Rene Korss
  * @license MIT
  */
-namespace RKD\Banklink;
+namespace RKD\Banklink\EE;
 
+use RKD\Banklink\Banklink;
 use RKD\Banklink\Protocol\IPizza;
 
 /**
- * Banklink settings for Coop Pank.
+ * Banklink settings for Nordea.
  *
- * For more information, please visit: https://www.cooppank.ee/en/bank-link
+ * For more information, please visit:
+ * http://www.nordea.ee/Corporate%20customers/Daily%20banking/Collection%20of%20payment/E-payment/798312.html
  *
  * @author Rene Korss <rene.korss@gmail.com>
  */
-class CoopPank extends Banklink
+
+class Nordea extends Banklink
 {
     /**
      * Request url.
      *
      * @var mixed
      */
-    protected $requestUrl = [
-        'payment' => 'https://i.cooppank.ee/pay',
-        'auth' => 'https://i.cooppank.ee/auth'
-    ];
+    protected $requestUrl = 'https://netbank.nordea.com/pnbepay/epayp.jsp';
 
     /**
      * Test request url.
      *
      * @var mixed
      */
-    protected $testRequestUrl = [
-        'payment' => 'https://i.cooppank.ee/pay',
-        'auth' => 'https://i.cooppank.ee/auth'
-    ];
+    protected $testRequestUrl = 'https://netbank.nordea.com/pnbepaytest/epayp.jsp';
 
     /**
-     * Response encoding.
-     *
-     * @var string
-     */
-    protected $responseEncoding = 'ISO-8859-13';
-
-    /**
-     * Force Krediidipank class to use IPizza protocol.
+     * Force Nordea class to use IPizza protocol.
      *
      * @param RKD\Banklink\Protocol\IPizza $protocol   Protocol used
      */
