@@ -199,6 +199,10 @@ class ECommerce implements ProtocolInterface
         $response = new PaymentResponse($status, $responseData);
         $response->setOrderId($responseData['ecuno']);
 
+        if (isset($responseData['auto'])) {
+            $response->setIsAutomatic(strtoupper($responseData['auto']) === PaymentResponse::RESPONSE_AUTO);
+        }
+
         if (PaymentResponse::STATUS_SUCCESS === $status) {
             $response
                 ->setSum(round($responseData['eamount'] / 100, 2))

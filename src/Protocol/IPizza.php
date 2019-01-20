@@ -318,6 +318,10 @@ class IPizza implements ProtocolInterface
             $response->setLanguage($responseData['VK_LANG']);
         }
 
+        if (isset($responseData['VK_AUTO'])) {
+            $response->setIsAutomatic($responseData['VK_AUTO'] === PaymentResponse::RESPONSE_AUTO);
+        }
+
         if (PaymentResponse::STATUS_SUCCESS === $status) {
             $response
                 ->setSum($responseData['VK_AMOUNT'])
@@ -350,6 +354,10 @@ class IPizza implements ProtocolInterface
 
         if (isset($responseData['VK_LANG'])) {
             $response->setLanguage($responseData['VK_LANG']);
+        }
+
+        if (isset($responseData['VK_AUTO'])) {
+            $response->setIsAutomatic(strtoupper($responseData['VK_AUTO']) === PaymentResponse::RESPONSE_AUTO);
         }
 
         if (PaymentResponse::STATUS_SUCCESS === $status) {

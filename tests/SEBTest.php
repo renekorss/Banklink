@@ -203,6 +203,7 @@ class SEBTest extends TestCase
             'VK_MAC'        => 'Sp0VzYSPyZviiCewmwbtqny8cYRcnYU4Noh0cwxOYoZ5IpQwHuolNbFI+1Kkuk5n6cWs2X48IYYOUMRi9VTqdsfSN7z5jpUwEwjLsCMDUDdro421Je7eXXkEkbZlEcgY8wtR5H+OO955aqxDdZeS0dkuuxTN70Z9Esv5feXYxsw=',
             'VK_T_DATETIME' => $this->datetime,
             'VK_ENCODING'   => 'UTF-8',
+            'VK_AUTO'       => 'Y'
         ];
 
         $response = $this->bank->handleResponse($responseData);
@@ -212,6 +213,9 @@ class SEBTest extends TestCase
 
         // This is valid response
         $this->assertTrue($response->wasSuccessful());
+
+        // Response was sent automatically by bank
+        $this->assertTrue($response->isAutomatic());
     }
 
     /**
@@ -229,6 +233,7 @@ class SEBTest extends TestCase
             'VK_MSG'      => $this->message,
             'VK_MAC'      => 'o4rju0oEwITuIheUdtDjp2njKhBzvQv8RjKg+rdCB+fwGiUS8zpXzr0I+wj0vl13h+ACGAR1LO9gR2+IG1yq+AJdQdVszJIbeA1jcg1GFtl1xyLN8LXYfubHHUB/7EWwiEGZKcHrNp3pAsADlLwySQLRWatheMLPqRRk2FX96Ko=',
             'VK_DATETIME' => $this->datetime,
+            'VK_AUTO'     => 'N'
         ];
 
         $response = $this->bank->handleResponse($responseData);
@@ -238,6 +243,9 @@ class SEBTest extends TestCase
 
         // This is not valid response, so validation should fail
         $this->assertFalse($response->wasSuccessful());
+
+        // User pressed "Back to merchant" button
+        $this->assertFalse($response->isAutomatic());
     }
 
     /**

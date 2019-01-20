@@ -28,6 +28,11 @@ class Response implements ResponseInterface
     const STATUS_ERROR = -1;
 
     /**
+     * Automatic response value.
+     */
+    const RESPONSE_AUTO = 'Y';
+
+    /**
      * Response status.
      *
      * @var int
@@ -47,6 +52,13 @@ class Response implements ResponseInterface
      * @var string
      */
     protected $language;
+
+    /**
+     * Response automatic state.
+     *
+     * @var bool
+     */
+    protected $isAutomatic = false;
 
     /**
      * Set response status and data.
@@ -111,5 +123,28 @@ class Response implements ResponseInterface
     public function getLanguage() : string
     {
         return $this->language;
+    }
+
+    /**
+     * Set if response is automatic
+     *
+     * @param bool $isAutomatic Boolean representing if response is automatically sent by bank
+     *
+     * @return self
+     */
+    public function setIsAutomatic(bool $isAutomatic) : ResponseInterface
+    {
+        $this->isAutomatic = $isAutomatic;
+        return $this;
+    }
+
+    /**
+     * Get if response is automatic.
+     *
+     * @return bool True if is automatic response, false otherwise
+     */
+    public function isAutomatic() : bool
+    {
+        return $this->isAutomatic;
     }
 }
