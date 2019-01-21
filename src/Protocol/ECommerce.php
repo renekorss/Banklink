@@ -200,7 +200,7 @@ class ECommerce implements ProtocolInterface
         $response->setOrderId($responseData['ecuno']);
 
         if (isset($responseData['auto'])) {
-            $response->setIsAutomatic(strtoupper($responseData['auto']) === PaymentResponse::RESPONSE_AUTO);
+            $response->setAutomatic(strtoupper($responseData['auto']) === PaymentResponse::RESPONSE_AUTO);
         }
 
         if (PaymentResponse::STATUS_SUCCESS === $status) {

@@ -132,7 +132,7 @@ class Response implements ResponseInterface
      *
      * @return self
      */
-    public function setIsAutomatic(bool $isAutomatic) : ResponseInterface
+    public function setAutomatic(bool $isAutomatic) : ResponseInterface
     {
         $this->isAutomatic = $isAutomatic;
         return $this;

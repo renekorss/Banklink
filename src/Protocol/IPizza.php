@@ -319,7 +319,7 @@ class IPizza implements ProtocolInterface
         }
 
         if (isset($responseData['VK_AUTO'])) {
-            $response->setIsAutomatic($responseData['VK_AUTO'] === PaymentResponse::RESPONSE_AUTO);
+            $response->setAutomatic($responseData['VK_AUTO'] === PaymentResponse::RESPONSE_AUTO);
         }
 
         if (PaymentResponse::STATUS_SUCCESS === $status) {
@@ -357,7 +357,7 @@ class IPizza implements ProtocolInterface
         }
 
         if (isset($responseData['VK_AUTO'])) {
-            $response->setIsAutomatic(strtoupper($responseData['VK_AUTO']) === PaymentResponse::RESPONSE_AUTO);
+            $response->setAutomatic(strtoupper($responseData['VK_AUTO']) === PaymentResponse::RESPONSE_AUTO);
         }
 
         if (PaymentResponse::STATUS_SUCCESS === $status) {
