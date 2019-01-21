@@ -416,6 +416,10 @@ class IPizza implements ProtocolInterface
      */
     protected function generateSignature(array $data, string $encoding = 'UTF-8') : string
     {
+        if (!isset($data['VK_SERVICE'])) {
+            throw new \InvalidArgumentException('VK_SERVICE key must be in data. Can\'t generate signature.');
+        }
+
         $service = $data['VK_SERVICE'];
         $fields = Services::getFields($service);
         $mac = '';

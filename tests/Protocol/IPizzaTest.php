@@ -398,6 +398,15 @@ class IPizzaTest extends TestCase
     }
 
     /**
+     * @expectedException InvalidArgumentException
+     */
+    public function testHandleResponseNoService()
+    {
+        $responseData = [];
+        $this->protocol->handleResponse($responseData);
+    }
+
+    /**
      * @expectedException UnexpectedValueException
      */
     public function testGetRequestFieldMissing()
@@ -534,7 +543,7 @@ class IPizzaTest extends TestCase
         );
 
         $this->protocol->setAlgorithm(OPENSSL_ALGO_SHA256);
-        
+
         $responseData = [
             "VK_SERVICE" => "1111",
             "VK_VERSION" => "008",
