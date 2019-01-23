@@ -1,6 +1,5 @@
 [![Build Status](https://travis-ci.org/renekorss/Banklink.svg?branch=master)](https://travis-ci.org/renekorss/Banklink)
 [![Coverage Status](https://coveralls.io/repos/renekorss/Banklink/badge.svg?branch=master&service=github)](https://coveralls.io/github/renekorss/Banklink?branch=master)
-[![Test Status](https://php-eye.com/badge/renekorss/Banklink/tested.svg)](https://php-eye.com/package/renekorss/banklink)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/e40d4d283c7e41b2993656fce3645439)](https://www.codacy.com/app/renekorss/Banklink?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=renekorss/Banklink&amp;utm_campaign=Badge_Grade)
 [![Latest Stable Version](https://poser.pugx.org/renekorss/banklink/v/stable)](https://packagist.org/packages/renekorss/banklink)
 [![Total Downloads](https://poser.pugx.org/renekorss/banklink/downloads)](https://packagist.org/packages/renekorss/banklink)
@@ -11,7 +10,7 @@
 
 > PHP payment library to easily integrate Baltic banklinks, E-commerce gateaway (Estcard, Nets Estonia), Liizi Payment Link and Pocopay.
 >
-> View API documentation at http://renekorss.github.io/Banklink/
+> View API documentation at https://renekorss.github.io/Banklink/
 
 ## Install
 
