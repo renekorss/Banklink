@@ -112,7 +112,6 @@ class ECommerceTest extends TestCase
             'mac'          => '10e8d613d3d29f4f110ed7d624de85b436ea4b3bf11dcec46f77292f3ce494bf6d8c8f0600e17904b82289e8fa4eecfa65c4f3c015888abcb882ed5b362f3f46ef089912f3b12a89abe59683f6df9f1954723ce59e778e8d3838c71d1e78e48786e36b7619012f7aaa7390bfad24b008d09657779bfb0c283e6826a092928336',
             'datetime'     => '2015-10-12T08:47:15+0300',
             'charEncoding' => 'UTF-8',
-            'auto'         => 'N',
         ];
 
         $this->protocol->handleResponse($responseData);
