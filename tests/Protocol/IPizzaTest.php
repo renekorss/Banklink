@@ -371,6 +371,7 @@ class IPizzaTest extends TestCase
             'VK_ENCODING' => 'UTF-8',
             'VK_LANG' => 'EST',
             'VK_MAC' => 'RBkszGx+hP/B24Bziuq+vAJx0saRILcoc8BRQt8WYaq5mK6PdfOimZ3cTz9/t+4AQyZJfvA+Nv7NUxtieDKPorp4P1jzlbcR4K6lkit286H+TptIlWbPvcD2dj7Q7UapNtEB5FmMc62IMbbQCiTVyV5bs6f3DJYr3kOrOV/LHTY=',
+            'VK_AUTO' => 'N',
         ];
 
         $response = $this->protocol->handleResponse($responseData);
