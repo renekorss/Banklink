@@ -203,6 +203,10 @@ class ECommerce implements ProtocolInterface
             $response->setAutomatic(strtoupper($responseData['auto']) === PaymentResponse::RESPONSE_AUTO);
         }
 
+        if (isset($responseData['msgdata'])) {
+            $response->setMessage($responseData['msgdata']);
+        }
+
         if (PaymentResponse::STATUS_SUCCESS === $status) {
             $response
                 ->setSum(round($responseData['eamount'] / 100, 2))

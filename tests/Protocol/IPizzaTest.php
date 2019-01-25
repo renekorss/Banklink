@@ -179,6 +179,9 @@ class IPizzaTest extends TestCase
         // We should get same prefered language
         $this->assertEquals('EST', $response->getLanguage());
 
+        // We should get same message
+        $this->assertEquals($this->message, $response->getMessage());
+
         $expextedSender = new \stdClass();
         $expextedSender->name = 'Mart Mets';
         $expextedSender->account = '101032423434543';
