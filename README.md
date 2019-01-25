@@ -151,6 +151,8 @@ For more information, please visit [Wiki](https://github.com/renekorss/Banklink/
         $sender          = $response->getSender();
         $transactionId   = $response->getTransactionId();
         $transactionDate = $response->getTransactionDate();
+        $message         = $response->getMessage();
+        $automatic       = $response->isAutomatic(); // true if response was sent automatically by bank
 
         // Only for auth data
         $userId          = $response->getUserId(); // Person ID
