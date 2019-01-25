@@ -124,27 +124,4 @@ class Response implements ResponseInterface
     {
         return $this->language;
     }
-
-    /**
-     * Set if response is automatic
-     *
-     * @param bool $isAutomatic Boolean representing if response is automatically sent by bank
-     *
-     * @return self
-     */
-    public function setAutomatic(bool $isAutomatic) : ResponseInterface
-    {
-        $this->isAutomatic = $isAutomatic;
-        return $this;
-    }
-
-    /**
-     * Get if response is automatic.
-     *
-     * @return bool True if is automatic response, false otherwise
-     */
-    public function isAutomatic() : bool
-    {
-        return $this->isAutomatic;
-    }
 }

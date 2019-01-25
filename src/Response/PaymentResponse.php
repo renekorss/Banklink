@@ -225,4 +225,50 @@ class PaymentResponse extends Response
     {
         return $this->transactionDate;
     }
+
+    /**
+     * Set transaction message
+     *
+     * @param string $message Transaction message
+     *
+     * @return self
+     */
+    public function setMessage(string $message) : ResponseInterface
+    {
+        $this->message = $message;
+        return $this;
+    }
+
+    /**
+     * Get transaction message
+     *
+     * @return string Message
+     */
+    public function getMessage() : string
+    {
+        return $this->message;
+    }
+
+    /**
+     * Set if response is automatic
+     *
+     * @param bool $isAutomatic Boolean representing if response is automatically sent by bank
+     *
+     * @return self
+     */
+    public function setAutomatic(bool $isAutomatic) : ResponseInterface
+    {
+        $this->isAutomatic = $isAutomatic;
+        return $this;
+    }
+
+    /**
+     * Get if response is automatic.
+     *
+     * @return bool True if is automatic response, false otherwise
+     */
+    public function isAutomatic() : bool
+    {
+        return $this->isAutomatic;
+    }
 }

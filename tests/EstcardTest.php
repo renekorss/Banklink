@@ -129,6 +129,9 @@ class EstcardTest extends TestCase
         $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
         $this->assertEquals(PaymentResponse::STATUS_SUCCESS, $response->getStatus());
 
+        // We should get same message
+        $this->assertEquals('Test makse', $response->getMessage());
+
         // This is valid response
         $this->assertTrue($response->wasSuccessful());
     }
@@ -158,13 +161,13 @@ class EstcardTest extends TestCase
      */
     public function testCustomRequestUrl()
     {
-        $this->seb = new $this->bankClass($this->protocol);
-        $this->seb->setRequestUrl('https://google.com');
+        $this->bank = new $this->bankClass($this->protocol);
+        $this->bank->setRequestUrl('https://google.com');
 
-        $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Get same data again, already exists
-        $request = $this->seb->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Custom url
         $this->assertEquals('https://google.com', $request->getRequestUrl());
