@@ -68,7 +68,7 @@ abstract class Banklink
      *
      * @var string
      */
-    protected $responseEncoding = 'ISO-8859-1';
+    protected $responseEncoding = 'UTF-8';
 
     /**
      * Init banklink.
