@@ -2,8 +2,8 @@
 
 namespace RKD\BanklinkTests\Protocol\Helper;
 
-use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use PHPUnit\Framework\TestCase;
+use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 
 /**
  * Test suite for protocol helper.

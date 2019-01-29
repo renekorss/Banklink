@@ -11,10 +11,10 @@
 namespace RKD\Banklink;
 
 use RKD\Banklink\Protocol\ProtocolInterface;
-use RKD\Banklink\Response\ResponseInterface;
-use RKD\Banklink\Request\RequestInterface;
-use RKD\Banklink\Request\PaymentRequest;
 use RKD\Banklink\Request\AuthRequest;
+use RKD\Banklink\Request\PaymentRequest;
+use RKD\Banklink\Request\RequestInterface;
+use RKD\Banklink\Response\ResponseInterface;
 
 /**
  * Abstract class for every banklink.
@@ -150,17 +150,17 @@ abstract class Banklink
         return $this->requestData;
     }
 
-     /**
-      * Get authentication object
-      *
-      * @param string|null $recId    Bank identifier
-      * @param string|null $nonce    Random nonce
-      * @param string|null $rid      Session identifier.
-      * @param string      $language Language
-      * @param string      $timezone Timezone. Default: Europe/Tallinn
-      *
-      * @return RKD\Banklink\Request\RequestInterface Authentication object
-      */
+    /**
+     * Get authentication object
+     *
+     * @param string|null $recId    Bank identifier
+     * @param string|null $nonce    Random nonce
+     * @param string|null $rid      Session identifier.
+     * @param string      $language Language
+     * @param string      $timezone Timezone. Default: Europe/Tallinn
+     *
+     * @return RKD\Banklink\Request\RequestInterface Authentication object
+     */
     public function getAuthRequest(
         ?string $recId = null,
         ?string $nonce = null,

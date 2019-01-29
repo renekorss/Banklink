@@ -2,12 +2,12 @@
 
 namespace RKD\BanklinkTests\IPizza;
 
+use PHPUnit\Framework\TestCase;
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\IPizza;
-use RKD\Banklink\Response\PaymentResponse;
-use RKD\Banklink\Response\AuthResponse;
 use RKD\Banklink\Request\PaymentRequest;
-use PHPUnit\Framework\TestCase;
+use RKD\Banklink\Response\AuthResponse;
+use RKD\Banklink\Response\PaymentResponse;
 
 /**
  * Test suite for IPizza protocol.

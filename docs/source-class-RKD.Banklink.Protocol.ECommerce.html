@@ -70,9 +70,9 @@
 </span><span class="l" id="line-11"><span class="php-keyword1">namespace</span> RKD\Banklink\Protocol;
 </span><span class="l" id="line-12">
 </span><span class="l" id="line-13"><span class="php-keyword1">use</span> RKD\Banklink\Protocol\Helper\ProtocolHelper;
-</span><span class="l" id="line-14"><span class="php-keyword1">use</span> RKD\Banklink\Response\PaymentResponse;
-</span><span class="l" id="line-15"><span class="php-keyword1">use</span> RKD\Banklink\Response\ResponseInterface;
-</span><span class="l" id="line-16"><span class="php-keyword1">use</span> RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait;
+</span><span class="l" id="line-14"><span class="php-keyword1">use</span> RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait;
+</span><span class="l" id="line-15"><span class="php-keyword1">use</span> RKD\Banklink\Response\PaymentResponse;
+</span><span class="l" id="line-16"><span class="php-keyword1">use</span> RKD\Banklink\Response\ResponseInterface;
 </span><span class="l" id="line-17">
 </span><span class="l" id="line-18"><span class="php-comment">/**
 </span></span><span class="l" id="line-19"><span class="php-comment"> * Protocol for ECommerce payment.
@@ -259,7 +259,7 @@
 </span><span class="l" id="line-200">        <span class="php-var">$response</span>-&gt;setOrderId(<span class="php-var">$responseData</span>[<span class="php-quote">'ecuno'</span>]);
 </span><span class="l" id="line-201">
 </span><span class="l" id="line-202">        <span class="php-keyword1">if</span> (<span class="php-keyword1">isset</span>(<span class="php-var">$responseData</span>[<span class="php-quote">'auto'</span>])) {
-</span><span class="l" id="line-203">            <span class="php-var">$response</span>-&gt;setIsAutomatic(<span class="php-keyword2">strtoupper</span>(<span class="php-var">$responseData</span>[<span class="php-quote">'auto'</span>]) === PaymentResponse::RESPONSE_AUTO);
+</span><span class="l" id="line-203">            <span class="php-var">$response</span>-&gt;setAutomatic(<span class="php-keyword2">strtoupper</span>(<span class="php-var">$responseData</span>[<span class="php-quote">'auto'</span>]) === PaymentResponse::RESPONSE_AUTO);
 </span><span class="l" id="line-204">        }
 </span><span class="l" id="line-205">
 </span><span class="l" id="line-206">        <span class="php-keyword1">if</span> (PaymentResponse::STATUS_SUCCESS === <span class="php-var">$status</span>) {

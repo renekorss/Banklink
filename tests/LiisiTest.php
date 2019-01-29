@@ -2,8 +2,6 @@
 
 namespace RKD\BanklinkTests;
 
-use RKD\Banklink\Protocol\LiisiPayment;
-
 /**
  * Test suite for Liisi banklink.
  *

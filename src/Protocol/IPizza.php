@@ -12,9 +12,9 @@ namespace RKD\Banklink\Protocol;
 
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\IPizza\Services;
-use RKD\Banklink\Response\ResponseInterface;
-use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Response\AuthResponse;
+use RKD\Banklink\Response\PaymentResponse;
+use RKD\Banklink\Response\ResponseInterface;
 
 /**
  * Protocol for IPizza based banklinks.
@@ -206,7 +206,7 @@ class IPizza implements ProtocolInterface
             $data['VK_ACC'] = $this->sellerAccount;
         }
 
-       // Merge custom data
+        // Merge custom data
         if (is_array($customRequestData)) {
             $data = array_merge($data, $customRequestData);
         }

@@ -22,7 +22,8 @@
     "phpmd/phpmd": "^2.6",
     "php-coveralls/php-coveralls": "2.*",
     "apigen/apigen": "dev-master",
-    "roave/better-reflection": "dev-master"
+    "roave/better-reflection": "dev-master",
+    "friendsofphp/php-cs-fixer": "^2.14"
   },
   "autoload": {
     "psr-4": {
@@ -32,12 +33,14 @@
   },
   "scripts": {
     "build": [
+      "@format",
       "@tests",
       "@phpcs",
       "@phpmd",
       "@docs"
     ],
     "tests": "phpunit",
+    "format": "vendor/bin/php-cs-fixer fix",
     "docs": "apigen generate src --destination docs",
     "phpmd": "phpmd ./src text phpmd.xml",
     "phpcs": "phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests"

@@ -2,11 +2,10 @@
 
 namespace RKD\BanklinkTests;
 
-use RKD\Banklink;
-use RKD\Banklink\Protocol\ECommerce;
-use RKD\Banklink\Response\PaymentResponse;
-use RKD\Banklink\Request\PaymentRequest;
 use PHPUnit\Framework\TestCase;
+use RKD\Banklink;
+use RKD\Banklink\Request\PaymentRequest;
+use RKD\Banklink\Response\PaymentResponse;
 
 /**
  * Test suite for Estcard payment gateway.
@@ -101,9 +100,9 @@ class EstcardTest extends TestCase
         $this->assertEquals($this->requestUrl, $request->getRequestUrl());
     }
 
-   /**
-     * Test successful payment response.
-     */
+    /**
+      * Test successful payment response.
+      */
     public function testHandlePaymentResponseSuccess()
     {
         $responseData = [

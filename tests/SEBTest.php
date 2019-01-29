@@ -2,12 +2,11 @@
 
 namespace RKD\BanklinkTests;
 
+use PHPUnit\Framework\TestCase;
 use RKD\Banklink;
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
-use RKD\Banklink\Protocol\IPizza;
-use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Request\PaymentRequest;
-use PHPUnit\Framework\TestCase;
+use RKD\Banklink\Response\PaymentResponse;
 
 /**
  * Test suite for SEB banklink.

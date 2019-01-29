@@ -2,8 +2,8 @@
 
 namespace RKD\BanklinkTests\ECommerce;
 
-use RKD\Banklink\Protocol\ECommerce;
 use PHPUnit\Framework\TestCase;
+use RKD\Banklink\Protocol\ECommerce;
 
 /**
  * Test suite for ECommerce protocol.

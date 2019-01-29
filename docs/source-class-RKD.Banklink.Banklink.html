@@ -70,10 +70,10 @@
 </span><span class="l" id="line-11"><span class="php-keyword1">namespace</span> RKD\Banklink;
 </span><span class="l" id="line-12">
 </span><span class="l" id="line-13"><span class="php-keyword1">use</span> RKD\Banklink\Protocol\ProtocolInterface;
-</span><span class="l" id="line-14"><span class="php-keyword1">use</span> RKD\Banklink\Response\ResponseInterface;
-</span><span class="l" id="line-15"><span class="php-keyword1">use</span> RKD\Banklink\Request\RequestInterface;
-</span><span class="l" id="line-16"><span class="php-keyword1">use</span> RKD\Banklink\Request\PaymentRequest;
-</span><span class="l" id="line-17"><span class="php-keyword1">use</span> RKD\Banklink\Request\AuthRequest;
+</span><span class="l" id="line-14"><span class="php-keyword1">use</span> RKD\Banklink\Request\AuthRequest;
+</span><span class="l" id="line-15"><span class="php-keyword1">use</span> RKD\Banklink\Request\PaymentRequest;
+</span><span class="l" id="line-16"><span class="php-keyword1">use</span> RKD\Banklink\Request\RequestInterface;
+</span><span class="l" id="line-17"><span class="php-keyword1">use</span> RKD\Banklink\Response\ResponseInterface;
 </span><span class="l" id="line-18">
 </span><span class="l" id="line-19"><span class="php-comment">/**
 </span></span><span class="l" id="line-20"><span class="php-comment"> * Abstract class for every banklink.
@@ -209,17 +209,17 @@
 </span><span class="l" id="line-150">        <span class="php-keyword1">return</span> <span class="php-var">$this</span>-&gt;requestData;
 </span><span class="l" id="line-151">    }
 </span><span class="l" id="line-152">
-</span><span class="l" id="line-153">     <span class="php-comment">/**
-</span></span><span class="l" id="line-154"><span class="php-comment">      * Get authentication object
-</span></span><span class="l" id="line-155"><span class="php-comment">      *
-</span></span><span class="l" id="line-156"><span class="php-comment">      * @param string|null $recId    Bank identifier
-</span></span><span class="l" id="line-157"><span class="php-comment">      * @param string|null $nonce    Random nonce
-</span></span><span class="l" id="line-158"><span class="php-comment">      * @param string|null $rid      Session identifier.
-</span></span><span class="l" id="line-159"><span class="php-comment">      * @param string      $language Language
-</span></span><span class="l" id="line-160"><span class="php-comment">      * @param string      $timezone Timezone. Default: Europe/Tallinn
-</span></span><span class="l" id="line-161"><span class="php-comment">      *
-</span></span><span class="l" id="line-162"><span class="php-comment">      * @return RKD\Banklink\Request\RequestInterface Authentication object
-</span></span><span class="l" id="line-163"><span class="php-comment">      */</span>
+</span><span class="l" id="line-153">    <span class="php-comment">/**
+</span></span><span class="l" id="line-154"><span class="php-comment">     * Get authentication object
+</span></span><span class="l" id="line-155"><span class="php-comment">     *
+</span></span><span class="l" id="line-156"><span class="php-comment">     * @param string|null $recId    Bank identifier
+</span></span><span class="l" id="line-157"><span class="php-comment">     * @param string|null $nonce    Random nonce
+</span></span><span class="l" id="line-158"><span class="php-comment">     * @param string|null $rid      Session identifier.
+</span></span><span class="l" id="line-159"><span class="php-comment">     * @param string      $language Language
+</span></span><span class="l" id="line-160"><span class="php-comment">     * @param string      $timezone Timezone. Default: Europe/Tallinn
+</span></span><span class="l" id="line-161"><span class="php-comment">     *
+</span></span><span class="l" id="line-162"><span class="php-comment">     * @return RKD\Banklink\Request\RequestInterface Authentication object
+</span></span><span class="l" id="line-163"><span class="php-comment">     */</span>
 </span><span class="l" id="line-164">    <span class="php-keyword1">public</span> <span class="php-keyword1">function</span> getAuthRequest(
 </span><span class="l" id="line-165">        ?string <span class="php-var">$recId</span> = <span class="php-keyword1">null</span>,
 </span><span class="l" id="line-166">        ?string <span class="php-var">$nonce</span> = <span class="php-keyword1">null</span>,

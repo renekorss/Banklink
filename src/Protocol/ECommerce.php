@@ -11,9 +11,9 @@
 namespace RKD\Banklink\Protocol;
 
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
+use RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait;
 use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Response\ResponseInterface;
-use RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait;
 
 /**
  * Protocol for ECommerce payment.

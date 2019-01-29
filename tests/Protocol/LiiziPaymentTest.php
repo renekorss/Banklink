@@ -3,7 +3,6 @@
 namespace RKD\BanklinkTests\IPizza;
 
 use RKD\Banklink\Protocol\LiisiPayment;
-use RKD\BanklinkTests\IPizza\IPizzaTest;
 
 /**
  * Test suite for Liisi payment protocol.
