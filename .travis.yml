@@ -18,7 +18,6 @@ matrix:
     - php: 7.2
       env: RUN_PHPCS="yes" RUN_PHPMD="yes" RUN_COVERALLS="yes"
     - php: 7.3
-    - php: hhvm
     - php: nightly
       env: COMPOSER_ARGS="--ignore-platform-reqs"
   allow_failures:
