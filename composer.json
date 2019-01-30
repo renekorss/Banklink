@@ -27,7 +27,11 @@
   },
   "autoload": {
     "psr-4": {
-      "RKD\\Banklink\\": "src",
+      "RKD\\Banklink\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
       "RKD\\BanklinkTests\\": "tests"
     }
   },
