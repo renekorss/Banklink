@@ -1,6 +1,6 @@
 <?php
 
-namespace RKD\BanklinkTests\Protocol\Helper;
+namespace RKD\Banklink\Test\Protocol\Helper;
 
 use PHPUnit\Framework\TestCase;
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;

@@ -1,6 +1,6 @@
 <?php
 
-namespace RKD\BanklinkTests;
+namespace RKD\Banklink\Test;
 
 use PHPUnit\Framework\TestCase;
 use RKD\Banklink;

@@ -1,6 +1,6 @@
 <?php
 
-namespace RKD\BanklinkTests;
+namespace RKD\Banklink\Test;
 
 /**
  * Test suite for Danskebank banklink.
