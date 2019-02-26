@@ -364,13 +364,13 @@ class IPizza implements ProtocolInterface
 
         if (PaymentResponse::STATUS_SUCCESS === $status) {
             // IPizza 2015 fallback: SEB has VK_ACC, others VK_REC_ACC
-            $rec_acc = $responseData[static::FIELD_REC_ACC] ?? $responseData[static::FIELD_ACC];
+            $receiverAccount = $responseData[static::FIELD_REC_ACC] ?? $responseData[static::FIELD_ACC];
 
             $response
                 ->setSum($responseData[static::FIELD_AMOUNT])
                 ->setCurrency($responseData[static::FIELD_CURR])
                 ->setSender($responseData[static::FIELD_SND_NAME], $responseData[static::FIELD_SND_ACC])
-                ->setReceiver($responseData[static::FIELD_REC_NAME], $rec_acc)
+                ->setReceiver($responseData[static::FIELD_REC_NAME], $receiverAccount)
                 ->setTransactionId($responseData[static::FIELD_T_NO])
                 ->setTransactionDate($responseData[static::FIELD_T_DATETIME]);
         }
