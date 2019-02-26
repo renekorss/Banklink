@@ -28,24 +28,24 @@ class SEBTest extends TestCase
     ];
     protected $bank;
 
-    private $protocol;
+    protected $protocol;
 
-    private $sellerId;
-    private $sellerName;
-    private $sellerAccount;
+    protected $sellerId;
+    protected $sellerName;
+    protected $sellerAccount;
 
-    private $senderName;
+    protected $senderName;
 
-    private $orderId;
-    private $amount;
-    private $message;
-    private $language;
-    private $currency;
-    private $timezone;
-    private $datetime;
-    private $expectedData;
+    protected $orderId;
+    protected $amount;
+    protected $message;
+    protected $language;
+    protected $currency;
+    protected $timezone;
+    protected $datetime;
+    protected $expectedData;
 
-    private $customRequestUrl;
+    protected $customRequestUrl;
 
     /**
      * Set test data.

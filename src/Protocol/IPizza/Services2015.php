@@ -148,17 +148,4 @@ final class Services2015
                 break;
         }
     }
-
-    /**
-     * Get supported payment response services.
-     *
-     * @return array Array of payments services ID-s
-     */
-    public static function getPaymentResponseServices() : array
-    {
-        return [
-            self::PAYMENT_RESPONSE_SUCCESS,
-            self::PAYMENT_RESPONSE_FAILED,
-        ];
-    }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace RKD\Banklink\Test\IPizza;
+namespace RKD\Banklink\Test\Protocol;
 
 use RKD\Banklink\Protocol\LiisiPayment;
 
