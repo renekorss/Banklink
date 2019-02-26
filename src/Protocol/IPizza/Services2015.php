@@ -47,8 +47,14 @@ final class Services2015
     const PAYMENT_RESPONSE_SUCCESS = '1101';
 
     /**
+     * Successful but not executed response service
+     *
+     * @var string
+     */
+    const PAYMENT_RESPONSE_ERROR = '1201';
+
+    /**
      * Failed response service
-     * Dosen't require name and account number.
      *
      * @var string
      */
@@ -130,6 +136,23 @@ final class Services2015
                     'VK_REF',
                     'VK_MSG',
                     'VK_T_DATE',
+                ];
+                break;
+            case self::PAYMENT_RESPONSE_ERROR:
+                return [
+                    'VK_SERVICE',
+                    'VK_VERSION',
+                    'VK_SND_ID',
+                    'VK_REC_ID',
+                    'VK_STAMP',
+                    'VK_AMOUNT',
+                    'VK_CURR',
+                    'VK_REC_ACC',
+                    'VK_REC_NAME',
+                    'VK_SND_ACC',
+                    'VK_SND_NAME',
+                    'VK_REF',
+                    'VK_MSG'
                 ];
                 break;
             case self::PAYMENT_RESPONSE_FAILED:

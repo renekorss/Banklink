@@ -210,6 +210,11 @@ class SEBTest extends TestCase
         $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
         $this->assertEquals(PaymentResponse::STATUS_SUCCESS, $response->getStatus());
 
+        $this->assertEquals($this->sellerName, $response->getReceiver()->name);
+        $this->assertEquals($this->sellerAccount, $response->getReceiver()->account);
+
+        $this->assertEquals(getenv('TEST_DATETIME'), $response->getTransactionDate());
+
         // This is valid response
         $this->assertTrue($response->wasSuccessful());
 

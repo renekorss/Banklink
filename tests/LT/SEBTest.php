@@ -102,7 +102,7 @@ class SEBTest extends \RKD\Banklink\Test\EE\SEBTest
             'VK_T_NO'       => 100,
             'VK_AMOUNT'     => $this->amount,
             'VK_CURR'       => $this->currency,
-            'VK_REC_ACC'    => $this->sellerAccount,
+            'VK_ACC'        => $this->sellerAccount,
             'VK_REC_NAME'   => $this->sellerName,
             'VK_SND_ACC'    => '101032423434543',
             'VK_SND_NAME'   => 'Mart Mets',
@@ -117,6 +117,11 @@ class SEBTest extends \RKD\Banklink\Test\EE\SEBTest
 
         $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
         $this->assertEquals(PaymentResponse::STATUS_SUCCESS, $response->getStatus());
+
+        $this->assertEquals($this->sellerName, $response->getReceiver()->name);
+        $this->assertEquals($this->sellerAccount, $response->getReceiver()->account);
+
+        $this->assertEquals(getenv('TEST_DATETIME'), $response->getTransactionDate());
 
         // This is valid response
         $this->assertTrue($response->wasSuccessful());
@@ -140,6 +145,41 @@ class SEBTest extends \RKD\Banklink\Test\EE\SEBTest
             'VK_MSG'      => $this->message,
             'VK_MAC'      => 'o4rju0oEwITuIheUdtDjp2njKhBzvQv8RjKg+rdCB+fwGiUS8zpXzr0I+wj0vl13h+ACGAR1LO9gR2+IG1yq+AJdQdVszJIbeA1jcg1GFtl1xyLN8LXYfubHHUB/7EWwiEGZKcHrNp3pAsADlLwySQLRWatheMLPqRRk2FX96Ko=',
             'VK_DATETIME' => $this->datetime,
+            'VK_AUTO'     => 'N'
+        ];
+
+        $response = $this->bank->handleResponse($responseData);
+
+        $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
+        $this->assertEquals(PaymentResponse::STATUS_ERROR, $response->getStatus());
+
+        // This is not valid response, so validation should fail
+        $this->assertFalse($response->wasSuccessful());
+
+        // User pressed "Back to merchant" button
+        $this->assertFalse($response->isAutomatic());
+    }
+
+    /**
+     * Test failed payment response.
+     */
+    public function testHandlePaymentResponseError1201()
+    {
+        $responseData = [
+            'VK_SERVICE'  => '1201',
+            'VK_VERSION'  => '008',
+            'VK_SND_ID'   => $this->senderName,
+            'VK_REC_ID'   => $this->sellerId,
+            'VK_STAMP'    => $this->orderId,
+            'VK_AMOUNT'   => $this->amount,
+            'VK_CURR'     => $this->currency,
+            'VK_ACC'      => $this->sellerAccount,
+            'VK_REC_NAME' => $this->sellerName,
+            'VK_SND_ACC'  => '101032423434543',
+            'VK_SND_NAME' => 'Mart Mets',
+            'VK_REF'      => $this->orderId,
+            'VK_MSG'      => $this->message,
+            'VK_MAC'      => 'o4rju0oEwITuIheUdtDjp2njKhBzvQv8RjKg+rdCB+fwGiUS8zpXzr0I+wj0vl13h+ACGAR1LO9gR2+IG1yq+AJdQdVszJIbeA1jcg1GFtl1xyLN8LXYfubHHUB/7EWwiEGZKcHrNp3pAsADlLwySQLRWatheMLPqRRk2FX96Ko=',
             'VK_AUTO'     => 'N'
         ];
 

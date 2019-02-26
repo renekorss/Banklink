@@ -363,11 +363,14 @@ class IPizza implements ProtocolInterface
         }
 
         if (PaymentResponse::STATUS_SUCCESS === $status) {
+            // IPizza 2015 fallback: SEB has VK_ACC, others VK_REC_ACC
+            $rec_acc = $responseData[static::FIELD_REC_ACC] ?? $responseData[static::FIELD_ACC];
+
             $response
                 ->setSum($responseData[static::FIELD_AMOUNT])
                 ->setCurrency($responseData[static::FIELD_CURR])
                 ->setSender($responseData[static::FIELD_SND_NAME], $responseData[static::FIELD_SND_ACC])
-                ->setReceiver($responseData[static::FIELD_REC_NAME], $responseData[static::FIELD_REC_ACC])
+                ->setReceiver($responseData[static::FIELD_REC_NAME], $rec_acc)
                 ->setTransactionId($responseData[static::FIELD_T_NO])
                 ->setTransactionDate($responseData[static::FIELD_T_DATETIME]);
         }
@@ -459,6 +462,11 @@ class IPizza implements ProtocolInterface
         $service = $data[static::FIELD_SERVICE];
         $fields = static::getFields($service);
         $mac = '';
+
+        // VK_REC_ACC fallback to VK_ACC
+        if (in_array(static::FIELD_REC_ACC, $fields) && isset($data[static::FIELD_ACC])) {
+            $fields[array_search(static::FIELD_REC_ACC, $fields)] = static::FIELD_ACC;
+        }
 
         foreach ($fields as $key) {
             // Check if field exists
