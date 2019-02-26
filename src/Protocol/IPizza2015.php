@@ -95,8 +95,6 @@ class IPizza2015 extends IPizza
         string $encoding = 'UTF-8',
         string $timezone = 'Europe/Tallinn'
     ) : array {
-        $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
-        $datetime = new \Datetime($time, new \DateTimeZone($timezone));
 
         $data = [
             static::FIELD_SERVICE => $this->serviceId,
