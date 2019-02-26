@@ -95,7 +95,6 @@ class IPizza2015 extends IPizza
         string $encoding = 'UTF-8',
         string $timezone = 'Europe/Tallinn'
     ) : array {
-
         $data = [
             static::FIELD_SERVICE => $this->serviceId,
             static::FIELD_VERSION => $this->version,

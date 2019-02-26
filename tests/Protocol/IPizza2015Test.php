@@ -9,5 +9,4 @@ namespace RKD\Banklink\Test\Protocol;
  */
 class IPizza2015Test extends IPizzaTest
 {
-
 }
