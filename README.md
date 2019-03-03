@@ -38,6 +38,7 @@ SEB               | :white_check_mark:  | does not apply
 Swedbank          | :white_check_mark:  | does not apply
 Luminor           | :white_check_mark:  | does not apply
 Šiaulių           | :white_check_mark:  | does not apply
+Estcard           | :white_check_mark:  | does not apply
 
 ## How to use?
 
