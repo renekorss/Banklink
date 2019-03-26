@@ -1,6 +1,6 @@
 <?php
 
-namespace RKD\Banklink\Test;
+namespace RKD\Banklink\Test\EE;
 
 use PHPUnit\Framework\TestCase;
 use RKD\Banklink;
@@ -74,9 +74,9 @@ class EstcardTest extends TestCase
     {
         $this->protocol = new $this->protocolClass(
             $this->sellerId,
-            __DIR__.'/keys/IPizza/private_key.pem',
+            __DIR__.'/../keys/IPizza/private_key.pem',
             '',
-            __DIR__.'/keys/IPizza/public_key.pem',
+            __DIR__.'/../keys/IPizza/public_key.pem',
             $this->customRequestUrl
         );
 

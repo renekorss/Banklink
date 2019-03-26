@@ -137,7 +137,7 @@ abstract class Banklink
             $message,
             $language,
             $currency,
-            $customRequestData,
+            array_merge($this->getAdditionalRequestFields(), $customRequestData),
             $this->requestEncoding,
             $timezone
         );
@@ -246,6 +246,16 @@ abstract class Banklink
      * @return array Array of additional fields
      */
     protected function getAdditionalFields() : array
+    {
+        return []; // @codeCoverageIgnore
+    }
+
+    /**
+     * Additional request fields merged to request data
+     *
+     * @return array Array of additional request fields to send to bank
+     */
+    protected function getAdditionalRequestFields() : array
     {
         return []; // @codeCoverageIgnore
     }

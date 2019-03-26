@@ -20,8 +20,9 @@ composer require renekorss/Banklink
 
 ## Supported providers
 
-Provider          | Payment             | Authentication    
+Country / Provider| Payment             | Authentication    
 ------------------| ------------------- | ------------------
+**Estonia**       |                     |
 Danskebank        | :white_check_mark:  | :white_check_mark:
 Coop Pank         | :white_check_mark:  | :white_check_mark:
 LHV               | :white_check_mark:  | :white_check_mark:
@@ -32,6 +33,12 @@ Nordea            | :white_check_mark:  | :white_check_mark:
 Pocopay           | :white_check_mark:  | does not apply
 Estcard           | :white_check_mark:  | does not apply
 Liisi Payment Link| :white_check_mark:  | does not apply
+**Lithuania**     |                     |
+SEB               | :white_check_mark:  | does not apply
+Swedbank          | :white_check_mark:  | does not apply
+Luminor           | :white_check_mark:  | does not apply
+Šiaulių           | :white_check_mark:  | does not apply
+Estcard           | :white_check_mark:  | does not apply
 
 ## How to use?
 

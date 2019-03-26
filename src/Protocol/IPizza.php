@@ -108,6 +108,40 @@ class IPizza implements ProtocolInterface
     protected $algorithm = OPENSSL_ALGO_SHA1;
 
     /**
+     * Fields
+     */
+    const FIELD_SERVICE = 'VK_SERVICE';
+    const FIELD_VERSION = 'VK_VERSION';
+    const FIELD_SND_ID = 'VK_SND_ID';
+    const FIELD_STAMP = 'VK_STAMP';
+    const FIELD_AMOUNT = 'VK_AMOUNT';
+    const FIELD_CURR = 'VK_CURR';
+    const FIELD_REF = 'VK_REF';
+    const FIELD_MSG = 'VK_MSG';
+    const FIELD_RETURN = 'VK_RETURN';
+    const FIELD_CANCEL = 'VK_CANCEL';
+    const FIELD_DATETIME = 'VK_DATETIME';
+    const FIELD_T_DATETIME = 'VK_T_DATETIME';
+    const FIELD_LANG = 'VK_LANG';
+    const FIELD_NAME = 'VK_NAME';
+    const FIELD_ACC = 'VK_ACC';
+    const FIELD_MAC = 'VK_MAC';
+    const FIELD_RID = 'VK_RID';
+    const FIELD_REPLY = 'VK_REPLY';
+    const FIELD_NONCE = 'VK_NONCE';
+    const FIELD_REC_ID = 'VK_REC_ID';
+    const FIELD_AUTO = 'VK_AUTO';
+    const FIELD_SND_NAME = 'VK_SND_NAME';
+    const FIELD_SND_ACC = 'VK_SND_ACC';
+    const FIELD_REC_NAME = 'VK_REC_NAME';
+    const FIELD_REC_ACC = 'VK_REC_ACC';
+    const FIELD_T_NO = 'VK_T_NO';
+    const FIELD_USER_ID = 'VK_USER_ID';
+    const FIELD_USER_NAME = 'VK_USER_NAME';
+    const FIELD_COUNTRY= 'VK_COUNTRY';
+    const FIELD_TOKEN = 'VK_TOKEN';
+
+    /**
      * Init IPizza protocol.
      *
      * @param string $sellerId           Seller ID (SND ID)
@@ -187,23 +221,23 @@ class IPizza implements ProtocolInterface
         $datetime = new \Datetime($time, new \DateTimeZone($timezone));
 
         $data = [
-            'VK_SERVICE' => $this->serviceId,
-            'VK_VERSION' => $this->version,
-            'VK_SND_ID' => $this->sellerId,
-            'VK_STAMP' => $orderId,
-            'VK_AMOUNT' => $sum,
-            'VK_CURR' => $currency,
-            'VK_REF' => ProtocolHelper::calculateReference($orderId),
-            'VK_MSG' => $message,
-            'VK_RETURN' => $this->requestUrl,
-            'VK_CANCEL' => $this->requestUrl,
-            'VK_DATETIME' => $datetime->format('Y-m-d\TH:i:sO'),
-            'VK_LANG' => $language,
+            static::FIELD_SERVICE => $this->serviceId,
+            static::FIELD_VERSION => $this->version,
+            static::FIELD_SND_ID => $this->sellerId,
+            static::FIELD_STAMP => $orderId,
+            static::FIELD_AMOUNT => $sum,
+            static::FIELD_CURR => $currency,
+            static::FIELD_REF => ProtocolHelper::calculateReference($orderId),
+            static::FIELD_MSG => $message,
+            static::FIELD_RETURN => $this->requestUrl,
+            static::FIELD_CANCEL => $this->requestUrl,
+            static::FIELD_DATETIME => $datetime->format('Y-m-d\TH:i:sO'),
+            static::FIELD_LANG => $language,
         ];
 
         if (Services::PAYMENT_REQUEST_1011 === $this->serviceId) {
-            $data['VK_NAME'] = $this->sellerName;
-            $data['VK_ACC'] = $this->sellerAccount;
+            $data[static::FIELD_NAME] = $this->sellerName;
+            $data[static::FIELD_ACC] = $this->sellerAccount;
         }
 
         // Merge custom data
@@ -212,7 +246,7 @@ class IPizza implements ProtocolInterface
         }
 
         // Generate signature
-        $data['VK_MAC'] = $this->getSignature($data, $encoding);
+        $data[static::FIELD_MAC] = $this->getSignature($data, $encoding);
 
         return $data;
     }
@@ -243,29 +277,29 @@ class IPizza implements ProtocolInterface
         $this->serviceId = (is_null($nonce)) ? Services::AUTH_REQUEST_4011 : Services::AUTH_REQUEST_4012;
 
         $data = [
-            'VK_SERVICE' => $this->serviceId,
-            'VK_VERSION' => $this->version,
-            'VK_SND_ID' => $this->sellerId,
-            'VK_RETURN' => $this->requestUrl,
-            'VK_DATETIME' => $datetime->format('Y-m-d\TH:i:sO'),
-            'VK_RID' => '',
-            'VK_LANG' => $language,
-            'VK_REPLY' => Services::AUTH_RESPONSE_3012
+            static::FIELD_SERVICE => $this->serviceId,
+            static::FIELD_VERSION => $this->version,
+            static::FIELD_SND_ID => $this->sellerId,
+            static::FIELD_RETURN => $this->requestUrl,
+            static::FIELD_DATETIME => $datetime->format('Y-m-d\TH:i:sO'),
+            static::FIELD_RID => '',
+            static::FIELD_LANG => $language,
+            static::FIELD_REPLY => Services::AUTH_RESPONSE_3012
         ];
 
         if (!is_null($nonce)) {
-            $data['VK_SERVICE'] = Services::AUTH_REQUEST_4012;
-            $data['VK_NONCE'] = $nonce;
-            $data['VK_REC_ID'] = $recId;
-            unset($data['VK_REPLY']);
+            $data[static::FIELD_SERVICE] = Services::AUTH_REQUEST_4012;
+            $data[static::FIELD_NONCE] = $nonce;
+            $data[static::FIELD_REC_ID] = $recId;
+            unset($data[static::FIELD_REPLY]);
         }
 
         if (!is_null($rid)) {
-            $data['VK_RID'] = $rid;
+            $data[static::FIELD_RID] = $rid;
         }
 
         // Generate signature
-        $data['VK_MAC'] = $this->getSignature($data, $encoding);
+        $data[static::FIELD_MAC] = $this->getSignature($data, $encoding);
 
         return $data;
     }
@@ -282,15 +316,16 @@ class IPizza implements ProtocolInterface
     {
         $success = $this->validateSignature($response, $encoding);
 
-        $service = $response['VK_SERVICE'];
+        $service = $response[static::FIELD_SERVICE];
+        $servicesClass = static::getServicesClass();
 
         // Is payment response service?
-        if (in_array($service, Services::getPaymentResponseServices())) {
+        if (in_array($service, $servicesClass::getPaymentResponseServices())) {
             return $this->handlePaymentResponse($response, $success);
         }
 
         // Is authentication response service?
-        if (in_array($service, Services::getAuthenticationResponseServices())) {
+        if (in_array($service, $servicesClass::getAuthenticationResponseServices())) {
             return $this->handleAuthResponse($response, $success);
         }
     } // @codeCoverageIgnore
@@ -305,35 +340,39 @@ class IPizza implements ProtocolInterface
      */
     protected function handlePaymentResponse(array $responseData, bool $success) : ResponseInterface
     {
+        $servicesClass = static::getServicesClass();
         $status = PaymentResponse::STATUS_ERROR;
 
-        if ($success && $responseData['VK_SERVICE'] === Services::PAYMENT_RESPONSE_SUCCESS) {
+        if ($success && $responseData[static::FIELD_SERVICE] === $servicesClass::PAYMENT_RESPONSE_SUCCESS) {
             $status = PaymentResponse::STATUS_SUCCESS;
         }
 
         $response = new PaymentResponse($status, $responseData);
-        $response->setOrderId($responseData['VK_STAMP']);
+        $response->setOrderId($responseData[static::FIELD_STAMP]);
 
-        if (isset($responseData['VK_LANG'])) {
-            $response->setLanguage($responseData['VK_LANG']);
+        if (isset($responseData[static::FIELD_LANG])) {
+            $response->setLanguage($responseData[static::FIELD_LANG]);
         }
 
-        if (isset($responseData['VK_AUTO'])) {
-            $response->setAutomatic($responseData['VK_AUTO'] === PaymentResponse::RESPONSE_AUTO);
+        if (isset($responseData[static::FIELD_AUTO])) {
+            $response->setAutomatic($responseData[static::FIELD_AUTO] === PaymentResponse::RESPONSE_AUTO);
         }
 
-        if (isset($responseData['VK_MSG'])) {
-            $response->setMessage($responseData['VK_MSG']);
+        if (isset($responseData[static::FIELD_MSG])) {
+            $response->setMessage($responseData[static::FIELD_MSG]);
         }
 
         if (PaymentResponse::STATUS_SUCCESS === $status) {
+            // IPizza 2015 fallback: SEB has VK_ACC, others VK_REC_ACC
+            $receiverAccount = $responseData[static::FIELD_REC_ACC] ?? $responseData[static::FIELD_ACC];
+
             $response
-                ->setSum($responseData['VK_AMOUNT'])
-                ->setCurrency($responseData['VK_CURR'])
-                ->setSender($responseData['VK_SND_NAME'], $responseData['VK_SND_ACC'])
-                ->setReceiver($responseData['VK_REC_NAME'], $responseData['VK_REC_ACC'])
-                ->setTransactionId($responseData['VK_T_NO'])
-                ->setTransactionDate($responseData['VK_T_DATETIME']);
+                ->setSum($responseData[static::FIELD_AMOUNT])
+                ->setCurrency($responseData[static::FIELD_CURR])
+                ->setSender($responseData[static::FIELD_SND_NAME], $responseData[static::FIELD_SND_ACC])
+                ->setReceiver($responseData[static::FIELD_REC_NAME], $receiverAccount)
+                ->setTransactionId($responseData[static::FIELD_T_NO])
+                ->setTransactionDate($responseData[static::FIELD_T_DATETIME]);
         }
 
         return $response;
@@ -356,21 +395,21 @@ class IPizza implements ProtocolInterface
 
         $response = new AuthResponse($status, $responseData);
 
-        if (isset($responseData['VK_LANG'])) {
-            $response->setLanguage($responseData['VK_LANG']);
+        if (isset($responseData[static::FIELD_LANG])) {
+            $response->setLanguage($responseData[static::FIELD_LANG]);
         }
 
         if (PaymentResponse::STATUS_SUCCESS === $status) {
             $response
                 // Person data
-                ->setUserId($responseData['VK_USER_ID'])
-                ->setUserName($responseData['VK_USER_NAME'])
-                ->setUserCountry($responseData['VK_COUNTRY'])
-                ->setToken($responseData['VK_TOKEN'])
+                ->setUserId($responseData[static::FIELD_USER_ID])
+                ->setUserName($responseData[static::FIELD_USER_NAME])
+                ->setUserCountry($responseData[static::FIELD_COUNTRY])
+                ->setToken($responseData[static::FIELD_TOKEN])
                 // Request data
-                ->setRid($responseData['VK_RID'])
-                ->setNonce($responseData['VK_NONCE'])
-                ->setAuthDate($responseData['VK_DATETIME']);
+                ->setRid($responseData[static::FIELD_RID])
+                ->setNonce($responseData[static::FIELD_NONCE])
+                ->setAuthDate($responseData[static::FIELD_DATETIME]);
         }
 
         return $response;
@@ -416,13 +455,18 @@ class IPizza implements ProtocolInterface
      */
     protected function generateSignature(array $data, string $encoding = 'UTF-8') : string
     {
-        if (!isset($data['VK_SERVICE'])) {
-            throw new \InvalidArgumentException('VK_SERVICE key must be in data. Can\'t generate signature.');
+        if (!isset($data[static::FIELD_SERVICE])) {
+            throw new \InvalidArgumentException(static::FIELD_SERVICE.' key must be in data. Can\'t generate signature.');
         }
 
-        $service = $data['VK_SERVICE'];
-        $fields = Services::getFields($service);
+        $service = $data[static::FIELD_SERVICE];
+        $fields = static::getFields($service);
         $mac = '';
+
+        // VK_REC_ACC fallback to VK_ACC
+        if (in_array(static::FIELD_REC_ACC, $fields) && isset($data[static::FIELD_ACC])) {
+            $fields[array_search(static::FIELD_REC_ACC, $fields)] = static::FIELD_ACC;
+        }
 
         foreach ($fields as $key) {
             // Check if field exists
@@ -462,7 +506,7 @@ class IPizza implements ProtocolInterface
             throw new \UnexpectedValueException('Can not get public key.');
         }
 
-        $this->result = openssl_verify($data, base64_decode($response['VK_MAC']), $publicKey, $this->algorithm);
+        $this->result = openssl_verify($data, base64_decode($response[static::FIELD_MAC]), $publicKey, $this->algorithm);
         openssl_free_key($publicKey);
 
         return $this->result === 1;
@@ -490,5 +534,24 @@ class IPizza implements ProtocolInterface
     public function getAlgorithm()
     {
         return $this->algorithm;
+    }
+
+    /**
+     * Get fields from Services class
+     */
+    protected static function getFields($service)
+    {
+        $servicesClass = static::getServicesClass();
+        return $servicesClass::getFields($service);
+    }
+
+    /**
+     * Get services provider class
+     *
+     * @return object
+     */
+    protected static function getServicesClass()
+    {
+        return Services::class;
     }
 }
