@@ -33,7 +33,7 @@ class EstcardTest extends TestCase
 
         $this->orderId          = 201605861819;
         $this->amount           = 150;
-        $this->message          = 'Test makse';
+        $this->message          = 'refnr:123;100:ABC123;';
         $this->language         = 'EST';
         $this->currency         = 'EUR';
         $this->timezone         = 'Europe/Tallinn';
@@ -51,25 +51,24 @@ class EstcardTest extends TestCase
             'ver'            => '004',
             'id'             => $this->sellerId,
             'ecuno'          => $this->orderId,
-            'eamount'        => $this->amount * 100,
+            'eamount'        => round($this->amount * 100, 2),
             'cur'            => $this->currency,
             'feedBackUrl'    => $this->customRequestUrl,
             'lang'           => 'et',
             'delivery'       => 'S',
-            'mac'            => 'aaacb942dd3512d915224d244c20862457284e72587057d182ee1ee1b6da1082b43632cf9a9138144f52b48edc6fe8cdeb2193320f7a651c670c3550c92ae619c8fd33713f313d8c88241ec8322c78831bb818715eee3584ed612891ea4ce7a31398d280aa7b878907a7f6a2915629a4d369ddd2b1c0b56ad8dec19f5fafb35f',
+            'mac'            => '460cdd346cc2f919bd9d1572bb030a83075706dd65533d2a60a1d5e4fba0292c7f450efea3f6a070a76fdb91cc34c9d71341410336b04c4fb60ea5930f9b1b644e4a77e49927e85c2d24062bf197a1d7e60aa0b562f0768baeda101f2b497e0a19cca5100b22db2bb4244ca6bf03471e56f816e0beee241cdf3b7fed558ddc41',
             'datetime'       => $this->expectedDate,
             'charEncoding'   => 'UTF-8',
+            'additionalinfo' => 'refnr:123;100:ABC123;'
         ];
 
         // Set up banklink
         $this->setUpBanklink();
     }
 
-
     /**
      * Set up banklink object
      */
-
     protected function setUpBanklink()
     {
         $this->protocol = new $this->protocolClass(

@@ -260,6 +260,11 @@ class ECommerce implements ProtocolInterface
      * @param string $encoding Encoding
      *
      * @return string MAC key
+     *
+     * Supress CyclomaticComplexity because we can't really do anything without
+     * modifing our logic
+     *
+     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
     protected function generateSignature(array $data, string $encoding = 'UTF-8') : string
     {
