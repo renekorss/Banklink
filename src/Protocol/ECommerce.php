@@ -170,9 +170,14 @@ class ECommerce implements ProtocolInterface
         }
 
         // If additionalinfo is sent it needs to be included in MAC calculation
-        // But how (what position, etc) is not specified by available specification, seems to be secret
-        // So just remove it but leave it otherwise in the code - maybe somebody figures it out
-        unset($data['additionalinfo']);
+        // So remove it if empty
+        // Data format (max length 128): key:value;[key:value;]*
+        // Key and value must not contain : and ; but no checking done here
+        // Example (reference number): refnr:12345678907;
+        // Information here: https://www.estcard.ee/doc/ecom.html (doc version 1.1.3, date 2019-03-13)
+        if (strlen($data['additionalinfo']) < 1) {
+            unset($data['additionalinfo']);
+        }
 
         // Generate signature
         $data['mac'] = $this->getSignature($data, $encoding);
@@ -299,6 +304,11 @@ class ECommerce implements ProtocolInterface
 
         if (isset($data['feedBackUrl'])) {
             $data['feedBackUrl']   = ProtocolHelper::mbStrPad($data['feedBackUrl'], 128);
+        }
+
+        if (isset($data['additionalinfo'])) {
+            $fields[] = 'additionalinfo';
+            $data['additionalinfo']   = ProtocolHelper::mbStrPad($data['additionalinfo'], 128);
         }
 
         // Pad to correct length
