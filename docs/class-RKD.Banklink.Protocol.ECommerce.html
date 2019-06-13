@@ -166,7 +166,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_getPaymentRequest">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#139-181">getPaymentRequest</a>( <span> int <span class="property-name">$orderId</span> </span>, <span> float <span class="property-name">$sum</span> </span>, <span> string <span class="property-name">$message</span> </span>, <span> string <span class="property-name">$language</span> = <span class="php-quote">'EST'</span></span>, <span> string <span class="property-name">$currency</span> = <span class="php-quote">'EUR'</span></span>, <span> array <span class="property-name">$customRequestData</span> = <span class="php-keyword1">array</span> ( )</span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span>, <span> string <span class="property-name">$timezone</span> = <span class="php-quote">'Europe/Tallinn'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#139-186">getPaymentRequest</a>( <span> int <span class="property-name">$orderId</span> </span>, <span> float <span class="property-name">$sum</span> </span>, <span> string <span class="property-name">$message</span> </span>, <span> string <span class="property-name">$language</span> = <span class="php-quote">'EST'</span></span>, <span> string <span class="property-name">$currency</span> = <span class="php-quote">'EUR'</span></span>, <span> array <span class="property-name">$customRequestData</span> = <span class="php-keyword1">array</span> ( )</span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span>, <span> string <span class="property-name">$timezone</span> = <span class="php-quote">'Europe/Tallinn'</span></span> )</code>
 
             <div class="description">
                 Get payment object.
@@ -206,7 +206,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_handlePaymentResponse">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#191-215">handlePaymentResponse</a>( <span> array <span class="property-name">$responseData</span> </span>, <span> bool <span class="property-name">$success</span> </span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#196-224">handlePaymentResponse</a>( <span> array <span class="property-name">$responseData</span> </span>, <span> bool <span class="property-name">$success</span> </span> )</code>
 
             <div class="description">
                 Get payment response.
@@ -238,7 +238,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_getSignature">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#225-245">getSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#234-254">getSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
 
             <div class="description">
                 Generates signature for request.
@@ -270,7 +270,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_generateSignature">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#255-322">generateSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#269-341">generateSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
 
             <div class="description">
                 Generate MAC string from array of fields.
@@ -280,6 +280,10 @@
 
 
 
+                    <h2>SuppressWarnings</h2>
+                    <div class="list">
+                        <br>
+                    </div>
 
 
             </div>
@@ -302,7 +306,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_validateSignature">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#332-350">validateSignature</a>( <span> array <span class="property-name">$response</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#351-369">validateSignature</a>( <span> array <span class="property-name">$response</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
 
             <div class="description">
                 Validate bank signature.
@@ -334,7 +338,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_setAlgorithm">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#360-364">setAlgorithm</a>( <span> int|string <span class="property-name">$algorithm</span> </span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#379-383">setAlgorithm</a>( <span> int|string <span class="property-name">$algorithm</span> </span> )</code>
 
             <div class="description">
                 Set algorithm used to generate mac
@@ -372,7 +376,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_getAlgorithm">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#371-374">getAlgorithm</a>( )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#390-393">getAlgorithm</a>( )</code>
 
             <div class="description">
                 Get algorithm used to generate mac
