@@ -10,6 +10,8 @@
  */
 namespace RKD\Banklink\Request;
 
+use UnexpectedValueException;
+
 /**
  * Abstract request class.
  *
@@ -51,7 +53,7 @@ abstract class Request implements RequestInterface
     public function getRequestInputs() : string
     {
         if (empty($this->requestData)) {
-            throw new \UnexpectedValueException('Can\'t generate inputs. Request data is empty.');
+            throw new UnexpectedValueException('Can\'t generate inputs. Request data is empty.');
         }
 
         $html = '';

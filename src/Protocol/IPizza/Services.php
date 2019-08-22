@@ -10,6 +10,8 @@
  */
 namespace RKD\Banklink\Protocol\IPizza;
 
+use UnexpectedValueException;
+
 /**
  * IPizza protocol services.
  *
@@ -210,7 +212,7 @@ final class Services
                 ];
                 break;
             default:
-                throw new \UnexpectedValueException(sprintf('Service %s is not supported.', $serviceId));
+                throw new UnexpectedValueException(sprintf('Service %s is not supported.', $serviceId));
                 break;
         }
     }

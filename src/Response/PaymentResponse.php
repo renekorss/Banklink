@@ -10,6 +10,8 @@
  */
 namespace RKD\Banklink\Response;
 
+use stdClass;
+
 /**
  * Payment response wrapper.
  *
@@ -138,7 +140,7 @@ class PaymentResponse extends Response
      */
     public function setSender(string $senderName, string $senderAccount) : self
     {
-        $this->sender = new \stdClass();
+        $this->sender = new stdClass();
         $this->sender->name = $senderName;
         $this->sender->account = $senderAccount;
         return $this;
@@ -164,7 +166,7 @@ class PaymentResponse extends Response
      */
     public function setReceiver(string $receiverName, string $receiverAccount) : self
     {
-        $this->receiver = new \stdClass();
+        $this->receiver = new stdClass();
         $this->receiver->name = $receiverName;
         $this->receiver->account = $receiverAccount;
         return $this;

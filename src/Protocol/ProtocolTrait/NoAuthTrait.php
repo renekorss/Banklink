@@ -10,6 +10,7 @@
  */
 namespace RKD\Banklink\Protocol\ProtocolTrait;
 
+use LogicException;
 use RKD\Banklink\Response\ResponseInterface;
 
 /**
@@ -41,7 +42,7 @@ trait NoAuthTrait
         string $language = 'EST',
         string $timezone = 'Europe/Tallinn'
     ) : array {
-        throw new \LogicException(get_class().' protocol dosen\'t support authentication.');
+        throw new LogicException(get_class().' protocol dosen\'t support authentication.');
     }
 
     /**
