@@ -10,10 +10,13 @@
  */
 namespace RKD\Banklink\Protocol;
 
-use RKD\Banklink\Protocol\Helper\ProtocolHelper;
-use RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait;
+use DateTime;
+use DateTimeZone;
+use UnexpectedValueException;
 use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Response\ResponseInterface;
+use RKD\Banklink\Protocol\Helper\ProtocolHelper;
+use RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait;
 
 /**
  * Protocol for ECommerce payment.
@@ -147,7 +150,7 @@ class ECommerce implements ProtocolInterface
         string $timezone = 'Europe/Tallinn'
     ) : array {
         $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
-        $datetime = new \Datetime($time, new \DateTimeZone($timezone));
+        $datetime = new Datetime($time, new DateTimeZone($timezone));
 
         $data = [
             'lang' => ProtocolHelper::langToISO6391($language),
@@ -217,7 +220,7 @@ class ECommerce implements ProtocolInterface
                 ->setSum(round($responseData['eamount'] / 100, 2))
                 ->setCurrency($responseData['cur'])
                 ->setTransactionId($responseData['receipt_no'])
-                ->setTransactionDate((new \Datetime($responseData['datetime']))->format('Y-m-d\TH:i:s'));
+                ->setTransactionDate((new Datetime($responseData['datetime']))->format('Y-m-d\TH:i:s'));
         }
 
         return $response;
@@ -242,7 +245,7 @@ class ECommerce implements ProtocolInterface
         }
 
         if (!$privateKey) {
-            throw new \UnexpectedValueException('Can not get private key.');
+            throw new UnexpectedValueException('Can not get private key.');
         }
 
         openssl_sign($mac, $signature, $privateKey, $this->algorithm);
@@ -329,7 +332,7 @@ class ECommerce implements ProtocolInterface
         foreach ($fields as $key) {
             // Check if field exists
             if (!isset($data[$key]) || $data[$key] === false || is_null($data[$key])) {
-                throw new \UnexpectedValueException(
+                throw new UnexpectedValueException(
                     vsprintf('Field %s must be set to use ECommerce protocol.', [$key])
                 );
             }
@@ -359,7 +362,7 @@ class ECommerce implements ProtocolInterface
         }
 
         if (!$publicKey) {
-            throw new \UnexpectedValueException('Can not get public key.');
+            throw new UnexpectedValueException('Can not get public key.');
         }
 
         $this->result = openssl_verify($data, pack('H*', $response['mac']), $publicKey, $this->algorithm);

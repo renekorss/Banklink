@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="resources/style.css">
 
         <title>
-            Class RKD\Banklink\Protocol\LiisiPayment
+            Class RKD\Banklink\Protocol\IPizza2015
         </title>
     </head>
 
@@ -75,7 +75,7 @@
         </li>
 
         <li class="backslash">\</li>
-        <li class="active">LiisiPayment</li>
+        <li class="active">IPizza2015</li>
 </ol>
                         </div>
                     </div>
@@ -85,13 +85,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-    <h1>LiisiPayment</h1>
+    <h1>IPizza2015</h1>
 
         <div class="panel panel-default">
             <div class="panel-body">
-                Protocol for Liisi payment link.
-
-Same as IPizza, but without authentication
+                Protocol for IPizza based banklinks.
             </div>
         </div>
 
@@ -114,10 +112,165 @@ Same as IPizza, but without authentication
         
 
             <br>
-            <a href="source-class-RKD.Banklink.Protocol.LiisiPayment.html" class="open-source-code">Open source code</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza2015.html" class="open-source-code">Open source code</a>
         <br>
     </div>
 
+        <table class="summary table table-bordered table-responsive table-striped" id="methods">
+            <tr><th colspan="3">Methods Summary</th></tr>
+
+
+
+<tr id="___construct">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#___construct">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza2015.html#44-72">__construct</a>( <span> string <span class="property-name">$sellerId</span> </span>, <span> string <span class="property-name">$privateKey</span> </span>, <span> string <span class="property-name">$privateKeyPassword</span> </span>, <span> string <span class="property-name">$publicKey</span> </span>, <span> string <span class="property-name">$requestUrl</span> </span>, <span> string <span class="property-name">$sellerName</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$sellerAccount</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$version</span> = <span class="php-quote">'008'</span></span> )</code>
+
+            <div class="description">
+                Init IPizza protocol.
+
+
+
+
+
+
+
+                        <h2>Overrides</h2>
+                        <div>
+                            <code>
+                                <a href="class-RKD.Banklink.Protocol.IPizza.html#___construct">
+                                    RKD\Banklink\Protocol\IPizza::__construct()
+                                </a>
+                            </code>
+                        </div>
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_getPaymentRequest">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_getPaymentRequest">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza2015.html#88-128">getPaymentRequest</a>( <span> int <span class="property-name">$orderId</span> </span>, <span> float <span class="property-name">$sum</span> </span>, <span> string <span class="property-name">$message</span> </span>, <span> string <span class="property-name">$language</span> = <span class="php-quote">'ENG'</span></span>, <span> string <span class="property-name">$currency</span> = <span class="php-quote">'EUR'</span></span>, <span> array <span class="property-name">$customRequestData</span> = <span class="php-keyword1">array</span> ( )</span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span>, <span> string <span class="property-name">$timezone</span> = <span class="php-quote">'Europe/Tallinn'</span></span> )</code>
+
+            <div class="description">
+                Get payment object
+
+
+
+
+
+
+
+                        <h2>Overrides</h2>
+                        <div>
+                            <code>
+                                <a href="class-RKD.Banklink.Protocol.IPizza.html#_getPaymentRequest">
+                                    RKD\Banklink\Protocol\IPizza::getPaymentRequest()
+                                </a>
+                            </code>
+                        </div>
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_getServicesClass">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 protected static
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_getServicesClass">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza2015.html#135-138">getServicesClass</a>( )</code>
+
+            <div class="description">
+                Get services provider class
+
+
+
+
+
+
+
+                        <h2>Overrides</h2>
+                        <div>
+                            <code>
+                                <a href="class-RKD.Banklink.Protocol.IPizza.html#_getServicesClass">
+                                    RKD\Banklink\Protocol\IPizza::getServicesClass()
+                                </a>
+                            </code>
+                        </div>
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_setServiceId">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_setServiceId">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza2015.html#147-151">setServiceId</a>( <span> string <span class="property-name">$serviceId</span> </span> )</code>
+
+            <div class="description">
+                Set service id
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+        </table>
 
         <table class="summary table table-bordered table-responsive table-striped">
             <tr>
@@ -161,6 +314,35 @@ Same as IPizza, but without authentication
             </tr>
         </table>
 
+        <table class="summary table table-bordered table-responsive table-striped" id="constants">
+            <tr><th colspan="3">Constants Summary</th></tr>
+<tr id="FIELD_T_DATETIME">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza2015.html#30" class="constant-name">FIELD_T_DATETIME</a>
+        </code>
+
+        <div class="description">
+            Fields
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_T_DATETIME" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_T_DATE'</span></code>
+        </div>
+    </td>
+</tr>
+        </table>
 
             <table class="summary table table-bordered table-responsive table-striped">
                 <tr>

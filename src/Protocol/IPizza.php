@@ -10,11 +10,15 @@
  */
 namespace RKD\Banklink\Protocol;
 
-use RKD\Banklink\Protocol\Helper\ProtocolHelper;
-use RKD\Banklink\Protocol\IPizza\Services;
+use DateTime;
+use DateTimeZone;
+use InvalidArgumentException;
+use UnexpectedValueException;
 use RKD\Banklink\Response\AuthResponse;
+use RKD\Banklink\Protocol\IPizza\Services;
 use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Response\ResponseInterface;
+use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 
 /**
  * Protocol for IPizza based banklinks.
@@ -218,7 +222,7 @@ class IPizza implements ProtocolInterface
         string $timezone = 'Europe/Tallinn'
     ) : array {
         $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
-        $datetime = new \Datetime($time, new \DateTimeZone($timezone));
+        $datetime = new DateTime($time, new DateTimeZone($timezone));
 
         $data = [
             static::FIELD_SERVICE => $this->serviceId,
@@ -272,7 +276,7 @@ class IPizza implements ProtocolInterface
         string $timezone = 'Europe/Tallinn'
     ) : array {
         $time = getenv('CI') ? getenv('TEST_DATETIME') : 'now';
-        $datetime = new \Datetime($time, new \DateTimeZone($timezone));
+        $datetime = new Datetime($time, new DateTimeZone($timezone));
 
         $this->serviceId = (is_null($nonce)) ? Services::AUTH_REQUEST_4011 : Services::AUTH_REQUEST_4012;
 
@@ -434,7 +438,7 @@ class IPizza implements ProtocolInterface
         }
 
         if (!$privateKey) {
-            throw new \UnexpectedValueException('Can not get private key.');
+            throw new UnexpectedValueException('Can not get private key.');
         }
 
         openssl_sign($mac, $signature, $privateKey, $this->algorithm);
@@ -456,7 +460,7 @@ class IPizza implements ProtocolInterface
     protected function generateSignature(array $data, string $encoding = 'UTF-8') : string
     {
         if (!isset($data[static::FIELD_SERVICE])) {
-            throw new \InvalidArgumentException(static::FIELD_SERVICE.' key must be in data. Can\'t generate signature.');
+            throw new InvalidArgumentException(static::FIELD_SERVICE.' key must be in data. Can\'t generate signature.');
         }
 
         $service = $data[static::FIELD_SERVICE];
@@ -471,7 +475,7 @@ class IPizza implements ProtocolInterface
         foreach ($fields as $key) {
             // Check if field exists
             if (!isset($data[$key]) || $data[$key] === false || is_null($data[$key])) {
-                throw new \UnexpectedValueException(
+                throw new UnexpectedValueException(
                     vsprintf('Field %s must be set to use service %s.', [$key, $service])
                 );
             }
@@ -503,7 +507,7 @@ class IPizza implements ProtocolInterface
         }
 
         if (!$publicKey) {
-            throw new \UnexpectedValueException('Can not get public key.');
+            throw new UnexpectedValueException('Can not get public key.');
         }
 
         $this->result = openssl_verify($data, base64_decode($response[static::FIELD_MAC]), $publicKey, $this->algorithm);

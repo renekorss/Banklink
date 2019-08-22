@@ -10,10 +10,11 @@
  */
 namespace RKD\Banklink;
 
-use RKD\Banklink\Protocol\ProtocolInterface;
+use UnexpectedValueException;
 use RKD\Banklink\Request\AuthRequest;
 use RKD\Banklink\Request\PaymentRequest;
 use RKD\Banklink\Request\RequestInterface;
+use RKD\Banklink\Protocol\ProtocolInterface;
 use RKD\Banklink\Response\ResponseInterface;
 
 /**
@@ -211,7 +212,7 @@ abstract class Banklink
             return $this->requestUrl[$type];
         }
 
-        throw new \UnexpectedValueException(sprintf('requestUrl is not string or array containing desired type (%s)', $type));
+        throw new UnexpectedValueException(sprintf('requestUrl is not string or array containing desired type (%s)', $type));
     }
 
     /**

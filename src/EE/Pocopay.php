@@ -38,7 +38,7 @@ class Pocopay extends Banklink
     protected $testRequestUrl = 'https://alpha.elementare.eu/banklink';
 
     /**
-     * Force SEB class to use IPizza protocol.
+     * Force Pocopay class to use IPizza protocol.
      *
      * @param RKD\Banklink\Protocol\IPizza $protocol   Protocol used
      */
