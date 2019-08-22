@@ -38,8 +38,8 @@ class CoopPank extends Banklink
      * @var mixed
      */
     protected $testRequestUrl = [
-        'payment' => 'https://i.cooppank.ee/pay',
-        'auth' => 'https://i.cooppank.ee/auth'
+        'payment' => 'https://secure.cooppank.ee/pay',
+        'auth' => 'https://secure.cooppank.ee/auth'
     ];
 
     /**

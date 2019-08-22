@@ -16,7 +16,7 @@ class CoopPankTest extends SEBTest
         'auth' => 'https://i.cooppank.ee/auth'
     ];
     protected $testRequestUrl = [
-        'payment' => 'https://i.cooppank.ee/pay',
-        'auth' => 'https://i.cooppank.ee/auth'
+        'payment' => 'https://secure.cooppank.ee/pay',
+        'auth' => 'https://secure.cooppank.ee/auth'
     ];
 }
