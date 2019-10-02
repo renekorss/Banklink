@@ -100,6 +100,18 @@ class EstcardTest extends TestCase
     }
 
     /**
+     * Test for correctly generated request data.
+     */
+    public function testGetPaymentRequestWithoutMessage()
+    {
+        $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, '', $this->language, $this->currency, [], $this->timezone);
+
+        unset($this->expectedData['additionalinfo']);
+        $this->expectedData['mac'] = 'aaacb942dd3512d915224d244c20862457284e72587057d182ee1ee1b6da1082b43632cf9a9138144f52b48edc6fe8cdeb2193320f7a651c670c3550c92ae619c8fd33713f313d8c88241ec8322c78831bb818715eee3584ed612891ea4ce7a31398d280aa7b878907a7f6a2915629a4d369ddd2b1c0b56ad8dec19f5fafb35f';
+        $this->assertEquals($this->expectedData, $request->getRequestData());
+    }
+
+    /**
       * Test successful payment response.
       */
     public function testHandlePaymentResponseSuccess()

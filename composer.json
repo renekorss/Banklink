@@ -48,5 +48,8 @@
     "docs": "apigen generate src --destination docs",
     "phpmd": "phpmd ./src text phpmd.xml",
     "phpcs": "phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests"
+  },
+  "config": {
+    "optimize-autoloader": true
   }
 }
