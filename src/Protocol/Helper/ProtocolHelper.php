@@ -54,15 +54,20 @@ class ProtocolHelper
      *
      * @param string $language ISO-639-2 language code
      *
-     * @return string ISO-639-1 langauge code
+     * @return string ISO-639-1 language code
      */
     public static function langToISO6391(string $language) : string
     {
         $languages = [
+            'eng' => 'en',
             'est' => 'et',
             'rus' => 'ru',
-            'eng' => 'en',
-            'fin' => 'fi'
+            'lat' => 'lv',
+            'lit' => 'lt',
+            'fin' => 'fi',
+            // Germany has two possible values
+            'ger' => 'de',
+            'deu' => 'de',
         ];
 
         $language = strtolower($language);
@@ -71,7 +76,7 @@ class ProtocolHelper
             return $languages[$language];
         }
 
-        return 'et'; // @codeCoverageIgnore
+        return 'en'; // @codeCoverageIgnore
     }
 
     /**

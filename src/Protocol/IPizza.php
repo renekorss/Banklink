@@ -13,12 +13,12 @@ namespace RKD\Banklink\Protocol;
 use DateTime;
 use DateTimeZone;
 use InvalidArgumentException;
-use UnexpectedValueException;
-use RKD\Banklink\Response\AuthResponse;
+use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\IPizza\Services;
+use RKD\Banklink\Response\AuthResponse;
 use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Response\ResponseInterface;
-use RKD\Banklink\Protocol\Helper\ProtocolHelper;
+use UnexpectedValueException;
 
 /**
  * Protocol for IPizza based banklinks.

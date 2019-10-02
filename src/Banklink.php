@@ -10,12 +10,12 @@
  */
 namespace RKD\Banklink;
 
-use UnexpectedValueException;
+use RKD\Banklink\Protocol\ProtocolInterface;
 use RKD\Banklink\Request\AuthRequest;
 use RKD\Banklink\Request\PaymentRequest;
 use RKD\Banklink\Request\RequestInterface;
-use RKD\Banklink\Protocol\ProtocolInterface;
 use RKD\Banklink\Response\ResponseInterface;
+use UnexpectedValueException;
 
 /**
  * Abstract class for every banklink.

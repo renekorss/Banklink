@@ -12,11 +12,11 @@ namespace RKD\Banklink\Protocol;
 
 use DateTime;
 use DateTimeZone;
-use UnexpectedValueException;
-use RKD\Banklink\Response\PaymentResponse;
-use RKD\Banklink\Response\ResponseInterface;
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait;
+use RKD\Banklink\Response\PaymentResponse;
+use RKD\Banklink\Response\ResponseInterface;
+use UnexpectedValueException;
 
 /**
  * Protocol for ECommerce payment.
