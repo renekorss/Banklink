@@ -183,7 +183,7 @@ For more information, please visit [Wiki](https://github.com/renekorss/Banklink/
 ## Tasks
 
 - `composer build` - build by running tests and all code checks
-- `composer tests` - run tests
+- `composer test` - run tests
 - `composer format` - format code against standards
 - `composer docs` - build API documentation
 - `composer phpmd` - run PHP Mess Detector
