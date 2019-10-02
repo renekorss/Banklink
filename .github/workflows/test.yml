@@ -1,0 +1,32 @@
+name: Unit Tests
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ${{ matrix.operating-system }}
+    strategy:
+      matrix:
+        operating-system: [ubuntu-latest]
+        php-versions: ['7.2', '7.3', '7.4']
+
+    name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Install PHP
+      uses: shivammathur/setup-php@master
+      with:
+        php-version: ${{ matrix.php-versions }}
+        coverage: xdebug
+    - name: Install dependencies
+      run: composer install --prefer-dist --no-interaction $COMPOSER_ARGS
+    - name: PHP Code Sniffer
+      run: vendor/bin/phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests
+    - name: PHP Mess Detector
+      run: vendor/bin/phpmd ./src text phpmd.xml
+    - name: PHP Unit Tests
+      run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
+    - name: Send to coveralls
+      run: php vendor/bin/php-coveralls -v
