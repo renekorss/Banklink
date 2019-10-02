@@ -21,12 +21,21 @@ jobs:
         php-version: ${{ matrix.php-versions }}
         coverage: xdebug
     - name: Install dependencies
-      run: composer install --prefer-dist --no-interaction $COMPOSER_ARGS
+      if: matrix.php-versions != '7.4'
+      run: composer install --prefer-dist --no-interaction
+    - name: Install dependencies
+      if: matrix.php-versions == '7.4'
+      run: composer install --prefer-dist --no-interaction --ignore-platform-reqs
     - name: PHP Code Sniffer
+      if: matrix.php-versions == '7.2'
       run: vendor/bin/phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests
     - name: PHP Mess Detector
+      if: matrix.php-versions == '7.2'
       run: vendor/bin/phpmd ./src text phpmd.xml
     - name: PHP Unit Tests
       run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
     - name: Send to coveralls
       run: php vendor/bin/php-coveralls -v
+      env:
+        COVERALLS_RUN_LOCALLY: 1
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
