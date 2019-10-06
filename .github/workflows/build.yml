@@ -29,16 +29,16 @@ jobs:
       run: composer install --prefer-dist --no-interaction --ignore-platform-reqs
     - name: PHP Code Sniffer
       if: matrix.php-versions == '7.2'
-      run: vendor/bin/phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests
+      run: composer phpcs
     - name: PHP Mess Detector
       if: matrix.php-versions == '7.2'
-      run: vendor/bin/phpmd ./src text phpmd.xml
+      run: composer phpmd
     - name: PHP Unit Tests with coverage
       if: matrix.php-versions == '7.2'
       run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
     - name: PHP Unit Tests
       if: matrix.php-versions != '7.2'
-      run: vendor/bin/phpunit
+      run: composer test
     - name: Send to coveralls
       if: matrix.php-versions == '7.2'
       run: php vendor/bin/php-coveralls -v

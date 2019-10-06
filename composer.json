@@ -43,11 +43,11 @@
       "@phpmd",
       "@docs"
     ],
-    "test": "phpunit",
-    "format": "vendor/bin/php-cs-fixer fix",
-    "docs": "apigen generate src --destination docs",
-    "phpmd": "phpmd ./src text phpmd.xml",
-    "phpcs": "phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests"
+    "test": "./vendor/bin/phpunit",
+    "format": "./vendor/bin/php-cs-fixer fix",
+    "docs": "./vendor/bin/apigen generate src --destination docs",
+    "phpmd": "./vendor/bin/phpmd ./src text phpmd.xml",
+    "phpcs": "./vendor/bin/phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests"
   },
   "config": {
     "optimize-autoloader": true
