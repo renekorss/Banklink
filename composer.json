@@ -1,55 +1,55 @@
 {
-  "name": "renekorss/banklink",
-  "description": "PHP banklink library to easily integrate Baltic banklinks.",
-  "keywords": ["banklink", "pangalink", "baltic banklinks", "payments", "nets", "seb", "swedbank",
+    "name": "renekorss/banklink",
+    "description": "PHP banklink library to easily integrate Baltic banklinks.",
+    "keywords": ["banklink", "pangalink", "baltic banklinks", "payments", "nets", "seb", "swedbank",
     "nordea", "lhv", "danskebank", "liisi", "cooppank", "luminor", "pocopay", "credit card", "payments"],
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Rene Korss",
-      "email": "rene.korss@gmail.com"
-    }
-  ],
-  "minimum-stability": "stable",
-  "require": {
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rene Korss",
+            "email": "rene.korss@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
     "php": ">=7.0",
     "ext-mbstring": "*",
     "lib-openssl": "*"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "6.*",
-    "squizlabs/php_codesniffer": "^3.3",
-    "phpmd/phpmd": "^2.6",
-    "php-coveralls/php-coveralls": "2.*",
-    "apigen/apigen": "dev-master",
-    "roave/better-reflection": "dev-master",
-    "friendsofphp/php-cs-fixer": "^2.14"
-  },
-  "autoload": {
-    "psr-4": {
-      "RKD\\Banklink\\": "src"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "6.*",
+        "squizlabs/php_codesniffer": "^3.3",
+        "phpmd/phpmd": "^2.6",
+        "php-coveralls/php-coveralls": "2.*",
+        "apigen/apigen": "dev-master",
+        "roave/better-reflection": "dev-master#ce9d784",
+        "friendsofphp/php-cs-fixer": "^2.14"
+    },
+    "autoload": {
+        "psr-4": {
+            "RKD\\Banklink\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RKD\\Banklink\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "build": [
+            "@format",
+            "@test",
+            "@phpcs",
+            "@phpmd",
+            "@docs"
+        ],
+        "test": "./vendor/bin/phpunit",
+        "format": "./vendor/bin/php-cs-fixer fix",
+        "docs": "./vendor/bin/apigen generate src --destination docs",
+        "phpmd": "./vendor/bin/phpmd ./src text phpmd.xml",
+        "phpcs": "./vendor/bin/phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests"
+    },
+    "config": {
+        "optimize-autoloader": true
     }
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "RKD\\Banklink\\Test\\": "tests"
-    }
-  },
-  "scripts": {
-    "build": [
-      "@format",
-      "@test",
-      "@phpcs",
-      "@phpmd",
-      "@docs"
-    ],
-    "test": "./vendor/bin/phpunit",
-    "format": "./vendor/bin/php-cs-fixer fix",
-    "docs": "./vendor/bin/apigen generate src --destination docs",
-    "phpmd": "./vendor/bin/phpmd ./src text phpmd.xml",
-    "phpcs": "./vendor/bin/phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests"
-  },
-  "config": {
-    "optimize-autoloader": true
-  }
 }

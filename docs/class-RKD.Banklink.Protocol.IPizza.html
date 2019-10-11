@@ -137,7 +137,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#___construct">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#156-183">__construct</a>( <span> string <span class="property-name">$sellerId</span> </span>, <span> string <span class="property-name">$privateKey</span> </span>, <span> string <span class="property-name">$privateKeyPassword</span> </span>, <span> string <span class="property-name">$publicKey</span> </span>, <span> string <span class="property-name">$requestUrl</span> </span>, <span> string <span class="property-name">$sellerName</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$sellerAccount</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$version</span> = <span class="php-quote">'008'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#160-187">__construct</a>( <span> string <span class="property-name">$sellerId</span> </span>, <span> string <span class="property-name">$privateKey</span> </span>, <span> string <span class="property-name">$privateKeyPassword</span> </span>, <span> string <span class="property-name">$publicKey</span> </span>, <span> string <span class="property-name">$requestUrl</span> </span>, <span> string <span class="property-name">$sellerName</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$sellerAccount</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$version</span> = <span class="php-quote">'008'</span></span> )</code>
 
             <div class="description">
                 Init IPizza protocol.
@@ -169,7 +169,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_useMbStrlen">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#191-194">useMbStrlen</a>( <span> bool <span class="property-name">$useMbStrlen</span> </span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#195-198">useMbStrlen</a>( <span> bool <span class="property-name">$useMbStrlen</span> </span> )</code>
 
             <div class="description">
                 Set mb_strlen usage
@@ -201,7 +201,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_getPaymentRequest">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#210-252">getPaymentRequest</a>( <span> int <span class="property-name">$orderId</span> </span>, <span> float <span class="property-name">$sum</span> </span>, <span> string <span class="property-name">$message</span> </span>, <span> string <span class="property-name">$language</span> = <span class="php-quote">'EST'</span></span>, <span> string <span class="property-name">$currency</span> = <span class="php-quote">'EUR'</span></span>, <span> array <span class="property-name">$customRequestData</span> = <span class="php-keyword1">array</span> ( )</span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span>, <span> string <span class="property-name">$timezone</span> = <span class="php-quote">'Europe/Tallinn'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#214-256">getPaymentRequest</a>( <span> int <span class="property-name">$orderId</span> </span>, <span> float <span class="property-name">$sum</span> </span>, <span> string <span class="property-name">$message</span> </span>, <span> string <span class="property-name">$language</span> = <span class="php-quote">'EST'</span></span>, <span> string <span class="property-name">$currency</span> = <span class="php-quote">'EUR'</span></span>, <span> array <span class="property-name">$customRequestData</span> = <span class="php-keyword1">array</span> ( )</span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span>, <span> string <span class="property-name">$timezone</span> = <span class="php-quote">'Europe/Tallinn'</span></span> )</code>
 
             <div class="description">
                 Get payment object
@@ -241,7 +241,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_getAuthRequest">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#266-305">getAuthRequest</a>( <span> string <span class="property-name">$recId</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$nonce</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$rid</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span>, <span> string <span class="property-name">$language</span> = <span class="php-quote">'EST'</span></span>, <span> string <span class="property-name">$timezone</span> = <span class="php-quote">'Europe/Tallinn'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#270-309">getAuthRequest</a>( <span> string <span class="property-name">$recId</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$nonce</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$rid</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span>, <span> string <span class="property-name">$language</span> = <span class="php-quote">'EST'</span></span>, <span> string <span class="property-name">$timezone</span> = <span class="php-quote">'Europe/Tallinn'</span></span> )</code>
 
             <div class="description">
                 Get authentication object
@@ -281,7 +281,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_handleResponse">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#315-331">handleResponse</a>( <span> array <span class="property-name">$response</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#319-335">handleResponse</a>( <span> array <span class="property-name">$response</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
 
             <div class="description">
                 Handles response from bank.
@@ -321,7 +321,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_handlePaymentResponse">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#341-379">handlePaymentResponse</a>( <span> array <span class="property-name">$responseData</span> </span>, <span> bool <span class="property-name">$success</span> </span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#345-383">handlePaymentResponse</a>( <span> array <span class="property-name">$responseData</span> </span>, <span> bool <span class="property-name">$success</span> </span> )</code>
 
             <div class="description">
                 Get payment response.
@@ -353,7 +353,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_handleAuthResponse">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#389-416">handleAuthResponse</a>( <span> array <span class="property-name">$responseData</span> </span>, <span> bool <span class="property-name">$success</span> </span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#393-420">handleAuthResponse</a>( <span> array <span class="property-name">$responseData</span> </span>, <span> bool <span class="property-name">$success</span> </span> )</code>
 
             <div class="description">
                 Get authentication response.
@@ -385,7 +385,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_getSignature">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#426-446">getSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#430-450">getSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
 
             <div class="description">
                 Generates signature for request.
@@ -417,7 +417,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_generateSignature">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#456-485">generateSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#460-489">generateSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
 
             <div class="description">
                 Generate MAC string from array of fields.
@@ -449,7 +449,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_validateSignature">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#495-513">validateSignature</a>( <span> array <span class="property-name">$response</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#499-517">validateSignature</a>( <span> array <span class="property-name">$response</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
 
             <div class="description">
                 Validate bank signature.
@@ -481,7 +481,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_setAlgorithm">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#523-527">setAlgorithm</a>( <span> int|string <span class="property-name">$algorithm</span> </span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#527-531">setAlgorithm</a>( <span> int|string <span class="property-name">$algorithm</span> </span> )</code>
 
             <div class="description">
                 Set algorithm used to generate mac
@@ -519,7 +519,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_getAlgorithm">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#534-537">getAlgorithm</a>( )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#538-541">getAlgorithm</a>( )</code>
 
             <div class="description">
                 Get algorithm used to generate mac
@@ -551,7 +551,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_getFields">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#542-546">getFields</a>( <span> <span class="property-name">$service</span> </span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#546-550">getFields</a>( <span> <span class="property-name">$service</span> </span> )</code>
 
             <div class="description">
                 Get fields from Services class
@@ -583,7 +583,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_getServicesClass">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#553-556">getServicesClass</a>( )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#557-560">getServicesClass</a>( )</code>
 
             <div class="description">
                 Get services provider class
@@ -616,7 +616,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#113" class="constant-name">FIELD_SERVICE</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#117" class="constant-name">FIELD_SERVICE</a>
         </code>
 
         <div class="description">
@@ -642,7 +642,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#114" class="constant-name">FIELD_VERSION</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#118" class="constant-name">FIELD_VERSION</a>
         </code>
 
         <div class="description">
@@ -668,7 +668,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#115" class="constant-name">FIELD_SND_ID</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#119" class="constant-name">FIELD_SND_ID</a>
         </code>
 
         <div class="description">
@@ -694,7 +694,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#116" class="constant-name">FIELD_STAMP</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#120" class="constant-name">FIELD_STAMP</a>
         </code>
 
         <div class="description">
@@ -720,7 +720,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#117" class="constant-name">FIELD_AMOUNT</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#121" class="constant-name">FIELD_AMOUNT</a>
         </code>
 
         <div class="description">
@@ -746,7 +746,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#118" class="constant-name">FIELD_CURR</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#122" class="constant-name">FIELD_CURR</a>
         </code>
 
         <div class="description">
@@ -772,7 +772,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#119" class="constant-name">FIELD_REF</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#123" class="constant-name">FIELD_REF</a>
         </code>
 
         <div class="description">
@@ -798,7 +798,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#120" class="constant-name">FIELD_MSG</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#124" class="constant-name">FIELD_MSG</a>
         </code>
 
         <div class="description">
@@ -824,7 +824,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#121" class="constant-name">FIELD_RETURN</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#125" class="constant-name">FIELD_RETURN</a>
         </code>
 
         <div class="description">
@@ -850,7 +850,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#122" class="constant-name">FIELD_CANCEL</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#126" class="constant-name">FIELD_CANCEL</a>
         </code>
 
         <div class="description">
@@ -876,7 +876,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#123" class="constant-name">FIELD_DATETIME</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#127" class="constant-name">FIELD_DATETIME</a>
         </code>
 
         <div class="description">
@@ -902,7 +902,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#124" class="constant-name">FIELD_T_DATETIME</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#128" class="constant-name">FIELD_T_DATETIME</a>
         </code>
 
         <div class="description">
@@ -928,7 +928,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#125" class="constant-name">FIELD_LANG</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#129" class="constant-name">FIELD_LANG</a>
         </code>
 
         <div class="description">
@@ -954,7 +954,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#126" class="constant-name">FIELD_NAME</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#130" class="constant-name">FIELD_NAME</a>
         </code>
 
         <div class="description">
@@ -980,7 +980,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#127" class="constant-name">FIELD_ACC</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#131" class="constant-name">FIELD_ACC</a>
         </code>
 
         <div class="description">
@@ -1006,7 +1006,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#128" class="constant-name">FIELD_MAC</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#132" class="constant-name">FIELD_MAC</a>
         </code>
 
         <div class="description">
@@ -1032,7 +1032,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#129" class="constant-name">FIELD_RID</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#133" class="constant-name">FIELD_RID</a>
         </code>
 
         <div class="description">
@@ -1058,7 +1058,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#130" class="constant-name">FIELD_REPLY</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#134" class="constant-name">FIELD_REPLY</a>
         </code>
 
         <div class="description">
@@ -1084,7 +1084,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#131" class="constant-name">FIELD_NONCE</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#135" class="constant-name">FIELD_NONCE</a>
         </code>
 
         <div class="description">
@@ -1110,7 +1110,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#132" class="constant-name">FIELD_REC_ID</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#136" class="constant-name">FIELD_REC_ID</a>
         </code>
 
         <div class="description">
@@ -1136,7 +1136,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#133" class="constant-name">FIELD_AUTO</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#137" class="constant-name">FIELD_AUTO</a>
         </code>
 
         <div class="description">
@@ -1162,7 +1162,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#134" class="constant-name">FIELD_SND_NAME</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#138" class="constant-name">FIELD_SND_NAME</a>
         </code>
 
         <div class="description">
@@ -1188,7 +1188,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#135" class="constant-name">FIELD_SND_ACC</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#139" class="constant-name">FIELD_SND_ACC</a>
         </code>
 
         <div class="description">
@@ -1214,7 +1214,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#136" class="constant-name">FIELD_REC_NAME</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#140" class="constant-name">FIELD_REC_NAME</a>
         </code>
 
         <div class="description">
@@ -1240,7 +1240,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#137" class="constant-name">FIELD_REC_ACC</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#141" class="constant-name">FIELD_REC_ACC</a>
         </code>
 
         <div class="description">
@@ -1266,7 +1266,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#138" class="constant-name">FIELD_T_NO</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#142" class="constant-name">FIELD_T_NO</a>
         </code>
 
         <div class="description">
@@ -1292,7 +1292,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#139" class="constant-name">FIELD_USER_ID</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#143" class="constant-name">FIELD_USER_ID</a>
         </code>
 
         <div class="description">
@@ -1318,7 +1318,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#140" class="constant-name">FIELD_USER_NAME</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#144" class="constant-name">FIELD_USER_NAME</a>
         </code>
 
         <div class="description">
@@ -1344,7 +1344,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#141" class="constant-name">FIELD_COUNTRY</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#145" class="constant-name">FIELD_COUNTRY</a>
         </code>
 
         <div class="description">
@@ -1370,7 +1370,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#142" class="constant-name">FIELD_TOKEN</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#146" class="constant-name">FIELD_TOKEN</a>
         </code>
 
         <div class="description">
@@ -1401,7 +1401,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#31" class="property-name">$publicKey</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#35" class="property-name">$publicKey</a>
         </code>
         <div class="description">
             File path or file contents of public key.
@@ -1427,7 +1427,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#38" class="property-name">$privateKey</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#42" class="property-name">$privateKey</a>
         </code>
         <div class="description">
             File path or file contents of private key.
@@ -1453,7 +1453,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#45" class="property-name">$privateKeyPassword</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#49" class="property-name">$privateKeyPassword</a>
         </code>
         <div class="description">
             Private key password.
@@ -1479,7 +1479,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#52" class="property-name">$sellerId</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#56" class="property-name">$sellerId</a>
         </code>
         <div class="description">
             Seller id, provided by bank.
@@ -1505,7 +1505,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#59" class="property-name">$sellerName</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#63" class="property-name">$sellerName</a>
         </code>
         <div class="description">
             Seller name, mus match with bank account name.
@@ -1531,7 +1531,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#66" class="property-name">$sellerAccount</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#70" class="property-name">$sellerAccount</a>
         </code>
         <div class="description">
             Seller account number.
@@ -1557,7 +1557,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#73" class="property-name">$version</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#77" class="property-name">$version</a>
         </code>
         <div class="description">
             Protocol version used for communication.
@@ -1583,7 +1583,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#80" class="property-name">$requestUrl</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#84" class="property-name">$requestUrl</a>
         </code>
         <div class="description">
             Request url, where data will be sent.
@@ -1609,7 +1609,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#87" class="property-name">$serviceId</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#91" class="property-name">$serviceId</a>
         </code>
         <div class="description">
             Service number used.
@@ -1635,7 +1635,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#94" class="property-name">$result</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#98" class="property-name">$result</a>
         </code>
         <div class="description">
             Result of signature validation.
@@ -1661,7 +1661,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#101" class="property-name">$useMbStrlen</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#105" class="property-name">$useMbStrlen</a>
         </code>
         <div class="description">
             Is mb_strlen function used to get string length?
@@ -1687,7 +1687,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#108" class="property-name">$algorithm</a>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#112" class="property-name">$algorithm</a>
         </code>
         <div class="description">
             Algorithm used to generate mac
