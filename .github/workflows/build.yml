@@ -42,10 +42,8 @@ jobs:
     - name: Send to coveralls
       if: matrix.php-versions == '7.2'
       run: |
-        export CI_BRANCH=$GITHUB_REF
-        export CI_NAME=github
-        export CI_JOB_ID=$GITHUB_ACTIONS
-        php vendor/bin/php-coveralls -v
+        composer global require cedx/coveralls
+        coveralls build/logs/clover.xml
       env:
         COVERALLS_RUN_LOCALLY: 1
         COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
