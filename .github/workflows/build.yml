@@ -43,6 +43,7 @@ jobs:
       if: matrix.php-versions == '7.2'
       run: |
         composer global require cedx/coveralls
+        export PATH="$PATH:~/.composer/vendor/bin/"
         coveralls build/logs/clover.xml
       env:
         COVERALLS_RUN_LOCALLY: 1
