@@ -43,6 +43,7 @@ jobs:
       if: matrix.php-versions == '7.2'
       run: |
         export CI_BRANCH=$GITHUB_REF
+        echo ${COVERALLS_REPO_TOKEN}
         php vendor/bin/php-coveralls -v
       env:
         COVERALLS_RUN_LOCALLY: 1
