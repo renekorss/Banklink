@@ -47,4 +47,4 @@ jobs:
         coveralls build/logs/clover.xml
       env:
         COVERALLS_RUN_LOCALLY: 1
-        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
+        COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
