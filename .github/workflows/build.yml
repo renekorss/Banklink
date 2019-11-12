@@ -41,10 +41,6 @@ jobs:
       run: composer test
     - name: Send to coveralls
       if: matrix.php-versions == '7.2'
-      run: |
-        composer global require cedx/coveralls
-        export PATH="$PATH:~/.composer/vendor/bin/"
-        coveralls build/logs/clover.xml
+      run: vendor/bin/coveralls build/logs/clover.xml
       env:
-        COVERALLS_RUN_LOCALLY: 1
         COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}

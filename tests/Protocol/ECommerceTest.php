@@ -2,6 +2,8 @@
 
 namespace RKD\Banklink\Test\ECommerce;
 
+use LogicException;
+use UnexpectedValueException;
 use PHPUnit\Framework\TestCase;
 use RKD\Banklink\Protocol\ECommerce;
 
@@ -33,7 +35,7 @@ class ECommerceTest extends TestCase
     /**
      * Set test data.
      */
-    public function setUp()
+    public function setUp() : void
     {
         $this->sellerId = 'id2000';
         $this->sellerAccount = '1010342342354345435';
@@ -62,11 +64,10 @@ class ECommerceTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException UnexpectedValueException
-     */
     public function testGetRequestFieldMissing()
     {
+        $this->expectException(UnexpectedValueException::class);
+
         $this->protocol->getPaymentRequest(
             $this->orderId,
             $this->amount,
@@ -83,11 +84,11 @@ class ECommerceTest extends TestCase
 
     /**
      * Test invalid public key.
-     *
-     * @expectedException UnexpectedValueException
      */
     public function testInvalidPublicKey()
     {
+        $this->expectException(UnexpectedValueException::class);
+
         $this->protocol = new ECommerce(
             $this->sellerId,
             __DIR__.'/../keys/IPizza/private_key.pem',
@@ -119,11 +120,11 @@ class ECommerceTest extends TestCase
 
     /**
      * Test invalid private key.
-     *
-     * @expectedException UnexpectedValueException
      */
     public function testInvalidPrivateKey()
     {
+        $this->expectException(UnexpectedValueException::class);
+
         $this->protocol = new ECommerce(
             $this->sellerId,
             'no-key',
@@ -139,11 +140,11 @@ class ECommerceTest extends TestCase
 
     /**
      * Authentication should throw an LogicException
-     *
-     * @expectedException LogicException
      */
     public function testGetAuthRequest()
     {
+        $this->expectException(LogicException::class);
+
         $this->protocol->getAuthRequest();
     }
 

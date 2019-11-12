@@ -2,6 +2,8 @@
 
 namespace RKD\Banklink\Test\EE;
 
+use LogicException;
+
 /**
  * Test suite for Liisi banklink.
  *
@@ -23,21 +25,21 @@ class LiisiTest extends SEBTest
 
     /**
      * Authentication should throw an LogicException
-     *
-     * @expectedException LogicException
      */
     public function testGetAuthRequest4011()
     {
+        $this->expectException(LogicException::class);
+
         $this->bank->getAuthRequest();
     }
 
     /**
      * Authentication should throw an LogicException
-     *
-     * @expectedException LogicException
      */
     public function testGetAuthRequest4012()
     {
+        $this->expectException(LogicException::class);
+
         $this->bank->getAuthRequest('bank-id', 'random-nonce', 'random-rid');
     }
 }

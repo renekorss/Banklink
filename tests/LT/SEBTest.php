@@ -26,7 +26,7 @@ class SEBTest extends \RKD\Banklink\Test\EE\SEBTest
     /**
      * Set test data.
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
@@ -85,7 +85,7 @@ class SEBTest extends \RKD\Banklink\Test\EE\SEBTest
         $this->assertEquals($this->testRequestUrl['payment'], $request->getRequestUrl());
 
         // Get HTML
-        $this->assertContains('<input type="hidden"', $request->getRequestInputs());
+        $this->assertStringContainsStringIgnoringCase('<input type="hidden"', $request->getRequestInputs());
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace RKD\Banklink\Test\Protocol\Helper;
 
+use TypeError;
 use PHPUnit\Framework\TestCase;
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 
@@ -30,11 +31,11 @@ class ProtocolHelperTest extends TestCase
 
     /**
      * Test exception for too short order id.
-     *
-     * @expectedException TypeError
      */
     public function testReferenceTooShortNotInteger()
     {
+        $this->expectException(TypeError::class);
+
         ProtocolHelper::calculateReference('randomstring');
     }
 
