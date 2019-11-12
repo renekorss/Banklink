@@ -2,11 +2,12 @@
 
 namespace RKD\Banklink\Test\EE;
 
-use PHPUnit\Framework\TestCase;
 use RKD\Banklink;
-use RKD\Banklink\Protocol\Helper\ProtocolHelper;
+use UnexpectedValueException;
+use PHPUnit\Framework\TestCase;
 use RKD\Banklink\Request\PaymentRequest;
 use RKD\Banklink\Response\PaymentResponse;
+use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 
 /**
  * Test suite for SEB banklink.
@@ -50,7 +51,7 @@ class SEBTest extends TestCase
     /**
      * Set test data.
      */
-    public function setUp()
+    public function setUp() : void
     {
         $this->sellerId         = 'id2000';
         $this->sellerName       = 'Ülo Pääsuke';
@@ -176,7 +177,7 @@ class SEBTest extends TestCase
         $this->assertEquals($this->testRequestUrl['payment'], $request->getRequestUrl());
 
         // Get HTML
-        $this->assertContains('<input type="hidden"', $request->getRequestInputs());
+        $this->assertStringContainsStringIgnoringCase('<input type="hidden"', $request->getRequestInputs());
     }
 
     /**
@@ -280,7 +281,7 @@ class SEBTest extends TestCase
         $this->assertEquals($this->requestUrl['auth'], $request->getRequestUrl());
 
         // Get HTML
-        $this->assertContains('<input type="hidden"', $request->getRequestInputs());
+        $this->assertStringContainsStringIgnoringCase('<input type="hidden"', $request->getRequestInputs());
     }
 
     /**
@@ -312,7 +313,7 @@ class SEBTest extends TestCase
         $this->assertEquals($this->requestUrl['auth'], $request->getRequestUrl());
 
         // Get HTML
-        $this->assertContains('<input type="hidden"', $request->getRequestInputs());
+        $this->assertStringContainsStringIgnoringCase('<input type="hidden"', $request->getRequestInputs());
 
         // Get same data again, already exists
         $request = $this->bank->getAuthRequest('bank-id', 'random-nonce', 'random-rid');
@@ -390,11 +391,11 @@ class SEBTest extends TestCase
 
     /**
      * getRequestUrlFor should throw an UnexpectedValueException if in wrong type
-     *
-     * @expectedException UnexpectedValueException
      */
     public function testRequestUrlWrongType()
     {
+        $this->expectException(UnexpectedValueException::class);
+
         $this->bank = new $this->bankClass($this->protocol);
         $this->bank->setRequestUrl(null);
 
@@ -403,11 +404,11 @@ class SEBTest extends TestCase
 
     /**
      * getRequestUrlFor should throw an UnexpectedValueException if don't have correct type
-     *
-     * @expectedException UnexpectedValueException
      */
     public function testNoRequestUrlType()
     {
+        $this->expectException(UnexpectedValueException::class);
+
         $this->bank = new $this->bankClass($this->protocol);
         $this->bank->setRequestUrl([]);
 

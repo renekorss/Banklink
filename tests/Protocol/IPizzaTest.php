@@ -2,12 +2,14 @@
 
 namespace RKD\Banklink\Test\Protocol;
 
+use InvalidArgumentException;
+use UnexpectedValueException;
 use PHPUnit\Framework\TestCase;
-use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\IPizza;
-use RKD\Banklink\Request\PaymentRequest;
 use RKD\Banklink\Response\AuthResponse;
+use RKD\Banklink\Request\PaymentRequest;
 use RKD\Banklink\Response\PaymentResponse;
+use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 
 /**
  * Test suite for IPizza protocol.
@@ -38,7 +40,7 @@ class IPizzaTest extends TestCase
     /**
      * Set test data.
      */
-    public function setUp()
+    public function setUp() : void
     {
         $this->sellerId = 'id2000';
         $this->sellerAccount = '1010342342354345435';
@@ -389,11 +391,10 @@ class IPizzaTest extends TestCase
         $this->assertEquals($responseData, $response->getResponseData());
     }
 
-    /**
-     * @expectedException UnexpectedValueException
-     */
     public function testHandleResponseUnsupportedService()
     {
+        $this->expectException(UnexpectedValueException::class);
+
         $responseData = [
             'VK_SERVICE' => '0000',
         ];
@@ -401,20 +402,18 @@ class IPizzaTest extends TestCase
         $this->protocol->handleResponse($responseData);
     }
 
-    /**
-     * @expectedException InvalidArgumentException
-     */
     public function testHandleResponseNoService()
     {
+        $this->expectException(InvalidArgumentException::class);
+
         $responseData = [];
         $this->protocol->handleResponse($responseData);
     }
 
-    /**
-     * @expectedException UnexpectedValueException
-     */
     public function testGetRequestFieldMissing()
     {
+        $this->expectException(UnexpectedValueException::class);
+
         $this->protocol->getPaymentRequest(
             $this->orderId,
             $this->amount,
@@ -431,11 +430,11 @@ class IPizzaTest extends TestCase
 
     /**
      * Test can't generate request inputs.
-     *
-     * @expectedException UnexpectedValueException
      */
     public function testNoRequestData()
     {
+        $this->expectException(UnexpectedValueException::class);
+
         $request = new PaymentRequest('https://google.com', []);
 
         $request->getRequestInputs();
@@ -443,11 +442,11 @@ class IPizzaTest extends TestCase
 
     /**
      * Test invalid public key.
-     *
-     * @expectedException UnexpectedValueException
      */
     public function testInvalidPublicKey()
     {
+        $this->expectException(UnexpectedValueException::class);
+
         $this->protocol = new IPizza(
             $this->sellerId,
             __DIR__.'/../keys/IPizza/private_key.pem',
@@ -481,11 +480,11 @@ class IPizzaTest extends TestCase
 
     /**
      * Test invalid private key.
-     *
-     * @expectedException UnexpectedValueException
      */
     public function testInvalidPrivateKey()
     {
+        $this->expectException(UnexpectedValueException::class);
+
         $this->protocol = new IPizza(
             $this->sellerId,
             __DIR__.'/../keys/IPizza/no_key.pem',

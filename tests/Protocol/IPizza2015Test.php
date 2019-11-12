@@ -16,7 +16,7 @@ class IPizza2015Test extends IPizzaTest
     /**
      * Set test data.
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 

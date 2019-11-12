@@ -23,7 +23,7 @@ class SwedbankTest extends SEBTest
     /**
      * Set test data.
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 

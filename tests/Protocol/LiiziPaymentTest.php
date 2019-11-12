@@ -2,6 +2,7 @@
 
 namespace RKD\Banklink\Test\Protocol;
 
+use LogicException;
 use RKD\Banklink\Protocol\LiisiPayment;
 
 /**
@@ -15,7 +16,7 @@ class LiisiPaymentTest extends IPizzaTest
    /**
      * Set test data.
      */
-    public function setUp()
+    public function setUp() : void
     {
         parent::setUp();
 
@@ -50,21 +51,21 @@ class LiisiPaymentTest extends IPizzaTest
 
     /**
      * Test authentication request data
-     *
-     * @expectedException LogicException
      */
     public function testGetAuthRequest4011()
     {
+        $this->expectException(LogicException::class);
+
         parent::testGetAuthRequest4011();
     }
 
     /**
      * Test authentication request data
-     *
-     * @expectedException LogicException
      */
     public function testGetAuthRequest4012()
     {
+        $this->expectException(LogicException::class);
+
         parent::testGetAuthRequest4012();
     }
 }

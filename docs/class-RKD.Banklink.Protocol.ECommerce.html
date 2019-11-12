@@ -134,7 +134,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#___construct">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#108-123">__construct</a>( <span> string <span class="property-name">$sellerId</span> </span>, <span> string <span class="property-name">$privateKey</span> </span>, <span> string <span class="property-name">$privateKeyPassword</span> </span>, <span> string <span class="property-name">$publicKey</span> </span>, <span> string <span class="property-name">$requestUrl</span> </span>, <span> string <span class="property-name">$version</span> = <span class="php-quote">'004'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#111-126">__construct</a>( <span> string <span class="property-name">$sellerId</span> </span>, <span> string <span class="property-name">$privateKey</span> </span>, <span> string <span class="property-name">$privateKeyPassword</span> </span>, <span> string <span class="property-name">$publicKey</span> </span>, <span> string <span class="property-name">$requestUrl</span> </span>, <span> string <span class="property-name">$version</span> = <span class="php-quote">'004'</span></span> )</code>
 
             <div class="description">
                 Init IPizza protocol.
@@ -166,7 +166,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_getPaymentRequest">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#139-186">getPaymentRequest</a>( <span> int <span class="property-name">$orderId</span> </span>, <span> float <span class="property-name">$sum</span> </span>, <span> string <span class="property-name">$message</span> </span>, <span> string <span class="property-name">$language</span> = <span class="php-quote">'EST'</span></span>, <span> string <span class="property-name">$currency</span> = <span class="php-quote">'EUR'</span></span>, <span> array <span class="property-name">$customRequestData</span> = <span class="php-keyword1">array</span> ( )</span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span>, <span> string <span class="property-name">$timezone</span> = <span class="php-quote">'Europe/Tallinn'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#142-189">getPaymentRequest</a>( <span> int <span class="property-name">$orderId</span> </span>, <span> float <span class="property-name">$sum</span> </span>, <span> string <span class="property-name">$message</span> </span>, <span> string <span class="property-name">$language</span> = <span class="php-quote">'EST'</span></span>, <span> string <span class="property-name">$currency</span> = <span class="php-quote">'EUR'</span></span>, <span> array <span class="property-name">$customRequestData</span> = <span class="php-keyword1">array</span> ( )</span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span>, <span> string <span class="property-name">$timezone</span> = <span class="php-quote">'Europe/Tallinn'</span></span> )</code>
 
             <div class="description">
                 Get payment object.
@@ -206,7 +206,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_handlePaymentResponse">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#196-224">handlePaymentResponse</a>( <span> array <span class="property-name">$responseData</span> </span>, <span> bool <span class="property-name">$success</span> </span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#199-227">handlePaymentResponse</a>( <span> array <span class="property-name">$responseData</span> </span>, <span> bool <span class="property-name">$success</span> </span> )</code>
 
             <div class="description">
                 Get payment response.
@@ -238,7 +238,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_getSignature">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#234-254">getSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#237-257">getSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
 
             <div class="description">
                 Generates signature for request.
@@ -270,7 +270,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_generateSignature">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#269-341">generateSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#272-344">generateSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
 
             <div class="description">
                 Generate MAC string from array of fields.
@@ -306,7 +306,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_validateSignature">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#351-369">validateSignature</a>( <span> array <span class="property-name">$response</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#354-372">validateSignature</a>( <span> array <span class="property-name">$response</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
 
             <div class="description">
                 Validate bank signature.
@@ -338,7 +338,7 @@
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_setAlgorithm">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#379-383">setAlgorithm</a>( <span> int|string <span class="property-name">$algorithm</span> </span> )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#382-386">setAlgorithm</a>( <span> int|string <span class="property-name">$algorithm</span> </span> )</code>
 
             <div class="description">
                 Set algorithm used to generate mac
@@ -376,7 +376,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     <td class="name">
         <div>
             <a class="anchor pull-right" href="#_getAlgorithm">#</a>
-            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#390-393">getAlgorithm</a>( )</code>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#393-396">getAlgorithm</a>( )</code>
 
             <div class="description">
                 Get algorithm used to generate mac
@@ -424,7 +424,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#33" class="constant-name">PAYMENT_RESPONSE_SUCCESS</a>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#36" class="constant-name">PAYMENT_RESPONSE_SUCCESS</a>
         </code>
 
         <div class="description">
@@ -450,7 +450,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
     </td>
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#40" class="constant-name">PAYMENT_RESPONSE_ABORT</a>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#43" class="constant-name">PAYMENT_RESPONSE_ABORT</a>
         </code>
 
         <div class="description">
@@ -481,7 +481,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#47" class="property-name">$publicKey</a>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#50" class="property-name">$publicKey</a>
         </code>
         <div class="description">
             File path or file contents of public key.
@@ -507,7 +507,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#54" class="property-name">$privateKey</a>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#57" class="property-name">$privateKey</a>
         </code>
         <div class="description">
             File path or file contents of private key.
@@ -533,7 +533,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#61" class="property-name">$privateKeyPassword</a>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#64" class="property-name">$privateKeyPassword</a>
         </code>
         <div class="description">
             Private key password.
@@ -559,7 +559,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#68" class="property-name">$sellerId</a>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#71" class="property-name">$sellerId</a>
         </code>
         <div class="description">
             Seller id, provided by bank.
@@ -585,7 +585,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#75" class="property-name">$version</a>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#78" class="property-name">$version</a>
         </code>
         <div class="description">
             Protocol version used for communication.
@@ -611,7 +611,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#82" class="property-name">$requestUrl</a>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#85" class="property-name">$requestUrl</a>
         </code>
         <div class="description">
             Request url, where data will be sent.
@@ -637,7 +637,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#89" class="property-name">$result</a>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#92" class="property-name">$result</a>
         </code>
         <div class="description">
             Result of signature validation.
@@ -663,7 +663,7 @@ Should be one of valid values for openssl_sign functions signature_alg parameter
 
     <td class="name">
         <code>
-            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#96" class="property-name">$algorithm</a>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#99" class="property-name">$algorithm</a>
         </code>
         <div class="description">
             Algorithm used to generate mac

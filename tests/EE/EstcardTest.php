@@ -2,8 +2,9 @@
 
 namespace RKD\Banklink\Test\EE;
 
-use PHPUnit\Framework\TestCase;
 use RKD\Banklink;
+use LogicException;
+use PHPUnit\Framework\TestCase;
 use RKD\Banklink\Request\PaymentRequest;
 use RKD\Banklink\Response\PaymentResponse;
 
@@ -23,7 +24,7 @@ class EstcardTest extends TestCase
     /**
      * Set test data.
      */
-    public function setUp()
+    public function setUp() : void
     {
         $this->sellerId         = 'uid100081';
         $this->sellerName       = 'Ülo Pääsuke';
@@ -148,21 +149,21 @@ class EstcardTest extends TestCase
 
     /**
      * Authentication should throw an LogicException
-     *
-     * @expectedException LogicException
      */
     public function testGetAuthRequest4011()
     {
+        $this->expectException(LogicException::class);
+
         $this->bank->getAuthRequest();
     }
 
     /**
      * Authentication should throw an LogicException
-     *
-     * @expectedException LogicException
      */
     public function testGetAuthRequest4012()
     {
+        $this->expectException(LogicException::class);
+
         $this->bank->getAuthRequest('bank-id', 'random-nonce', 'random-rid');
     }
 
