@@ -187,7 +187,6 @@ For more information, please visit [Wiki](https://github.com/renekorss/Banklink/
 - `composer format` - format code against standards
 - `composer docs` - build API documentation
 - `composer phpmd` - run PHP Mess Detector
-- `composer phpmd` - run PHP Mess Detector
 - `composer phpcs` - run PHP CodeSniffer
 
 ## License
