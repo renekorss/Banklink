@@ -42,6 +42,7 @@
         ],
         "test": "./vendor/bin/phpunit",
         "format": "./vendor/bin/php-cs-fixer fix",
+        "docs": "apigen generate src --destination docs",
         "phpmd": "./vendor/bin/phpmd ./src text phpmd.xml",
         "phpcs": "./vendor/bin/phpcs --report=full --extensions=php -p --standard=phpcs.xml ./src ./tests"
     },
