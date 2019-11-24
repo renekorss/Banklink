@@ -1,6 +1,6 @@
 <?php
 
-namespace RKD\BanklinkTests\IPizza;
+namespace RKD\BanklinkTests\Protocol;
 
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Protocol\IPizza;

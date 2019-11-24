@@ -1,6 +1,6 @@
 <?php
 
-namespace RKD\BanklinkTests\ECommerce;
+namespace RKD\BanklinkTests\Protocol;
 
 use RKD\Banklink\Protocol\ECommerce;
 

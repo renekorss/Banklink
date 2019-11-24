@@ -1,9 +1,8 @@
 <?php
 
-namespace RKD\BanklinkTests\IPizza;
+namespace RKD\BanklinkTests\Protocol;
 
 use RKD\Banklink\Protocol\LiiziPayment;
-use RKD\BanklinkTests\IPizza\IPizzaTest;
 
 /**
  * Test suite for Liizi payment protocol.
