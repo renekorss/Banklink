@@ -2,9 +2,9 @@
 
 namespace RKD\Banklink\Test\EE;
 
-use RKD\Banklink;
 use LogicException;
 use PHPUnit\Framework\TestCase;
+use RKD\Banklink;
 use RKD\Banklink\Request\PaymentRequest;
 use RKD\Banklink\Response\PaymentResponse;
 

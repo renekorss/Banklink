@@ -2,9 +2,9 @@
 
 namespace RKD\Banklink\Test\Protocol\Helper;
 
-use TypeError;
 use PHPUnit\Framework\TestCase;
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
+use TypeError;
 
 /**
  * Test suite for protocol helper.
