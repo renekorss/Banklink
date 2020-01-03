@@ -3,9 +3,9 @@
 namespace RKD\Banklink\Test\ECommerce;
 
 use LogicException;
-use UnexpectedValueException;
 use PHPUnit\Framework\TestCase;
 use RKD\Banklink\Protocol\ECommerce;
+use UnexpectedValueException;
 
 /**
  * Test suite for ECommerce protocol.

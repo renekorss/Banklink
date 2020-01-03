@@ -2,12 +2,12 @@
 
 namespace RKD\Banklink\Test\EE;
 
-use RKD\Banklink;
-use UnexpectedValueException;
 use PHPUnit\Framework\TestCase;
+use RKD\Banklink;
+use RKD\Banklink\Protocol\Helper\ProtocolHelper;
 use RKD\Banklink\Request\PaymentRequest;
 use RKD\Banklink\Response\PaymentResponse;
-use RKD\Banklink\Protocol\Helper\ProtocolHelper;
+use UnexpectedValueException;
 
 /**
  * Test suite for SEB banklink.

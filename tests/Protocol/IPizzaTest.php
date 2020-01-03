@@ -3,13 +3,13 @@
 namespace RKD\Banklink\Test\Protocol;
 
 use InvalidArgumentException;
-use UnexpectedValueException;
 use PHPUnit\Framework\TestCase;
-use RKD\Banklink\Protocol\IPizza;
-use RKD\Banklink\Response\AuthResponse;
-use RKD\Banklink\Request\PaymentRequest;
-use RKD\Banklink\Response\PaymentResponse;
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
+use RKD\Banklink\Protocol\IPizza;
+use RKD\Banklink\Request\PaymentRequest;
+use RKD\Banklink\Response\AuthResponse;
+use RKD\Banklink\Response\PaymentResponse;
+use UnexpectedValueException;
 
 /**
  * Test suite for IPizza protocol.
