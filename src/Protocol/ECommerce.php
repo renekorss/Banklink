@@ -237,6 +237,7 @@ class ECommerce implements ProtocolInterface
     protected function getSignature(array $data, string $encoding = 'UTF-8') : string
     {
         $mac = $this->generateSignature($data, $encoding);
+        $signature = '';
 
         if (is_file($this->privateKey)) {
             $privateKey = openssl_pkey_get_private('file://'.$this->privateKey, $this->privateKeyPassword);
