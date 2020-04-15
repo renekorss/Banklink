@@ -1,6 +1,6 @@
 <?php
 
-namespace RKD\Banklink\Test\ECommerce;
+namespace RKD\Banklink\Test\Protocol;
 
 use LogicException;
 use PHPUnit\Framework\TestCase;
