@@ -80,7 +80,7 @@ class LuminorTest extends TestCase
             'VK_ACC'      => $this->sellerAccount,
             'VK_NAME'     => $this->sellerName,
             'VK_PANK'     => '40100',
-            'VK_MAC'      => 'c8mA/p30t1yBGpVTJP9mCBx2TsRNO9/1sEGY1cQSkYQMmwCBnJq6BqdLt11eetnVDX4PezH799DuruoRPgQ7BZh7JIeaLmpj19qFvntWAPcuzNsxU7Neuy8xrDOkRd97UsmU+xhyc9Hq/MNPP/KvXXNh4xnfeeVzOxcNvWtIgTo=',
+            'VK_MAC'      => 'PZeKZkZ0+0JfuC+14p+xAqx18UZnLQiiERplg+0sV+Ien0QAVnnYENuEF28ACWImG/SJHbHlmb9SdL7id71UAFlCb9I9wrSRipzwxdBcF80iPFN96JdGFfNKLEWG7JpzLJgqRYV9Y2cp44vzrqO9YJtu86pTJCj9yyV0pEYlQtg=',
         ];
 
         // Set up banklink
@@ -139,7 +139,7 @@ class LuminorTest extends TestCase
         $this->expectedData['VK_SERVICE']  = '2001';
         $this->expectedData['VK_ACC']      = $this->sellerAccount;
         $this->expectedData['VK_NAME']     = $this->sellerName;
-        $this->expectedData['VK_MAC']      = 'c8mA/p30t1yBGpVTJP9mCBx2TsRNO9/1sEGY1cQSkYQMmwCBnJq6BqdLt11eetnVDX4PezH799DuruoRPgQ7BZh7JIeaLmpj19qFvntWAPcuzNsxU7Neuy8xrDOkRd97UsmU+xhyc9Hq/MNPP/KvXXNh4xnfeeVzOxcNvWtIgTo=';
+        $this->expectedData['VK_MAC']      = 'PZeKZkZ0+0JfuC+14p+xAqx18UZnLQiiERplg+0sV+Ien0QAVnnYENuEF28ACWImG/SJHbHlmb9SdL7id71UAFlCb9I9wrSRipzwxdBcF80iPFN96JdGFfNKLEWG7JpzLJgqRYV9Y2cp44vzrqO9YJtu86pTJCj9yyV0pEYlQtg=';
 
         $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
@@ -253,7 +253,7 @@ class LuminorTest extends TestCase
         $customData = [
             'INAPP' => 1, // new data
             'VK_REF' => 'mycustomref', // override data
-            'VK_MAC' => 'Z9AtMa/gJygMoKbxkeoegyiKEoNqn2CKW1s3n9k6/r+0Ge488BCESCKznET9GPrGBsQUJU6WoezgRyOiYUrzTkT9zZ+o/Pq+IPDaCSZn1v3HRrLqx8oEvbCNNAzEHr7UfvXdUWeRTy9+SDqka+8UR3LvidU1IDpwcHuQuF3jVo8='
+            'VK_MAC' => 'qek96woD8Pe6RBP244qypaZT473K2+tOqa6w22dJHBh3l8bpI35QRopNS9JmMxI1b7A892BXEL+o847ekRztjKQh21XUIKX3RwxFTm4Ia0y6ASGcX3IfeYJ7jmxOkvB0gORn/aG+SaUaX0U/K9Zm093pMVGnhSdl8Lg+mUROpJk='
         ];
 
         $this->expectedData = array_merge($this->expectedData, $customData);
