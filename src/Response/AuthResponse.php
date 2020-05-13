@@ -29,6 +29,7 @@ class AuthResponse extends Response
             5 => 'One-off code card',
             6 => 'PIN-calculator',
             7 => 'Code card',
+            9 => 'Smart-ID',
         ];
 
     /**

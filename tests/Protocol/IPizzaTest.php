@@ -350,6 +350,9 @@ class IPizzaTest extends TestCase
         $response->setToken(7);
         $this->assertEquals('Code card', $response->getAuthMethod());
 
+        $response->setToken(9);
+        $this->assertEquals('Smart-ID', $response->getAuthMethod());
+
         $response->setToken(0);
         $this->assertEquals('unknown', $response->getAuthMethod());
     }
