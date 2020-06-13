@@ -27,14 +27,16 @@ class IPizzaTest extends IPizza
         $sellerAccount = null,
         $version = '008'
     ) {
-        parent::__construct($sellerId,
+        parent::__construct(
+            $sellerId,
             $privateKey,
             $privateKeyPassword,
             $publicKey,
             $requestUrl,
             $sellerName,
             $sellerAccount,
-            $version);
+            $version
+        );
     }
 
     /**
@@ -45,7 +47,7 @@ class IPizzaTest extends IPizza
      *
      * @return bool True on success, false otherwise
      */
-    protected function validateSignature(array $response, $encoding = 'UTF-8')
+    protected function validateSignature(array $response, $encoding = 'UTF-8'): bool
     {
         $this->result = 1;
         return $this->result === 1;
