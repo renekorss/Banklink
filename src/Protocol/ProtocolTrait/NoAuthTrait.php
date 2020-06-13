@@ -5,10 +5,13 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2016 Rene Korss
+ * @copyright 2016-2020 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink\Protocol\ProtocolTrait;
+
+use LogicException;
+use RKD\Banklink\Response\ResponseInterface;
 
 /**
  * Trait for protocols not using auth request.
@@ -20,26 +23,26 @@ trait NoAuthTrait
     /**
      * Get authentication object.
      *
-     * @param string $recId Bank identifier
-     * @param string $nonce Random nonce
-     * @param string $rid Session identifier.
-     * @param string $encoding Encoding
-     * @param string $language Language
-     * @param string $timezone Timezone. Default: Europe/Tallinn
+     * @param string|null $recId    Bank identifier
+     * @param string|null $nonce    Random nonce
+     * @param string|null $rid      Session identifier.
+     * @param string      $encoding Encoding
+     * @param string      $language Language
+     * @param string      $timezone Timezone. Default: Europe/Tallinn
      *
      * @return array Authentication request data
      *
      * @SuppressWarnings("unused")
      */
     public function getAuthRequest(
-        $recId = null,
-        $nonce = null,
-        $rid = null,
-        $encoding = 'UTF-8',
-        $language = 'EST',
-        $timezone = 'Europe/Tallinn'
-    ) {
-        throw new \LogicException(get_class().' protocol dosen\'t support authentication.');
+        ?string $recId = null,
+        ?string $nonce = null,
+        ?string $rid = null,
+        string $encoding = 'UTF-8',
+        string $language = 'EST',
+        string $timezone = 'Europe/Tallinn'
+    ) : array {
+        throw new LogicException(get_class().' protocol dosen\'t support authentication.');
     }
 
     /**
@@ -50,7 +53,7 @@ trait NoAuthTrait
      *
      * @return \Response\PaymentResponse Payment response object
      */
-    public function handleResponse(array $response, $encoding = 'UTF-8')
+    public function handleResponse(array $response, string $encoding = 'UTF-8') : ResponseInterface
     {
         $success = $this->validateSignature($response, $encoding);
         return $this->handlePaymentResponse($response, $success);

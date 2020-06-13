@@ -7,13 +7,17 @@
          convertNoticesToExceptions="true"
          convertWarningsToExceptions="true"
          processIsolation="false"
-         stopOnFailure="false"
-         syntaxCheck="false">
+         stopOnFailure="false">
     <testsuites>
         <testsuite name="RKD Banklink Test Suite">
             <directory suffix=".php">./tests/</directory>
         </testsuite>
     </testsuites>
+    <groups>
+        <exclude>
+            <group>ignore</group>
+        </exclude>
+    </groups>
     <php>
         <env name="CI" value="true"/>
         <env name="TEST_DATETIME" value="2015-09-29T15:00:00+0300"/>

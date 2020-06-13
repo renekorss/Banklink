@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <link rel="stylesheet" href="resources/bootstrap.min.css">
+        <link rel="stylesheet" href="resources/style.css">
+
+        <title>
+            Class RKD\Banklink\Protocol\LiisiPayment
+        </title>
+    </head>
+
+    <body>
+<div id="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="index.html">
+                                Overview
+                            </a>
+                        </li>
+
+                            <li>
+                                <a href="classes.html">Classes</a>
+                            </li>
+
+                            <li>
+                                <a href="interfaces.html">Interfaces</a>
+                            </li>
+
+                            <li>
+                                <a href="traits.html">Traits</a>
+                            </li>
+
+
+
+                    </ul>
+
+                    <form id="search" class="pull-right">
+                        <input type="text" name="q" class="form-control text" placeholder="Search class, function or namespace" autofocus>
+                    </form>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+            <div id="breadcrumbs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+
+
+<div class="pull-left type">
+    <span class="label label-success">Class</span>
+</div>
+
+<ol class="breadcrumb pull-left">
+        <li>
+            <a href="namespace-RKD.html">RKD</a>
+        </li>
+            <li class="backslash">\</li>
+        <li>
+            <a href="namespace-RKD.Banklink.html">Banklink</a>
+        </li>
+            <li class="backslash">\</li>
+        <li>
+            <a href="namespace-RKD.Banklink.Protocol.html">Protocol</a>
+        </li>
+
+        <li class="backslash">\</li>
+        <li class="active">LiisiPayment</li>
+</ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+    <h1>LiisiPayment</h1>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Protocol for Liisi payment link.
+
+Same as IPizza, but without authentication
+            </div>
+        </div>
+
+        <dl class="tree">
+            <dd>
+                    extends
+                    <a href="class-RKD.Banklink.Protocol.IPizza.html">
+                        RKD\Banklink\Protocol\IPizza
+                    </a>
+
+
+                    uses
+                        <a href="trait-RKD.Banklink.Protocol.ProtocolTrait.NoAuthTrait.html">RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait</a>
+            </dd>
+        </dl>
+
+
+
+    <div class="info">
+        
+
+            <br>
+            <a href="source-class-RKD.Banklink.Protocol.LiisiPayment.html" class="open-source-code">Open source code</a>
+        <br>
+    </div>
+
+
+        <table class="summary table table-bordered table-responsive table-striped">
+            <tr>
+                <th>
+                    Methods inherited from <a href="class-RKD.Banklink.Protocol.IPizza.html#methods">RKD\Banklink\Protocol\IPizza</a>
+                </th>
+            </tr>
+            <tr>
+                <td>
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#___construct">__construct()</a></code>, 
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#_useMbStrlen">useMbStrlen()</a></code>, 
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#_getPaymentRequest">getPaymentRequest()</a></code>, 
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#_getAuthRequest">getAuthRequest()</a></code>, 
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#_handleResponse">handleResponse()</a></code>, 
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#_handlePaymentResponse">handlePaymentResponse()</a></code>, 
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#_handleAuthResponse">handleAuthResponse()</a></code>, 
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#_getSignature">getSignature()</a></code>, 
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#_generateSignature">generateSignature()</a></code>, 
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#_validateSignature">validateSignature()</a></code>, 
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#_setAlgorithm">setAlgorithm()</a></code>, 
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#_getAlgorithm">getAlgorithm()</a></code>, 
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#_getFields">getFields()</a></code>, 
+                        <code><a href="class-RKD.Banklink.Protocol.IPizza.html#_getServicesClass">getServicesClass()</a></code>
+                </td>
+            </tr>
+        </table>
+
+        <table class="summary table table-bordered table-responsive table-striped">
+            <tr><th>Methods used from <a href="trait-RKD.Banklink.Protocol.ProtocolTrait.NoAuthTrait.html#methods">RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait</a> trait</th></tr>
+            <tr>
+                <td>
+                    <code>
+                            <a href="trait-RKD.Banklink.Protocol.ProtocolTrait.NoAuthTrait.html#_getAuthRequest">
+                                getAuthRequest()
+                            </a>
+                            <a href="trait-RKD.Banklink.Protocol.ProtocolTrait.NoAuthTrait.html#_handleResponse">
+                                handleResponse()
+                            </a>
+                    </code>
+                </td>
+            </tr>
+        </table>
+
+
+            <table class="summary table table-bordered table-responsive table-striped">
+                <tr>
+                    <th>
+                        Constants inherited from <a href="class-RKD.Banklink.Protocol.IPizza.html#constants">RKD\Banklink\Protocol\IPizza</a>
+                    </th>
+                </tr>
+                <tr>
+<td>
+    <code class="keyword">
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_SERVICE" class="constant-name">
+                FIELD_SERVICE
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_VERSION" class="constant-name">
+                FIELD_VERSION
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_SND_ID" class="constant-name">
+                FIELD_SND_ID
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_STAMP" class="constant-name">
+                FIELD_STAMP
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_AMOUNT" class="constant-name">
+                FIELD_AMOUNT
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_CURR" class="constant-name">
+                FIELD_CURR
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_REF" class="constant-name">
+                FIELD_REF
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_MSG" class="constant-name">
+                FIELD_MSG
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_RETURN" class="constant-name">
+                FIELD_RETURN
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_CANCEL" class="constant-name">
+                FIELD_CANCEL
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_DATETIME" class="constant-name">
+                FIELD_DATETIME
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_T_DATETIME" class="constant-name">
+                FIELD_T_DATETIME
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_LANG" class="constant-name">
+                FIELD_LANG
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_NAME" class="constant-name">
+                FIELD_NAME
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_ACC" class="constant-name">
+                FIELD_ACC
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_MAC" class="constant-name">
+                FIELD_MAC
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_RID" class="constant-name">
+                FIELD_RID
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_REPLY" class="constant-name">
+                FIELD_REPLY
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_NONCE" class="constant-name">
+                FIELD_NONCE
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_REC_ID" class="constant-name">
+                FIELD_REC_ID
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_AUTO" class="constant-name">
+                FIELD_AUTO
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_SND_NAME" class="constant-name">
+                FIELD_SND_NAME
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_SND_ACC" class="constant-name">
+                FIELD_SND_ACC
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_REC_NAME" class="constant-name">
+                FIELD_REC_NAME
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_REC_ACC" class="constant-name">
+                FIELD_REC_ACC
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_T_NO" class="constant-name">
+                FIELD_T_NO
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_USER_ID" class="constant-name">
+                FIELD_USER_ID
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_USER_NAME" class="constant-name">
+                FIELD_USER_NAME
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_COUNTRY" class="constant-name">
+                FIELD_COUNTRY
+            </a>, 
+            <a href="class-RKD.Banklink.Protocol.IPizza.html#FIELD_TOKEN" class="constant-name">
+                FIELD_TOKEN
+            </a>
+    </code>
+</td>
+                </tr>
+            </table>
+
+
+            <table class="summary table table-bordered table-responsive table-striped">
+                <tr>
+                    <th>
+                        Properties inherited from <a href="class-RKD.Banklink.Protocol.IPizza.html#properties">RKD\Banklink\Protocol\IPizza</a>
+                    </th>
+                </tr>
+                <tr>
+                    <td>
+                            <code><a href="class-RKD.Banklink.Protocol.IPizza.html#$publicKey" class="property-name">$publicKey</a></code>, 
+                            <code><a href="class-RKD.Banklink.Protocol.IPizza.html#$privateKey" class="property-name">$privateKey</a></code>, 
+                            <code><a href="class-RKD.Banklink.Protocol.IPizza.html#$privateKeyPassword" class="property-name">$privateKeyPassword</a></code>, 
+                            <code><a href="class-RKD.Banklink.Protocol.IPizza.html#$sellerId" class="property-name">$sellerId</a></code>, 
+                            <code><a href="class-RKD.Banklink.Protocol.IPizza.html#$sellerName" class="property-name">$sellerName</a></code>, 
+                            <code><a href="class-RKD.Banklink.Protocol.IPizza.html#$sellerAccount" class="property-name">$sellerAccount</a></code>, 
+                            <code><a href="class-RKD.Banklink.Protocol.IPizza.html#$version" class="property-name">$version</a></code>, 
+                            <code><a href="class-RKD.Banklink.Protocol.IPizza.html#$requestUrl" class="property-name">$requestUrl</a></code>, 
+                            <code><a href="class-RKD.Banklink.Protocol.IPizza.html#$serviceId" class="property-name">$serviceId</a></code>, 
+                            <code><a href="class-RKD.Banklink.Protocol.IPizza.html#$result" class="property-name">$result</a></code>, 
+                            <code><a href="class-RKD.Banklink.Protocol.IPizza.html#$useMbStrlen" class="property-name">$useMbStrlen</a></code>, 
+                            <code><a href="class-RKD.Banklink.Protocol.IPizza.html#$algorithm" class="property-name">$algorithm</a></code>
+                    </td>
+                </tr>
+            </table>
+
+        <table class="summary table table-bordered table-responsive table-striped">
+            <tr>
+                <th>Properties used from <a href="trait-RKD.Banklink.Protocol.ProtocolTrait.NoAuthTrait.html#properties">RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait</a></th>
+            </tr>
+            <tr>
+                <td>
+                    <code>
+                    </code>
+                </td>
+            </tr>
+        </table>
+    <div id="footer">
+        Generated by <a href="https://github.com/apigen/apigen">ApiGen</a>
+    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="resources/jquery-3.2.1.min.js"></script>
+        <script src="resources/jquery-ui-1.12.1.min.js"></script>
+
+        <script src="elementlist.js"></script>
+        <script src="resources/main.js"></script>
+    </body>
+</html>
+
+

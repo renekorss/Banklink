@@ -5,7 +5,7 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2016 Rene Korss
+ * @copyright 2016-2020 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink\Response;
@@ -13,7 +13,7 @@ namespace RKD\Banklink\Response;
 /**
  * Authentication response wrapper.
  *
- * @author  Rene Korss <rene.korss@gmail.com>
+ * @author Rene Korss <rene.korss@gmail.com>
  */
 class AuthResponse extends Response
 {
@@ -23,18 +23,18 @@ class AuthResponse extends Response
      *
      * @var array
      */
-    private static $authMethods = array(
+    private static $authMethods = [
             1 => 'ID card',
             2 => 'Mobile ID',
             5 => 'One-off code card',
             6 => 'PIN-calculator',
             7 => 'Code card',
-        );
+        ];
 
     /**
      * User id (personal code).
      *
-     * @var int
+     * @var string
      */
     protected $userId;
 
@@ -83,19 +83,22 @@ class AuthResponse extends Response
     /**
      * Set user id.
      *
-     * @param int $userId User id
+     * @param string $userId User id
+     *
+     * @return self
      */
-    public function setUserId($userId)
+    public function setUserId(string $userId) : self
     {
         $this->userId = $userId;
+        return $this;
     }
 
     /**
      * Get user id.
      *
-     * @return int User id
+     * @return string User id
      */
-    public function getUserId()
+    public function getUserId() : ?string
     {
         return $this->userId;
     }
@@ -105,9 +108,10 @@ class AuthResponse extends Response
      *
      * @param string $userName User name
      */
-    public function setUserName($userName)
+    public function setUserName(string $userName) : self
     {
         $this->userName = $userName;
+        return $this;
     }
 
     /**
@@ -115,7 +119,7 @@ class AuthResponse extends Response
      *
      * @return string User name
      */
-    public function getUserName()
+    public function getUserName() : ?string
     {
         return $this->userName;
     }
@@ -125,9 +129,10 @@ class AuthResponse extends Response
      *
      * @param string $country Country
      */
-    public function setUserCountry($country)
+    public function setUserCountry(string $country) : self
     {
         $this->userCountry = $country;
+        return $this;
     }
 
     /**
@@ -135,7 +140,7 @@ class AuthResponse extends Response
      *
      * @return string Country
      */
-    public function getUserCountry()
+    public function getUserCountry() : ?string
     {
         return $this->userCountry;
     }
@@ -144,10 +149,13 @@ class AuthResponse extends Response
      * Set token.
      *
      * @param string $token Token (VK_TOKEN)
+     *
+     * @return self
      */
-    public function setToken($token)
+    public function setToken(string $token) : ?self
     {
         $this->token = $token;
+        return $this;
     }
 
     /**
@@ -155,7 +163,7 @@ class AuthResponse extends Response
      *
      * @return string Token
      */
-    public function getToken()
+    public function getToken() : string
     {
         return $this->token;
     }
@@ -164,10 +172,13 @@ class AuthResponse extends Response
      * Set nonce.
      *
      * @param string $nonce Nonce (VK_NONCE)
+     *
+     * @return self
      */
-    public function setNonce($nonce)
+    public function setNonce(string $nonce) : self
     {
         $this->nonce = $nonce;
+        return $this;
     }
 
     /**
@@ -175,7 +186,7 @@ class AuthResponse extends Response
      *
      * @return string Nonce
      */
-    public function getNonce()
+    public function getNonce() : ?string
     {
         return $this->nonce;
     }
@@ -184,10 +195,13 @@ class AuthResponse extends Response
      * Set rid.
      *
      * @param string $rid Rid (VK_RID)
+     *
+     * @return self
      */
-    public function setRid($rid)
+    public function setRid(string $rid) : self
     {
         $this->rid = $rid;
+        return $this;
     }
 
     /**
@@ -195,7 +209,7 @@ class AuthResponse extends Response
      *
      * @return string Rid
      */
-    public function getRid()
+    public function getRid() : ?string
     {
         return $this->rid;
     }
@@ -204,10 +218,13 @@ class AuthResponse extends Response
      * Set auth date.
      *
      * @param string $authDate Auth date
+     *
+     * @return self
      */
-    public function setAuthDate($authDate)
+    public function setAuthDate(string $authDate) : self
     {
         $this->authDate = $authDate;
+        return $this;
     }
 
     /**
@@ -215,7 +232,7 @@ class AuthResponse extends Response
      *
      * @return string Auth date
      */
-    public function getAuthDate()
+    public function getAuthDate() : ?string
     {
         return $this->authDate;
     }
@@ -225,7 +242,7 @@ class AuthResponse extends Response
      *
      * @return string Authentication method
      */
-    public function getAuthMethod()
+    public function getAuthMethod() : string
     {
         $authMethod = 'unknown';
 

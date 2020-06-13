@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <link rel="stylesheet" href="resources/bootstrap.min.css">
+        <link rel="stylesheet" href="resources/style.css">
+
+        <title>
+            Class RKD\Banklink\Protocol\IPizza
+        </title>
+    </head>
+
+    <body>
+<div id="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="index.html">
+                                Overview
+                            </a>
+                        </li>
+
+                            <li>
+                                <a href="classes.html">Classes</a>
+                            </li>
+
+                            <li>
+                                <a href="interfaces.html">Interfaces</a>
+                            </li>
+
+                            <li>
+                                <a href="traits.html">Traits</a>
+                            </li>
+
+
+
+                    </ul>
+
+                    <form id="search" class="pull-right">
+                        <input type="text" name="q" class="form-control text" placeholder="Search class, function or namespace" autofocus>
+                    </form>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+            <div id="breadcrumbs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+
+
+<div class="pull-left type">
+    <span class="label label-success">Class</span>
+</div>
+
+<ol class="breadcrumb pull-left">
+        <li>
+            <a href="namespace-RKD.html">RKD</a>
+        </li>
+            <li class="backslash">\</li>
+        <li>
+            <a href="namespace-RKD.Banklink.html">Banklink</a>
+        </li>
+            <li class="backslash">\</li>
+        <li>
+            <a href="namespace-RKD.Banklink.Protocol.html">Protocol</a>
+        </li>
+
+        <li class="backslash">\</li>
+        <li class="active">IPizza</li>
+</ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+    <h1>IPizza</h1>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Protocol for IPizza based banklinks.
+            </div>
+        </div>
+
+        <dl class="tree">
+            <dd>
+
+                    implements
+                        <a href="interface-RKD.Banklink.Protocol.ProtocolInterface.html">
+                            RKD\Banklink\Protocol\ProtocolInterface
+                        </a>
+
+            </dd>
+        </dl>
+
+
+        <div>
+            <h2>Known subclasses</h2>
+            <a href="class-RKD.Banklink.Protocol.IPizza2015.html">RKD\Banklink\Protocol\IPizza2015</a>, 
+            <a href="class-RKD.Banklink.Protocol.LiisiPayment.html">RKD\Banklink\Protocol\LiisiPayment</a>
+        </div>
+
+    <div class="info">
+        
+
+            <br>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html" class="open-source-code">Open source code</a>
+        <br>
+    </div>
+
+        <table class="summary table table-bordered table-responsive table-striped" id="methods">
+            <tr><th colspan="3">Methods Summary</th></tr>
+
+
+
+<tr id="___construct">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#___construct">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#160-187">__construct</a>( <span> string <span class="property-name">$sellerId</span> </span>, <span> string <span class="property-name">$privateKey</span> </span>, <span> string <span class="property-name">$privateKeyPassword</span> </span>, <span> string <span class="property-name">$publicKey</span> </span>, <span> string <span class="property-name">$requestUrl</span> </span>, <span> string <span class="property-name">$sellerName</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$sellerAccount</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$version</span> = <span class="php-quote">'008'</span></span> )</code>
+
+            <div class="description">
+                Init IPizza protocol.
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_useMbStrlen">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_useMbStrlen">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#195-198">useMbStrlen</a>( <span> bool <span class="property-name">$useMbStrlen</span> </span> )</code>
+
+            <div class="description">
+                Set mb_strlen usage
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_getPaymentRequest">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_getPaymentRequest">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#214-256">getPaymentRequest</a>( <span> int <span class="property-name">$orderId</span> </span>, <span> float <span class="property-name">$sum</span> </span>, <span> string <span class="property-name">$message</span> </span>, <span> string <span class="property-name">$language</span> = <span class="php-quote">'EST'</span></span>, <span> string <span class="property-name">$currency</span> = <span class="php-quote">'EUR'</span></span>, <span> array <span class="property-name">$customRequestData</span> = <span class="php-keyword1">array</span> ( )</span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span>, <span> string <span class="property-name">$timezone</span> = <span class="php-quote">'Europe/Tallinn'</span></span> )</code>
+
+            <div class="description">
+                Get payment object
+
+
+
+
+
+
+
+
+                        <h2>Implementation of</h2>
+                        <div>
+                            <code>
+                                <a href="interface-RKD.Banklink.Protocol.ProtocolInterface.html#_getPaymentRequest">
+                                    RKD\Banklink\Protocol\ProtocolInterface::getPaymentRequest()
+                                </a>
+                            </code>
+                        </div>
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_getAuthRequest">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_getAuthRequest">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#270-309">getAuthRequest</a>( <span> string <span class="property-name">$recId</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$nonce</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$rid</span> = <span class="php-keyword1">NULL</span></span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span>, <span> string <span class="property-name">$language</span> = <span class="php-quote">'EST'</span></span>, <span> string <span class="property-name">$timezone</span> = <span class="php-quote">'Europe/Tallinn'</span></span> )</code>
+
+            <div class="description">
+                Get authentication object
+
+
+
+
+
+
+
+
+                        <h2>Implementation of</h2>
+                        <div>
+                            <code>
+                                <a href="interface-RKD.Banklink.Protocol.ProtocolInterface.html#_getAuthRequest">
+                                    RKD\Banklink\Protocol\ProtocolInterface::getAuthRequest()
+                                </a>
+                            </code>
+                        </div>
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_handleResponse">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_handleResponse">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#319-335">handleResponse</a>( <span> array <span class="property-name">$response</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+
+            <div class="description">
+                Handles response from bank.
+
+
+
+
+
+
+
+
+                        <h2>Implementation of</h2>
+                        <div>
+                            <code>
+                                <a href="interface-RKD.Banklink.Protocol.ProtocolInterface.html#_handleResponse">
+                                    RKD\Banklink\Protocol\ProtocolInterface::handleResponse()
+                                </a>
+                            </code>
+                        </div>
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_handlePaymentResponse">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 protected 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_handlePaymentResponse">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#345-383">handlePaymentResponse</a>( <span> array <span class="property-name">$responseData</span> </span>, <span> bool <span class="property-name">$success</span> </span> )</code>
+
+            <div class="description">
+                Get payment response.
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_handleAuthResponse">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 protected 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_handleAuthResponse">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#393-420">handleAuthResponse</a>( <span> array <span class="property-name">$responseData</span> </span>, <span> bool <span class="property-name">$success</span> </span> )</code>
+
+            <div class="description">
+                Get authentication response.
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_getSignature">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_getSignature">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#430-450">getSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+
+            <div class="description">
+                Generates signature for request.
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_generateSignature">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 protected 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_generateSignature">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#460-489">generateSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+
+            <div class="description">
+                Generate MAC string from array of fields.
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_validateSignature">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 protected 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_validateSignature">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#499-517">validateSignature</a>( <span> array <span class="property-name">$response</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+
+            <div class="description">
+                Validate bank signature.
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_setAlgorithm">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_setAlgorithm">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#527-531">setAlgorithm</a>( <span> int|string <span class="property-name">$algorithm</span> </span> )</code>
+
+            <div class="description">
+                Set algorithm used to generate mac
+
+Should be one of valid values for openssl_sign functions signature_alg parameter
+
+
+
+
+
+
+                    <h2>see</h2>
+                    <div class="list">
+                        <a href="http://ee1.php.net/manual/en/function.openssl-sign.php">http://ee1.php.net/manual/en/function.openssl-sign.php</a><br>
+                    </div>
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_getAlgorithm">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_getAlgorithm">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#538-541">getAlgorithm</a>( )</code>
+
+            <div class="description">
+                Get algorithm used to generate mac
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_getFields">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 protected static
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_getFields">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#546-550">getFields</a>( <span> <span class="property-name">$service</span> </span> )</code>
+
+            <div class="description">
+                Get fields from Services class
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_getServicesClass">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 protected static
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_getServicesClass">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.IPizza.html#557-560">getServicesClass</a>( )</code>
+
+            <div class="description">
+                Get services provider class
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+        </table>
+
+
+
+        <table class="summary table table-bordered table-responsive table-striped" id="constants">
+            <tr><th colspan="3">Constants Summary</th></tr>
+<tr id="FIELD_SERVICE">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#117" class="constant-name">FIELD_SERVICE</a>
+        </code>
+
+        <div class="description">
+            Fields
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_SERVICE" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_SERVICE'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_VERSION">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#118" class="constant-name">FIELD_VERSION</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_VERSION" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_VERSION'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_SND_ID">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#119" class="constant-name">FIELD_SND_ID</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_SND_ID" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_SND_ID'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_STAMP">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#120" class="constant-name">FIELD_STAMP</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_STAMP" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_STAMP'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_AMOUNT">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#121" class="constant-name">FIELD_AMOUNT</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_AMOUNT" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_AMOUNT'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_CURR">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#122" class="constant-name">FIELD_CURR</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_CURR" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_CURR'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_REF">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#123" class="constant-name">FIELD_REF</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_REF" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_REF'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_MSG">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#124" class="constant-name">FIELD_MSG</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_MSG" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_MSG'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_RETURN">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#125" class="constant-name">FIELD_RETURN</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_RETURN" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_RETURN'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_CANCEL">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#126" class="constant-name">FIELD_CANCEL</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_CANCEL" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_CANCEL'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_DATETIME">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#127" class="constant-name">FIELD_DATETIME</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_DATETIME" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_DATETIME'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_T_DATETIME">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#128" class="constant-name">FIELD_T_DATETIME</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_T_DATETIME" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_T_DATETIME'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_LANG">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#129" class="constant-name">FIELD_LANG</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_LANG" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_LANG'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_NAME">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#130" class="constant-name">FIELD_NAME</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_NAME" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_NAME'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_ACC">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#131" class="constant-name">FIELD_ACC</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_ACC" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_ACC'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_MAC">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#132" class="constant-name">FIELD_MAC</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_MAC" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_MAC'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_RID">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#133" class="constant-name">FIELD_RID</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_RID" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_RID'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_REPLY">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#134" class="constant-name">FIELD_REPLY</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_REPLY" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_REPLY'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_NONCE">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#135" class="constant-name">FIELD_NONCE</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_NONCE" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_NONCE'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_REC_ID">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#136" class="constant-name">FIELD_REC_ID</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_REC_ID" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_REC_ID'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_AUTO">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#137" class="constant-name">FIELD_AUTO</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_AUTO" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_AUTO'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_SND_NAME">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#138" class="constant-name">FIELD_SND_NAME</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_SND_NAME" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_SND_NAME'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_SND_ACC">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#139" class="constant-name">FIELD_SND_ACC</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_SND_ACC" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_SND_ACC'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_REC_NAME">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#140" class="constant-name">FIELD_REC_NAME</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_REC_NAME" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_REC_NAME'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_REC_ACC">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#141" class="constant-name">FIELD_REC_ACC</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_REC_ACC" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_REC_ACC'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_T_NO">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#142" class="constant-name">FIELD_T_NO</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_T_NO" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_T_NO'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_USER_ID">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#143" class="constant-name">FIELD_USER_ID</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_USER_ID" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_USER_ID'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_USER_NAME">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#144" class="constant-name">FIELD_USER_NAME</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_USER_NAME" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_USER_NAME'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_COUNTRY">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#145" class="constant-name">FIELD_COUNTRY</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_COUNTRY" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_COUNTRY'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="FIELD_TOKEN">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#146" class="constant-name">FIELD_TOKEN</a>
+        </code>
+
+        <div class="description">
+            
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#FIELD_TOKEN" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'VK_TOKEN'</span></code>
+        </div>
+    </td>
+</tr>
+        </table>
+
+
+        <table class="summary table table-bordered table-responsive table-striped" id="properties">
+            <tr><th colspan="3">Properties Summary</th></tr>
+<tr id="$publicKey">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#35" class="property-name">$publicKey</a>
+        </code>
+        <div class="description">
+            File path or file contents of public key.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$publicKey" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$privateKey">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#42" class="property-name">$privateKey</a>
+        </code>
+        <div class="description">
+            File path or file contents of private key.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$privateKey" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$privateKeyPassword">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#49" class="property-name">$privateKeyPassword</a>
+        </code>
+        <div class="description">
+            Private key password.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$privateKeyPassword" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$sellerId">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#56" class="property-name">$sellerId</a>
+        </code>
+        <div class="description">
+            Seller id, provided by bank.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$sellerId" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$sellerName">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#63" class="property-name">$sellerName</a>
+        </code>
+        <div class="description">
+            Seller name, mus match with bank account name.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$sellerName" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$sellerAccount">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#70" class="property-name">$sellerAccount</a>
+        </code>
+        <div class="description">
+            Seller account number.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$sellerAccount" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$version">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#77" class="property-name">$version</a>
+        </code>
+        <div class="description">
+            Protocol version used for communication.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$version" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$requestUrl">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#84" class="property-name">$requestUrl</a>
+        </code>
+        <div class="description">
+            Request url, where data will be sent.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$requestUrl" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$serviceId">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#91" class="property-name">$serviceId</a>
+        </code>
+        <div class="description">
+            Service number used.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$serviceId" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$result">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            bool
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#98" class="property-name">$result</a>
+        </code>
+        <div class="description">
+            Result of signature validation.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$result" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$useMbStrlen">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            bool
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#105" class="property-name">$useMbStrlen</a>
+        </code>
+        <div class="description">
+            Is mb_strlen function used to get string length?
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$useMbStrlen" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">true</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$algorithm">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            int|string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.IPizza.html#112" class="property-name">$algorithm</a>
+        </code>
+        <div class="description">
+            Algorithm used to generate mac
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$algorithm" class="anchor pull-right">#</a>
+            <code><span class="php-num">1</span></code>
+        </div>
+    </td>
+</tr>
+        </table>
+
+
+    <div id="footer">
+        Generated by <a href="https://github.com/apigen/apigen">ApiGen</a>
+    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="resources/jquery-3.2.1.min.js"></script>
+        <script src="resources/jquery-ui-1.12.1.min.js"></script>
+
+        <script src="elementlist.js"></script>
+        <script src="resources/main.js"></script>
+    </body>
+</html>
+
+

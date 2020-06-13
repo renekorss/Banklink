@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <link rel="stylesheet" href="resources/bootstrap.min.css">
+        <link rel="stylesheet" href="resources/style.css">
+
+        <title>
+            Class RKD\Banklink\Protocol\ECommerce
+        </title>
+    </head>
+
+    <body>
+<div id="navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="index.html">
+                                Overview
+                            </a>
+                        </li>
+
+                            <li>
+                                <a href="classes.html">Classes</a>
+                            </li>
+
+                            <li>
+                                <a href="interfaces.html">Interfaces</a>
+                            </li>
+
+                            <li>
+                                <a href="traits.html">Traits</a>
+                            </li>
+
+
+
+                    </ul>
+
+                    <form id="search" class="pull-right">
+                        <input type="text" name="q" class="form-control text" placeholder="Search class, function or namespace" autofocus>
+                    </form>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+            <div id="breadcrumbs">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+
+
+<div class="pull-left type">
+    <span class="label label-success">Class</span>
+</div>
+
+<ol class="breadcrumb pull-left">
+        <li>
+            <a href="namespace-RKD.html">RKD</a>
+        </li>
+            <li class="backslash">\</li>
+        <li>
+            <a href="namespace-RKD.Banklink.html">Banklink</a>
+        </li>
+            <li class="backslash">\</li>
+        <li>
+            <a href="namespace-RKD.Banklink.Protocol.html">Protocol</a>
+        </li>
+
+        <li class="backslash">\</li>
+        <li class="active">ECommerce</li>
+</ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+    <h1>ECommerce</h1>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                Protocol for ECommerce payment.
+            </div>
+        </div>
+
+        <dl class="tree">
+            <dd>
+
+                    implements
+                        <a href="interface-RKD.Banklink.Protocol.ProtocolInterface.html">
+                            RKD\Banklink\Protocol\ProtocolInterface
+                        </a>
+
+                    uses
+                        <a href="trait-RKD.Banklink.Protocol.ProtocolTrait.NoAuthTrait.html">RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait</a>
+            </dd>
+        </dl>
+
+
+
+    <div class="info">
+        
+
+            <br>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html" class="open-source-code">Open source code</a>
+        <br>
+    </div>
+
+        <table class="summary table table-bordered table-responsive table-striped" id="methods">
+            <tr><th colspan="3">Methods Summary</th></tr>
+
+
+
+<tr id="___construct">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#___construct">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#111-126">__construct</a>( <span> string <span class="property-name">$sellerId</span> </span>, <span> string <span class="property-name">$privateKey</span> </span>, <span> string <span class="property-name">$privateKeyPassword</span> </span>, <span> string <span class="property-name">$publicKey</span> </span>, <span> string <span class="property-name">$requestUrl</span> </span>, <span> string <span class="property-name">$version</span> = <span class="php-quote">'004'</span></span> )</code>
+
+            <div class="description">
+                Init IPizza protocol.
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_getPaymentRequest">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_getPaymentRequest">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#142-189">getPaymentRequest</a>( <span> int <span class="property-name">$orderId</span> </span>, <span> float <span class="property-name">$sum</span> </span>, <span> string <span class="property-name">$message</span> </span>, <span> string <span class="property-name">$language</span> = <span class="php-quote">'EST'</span></span>, <span> string <span class="property-name">$currency</span> = <span class="php-quote">'EUR'</span></span>, <span> array <span class="property-name">$customRequestData</span> = <span class="php-keyword1">array</span> ( )</span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span>, <span> string <span class="property-name">$timezone</span> = <span class="php-quote">'Europe/Tallinn'</span></span> )</code>
+
+            <div class="description">
+                Get payment object.
+
+
+
+
+
+
+
+
+                        <h2>Implementation of</h2>
+                        <div>
+                            <code>
+                                <a href="interface-RKD.Banklink.Protocol.ProtocolInterface.html#_getPaymentRequest">
+                                    RKD\Banklink\Protocol\ProtocolInterface::getPaymentRequest()
+                                </a>
+                            </code>
+                        </div>
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_handlePaymentResponse">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 protected 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_handlePaymentResponse">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#199-227">handlePaymentResponse</a>( <span> array <span class="property-name">$responseData</span> </span>, <span> bool <span class="property-name">$success</span> </span> )</code>
+
+            <div class="description">
+                Get payment response.
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_getSignature">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 protected 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_getSignature">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#237-257">getSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+
+            <div class="description">
+                Generates signature for request.
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_generateSignature">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 protected 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_generateSignature">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#272-344">generateSignature</a>( <span> array <span class="property-name">$data</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+
+            <div class="description">
+                Generate MAC string from array of fields.
+
+
+
+
+
+
+                    <h2>SuppressWarnings</h2>
+                    <div class="list">
+                        <br>
+                    </div>
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_validateSignature">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 protected 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_validateSignature">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#354-372">validateSignature</a>( <span> array <span class="property-name">$response</span> </span>, <span> string <span class="property-name">$encoding</span> = <span class="php-quote">'UTF-8'</span></span> )</code>
+
+            <div class="description">
+                Validate bank signature.
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_setAlgorithm">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_setAlgorithm">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#382-386">setAlgorithm</a>( <span> int|string <span class="property-name">$algorithm</span> </span> )</code>
+
+            <div class="description">
+                Set algorithm used to generate mac
+
+Should be one of valid values for openssl_sign functions signature_alg parameter
+
+
+
+
+
+
+                    <h2>see</h2>
+                    <div class="list">
+                        <a href="http://ee1.php.net/manual/en/function.openssl-sign.php">http://ee1.php.net/manual/en/function.openssl-sign.php</a><br>
+                    </div>
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+
+
+
+<tr id="_getAlgorithm">
+
+    <td class="attributes col-md-1">
+        <code class="keyword">
+                 public 
+                
+                
+        </code>
+    </td>
+
+    <td class="name">
+        <div>
+            <a class="anchor pull-right" href="#_getAlgorithm">#</a>
+            <code><a href="source-class-RKD.Banklink.Protocol.ECommerce.html#393-396">getAlgorithm</a>( )</code>
+
+            <div class="description">
+                Get algorithm used to generate mac
+
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </td>
+</tr>
+        </table>
+
+
+        <table class="summary table table-bordered table-responsive table-striped">
+            <tr><th>Methods used from <a href="trait-RKD.Banklink.Protocol.ProtocolTrait.NoAuthTrait.html#methods">RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait</a> trait</th></tr>
+            <tr>
+                <td>
+                    <code>
+                            <a href="trait-RKD.Banklink.Protocol.ProtocolTrait.NoAuthTrait.html#_getAuthRequest">
+                                getAuthRequest()
+                            </a>
+                            <a href="trait-RKD.Banklink.Protocol.ProtocolTrait.NoAuthTrait.html#_handleResponse">
+                                handleResponse()
+                            </a>
+                    </code>
+                </td>
+            </tr>
+        </table>
+
+        <table class="summary table table-bordered table-responsive table-striped" id="constants">
+            <tr><th colspan="3">Constants Summary</th></tr>
+<tr id="PAYMENT_RESPONSE_SUCCESS">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#36" class="constant-name">PAYMENT_RESPONSE_SUCCESS</a>
+        </code>
+
+        <div class="description">
+            Successful response code.
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#PAYMENT_RESPONSE_SUCCESS" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'000'</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="PAYMENT_RESPONSE_ABORT">
+    <td class="attributes">
+        <code class="keyword">
+        public
+        
+        
+        string
+        </code>
+    </td>
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#43" class="constant-name">PAYMENT_RESPONSE_ABORT</a>
+        </code>
+
+        <div class="description">
+            Abort (user aborted payment) response code.
+
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#PAYMENT_RESPONSE_ABORT" class="anchor pull-right">#</a>
+            <code><span class="php-quote">'017'</span></code>
+        </div>
+    </td>
+</tr>
+        </table>
+
+
+        <table class="summary table table-bordered table-responsive table-striped" id="properties">
+            <tr><th colspan="3">Properties Summary</th></tr>
+<tr id="$publicKey">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#50" class="property-name">$publicKey</a>
+        </code>
+        <div class="description">
+            File path or file contents of public key.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$publicKey" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$privateKey">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#57" class="property-name">$privateKey</a>
+        </code>
+        <div class="description">
+            File path or file contents of private key.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$privateKey" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$privateKeyPassword">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#64" class="property-name">$privateKeyPassword</a>
+        </code>
+        <div class="description">
+            Private key password.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$privateKeyPassword" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$sellerId">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#71" class="property-name">$sellerId</a>
+        </code>
+        <div class="description">
+            Seller id, provided by bank.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$sellerId" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$version">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#78" class="property-name">$version</a>
+        </code>
+        <div class="description">
+            Protocol version used for communication.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$version" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$requestUrl">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#85" class="property-name">$requestUrl</a>
+        </code>
+        <div class="description">
+            Request url, where data will be sent.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$requestUrl" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$result">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            bool
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#92" class="property-name">$result</a>
+        </code>
+        <div class="description">
+            Result of signature validation.
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$result" class="anchor pull-right">#</a>
+            <code><span class="php-keyword1">NULL</span></code>
+        </div>
+    </td>
+</tr>
+<tr id="$algorithm">
+    <td class="attributes">
+        <code class="keyword">
+            protected 
+
+            int|string
+        </code>
+    </td>
+
+    <td class="name">
+        <code>
+            <a href="source-class-RKD.Banklink.Protocol.ECommerce.html#99" class="property-name">$algorithm</a>
+        </code>
+        <div class="description">
+            Algorithm used to generate mac
+
+                <br>
+        </div>
+    </td>
+    <td class="value">
+        <div>
+            <a href="#$algorithm" class="anchor pull-right">#</a>
+            <code><span class="php-num">1</span></code>
+        </div>
+    </td>
+</tr>
+        </table>
+
+
+        <table class="summary table table-bordered table-responsive table-striped">
+            <tr>
+                <th>Properties used from <a href="trait-RKD.Banklink.Protocol.ProtocolTrait.NoAuthTrait.html#properties">RKD\Banklink\Protocol\ProtocolTrait\NoAuthTrait</a></th>
+            </tr>
+            <tr>
+                <td>
+                    <code>
+                    </code>
+                </td>
+            </tr>
+        </table>
+    <div id="footer">
+        Generated by <a href="https://github.com/apigen/apigen">ApiGen</a>
+    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="resources/jquery-3.2.1.min.js"></script>
+        <script src="resources/jquery-ui-1.12.1.min.js"></script>
+
+        <script src="elementlist.js"></script>
+        <script src="resources/main.js"></script>
+    </body>
+</html>
+
+
