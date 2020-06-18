@@ -89,7 +89,6 @@ final class Services2015
                     'VK_NAME',
                     'VK_REF',
                     'VK_MSG',
-                    'VK_RETURN'
                 ];
                 break;
             case self::PAYMENT_REQUEST_1002:
@@ -102,7 +101,6 @@ final class Services2015
                     'VK_CURR',
                     'VK_REF',
                     'VK_MSG',
-                    'VK_RETURN'
                 ];
                 break;
             case self::PAYMENT_REQUEST_2001:
@@ -118,7 +116,6 @@ final class Services2015
                     'VK_NAME',
                     'VK_REF',
                     'VK_MSG',
-                    'VK_RETURN'
                 ];
                 break;
             case self::PAYMENT_RESPONSE_SUCCESS:

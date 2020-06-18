@@ -40,7 +40,7 @@ class IPizza2015Test extends IPizzaTest
             'VK_MSG' => $this->message,
             'VK_RETURN' => $this->requestUrl,
             'VK_LANG' => $this->language,
-            'VK_MAC' => 'M1EHQuM8AZ6bN+/RWeMUNIXe0bvWQB0ypVZhhoW1iz8VkE/a0OkjuqcqZRgEOdOyhs5GbP5Oy/PcqFV/rJ7yZIjXwsxM+6Ux+g4n7Xz088Jy0VuNFNvBUPf9yJOKW7Zjm3PNlqo3YrIB5rJpTb805MmMORl9iAYd7YywQLQrHL0='
+            'VK_MAC' => 'WnPfkNEbj0lvkdrVeE7j1E8mGWPs1R+mX/JPokmxHXXjDmzrwlY2TfGmQLYqdog6k1m4By4C+olSeZ/BN98UaXgmeonZgtTrrrOttYT1KaK5DfOTa3VptjqzG1k7jNDloFOJft4fYCrxx/A7XUJFXpKhIMf0lpeLkHOuW2x3U3k='
         ];
     }
 
@@ -66,7 +66,7 @@ class IPizza2015Test extends IPizzaTest
         $this->expectedData['VK_SERVICE'] = '1001';
         $this->expectedData['VK_ACC'] = $this->sellerAccount;
         $this->expectedData['VK_NAME'] = $this->sellerName;
-        $this->expectedData['VK_MAC'] = 'UsRf8b/STRpAbJDSCYOapuZGtzmiG/PN36JDbJcEdO67RTT0hnbp4AzBHjXKInZTCZ7Ftj8S1cO5KZtAdx+NhQxjaPuR8l0o7r6J6dUyVZumQnTyOOrMBmFC7tlZJDPDikFHSPSfAc5a1ealPQvlJT6IJ98OpjJa7kEPNEdOzaE=';
+        $this->expectedData['VK_MAC'] = 'NYD8MmlHeNaAmmYx8PRmYemc5gOi+7I8DZRNnLW3m4GW0hxnbhWxMVP1vTd0hS6t96k8e8CnTpPMTnY9Om2wEOXvT6xnGfwZseUnMdYLgmxhOh4+fUUaMFagTDibwi37Jm3JfhdmL+bhoWtDLw5sbxUzgVP0N7N2m5xe2sODxeI=';
 
         $requestData = $this->protocol->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], 'UTF-8', $this->timezone);
 

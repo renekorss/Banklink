@@ -30,7 +30,7 @@ class SwedbankTest extends SEBTest
         // Swedbank has encoding
         $this->expectedData['VK_SERVICE'] = '1002';
         $this->expectedData['VK_ENCODING'] = 'UTF-8';
-        $this->expectedData['VK_MAC'] = 'M1EHQuM8AZ6bN+/RWeMUNIXe0bvWQB0ypVZhhoW1iz8VkE/a0OkjuqcqZRgEOdOyhs5GbP5Oy/PcqFV/rJ7yZIjXwsxM+6Ux+g4n7Xz088Jy0VuNFNvBUPf9yJOKW7Zjm3PNlqo3YrIB5rJpTb805MmMORl9iAYd7YywQLQrHL0=';
+        $this->expectedData['VK_MAC'] = 'WnPfkNEbj0lvkdrVeE7j1E8mGWPs1R+mX/JPokmxHXXjDmzrwlY2TfGmQLYqdog6k1m4By4C+olSeZ/BN98UaXgmeonZgtTrrrOttYT1KaK5DfOTa3VptjqzG1k7jNDloFOJft4fYCrxx/A7XUJFXpKhIMf0lpeLkHOuW2x3U3k=';
 
         unset($this->expectedData['VK_NAME']);
         unset($this->expectedData['VK_ACC']);
@@ -49,7 +49,7 @@ class SwedbankTest extends SEBTest
         $customData = [
             'INAPP' => 1, // new data
             'VK_REF' => 'mycustomref', // override data
-            'VK_MAC' => 'H99NKHaAoHr0Dmj4xJJBIVdiKkzWCMn5oUGKulTKWVgMrSFVFyUrXPVXTRl+t7f9PmQMYQ+LHbeENwhCiLGstlEjm53l61UD9pGMJv+YJFTOh2tOPifnzEE1wsck5wJlnOUY8yz64dGD2igR35S6GKdOyauie3MFcfEsFYSbkFw='
+            'VK_MAC' => 'Xa/BT7coMmTnRjV/mBBEJU3XLWe7eczWOy0eu8NapJdEH5FpP0lEWP/07g4hY3dpSLCADODXPZss/aiY18C3qhBJNBIoaROqB7+0SRxU+FbJ9PuFLWKHSmSg50c+9xfEJy1z5gybVjZJxGmQNNmdvlzV7eBFKCQ6FvTpE1WnyAo='
         ];
 
         $this->expectedData = array_merge($this->expectedData, $customData);
