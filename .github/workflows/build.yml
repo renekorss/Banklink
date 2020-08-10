@@ -19,7 +19,7 @@ jobs:
       uses: shivammathur/setup-php@master
       with:
         php-version: ${{ matrix.php-versions }}
-        extension-csv: dom
+        extensions: dom
         coverage: xdebug
     - name: Install dependencies
       if: matrix.php-versions != '7.4'
