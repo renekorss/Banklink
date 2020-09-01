@@ -15,12 +15,12 @@
 ## Install
 
 ````bash
-composer require renekorss/Banklink
+composer require renekorss/banklink
 ````
 
 ## Supported providers
 
-Country / Provider| Payment             | Authentication    
+Country / Provider| Payment             | Authentication
 ------------------| ------------------- | ------------------
 **Estonia**       |                     |
 Danskebank        | :white_check_mark:  | :white_check_mark:
