@@ -154,6 +154,6 @@ class ECommerceTest extends TestCase
     public function testSetAlgorithm()
     {
         $this->protocol->setAlgorithm(OPENSSL_ALGO_SHA256);
-        $this->assertEquals(OPENSSL_ALGO_SHA256, $this->protocol->getAlgorithm());
+        $this->assertSame(OPENSSL_ALGO_SHA256, $this->protocol->getAlgorithm());
     }
 }

@@ -209,7 +209,7 @@ class SEBTest extends TestCase
         $response = $this->bank->handleResponse($responseData);
 
         $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
-        $this->assertEquals(PaymentResponse::STATUS_SUCCESS, $response->getStatus());
+        $this->assertSame(PaymentResponse::STATUS_SUCCESS, $response->getStatus());
 
         $this->assertEquals($this->sellerName, $response->getReceiver()->name);
         $this->assertEquals($this->sellerAccount, $response->getReceiver()->account);
@@ -244,7 +244,7 @@ class SEBTest extends TestCase
         $response = $this->bank->handleResponse($responseData);
 
         $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
-        $this->assertEquals(PaymentResponse::STATUS_ERROR, $response->getStatus());
+        $this->assertSame(PaymentResponse::STATUS_ERROR, $response->getStatus());
 
         // This is not valid response, so validation should fail
         $this->assertFalse($response->wasSuccessful());
@@ -336,7 +336,7 @@ class SEBTest extends TestCase
         $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Custom url
-        $this->assertEquals('https://google.com', $request->getRequestUrl());
+        $this->assertSame('https://google.com', $request->getRequestUrl());
     }
 
     /**
@@ -372,8 +372,8 @@ class SEBTest extends TestCase
         ]);
 
         // Custom url set
-        $this->assertEquals('https://custom.com/auth', $this->bank->getRequestUrlFor('auth'));
-        $this->assertEquals('https://custom.com/pay', $this->bank->getRequestUrlFor('payment'));
+        $this->assertSame('https://custom.com/auth', $this->bank->getRequestUrlFor('auth'));
+        $this->assertSame('https://custom.com/pay', $this->bank->getRequestUrlFor('payment'));
     }
 
     /**
@@ -385,8 +385,8 @@ class SEBTest extends TestCase
         $this->bank->setRequestUrl('https://custom.com/endpoint');
 
         // Custom url set
-        $this->assertEquals('https://custom.com/endpoint', $this->bank->getRequestUrlFor('auth'));
-        $this->assertEquals('https://custom.com/endpoint', $this->bank->getRequestUrlFor('payment'));
+        $this->assertSame('https://custom.com/endpoint', $this->bank->getRequestUrlFor('auth'));
+        $this->assertSame('https://custom.com/endpoint', $this->bank->getRequestUrlFor('payment'));
     }
 
     /**
@@ -399,7 +399,7 @@ class SEBTest extends TestCase
         $this->bank = new $this->bankClass($this->protocol);
         $this->bank->setRequestUrl(null);
 
-        $this->assertEquals('https://custom.com/endpoint', $this->bank->getRequestUrlFor('payment'));
+        $this->assertSame('https://custom.com/endpoint', $this->bank->getRequestUrlFor('payment'));
     }
 
     /**
@@ -412,6 +412,6 @@ class SEBTest extends TestCase
         $this->bank = new $this->bankClass($this->protocol);
         $this->bank->setRequestUrl([]);
 
-        $this->assertEquals('https://custom.com/endpoint', $this->bank->getRequestUrlFor('payment'));
+        $this->assertSame('https://custom.com/endpoint', $this->bank->getRequestUrlFor('payment'));
     }
 }

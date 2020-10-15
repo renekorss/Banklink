@@ -138,10 +138,10 @@ class EstcardTest extends TestCase
         $response = $this->bank->handleResponse($responseData);
 
         $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
-        $this->assertEquals(PaymentResponse::STATUS_SUCCESS, $response->getStatus());
+        $this->assertSame(PaymentResponse::STATUS_SUCCESS, $response->getStatus());
 
         // We should get same message
-        $this->assertEquals('Test makse', $response->getMessage());
+        $this->assertSame('Test makse', $response->getMessage());
 
         // This is valid response
         $this->assertTrue($response->wasSuccessful());
@@ -181,6 +181,6 @@ class EstcardTest extends TestCase
         $request = $this->bank->getPaymentRequest($this->orderId, $this->amount, $this->message, $this->language, $this->currency, [], $this->timezone);
 
         // Custom url
-        $this->assertEquals('https://google.com', $request->getRequestUrl());
+        $this->assertSame('https://google.com', $request->getRequestUrl());
     }
 }
