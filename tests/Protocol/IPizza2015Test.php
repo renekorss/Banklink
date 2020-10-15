@@ -102,7 +102,7 @@ class IPizza2015Test extends IPizzaTest
         $response = $this->protocol->handleResponse($responseData);
 
         $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
-        $this->assertEquals(PaymentResponse::STATUS_SUCCESS, $response->getStatus());
+        $this->assertSame(PaymentResponse::STATUS_SUCCESS, $response->getStatus());
 
         // This is valid response
         $this->assertTrue($response->wasSuccessful());
@@ -114,7 +114,7 @@ class IPizza2015Test extends IPizzaTest
         $this->assertEquals($this->orderId, $response->getOrderId());
 
         // We should get same prefered language
-        $this->assertEquals('EST', $response->getLanguage());
+        $this->assertSame('EST', $response->getLanguage());
 
         // We should get same message
         $this->assertEquals($this->message, $response->getMessage());
@@ -132,7 +132,7 @@ class IPizza2015Test extends IPizzaTest
         $this->assertEquals($this->currency, $response->getCurrency());
         $this->assertEquals($expextedSender, $response->getSender());
         $this->assertEquals($expextedReceiver, $response->getReceiver());
-        $this->assertEquals(100, $response->getTransactionId());
+        $this->assertSame('100', $response->getTransactionId());
         $this->assertEquals($this->datetime, $response->getTransactionDate());
     }
 
@@ -156,7 +156,7 @@ class IPizza2015Test extends IPizzaTest
         $response = $this->protocol->handleResponse($responseData);
 
         $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
-        $this->assertEquals(PaymentResponse::STATUS_ERROR, $response->getStatus());
+        $this->assertSame(PaymentResponse::STATUS_ERROR, $response->getStatus());
 
         // This is not valid response, so validation should fail
         $this->assertFalse($response->wasSuccessful());

@@ -19,14 +19,14 @@ class ProtocolHelperTest extends TestCase
     public function testcalculateReference()
     {
         $orderId = 12131295;
-        $expectedReference = 121312952;
+        $expectedReference = '121312952';
 
-        $this->assertEquals($expectedReference, ProtocolHelper::calculateReference($orderId));
+        $this->assertSame($expectedReference, ProtocolHelper::calculateReference($orderId));
 
         $orderId = 12131495;
-        $expectedReference = 121314950;
+        $expectedReference = '121314950';
 
-        $this->assertEquals($expectedReference, ProtocolHelper::calculateReference($orderId));
+        $this->assertSame($expectedReference, ProtocolHelper::calculateReference($orderId));
     }
 
     /**
@@ -44,10 +44,10 @@ class ProtocolHelperTest extends TestCase
      */
     public function testLangToISO6391()
     {
-        $this->assertEquals('et', ProtocolHelper::langToISO6391('est'));
-        $this->assertEquals('ru', ProtocolHelper::langToISO6391('rus'));
-        $this->assertEquals('en', ProtocolHelper::langToISO6391('eng'));
-        $this->assertEquals('fi', ProtocolHelper::langToISO6391('fin'));
+        $this->assertSame('et', ProtocolHelper::langToISO6391('est'));
+        $this->assertSame('ru', ProtocolHelper::langToISO6391('rus'));
+        $this->assertSame('en', ProtocolHelper::langToISO6391('eng'));
+        $this->assertSame('fi', ProtocolHelper::langToISO6391('fin'));
     }
 
     /**
@@ -58,6 +58,6 @@ class ProtocolHelperTest extends TestCase
         $ecuno = ProtocolHelper::generateEcuno();
 
         $this->assertStringStartsWith(date('Ym'), $ecuno);
-        $this->assertEquals(12, strlen($ecuno));
+        $this->assertSame(12, strlen($ecuno));
     }
 }

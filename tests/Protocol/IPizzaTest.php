@@ -167,7 +167,7 @@ class IPizzaTest extends TestCase
         $response = $this->protocol->handleResponse($responseData);
 
         $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
-        $this->assertEquals(PaymentResponse::STATUS_SUCCESS, $response->getStatus());
+        $this->assertSame(PaymentResponse::STATUS_SUCCESS, $response->getStatus());
 
         // This is valid response
         $this->assertTrue($response->wasSuccessful());
@@ -179,7 +179,7 @@ class IPizzaTest extends TestCase
         $this->assertEquals($this->orderId, $response->getOrderId());
 
         // We should get same prefered language
-        $this->assertEquals('EST', $response->getLanguage());
+        $this->assertSame('EST', $response->getLanguage());
 
         // We should get same message
         $this->assertEquals($this->message, $response->getMessage());
@@ -197,7 +197,7 @@ class IPizzaTest extends TestCase
         $this->assertEquals($this->currency, $response->getCurrency());
         $this->assertEquals($expextedSender, $response->getSender());
         $this->assertEquals($expextedReceiver, $response->getReceiver());
-        $this->assertEquals(100, $response->getTransactionId());
+        $this->assertSame('100', $response->getTransactionId());
         $this->assertEquals($this->datetime, $response->getTransactionDate());
     }
 
@@ -221,7 +221,7 @@ class IPizzaTest extends TestCase
         $response = $this->protocol->handleResponse($responseData);
 
         $this->assertInstanceOf('RKD\Banklink\Response\PaymentResponse', $response);
-        $this->assertEquals(PaymentResponse::STATUS_ERROR, $response->getStatus());
+        $this->assertSame(PaymentResponse::STATUS_ERROR, $response->getStatus());
 
         // This is not valid response, so validation should fail
         $this->assertFalse($response->wasSuccessful());
@@ -315,7 +315,7 @@ class IPizzaTest extends TestCase
         $response = $this->protocol->handleResponse($responseData);
 
         $this->assertInstanceOf('RKD\Banklink\Response\AuthResponse', $response);
-        $this->assertEquals(AuthResponse::STATUS_SUCCESS, $response->getStatus());
+        $this->assertSame(AuthResponse::STATUS_SUCCESS, $response->getStatus());
 
         // This is valid response
         $this->assertTrue($response->wasSuccessful());
@@ -324,37 +324,37 @@ class IPizzaTest extends TestCase
         $this->assertEquals($responseData, $response->getResponseData());
 
         // We should get same prefered language
-        $this->assertEquals('EST', $response->getLanguage());
+        $this->assertSame('EST', $response->getLanguage());
 
         // Test user data
-        $this->assertEquals($responseData['VK_USER_ID'], $response->getUserId());
-        $this->assertEquals($responseData['VK_USER_NAME'], $response->getUserName());
-        $this->assertEquals($responseData['VK_COUNTRY'], $response->getUserCountry());
-        $this->assertEquals($responseData['VK_TOKEN'], $response->getToken());
-        $this->assertEquals($responseData['VK_NONCE'], $response->getNonce());
-        $this->assertEquals($responseData['VK_RID'], $response->getRid());
-        $this->assertEquals($responseData['VK_DATETIME'], $response->getAuthDate());
+        $this->assertSame($responseData['VK_USER_ID'], $response->getUserId());
+        $this->assertSame($responseData['VK_USER_NAME'], $response->getUserName());
+        $this->assertSame($responseData['VK_COUNTRY'], $response->getUserCountry());
+        $this->assertSame($responseData['VK_TOKEN'], $response->getToken());
+        $this->assertSame($responseData['VK_NONCE'], $response->getNonce());
+        $this->assertSame($responseData['VK_RID'], $response->getRid());
+        $this->assertSame($responseData['VK_DATETIME'], $response->getAuthDate());
 
         // Test all auth methods
-        $this->assertEquals('ID card', $response->getAuthMethod());
+        $this->assertSame('ID card', $response->getAuthMethod());
 
         $response->setToken(2);
-        $this->assertEquals('Mobile ID', $response->getAuthMethod());
+        $this->assertSame('Mobile ID', $response->getAuthMethod());
 
         $response->setToken(5);
-        $this->assertEquals('One-off code card', $response->getAuthMethod());
+        $this->assertSame('One-off code card', $response->getAuthMethod());
 
         $response->setToken(6);
-        $this->assertEquals('PIN-calculator', $response->getAuthMethod());
+        $this->assertSame('PIN-calculator', $response->getAuthMethod());
 
         $response->setToken(7);
-        $this->assertEquals('Code card', $response->getAuthMethod());
+        $this->assertSame('Code card', $response->getAuthMethod());
 
         $response->setToken(9);
-        $this->assertEquals('Smart-ID', $response->getAuthMethod());
+        $this->assertSame('Smart-ID', $response->getAuthMethod());
 
         $response->setToken(0);
-        $this->assertEquals('unknown', $response->getAuthMethod());
+        $this->assertSame('unknown', $response->getAuthMethod());
     }
 
     /**
@@ -385,7 +385,7 @@ class IPizzaTest extends TestCase
         $response = $this->protocol->handleResponse($responseData);
 
         $this->assertInstanceOf('RKD\Banklink\Response\AuthResponse', $response);
-        $this->assertEquals(AuthResponse::STATUS_ERROR, $response->getStatus());
+        $this->assertSame(AuthResponse::STATUS_ERROR, $response->getStatus());
 
         // This is not valid response
         $this->assertFalse($response->wasSuccessful());
@@ -507,7 +507,7 @@ class IPizzaTest extends TestCase
     public function testSetAlgorithm()
     {
         $this->protocol->setAlgorithm(OPENSSL_ALGO_SHA256);
-        $this->assertEquals(OPENSSL_ALGO_SHA256, $this->protocol->getAlgorithm());
+        $this->assertSame(OPENSSL_ALGO_SHA256, $this->protocol->getAlgorithm());
     }
 
     /**
@@ -530,7 +530,7 @@ class IPizzaTest extends TestCase
         $requestData = $this->protocol->getAuthRequest();
 
         // Must match with SHA256 encrypted VK_MAC
-        $this->assertEquals(
+        $this->assertSame(
             'BoHSS+z3syMAU0Vi/Ob8lTS8FIMAZ6ZslYnjNXZVEZEn2aXuc/1L2oR/Ef8DvPFJ1ocOjxOHiQ0QJruD5CpiDXI3/hxSJ2qJg0a0HezrTPgc6iVONcsas62+PBlpWFSnZ9u5qg1eETnHgYzjtBZE2FzqWJWC2UuMUxn9uGcGhoxd1wGCrgc2zu4Ub540hhEyoUAJyjN5xA89nKb8H0tY58s96uYM9G8Isj8cDWVICFI4Q5O3Rn56sfhBEyNrSOwMCukf+zsIfoQtt3qto9JZ/IZ6Znl8ze8LCZqwvqnFiRrkXnVwvPI7aiyCIvFccqJiUsl5ahqpXrnFJyt2kyAGDQ==',
             $requestData['VK_MAC']
         );
