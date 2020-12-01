@@ -12,11 +12,11 @@ class LuminorTest extends SEBTest
     protected $bankClass = "RKD\Banklink\EE\Luminor";
 
     protected $requestUrl = [
-        'payment' => 'https://netbank.nordea.com/pnbepay/epayp.jsp',
-        'auth' => 'https://netbank.nordea.com/pnbeid/eidp.jsp'
+        'payment' => 'https://banklink.luminor.ee',
+        'auth' => 'https://banklink.luminor.ee'
     ];
     protected $testRequestUrl = [
-        'payment' => 'https://netbank.nordea.com/pnbepaytest/epayp.jsp',
-        'auth' => 'https://netbank.nordea.com/pnbeidtest/eidp.jsp'
+        'payment' => 'https://banklink.luminor.ee/test',
+        'auth' => 'https://banklink.luminor.ee/test'
     ];
 }

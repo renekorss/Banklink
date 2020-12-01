@@ -12,11 +12,11 @@ class NordeaTest extends SEBTest
     protected $bankClass = "RKD\Banklink\EE\Nordea";
 
     protected $requestUrl = [
-        'payment' => 'https://netbank.nordea.com/pnbepay/epayp.jsp',
-        'auth' => 'https://netbank.nordea.com/pnbepay/epayp.jsp'
+        'payment' => 'https://banklink.luminor.ee',
+        'auth' => 'https://banklink.luminor.ee'
     ];
     protected $testRequestUrl = [
-        'payment' => 'https://netbank.nordea.com/pnbepaytest/epayp.jsp',
-        'auth' => 'https://netbank.nordea.com/pnbepaytest/epayp.jsp'
+        'payment' => 'https://banklink.luminor.ee/test',
+        'auth' => 'https://banklink.luminor.ee/test'
     ];
 }
