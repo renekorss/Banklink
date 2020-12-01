@@ -110,7 +110,6 @@ final class Services
                     'VK_CANCEL',
                     'VK_DATETIME',
                 ];
-                break;
             case self::PAYMENT_REQUEST_1012:
                 return [
                     'VK_SERVICE',
@@ -125,7 +124,6 @@ final class Services
                     'VK_CANCEL',
                     'VK_DATETIME',
                 ];
-                break;
             case self::PAYMENT_RESPONSE_SUCCESS:
                 return [
                     'VK_SERVICE',
@@ -144,7 +142,6 @@ final class Services
                     'VK_MSG',
                     'VK_T_DATETIME',
                 ];
-                break;
             case self::PAYMENT_RESPONSE_FAILED:
                 return [
                     'VK_SERVICE',
@@ -155,7 +152,6 @@ final class Services
                     'VK_REF',
                     'VK_MSG',
                 ];
-                break;
             case self::AUTH_REQUEST_4011:
                 return [
                     'VK_SERVICE',
@@ -166,7 +162,6 @@ final class Services
                     'VK_DATETIME',
                     'VK_RID',
                 ];
-                break;
             case self::AUTH_REQUEST_4012:
                 return [
                     'VK_SERVICE',
@@ -178,7 +173,6 @@ final class Services
                     'VK_DATETIME',
                     'VK_RID',
                 ];
-                break;
             case self::AUTH_RESPONSE_3012:
                 return [
                     'VK_SERVICE',
@@ -194,7 +188,6 @@ final class Services
                     'VK_TOKEN',
                     'VK_RID',
                 ];
-                break;
             case self::AUTH_RESPONSE_3013:
                 return [
                     'VK_SERVICE',
@@ -210,10 +203,8 @@ final class Services
                     'VK_TOKEN',
                     'VK_RID',
                 ];
-                break;
             default:
                 throw new UnexpectedValueException(sprintf('Service %s is not supported.', $serviceId));
-                break;
         }
     }
 
