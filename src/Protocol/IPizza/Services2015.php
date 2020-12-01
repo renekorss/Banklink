@@ -90,7 +90,6 @@ final class Services2015
                     'VK_REF',
                     'VK_MSG',
                 ];
-                break;
             case self::PAYMENT_REQUEST_1002:
                 return [
                     'VK_SERVICE',
@@ -102,7 +101,6 @@ final class Services2015
                     'VK_REF',
                     'VK_MSG',
                 ];
-                break;
             case self::PAYMENT_REQUEST_2001:
                 return [
                     'VK_SERVICE',
@@ -117,7 +115,6 @@ final class Services2015
                     'VK_REF',
                     'VK_MSG',
                 ];
-                break;
             case self::PAYMENT_RESPONSE_SUCCESS:
                 return [
                     'VK_SERVICE',
@@ -136,7 +133,6 @@ final class Services2015
                     'VK_MSG',
                     'VK_T_DATE',
                 ];
-                break;
             case self::PAYMENT_RESPONSE_ERROR:
                 return [
                     'VK_SERVICE',
@@ -153,7 +149,6 @@ final class Services2015
                     'VK_REF',
                     'VK_MSG'
                 ];
-                break;
             case self::PAYMENT_RESPONSE_FAILED:
                 return [
                     'VK_SERVICE',
@@ -164,10 +159,8 @@ final class Services2015
                     'VK_REF',
                     'VK_MSG',
                 ];
-                break;
             default:
                 throw new UnexpectedValueException(sprintf('Service %s is not supported.', $serviceId));
-                break;
         }
     }
 }
