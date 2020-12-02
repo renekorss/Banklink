@@ -30,8 +30,8 @@ class Luminor extends Banklink
      * @var mixed
      */
     protected $requestUrl = [
-        'payment' => 'https://netbank.nordea.com/pnbepay/epayp.jsp',
-        'auth' => 'https://netbank.nordea.com/pnbeid/eidp.jsp'
+        'payment' => 'https://banklink.luminor.ee',
+        'auth' => 'https://banklink.luminor.ee'
     ];
 
     /**
@@ -40,8 +40,8 @@ class Luminor extends Banklink
      * @var mixed
      */
     protected $testRequestUrl = [
-        'payment' => 'https://netbank.nordea.com/pnbepaytest/epayp.jsp',
-        'auth' => 'https://netbank.nordea.com/pnbeidtest/eidp.jsp',
+        'payment' => 'https://banklink.luminor.ee/test',
+        'auth' => 'https://banklink.luminor.ee/test',
     ];
 
     /**
