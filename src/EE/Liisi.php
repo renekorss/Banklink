@@ -36,7 +36,7 @@ class Liisi extends Banklink
      *
      * @var mixed
      */
-    protected $testRequestUrl = 'https://prelive.liisi.ee:8953/api/ipizza/';
+    protected $testRequestUrl = 'https://prelive.liisi.ee/api/ipizza/';
 
     /**
      * Force Liisi class to use LiisiPayment protocol.
