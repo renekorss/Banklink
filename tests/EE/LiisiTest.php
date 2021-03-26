@@ -19,8 +19,8 @@ class LiisiTest extends SEBTest
         'auth' => 'https://klient.liisi.ee/api/ipizza/'
     ];
     protected $testRequestUrl = [
-        'payment' => 'https://prelive.liisi.ee:8953/api/ipizza/',
-        'auth' => 'https://prelive.liisi.ee:8953/api/ipizza/'
+        'payment' => 'https://prelive.liisi.ee/api/ipizza/',
+        'auth' => 'https://prelive.liisi.ee/api/ipizza/'
     ];
 
     /**
