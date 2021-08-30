@@ -8,6 +8,9 @@ use LogicException;
  * Test suite for Liisi banklink.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class LiisiTest extends SEBTest
 {
