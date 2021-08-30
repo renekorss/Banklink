@@ -15,6 +15,9 @@ use UnexpectedValueException;
  * Test suite for IPizza protocol.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class IPizzaTest extends TestCase
 {

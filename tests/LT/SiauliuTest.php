@@ -8,6 +8,9 @@ use RKD\Banklink\Response\PaymentResponse;
  * Test suite for Šiaulių bank banklink.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class SiauliuTest extends SEBTest
 {

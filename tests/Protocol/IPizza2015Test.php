@@ -10,6 +10,9 @@ use RKD\Banklink\Response\PaymentResponse;
  * Test suite for IPizza 2015 protocol.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class IPizza2015Test extends IPizzaTest
 {

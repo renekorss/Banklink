@@ -9,6 +9,9 @@ use RKD\Banklink\Protocol\LiisiPayment;
  * Test suite for Liisi payment protocol.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class LiisiPaymentTest extends IPizzaTest
 {

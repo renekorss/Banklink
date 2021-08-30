@@ -10,6 +10,9 @@ use TypeError;
  * Test suite for protocol helper.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class ProtocolHelperTest extends TestCase
 {
