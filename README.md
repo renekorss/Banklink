@@ -1,6 +1,6 @@
 [![Actions Status](https://github.com/renekorss/Banklink/workflows/build/badge.svg)](https://github.com/renekorss/Banklink/actions)
 [![Coverage Status](https://coveralls.io/repos/renekorss/Banklink/badge.svg?branch=master&service=github)](https://coveralls.io/github/renekorss/Banklink?branch=master)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/e40d4d283c7e41b2993656fce3645439)](https://www.codacy.com/app/renekorss/Banklink?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=renekorss/Banklink&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ca9c1ac49f60430ca93758324c42f91f)](https://www.codacy.com/gh/renekorss/Banklink/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=renekorss/Banklink&amp;utm_campaign=Badge_Grade)
 [![Latest Stable Version](https://poser.pugx.org/renekorss/banklink/v/stable)](https://packagist.org/packages/renekorss/banklink)
 [![Total Downloads](https://poser.pugx.org/renekorss/banklink/downloads)](https://packagist.org/packages/renekorss/banklink)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
