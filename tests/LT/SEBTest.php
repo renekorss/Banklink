@@ -8,6 +8,9 @@ use RKD\Banklink\Response\PaymentResponse;
  * Test suite for SEB LT banklink.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class SEBTest extends \RKD\Banklink\Test\EE\SEBTest
 {

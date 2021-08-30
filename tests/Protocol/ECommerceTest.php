@@ -11,6 +11,9 @@ use UnexpectedValueException;
  * Test suite for ECommerce protocol.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class ECommerceTest extends TestCase
 {

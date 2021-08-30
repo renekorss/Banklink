@@ -6,6 +6,9 @@ namespace RKD\Banklink\Test\LT;
  * Test suite for Swedbank banklink.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class SwedbankTest extends SEBTest
 {
