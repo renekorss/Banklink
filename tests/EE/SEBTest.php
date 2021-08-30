@@ -13,6 +13,9 @@ use UnexpectedValueException;
  * Test suite for SEB banklink.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class SEBTest extends TestCase
 {

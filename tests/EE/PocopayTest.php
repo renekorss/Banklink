@@ -6,6 +6,9 @@ namespace RKD\Banklink\Test\EE;
  * Test suite for LHV banklink.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class PocopayTest extends SEBTest
 {

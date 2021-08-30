@@ -12,6 +12,9 @@ use RKD\Banklink\Response\PaymentResponse;
  * Test suite for Estcard payment gateway.
  *
  * @author  Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  */
 class EstcardTest extends TestCase
 {
