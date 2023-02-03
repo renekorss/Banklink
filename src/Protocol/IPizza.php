@@ -178,7 +178,7 @@ class IPizza implements ProtocolInterface
         $this->requestUrl = $requestUrl;
 
         // Detect which service to use
-        if (strlen($sellerName) > 0 && strlen($sellerAccount) > 0) {
+        if (is_string($sellerName) && strlen($sellerName) > 0 && is_string($sellerAccount) && strlen($sellerAccount) > 0) {
             $this->serviceId = Services::PAYMENT_REQUEST_1011;
             return;
         }
@@ -443,7 +443,11 @@ class IPizza implements ProtocolInterface
         }
 
         openssl_sign($mac, $signature, $privateKey, $this->algorithm);
-        openssl_free_key($privateKey);
+
+        // Only needed if < PHP 8
+        if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+            openssl_free_key($privateKey);
+        }
 
         $result = base64_encode($signature);
 
@@ -512,7 +516,11 @@ class IPizza implements ProtocolInterface
         }
 
         $this->result = openssl_verify($data, base64_decode($response[static::FIELD_MAC]), $publicKey, $this->algorithm);
-        openssl_free_key($publicKey);
+
+        // Only needed if < PHP 8
+        if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+            openssl_free_key($publicKey);
+        }
 
         return $this->result === 1;
     }
