@@ -5,7 +5,7 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2016-2020 Rene Korss
+ * @copyright 2016-2023 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink\Protocol;
@@ -250,7 +250,11 @@ class ECommerce implements ProtocolInterface
         }
 
         openssl_sign($mac, $signature, $privateKey, $this->algorithm);
-        openssl_free_key($privateKey);
+
+        // Only needed if < PHP 8
+        if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+            openssl_free_key($privateKey);
+        }
 
         $result = bin2hex($signature);
 
@@ -367,7 +371,11 @@ class ECommerce implements ProtocolInterface
         }
 
         $this->result = openssl_verify($data, pack('H*', $response['mac']), $publicKey, $this->algorithm);
-        openssl_free_key($publicKey);
+
+        // Only needed if < PHP 8
+        if (version_compare(PHP_VERSION, '8.0.0', '<')) {
+            openssl_free_key($publicKey);
+        }
 
         return $this->result === 1;
     }

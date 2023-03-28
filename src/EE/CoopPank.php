@@ -50,7 +50,7 @@ class CoopPank extends Banklink
     protected $responseEncoding = 'ISO-8859-13';
 
     /**
-     * Force Krediidipank class to use IPizza protocol.
+     * Force CoopPank class to use IPizza protocol.
      *
      * @param RKD\Banklink\Protocol\IPizza $protocol   Protocol used
      */

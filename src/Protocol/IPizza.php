@@ -5,7 +5,7 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2016-2020 Rene Korss
+ * @copyright 2016-2023 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink\Protocol;
@@ -24,6 +24,8 @@ use UnexpectedValueException;
  * Protocol for IPizza based banklinks.
  *
  * @author Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class IPizza implements ProtocolInterface
 {
@@ -523,6 +525,27 @@ class IPizza implements ProtocolInterface
         }
 
         return $this->result === 1;
+    }
+
+    /**
+     * Set version
+     *
+     * @param string
+     */
+    public function setVersion($version) : self
+    {
+        $this->version = $version;
+        return $this;
+    }
+
+    /**
+     * Get version
+     *
+     * @param string
+     */
+    public function getVersion() : string
+    {
+        return $this->version;
     }
 
     /**

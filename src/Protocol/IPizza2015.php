@@ -5,7 +5,7 @@
  * @link https://github.com/renekorss/Banklink/
  *
  * @author Rene Korss <rene.korss@gmail.com>
- * @copyright 2016-2020 Rene Korss
+ * @copyright 2016-2023 Rene Korss
  * @license MIT
  */
 namespace RKD\Banklink\Protocol;
@@ -63,7 +63,7 @@ class IPizza2015 extends IPizza
         );
 
         // Detect which service to use
-        if (strlen($sellerName) > 0 && strlen($sellerAccount) > 0) {
+        if (is_string($sellerName) && strlen($sellerName) > 0 && is_string($sellerAccount) && strlen($sellerAccount) > 0) {
             $this->setServiceId(Services2015::PAYMENT_REQUEST_1001);
             return;
         }

@@ -3,9 +3,7 @@
 namespace RKD\Banklink\Test\EE;
 
 use PHPUnit\Framework\TestCase;
-use RKD\Banklink;
 use RKD\Banklink\Protocol\Helper\ProtocolHelper;
-use RKD\Banklink\Request\PaymentRequest;
 use RKD\Banklink\Response\PaymentResponse;
 use UnexpectedValueException;
 
