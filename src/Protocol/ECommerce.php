@@ -253,7 +253,7 @@ class ECommerce implements ProtocolInterface
 
         // Only needed if < PHP 8
         if (version_compare(PHP_VERSION, '8.0.0', '<')) {
-            openssl_free_key($privateKey);
+            openssl_free_key($privateKey); // @codeCoverageIgnore
         }
 
         $result = bin2hex($signature);

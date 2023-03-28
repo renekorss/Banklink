@@ -505,6 +505,15 @@ class IPizzaTest extends TestCase
     }
 
     /**
+     * Test that we can change version
+     */
+    public function testSetVersion()
+    {
+        $this->protocol->setVersion('009');
+        $this->assertSame('009', $this->protocol->getVersion());
+    }
+
+    /**
      * Test that we can change algorithm
      */
     public function testSetAlgorithm()
