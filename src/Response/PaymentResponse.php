@@ -41,6 +41,13 @@ class PaymentResponse extends Response
     protected $currency;
 
     /**
+     * Receiver data (name and account).
+     *
+     * @var object
+     */
+    protected $receiver;
+
+    /**
      * Sender data (name and account).
      *
      * @var object
@@ -60,6 +67,13 @@ class PaymentResponse extends Response
      * @var string
      */
     protected $transactionDate;
+
+    /**
+     * Message
+     *
+     * @var string
+     */
+    protected $message;
 
     /**
      * Set order ID.

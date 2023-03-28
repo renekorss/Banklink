@@ -528,6 +528,27 @@ class IPizza implements ProtocolInterface
     }
 
     /**
+     * Set version
+     *
+     * @param string
+     */
+    public function setVersion($version) : self
+    {
+        $this->version = $version;
+        return $this;
+    }
+
+    /**
+     * Get version
+     *
+     * @param string
+     */
+    public function getVersion() : string
+    {
+        return $this->version;
+    }
+
+    /**
      * Set algorithm used to generate mac
      *
      * Should be one of valid values for openssl_sign functions signature_alg parameter
