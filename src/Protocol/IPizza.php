@@ -521,7 +521,7 @@ class IPizza implements ProtocolInterface
 
         // Only needed if < PHP 8
         if (version_compare(PHP_VERSION, '8.0.0', '<')) {
-            openssl_free_key($publicKey);
+            openssl_free_key($publicKey); // @codeCoverageIgnore
         }
 
         return $this->result === 1;
