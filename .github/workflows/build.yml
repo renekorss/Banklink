@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest]
-        php-versions: ['7.4', '8.0', '8.1']
+        php-versions: ['7.4', '8.0', '8.1', '8.2']
 
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     steps:
@@ -37,6 +37,6 @@ jobs:
       run: composer test
     - name: Send to coveralls
       if: matrix.php-versions == '8.1'
-      run: php-coveralls --coverage_clover=build/logs/clover.xml
+      run: vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
