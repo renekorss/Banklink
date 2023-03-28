@@ -24,6 +24,8 @@ use UnexpectedValueException;
  * Protocol for IPizza based banklinks.
  *
  * @author Rene Korss <rene.korss@gmail.com>
+ *
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class IPizza implements ProtocolInterface
 {
