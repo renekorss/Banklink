@@ -5,11 +5,7 @@
       <directory suffix=".php">src</directory>
     </include>
   </source>
-  <coverage includeUncoveredFiles="true" processUncoveredFiles="true">
-    <include>
-      <directory suffix=".php">src</directory>
-    </include>
-  </coverage>
+
   <testsuites>
     <testsuite name="RKD Banklink Test Suite">
       <directory suffix=".php">./tests/</directory>
