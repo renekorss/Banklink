@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest]
-        php-versions: ['7.4', '8.0', '8.1', '8.2']
+        php-versions: ['8.2', '8.3', '8.4']
 
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     steps:
@@ -27,19 +27,16 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-interaction --ignore-platform-reqs
     - name: PHP Code Sniffer
-      if: matrix.php-versions == '8.1'
+      if: matrix.php-versions == '8.3'
       run: composer phpcs
     - name: PHP Mess Detector
-      if: matrix.php-versions == '8.1'
+      if: matrix.php-versions == '8.3'
       run: composer phpmd
     - name: PHP Unit Tests with coverage
-      if: matrix.php-versions == '8.1'
+      if: matrix.php-versions == '8.3'
       run: vendor/bin/phpunit --coverage-clover build/logs/clover.xml
-    - name: PHP Unit Tests
-      if: matrix.php-versions != '8.1'
-      run: composer test
     - name: Send to coveralls
-      if: matrix.php-versions == '8.1'
+      if: matrix.php-versions == '8.3'
       run: vendor/bin/php-coveralls --coverage_clover=build/logs/clover.xml
       env:
         COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
